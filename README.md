@@ -1,6 +1,6 @@
-# hoplon-spectre
+# hoplon-spectre.css
 
-A [Hoplon][hoplon] library designed to make [Spectre][spectre] simple to use.
+A [Hoplon][hoplon] library designed to make [Spectre.css][spectre] simple to use.
 
 ## Dependencies
 
