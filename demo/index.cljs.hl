@@ -46,22 +46,16 @@
      :class "notes text-center"
      (div
       :class "btn-group"
-      (a
-       :shape "rect",
-       :class "btn btn-primary",
+      (s/button-primary
        :href "https://github.com/mynomoto/hoplon-spectre.css",
        :target "_blank"
        "Hoplon Spectre GitHub Repo")
-      (a
-       :shape "rect",
-       :class "btn btn-primary",
+      (s/button-primary
        :href "https://github.com/picturepan2/spectre",
        :target "_blank"
        "Spectre GitHub Repo")
-      (a
-       :shape "rect",
-       :class "btn btn-primary",
-       :href "https://picturepan2.github.io/spectre/#getting-started"
+      (s/button-primary
+       :href "#getting-started"
        "Documentation"))))))
 
 (def manual-install
@@ -75,9 +69,7 @@
      "Spectre CSS file")
     " (about 27KB):")
    (p
-    (a
-     :shape "rect"
-     :class "btn btn-primary"
+    (s/button-primary
      :href "https://github.com/picturepan2/spectre/tree/master/dist"
      :target "_blank"
      "Download Spectre.css"))])
@@ -128,6 +120,101 @@
     bower-install
     cdn-usage)))
 
+(def compiling-custom-version
+  (section
+   :id "compiling"
+   :class "container grid-960"
+   (s/header
+    (h4 "compiling custom version"))
+   (section
+    :class "notes"
+    (p
+     "Spectre uses "
+     (a
+      :shape "rect",
+      :href "http://gulpjs.com/",
+      :target "_blank"
+      "Gulp")
+     " for compiling CSS. You can customize your version of Spectre.css by editing LESS files in "
+     (code "/src")
+     " directory or removing unneeded components from "
+     (code "spectre.less")
+     ".")
+    (p "Then, you can build the CSS file from the command line:")
+    (ol
+     (li
+      "Navigate to the root directory of Spectre where you can find "
+      (code "package.json")
+      " file.")
+     (li
+      "Run "
+      (code "npm install")
+      ". NPM will install all dev dependencies as listed in package.json.")
+     (li
+      "When completed, run "
+      (code "gulp build")
+      " to compile LESS to CSS and minify files.")
+     (li
+      "You can find compiled CSS files in "
+      (code "/dist")
+      " directory."))
+    (p
+     "You can watch file changes and rebuild CSS files by using "
+     (code "gulp watch")
+     "."))))
+
+(def elements-header
+  (section
+   :id "elements"
+   :class "container grid-960"
+   (section
+    :class "notes text-center"
+    (ul
+     :class "tab inline-flex"
+     (li
+      :class "tab-item active"
+      (a
+       :shape "rect",
+       :href "#elements"
+       "elements"))
+     (li
+      :class "tab-item"
+      (a
+       :shape "rect",
+       :href "#layout"
+       "layout"))
+     (li
+      :class "tab-item"
+      (a
+       :shape "rect",
+       :href "#components"
+       "components"))
+     (li
+      :class "tab-item"
+      (a
+       :shape "rect",
+       :href "#utilities"
+       "utilities"))))
+   (section
+    :class "notes text-center"
+    (div
+     :class "btn-group"
+     (s/button-primary
+      :href "#typography"
+      "typography")
+     (s/button-primary
+      :href "#tables"
+      "tables")
+     (s/button-primary
+      :href "#buttons"
+      "buttons")
+     (s/button-primary
+      :href "#forms"
+      "forms")
+     (s/button-primary
+      :href "#media"
+      "media")))))
+
 (html
  html-head
  (body
@@ -135,221 +222,119 @@
   (section
    :class "section"
    getting-started
+   compiling-custom-version
+   elements-header
    (section
-    :id "compiling"
-    :class "container grid-960"
-    (s/header
-     (h4 "compiling custom version"))
+    {:id "typography", :class "container grid-960"}
+    (header {:class "text-center"} (h4 "typography"))
     (section
-     :class "notes"
+     {:class "notes"}
      (p
-      "Spectre uses "
-      (a
-       :shape "rect",
-       :href "http://gulpjs.com/",
-       :target "_blank"
-       "Gulp")
-      " for compiling CSS. You can customize your version of Spectre.css by editing LESS files in "
-      (code "/src")
-      " directory or removing unneeded components from "
-      (code "spectre.less")
-      ".")
-     (p "Then, you can build the CSS file from the command line:")
-     (ol
-      (li
-       "Navigate to the root directory of Spectre where you can find "
-       (code "package.json")
-       " file.")
-      (li
-       "Run "
-       (code "npm install")
-       ". NPM will install all dev dependencies as listed in package.json.")
-      (li
-       "When completed, run "
-       (code "gulp build")
-       " to compile LESS to CSS and minify files.")
-      (li
-       "You can find compiled CSS files in "
-       (code "/dist")
-       " directory."))
+      (strong "Typography")
+      " sets default styles for headings, paragraphs, blockquote, lists and code elements. "))
+    (header {:class "text-center"} (h5 "headings"))
+    (h1 "H1 Title " (small {:class "label"} "5rem"))
+    (h2 "H2 Title " (small {:class "label"} "4rem"))
+    (h3 "H3 Title " (small {:class "label"} "3rem"))
+    (h4 "H4 Title " (small {:class "label"} "2.4rem"))
+    (h5 "H5 Title " (small {:class "label"} "2rem"))
+    (h6 "H6 Title " (small {:class "label"} "1.6rem"))
+    (pre
+     {:class "code lang-html"}
+     "<"
+     (span {:class "tag"} "h1")
+     ">H1 Title<"
+     (span {:class "tag"} "/h1")
+     ">\n<"
+     (span {:class "tag"} "h2")
+     ">H2 Title <"
+     (span {:class "tag"} "small")
+     " "
+     (span {:class "atn"} "class")
+     "="
+     (span {:class "atv"} "\"label\"")
+     ">4rem<"
+     (span {:class "tag"} "/small")
+     "><"
+     (span {:class "tag"} "/h2")
+     ">\n                ")
+    (header {:class "text-center"} (h5 "paragraphs"))
+    (p
+     "Lorem ipsum dolor sit amet, "
+     (span {:class "highlight"} "consectetur")
+     " adipiscing elit. Praesent risus leo, "
+     (a
+      {:shape "rect",
+       :href "https://picturepan2.github.io/spectre/#typography"}
+      "dictum in vehicula sit amet")
+     ", feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.")
+    (p
+     {:class "lead"}
+     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
+    (pre
+     {:class "code lang-html"}
+     "<"
+     (span {:class "tag"} "p")
+     ">Lorem ipsum dolor sit amet, <"
+     (span {:class "tag"} "span")
+     " "
+     (span {:class "atn"} "class")
+     "="
+     (span {:class "atv"} "\"highlight\"")
+     ">consectetur<"
+     (span {:class "tag"} "/span")
+     "> adipiscing elit. Praesent risus leo, <"
+     (span {:class "tag"} "a")
+     " "
+     (span {:class "atn"} "href")
+     "="
+     (span {:class "atv"} "\"#\"")
+     ">dictum in vehicula sit amet<"
+     (span {:class "tag"} "/a")
+     ">, feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.<"
+     (span {:class "tag"} "/p")
+     ">\n<"
+     (span {:class "tag"} "p")
+     " "
+     (span {:class "atn"} "class")
+     "="
+     (span {:class "atv"} "\"lead\"")
+     ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<"
+     (span {:class "tag"} "/p")
+     ">\n                ")
+    (header
+     {:class "text-center"}
+     (h5 "optimized for asian fonts"))
+    (p {:class "lead"} "你好, こんにちは, 안녕하세요")
+    (h6 "Chinese (Simplified)")
+    (p
+     "革命不是请客吃饭，不是做文章，不是绘画绣花，不能那样雅致，那样从容不迫，“文质彬彬”，那样“温良恭俭让”。革命就是暴动，是一个阶级推翻一个阶级的暴烈的行动。")
+    (h6 "Japanese")
+    (p
+     "祇園精舎の鐘の声、諸行無常の響きあり。沙羅双樹の花の色、盛者必衰の理をあらはす。おごれる人も久しからず。ただ春の夜の夢のごとし。たけき者も遂にはほろびぬ、ひとへ‌​に風の前の塵に同じ。")
+    (h6 "Korean")
+    (p
+     "나라말이 중국과 달라, 한문・한자와 서로 통하지 아니하므로, 어리석은 백성들이 말하고자 하는 바가 있어도, 끝내 제 뜻을 펴지 못하는 사람이 많다. 내가 이를 불쌍히 여겨, 새로 스물 여덟 글자를 만드니, 사람마다 하여금 쉽게 익혀, 날마다 씀에 편하게 하고자 할 따름이다.")
+    (header {:class "text-center"} (h5 "blockquote"))
+    (blockquote
      (p
-      "You can watch file changes and rebuild CSS files by using "
-      (code "gulp watch")
-      ".")))
-   (section
-    {:id "elements", :class "container grid-960"}
-    (section
-     {:class "notes text-center"}
-     (ul
-      {:class "tab inline-flex"}
-      (li
-       {:class "tab-item active"}
-       (a
-        {:shape "rect",
-         :href
-         "https://picturepan2.github.io/spectre/#elements"}
-        "\n                                elements\n                            "))
-      (li
-       {:class "tab-item"}
-       (a
-        {:shape "rect",
-         :href "https://picturepan2.github.io/spectre/#layout"}
-        "\n                                layout\n                            "))
-      (li
-       {:class "tab-item"}
-       (a
-        {:shape "rect",
-         :href
-         "https://picturepan2.github.io/spectre/#components"}
-        "\n                                components\n                            "))
-      (li
-       {:class "tab-item"}
-       (a
-        {:shape "rect",
-         :href
-         "https://picturepan2.github.io/spectre/#utilities"}
-        "\n                                utilities\n                            "))))
-    (section
-     {:class "notes text-center"}
-     (div
-      {:class "btn-group"}
-      (a
-       {:shape "rect",
-        :class "btn btn-primary",
-        :href
-        "https://picturepan2.github.io/spectre/#typography"}
-       "typography")
-      (a
-       {:shape "rect",
-        :class "btn btn-primary",
-        :href "https://picturepan2.github.io/spectre/#tables"}
-       "tables")
-      (a
-       {:shape "rect",
-        :class "btn btn-primary",
-        :href "https://picturepan2.github.io/spectre/#buttons"}
-       "buttons")
-      (a
-       {:shape "rect",
-        :class "btn btn-primary",
-        :href "https://picturepan2.github.io/spectre/#forms"}
-       "forms")
-      (a
-       {:shape "rect",
-        :class "btn btn-primary",
-        :href "https://picturepan2.github.io/spectre/#media"}
-       "media"))))
-(section
- {:id "typography", :class "container grid-960"}
- (header {:class "text-center"} (h4 "typography"))
- (section
-  {:class "notes"}
-  (p
-   (strong "Typography")
-   " sets default styles for headings, paragraphs, blockquote, lists and code elements. "))
- (header {:class "text-center"} (h5 "headings"))
- (h1 "H1 Title " (small {:class "label"} "5rem"))
- (h2 "H2 Title " (small {:class "label"} "4rem"))
- (h3 "H3 Title " (small {:class "label"} "3rem"))
- (h4 "H4 Title " (small {:class "label"} "2.4rem"))
- (h5 "H5 Title " (small {:class "label"} "2rem"))
- (h6 "H6 Title " (small {:class "label"} "1.6rem"))
- (pre
-  {:class "code lang-html"}
-  "<"
-  (span {:class "tag"} "h1")
-  ">H1 Title<"
-  (span {:class "tag"} "/h1")
-  ">\n<"
-  (span {:class "tag"} "h2")
-  ">H2 Title <"
-  (span {:class "tag"} "small")
-  " "
-  (span {:class "atn"} "class")
-  "="
-  (span {:class "atv"} "\"label\"")
-  ">4rem<"
-  (span {:class "tag"} "/small")
-  "><"
-  (span {:class "tag"} "/h2")
-  ">\n                ")
- (header {:class "text-center"} (h5 "paragraphs"))
- (p
-  "Lorem ipsum dolor sit amet, "
-  (span {:class "highlight"} "consectetur")
-  " adipiscing elit. Praesent risus leo, "
-  (a
-   {:shape "rect",
-    :href "https://picturepan2.github.io/spectre/#typography"}
-   "dictum in vehicula sit amet")
-  ", feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.")
- (p
-  {:class "lead"}
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
- (pre
-  {:class "code lang-html"}
-  "<"
-  (span {:class "tag"} "p")
-  ">Lorem ipsum dolor sit amet, <"
-  (span {:class "tag"} "span")
-  " "
-  (span {:class "atn"} "class")
-  "="
-  (span {:class "atv"} "\"highlight\"")
-  ">consectetur<"
-  (span {:class "tag"} "/span")
-  "> adipiscing elit. Praesent risus leo, <"
-  (span {:class "tag"} "a")
-  " "
-  (span {:class "atn"} "href")
-  "="
-  (span {:class "atv"} "\"#\"")
-  ">dictum in vehicula sit amet<"
-  (span {:class "tag"} "/a")
-  ">, feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.<"
-  (span {:class "tag"} "/p")
-  ">\n<"
-  (span {:class "tag"} "p")
-  " "
-  (span {:class "atn"} "class")
-  "="
-  (span {:class "atv"} "\"lead\"")
-  ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<"
-  (span {:class "tag"} "/p")
-  ">\n                ")
- (header
-  {:class "text-center"}
-  (h5 "optimized for asian fonts"))
- (p {:class "lead"} "你好, こんにちは, 안녕하세요")
- (h6 "Chinese (Simplified)")
- (p
-  "革命不是请客吃饭，不是做文章，不是绘画绣花，不能那样雅致，那样从容不迫，“文质彬彬”，那样“温良恭俭让”。革命就是暴动，是一个阶级推翻一个阶级的暴烈的行动。")
- (h6 "Japanese")
- (p
-  "祇園精舎の鐘の声、諸行無常の響きあり。沙羅双樹の花の色、盛者必衰の理をあらはす。おごれる人も久しからず。ただ春の夜の夢のごとし。たけき者も遂にはほろびぬ、ひとへ‌​に風の前の塵に同じ。")
- (h6 "Korean")
- (p
-  "나라말이 중국과 달라, 한문・한자와 서로 통하지 아니하므로, 어리석은 백성들이 말하고자 하는 바가 있어도, 끝내 제 뜻을 펴지 못하는 사람이 많다. 내가 이를 불쌍히 여겨, 새로 스물 여덟 글자를 만드니, 사람마다 하여금 쉽게 익혀, 날마다 씀에 편하게 하고자 할 따름이다.")
- (header {:class "text-center"} (h5 "blockquote"))
- (blockquote
-  (p
-   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
-  (cite "- Source"))
- (pre
-  {:class "code lang-html"}
-  "<"
-  (span {:class "tag"} "blockquote")
-  ">\n    <"
-  (span {:class "tag"} "p")
-  ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<"
-  (span {:class "tag"} "/p")
-  ">\n    <"
-  (span {:class "tag"} "cite")
-  ">- Source<"
-  (span {:class "tag"} "/cite")
-  ">\n<"
-  (span {:class "tag"} "/blockquote")
-  ">\n                ")
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
+     (cite "- Source"))
+    (pre
+     {:class "code lang-html"}
+     "<"
+     (span {:class "tag"} "blockquote")
+     ">\n    <"
+     (span {:class "tag"} "p")
+     ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<"
+     (span {:class "tag"} "/p")
+     ">\n    <"
+     (span {:class "tag"} "cite")
+     ">- Source<"
+     (span {:class "tag"} "/cite")
+     ">\n<"
+     (span {:class "tag"} "/blockquote")
+     ">\n                ")
 (header {:class "text-center"} (h5 "lists"))
 (div
  {:class "columns"}
@@ -5244,113 +5229,113 @@
   "><"
   (span {:class "tag"} "/div")
   ">\n                ")))
-  (footer
-   {:class "bg-grey"}
-   (section
-    {:id "copyright", :class "grid-footer container grid-960"}
-    (p
-     (a
-      {:shape "rect",
-       :href "https://github.com/picturepan2/spectre",
-       :target "_blank"}
-      "GitHub Repo")
-     " | "
-     (a
-      {:shape "rect",
-       :href "https://picturepan2.github.io/spectre/#"}
-      "Back to top")
-     " | version: 0.1.24\n                ")
-    (p
-     "Designed and built with love by "
-     (a
-      {:shape "rect",
-       :href "https://twitter.com/picturepan2",
-       :target "_blank"}
-      "Yan Zhu")
-     ". Licensed under the "
-     (a
-      {:shape "rect",
-       :href
-       "https://github.com/picturepan2/spectre/blob/master/LICENSE",
-       :target "_blank"}
-      "MIT License")
-     ".")))
-  (h1 "Hoplon Spectre Demo")
-  (s/header (h1 "typography"))
-  (s/header (h2 "headings"))
-  (h1 "H1 Title")
-  (h2 "H2 Title" (small :class "label" "4rem"))
-  (h3 "H3 Title" (small :class "label" "3rem"))
-  (h4 "H4 Title" (small :class "label" "2.4rem"))
-  (h5 "H5 Title" (small :class "label" "2rem"))
-  (h6 "H6 Title" (small :class "label" "1.6rem"))
-  (s/header (h2 "paragraphs"))
+(footer
+ {:class "bg-grey"}
+ (section
+  {:id "copyright", :class "grid-footer container grid-960"}
   (p
-   "Lorem ipsum dolor sit amet, "
-   (span
-    :class "highlight"
-    "consectetur")
-   " adipiscing elit. Praesent risus leo, "
-   (a :href "#" "dictum in vehicula sit amet")
-   ", feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.")
+   (a
+    {:shape "rect",
+     :href "https://github.com/picturepan2/spectre",
+     :target "_blank"}
+    "GitHub Repo")
+   " | "
+   (a
+    {:shape "rect",
+     :href "https://picturepan2.github.io/spectre/#"}
+    "Back to top")
+   " | version: 0.1.24\n                ")
   (p
-   :class "lead"
-   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
-  (s/header (h2 "blockquote"))
-  (blockquote
-   (p "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
-   (cite " - Source"))
-  (s/header (h2 "lists"))
+   "Designed and built with love by "
+   (a
+    {:shape "rect",
+     :href "https://twitter.com/picturepan2",
+     :target "_blank"}
+    "Yan Zhu")
+   ". Licensed under the "
+   (a
+    {:shape "rect",
+     :href
+     "https://github.com/picturepan2/spectre/blob/master/LICENSE",
+     :target "_blank"}
+    "MIT License")
+   ".")))
+(h1 "Hoplon Spectre Demo")
+(s/header (h1 "typography"))
+(s/header (h2 "headings"))
+(h1 "H1 Title")
+(h2 "H2 Title" (small :class "label" "4rem"))
+(h3 "H3 Title" (small :class "label" "3rem"))
+(h4 "H4 Title" (small :class "label" "2.4rem"))
+(h5 "H5 Title" (small :class "label" "2rem"))
+(h6 "H6 Title" (small :class "label" "1.6rem"))
+(s/header (h2 "paragraphs"))
+(p
+ "Lorem ipsum dolor sit amet, "
+ (span
+  :class "highlight"
+  "consectetur")
+ " adipiscing elit. Praesent risus leo, "
+ (a :href "#" "dictum in vehicula sit amet")
+ ", feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.")
+(p
+ :class "lead"
+ "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
+(s/header (h2 "blockquote"))
+(blockquote
+ (p "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
+ (cite " - Source"))
+(s/header (h2 "lists"))
+(ul
+ (li "list item 1")
+ (li
+  "list item 2"
   (ul
-   (li "list item 1")
-   (li
-    "list item 2"
-    (ul
-     (li "list item 2.1")
-     (li "list item 2.2")
-     (li "list item 2.3")))
-   (li "list item 3"))
-  (ol
-   (li "list item 1")
-   (li
-    "list item 2"
-    (ul
-     (li "list item 2.1")
-     (li "list item 2.2")
-     (li "list item 2.3")))
-   (li "list item 3"))
-  (dl
-   (dt "description list term")
-   (dd "description list description"))
-  (s/header (h2 "tables"))
-  (table
-   :class "table table-striped table-hover"
-   (thead
-    (tr
-     (th "name")
-     (th "duration")
-     (th "genre")
-     (th "release date")))
-   (tbody
-    (tr
-     (td "The Shawshank Redemption")
-     (td "2h 22min")
-     (td "Crime, Drama")
-     (td "14 October 1994" (span :class "label" "USA")))
-    (tr
-     (td "The Godfather")
-     (td "2h 55min")
-     (td "Crime, Drama")
-     (td "24 March 1972" (span :class "label" "USA")))
-    (tr
-     (td "Schindler's List")
-     (td "3h 15min")
-     (td "Biography, Drama, History")
-     (td "4 February 1994" (span :class "label" "USA")))
-    (tr
-     (td "Se7en")
-     (td "2h 7min")
-     (td "Crime, Drama, Mystery")
-     (td "24 March 1972" (span :class "label" "USA")))))
-  ))
+   (li "list item 2.1")
+   (li "list item 2.2")
+   (li "list item 2.3")))
+ (li "list item 3"))
+(ol
+ (li "list item 1")
+ (li
+  "list item 2"
+  (ul
+   (li "list item 2.1")
+   (li "list item 2.2")
+   (li "list item 2.3")))
+ (li "list item 3"))
+(dl
+ (dt "description list term")
+ (dd "description list description"))
+(s/header (h2 "tables"))
+(table
+ :class "table table-striped table-hover"
+ (thead
+  (tr
+   (th "name")
+   (th "duration")
+   (th "genre")
+   (th "release date")))
+ (tbody
+  (tr
+   (td "The Shawshank Redemption")
+   (td "2h 22min")
+   (td "Crime, Drama")
+   (td "14 October 1994" (span :class "label" "USA")))
+  (tr
+   (td "The Godfather")
+   (td "2h 55min")
+   (td "Crime, Drama")
+   (td "24 March 1972" (span :class "label" "USA")))
+  (tr
+   (td "Schindler's List")
+   (td "3h 15min")
+   (td "Biography, Drama, History")
+   (td "4 February 1994" (span :class "label" "USA")))
+  (tr
+   (td "Se7en")
+   (td "2h 7min")
+   (td "Crime, Drama, Mystery")
+   (td "24 March 1972" (span :class "label" "USA")))))
+))
 
