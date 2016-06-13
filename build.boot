@@ -17,7 +17,8 @@
 (deftask demo
   []
   (with-pre-wrap fileset
-    (merge-env! :resource-paths #{"demo"})
+    (merge-env! :resource-paths #{"demo"}
+                :dependencies '[[hoplon/highlight "8.4.0-0"]])
     fileset))
 
 (deftask dev

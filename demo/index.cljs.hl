@@ -1,12 +1,5280 @@
 (page "index.html"
-  (:require [hoplon.spectre-css :as s]))
+  (:require
+   [hoplon.highlight :as hl]
+   [cljsjs.highlight.langs.bash]
+   [cljsjs.highlight.langs.clojure]
+   [cljsjs.highlight.langs.xml]
+   [hoplon.spectre-css :as s]))
+
+(def html-head
+  (head
+   (html-meta :charset "UTF-8")
+   (link :href "https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.1.24/spectre.min.css" :rel "stylesheet" :type "text/css")
+   (link :href "style.css" :rel "stylesheet" :type "text/css")
+   (link :href "solarized_light.css" :rel "stylesheet" :type "text/css")
+   (title "Hoplon Spectre Demo")))
+
+(def page-header
+  (section
+   :class "section bg-grey"
+   (section
+    :id "overview"
+    :class "grid-hero container grid-960"
+    (s/header
+     (h3 "Hoplon Spectre.css"))
+    (section
+     (p
+      "This is an adaptation that mostly replicates "
+      (a :href "https://picturepan2.github.io/spectre/" "the original Spectre.css")
+      " page using hoplon-spectre.css to show it's use.")
+     (p
+      (strong
+       "Spectre.css")
+      " is a lightweight, responsive and modern CSS framework for faster and extensible development.")
+     (ul
+      (li
+       "lightweight and clean starting point for your project and prototype")
+      (li "flexbox, responsive and mobile-friendly layout")
+      (li "carefully designed elements")
+      (li "built in useful components and utilities")
+      (li
+       "responsive email templates "
+       (span
+        :class "label label-primary"
+        "soon"))))
+    (section
+     :class "notes text-center"
+     (div
+      :class "btn-group"
+      (a
+       :shape "rect",
+       :class "btn btn-primary",
+       :href "https://github.com/mynomoto/hoplon-spectre.css",
+       :target "_blank"
+       "Hoplon Spectre GitHub Repo")
+      (a
+       :shape "rect",
+       :class "btn btn-primary",
+       :href "https://github.com/picturepan2/spectre",
+       :target "_blank"
+       "Spectre GitHub Repo")
+      (a
+       :shape "rect",
+       :class "btn btn-primary",
+       :href "https://picturepan2.github.io/spectre/#getting-started"
+       "Documentation"))))))
+
+(def manual-install
+  [(h5 "Install manually")
+   (p
+    "Download the compiled and minified "
+    (a
+     :shape "rect"
+     :href "https://github.com/picturepan2/spectre/tree/master/dist"
+     :target "_blank"
+     "Spectre CSS file")
+    " (about 27KB):")
+   (p
+    (a
+     :shape "rect"
+     :class "btn btn-primary"
+     :href "https://github.com/picturepan2/spectre/tree/master/dist"
+     :target "_blank"
+     "Download Spectre.css"))])
+
+(def npm-install
+  [(h5 "Install with NPM")
+   (p "On a terminal window:")
+   (hl/highlight
+    :class "bash"
+    "npm install spectre.css")])
+
+(def bower-install
+  [(h5 "Install with Bower")
+   (p "On a terminal window:")
+   (hl/highlight
+    :class "bash"
+    "bower install spectre.css")
+   (p
+    "You need to add the file to your project resources.")
+   (p
+    "And include it in Hoplon page "
+    (code "(head)"))
+   (hl/highlight
+    :class "clojure"
+    "(link :href \"dist/spectre.min.css\" :rel \"stylesheet\" :type \"text/css\")")])
+
+(def cdn-usage
+  [(h5 "Use from a CDN")
+   (p
+    "Include it in your Hoplon file "
+    (code "(head)"))
+   (hl/highlight
+    :class "clojure"
+    "(link :href \"https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.1.24/spectre.min.css\" :rel \"stylesheet\" :type \"text/css\")")])
+
+(def getting-started
+  (section
+   :id "getting-started"
+   :class "container grid-960"
+   (s/header
+    (h4 "getting started"))
+   (section
+    :class "notes"
+    (p
+     "There are 4 ways to get started with Spectre CSS framework in your projects. You can either manually install or use NPM and Bower.")
+    manual-install
+    npm-install
+    bower-install
+    cdn-usage)))
 
 (html
- (head
-  (html-meta :charset "UTF-8")
-  (link :href "https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.1.24/spectre.min.css" :rel "stylesheet" :type "text/css")
-  (title "Hoplon Spectre Demo"))
+ html-head
  (body
+  page-header
+  (section
+   :class "section"
+   getting-started
+   (section
+    :id "compiling"
+    :class "container grid-960"
+    (s/header
+     (h4 "compiling custom version"))
+    (section
+     :class "notes"
+     (p
+      "Spectre uses "
+      (a
+       :shape "rect",
+       :href "http://gulpjs.com/",
+       :target "_blank"
+       "Gulp")
+      " for compiling CSS. You can customize your version of Spectre.css by editing LESS files in "
+      (code "/src")
+      " directory or removing unneeded components from "
+      (code "spectre.less")
+      ".")
+     (p "Then, you can build the CSS file from the command line:")
+     (ol
+      (li
+       "Navigate to the root directory of Spectre where you can find "
+       (code "package.json")
+       " file.")
+      (li
+       "Run "
+       (code "npm install")
+       ". NPM will install all dev dependencies as listed in package.json.")
+      (li
+       "When completed, run "
+       (code "gulp build")
+       " to compile LESS to CSS and minify files.")
+      (li
+       "You can find compiled CSS files in "
+       (code "/dist")
+       " directory."))
+     (p
+      "You can watch file changes and rebuild CSS files by using "
+      (code "gulp watch")
+      ".")))
+   (section
+    {:id "elements", :class "container grid-960"}
+    (section
+     {:class "notes text-center"}
+     (ul
+      {:class "tab inline-flex"}
+      (li
+       {:class "tab-item active"}
+       (a
+        {:shape "rect",
+         :href
+         "https://picturepan2.github.io/spectre/#elements"}
+        "\n                                elements\n                            "))
+      (li
+       {:class "tab-item"}
+       (a
+        {:shape "rect",
+         :href "https://picturepan2.github.io/spectre/#layout"}
+        "\n                                layout\n                            "))
+      (li
+       {:class "tab-item"}
+       (a
+        {:shape "rect",
+         :href
+         "https://picturepan2.github.io/spectre/#components"}
+        "\n                                components\n                            "))
+      (li
+       {:class "tab-item"}
+       (a
+        {:shape "rect",
+         :href
+         "https://picturepan2.github.io/spectre/#utilities"}
+        "\n                                utilities\n                            "))))
+    (section
+     {:class "notes text-center"}
+     (div
+      {:class "btn-group"}
+      (a
+       {:shape "rect",
+        :class "btn btn-primary",
+        :href
+        "https://picturepan2.github.io/spectre/#typography"}
+       "typography")
+      (a
+       {:shape "rect",
+        :class "btn btn-primary",
+        :href "https://picturepan2.github.io/spectre/#tables"}
+       "tables")
+      (a
+       {:shape "rect",
+        :class "btn btn-primary",
+        :href "https://picturepan2.github.io/spectre/#buttons"}
+       "buttons")
+      (a
+       {:shape "rect",
+        :class "btn btn-primary",
+        :href "https://picturepan2.github.io/spectre/#forms"}
+       "forms")
+      (a
+       {:shape "rect",
+        :class "btn btn-primary",
+        :href "https://picturepan2.github.io/spectre/#media"}
+       "media"))))
+(section
+ {:id "typography", :class "container grid-960"}
+ (header {:class "text-center"} (h4 "typography"))
+ (section
+  {:class "notes"}
+  (p
+   (strong "Typography")
+   " sets default styles for headings, paragraphs, blockquote, lists and code elements. "))
+ (header {:class "text-center"} (h5 "headings"))
+ (h1 "H1 Title " (small {:class "label"} "5rem"))
+ (h2 "H2 Title " (small {:class "label"} "4rem"))
+ (h3 "H3 Title " (small {:class "label"} "3rem"))
+ (h4 "H4 Title " (small {:class "label"} "2.4rem"))
+ (h5 "H5 Title " (small {:class "label"} "2rem"))
+ (h6 "H6 Title " (small {:class "label"} "1.6rem"))
+ (pre
+  {:class "code lang-html"}
+  "<"
+  (span {:class "tag"} "h1")
+  ">H1 Title<"
+  (span {:class "tag"} "/h1")
+  ">\n<"
+  (span {:class "tag"} "h2")
+  ">H2 Title <"
+  (span {:class "tag"} "small")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"label\"")
+  ">4rem<"
+  (span {:class "tag"} "/small")
+  "><"
+  (span {:class "tag"} "/h2")
+  ">\n                ")
+ (header {:class "text-center"} (h5 "paragraphs"))
+ (p
+  "Lorem ipsum dolor sit amet, "
+  (span {:class "highlight"} "consectetur")
+  " adipiscing elit. Praesent risus leo, "
+  (a
+   {:shape "rect",
+    :href "https://picturepan2.github.io/spectre/#typography"}
+   "dictum in vehicula sit amet")
+  ", feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.")
+ (p
+  {:class "lead"}
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
+ (pre
+  {:class "code lang-html"}
+  "<"
+  (span {:class "tag"} "p")
+  ">Lorem ipsum dolor sit amet, <"
+  (span {:class "tag"} "span")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"highlight\"")
+  ">consectetur<"
+  (span {:class "tag"} "/span")
+  "> adipiscing elit. Praesent risus leo, <"
+  (span {:class "tag"} "a")
+  " "
+  (span {:class "atn"} "href")
+  "="
+  (span {:class "atv"} "\"#\"")
+  ">dictum in vehicula sit amet<"
+  (span {:class "tag"} "/a")
+  ">, feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.<"
+  (span {:class "tag"} "/p")
+  ">\n<"
+  (span {:class "tag"} "p")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"lead\"")
+  ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<"
+  (span {:class "tag"} "/p")
+  ">\n                ")
+ (header
+  {:class "text-center"}
+  (h5 "optimized for asian fonts"))
+ (p {:class "lead"} "你好, こんにちは, 안녕하세요")
+ (h6 "Chinese (Simplified)")
+ (p
+  "革命不是请客吃饭，不是做文章，不是绘画绣花，不能那样雅致，那样从容不迫，“文质彬彬”，那样“温良恭俭让”。革命就是暴动，是一个阶级推翻一个阶级的暴烈的行动。")
+ (h6 "Japanese")
+ (p
+  "祇園精舎の鐘の声、諸行無常の響きあり。沙羅双樹の花の色、盛者必衰の理をあらはす。おごれる人も久しからず。ただ春の夜の夢のごとし。たけき者も遂にはほろびぬ、ひとへ‌​に風の前の塵に同じ。")
+ (h6 "Korean")
+ (p
+  "나라말이 중국과 달라, 한문・한자와 서로 통하지 아니하므로, 어리석은 백성들이 말하고자 하는 바가 있어도, 끝내 제 뜻을 펴지 못하는 사람이 많다. 내가 이를 불쌍히 여겨, 새로 스물 여덟 글자를 만드니, 사람마다 하여금 쉽게 익혀, 날마다 씀에 편하게 하고자 할 따름이다.")
+ (header {:class "text-center"} (h5 "blockquote"))
+ (blockquote
+  (p
+   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
+  (cite "- Source"))
+ (pre
+  {:class "code lang-html"}
+  "<"
+  (span {:class "tag"} "blockquote")
+  ">\n    <"
+  (span {:class "tag"} "p")
+  ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<"
+  (span {:class "tag"} "/p")
+  ">\n    <"
+  (span {:class "tag"} "cite")
+  ">- Source<"
+  (span {:class "tag"} "/cite")
+  ">\n<"
+  (span {:class "tag"} "/blockquote")
+  ">\n                ")
+(header {:class "text-center"} (h5 "lists"))
+(div
+ {:class "columns"}
+ (div
+  {:class "column col-4"}
+  (ul
+   {:class "list"}
+   (li "list item 1")
+   (li
+    "list item 2\n                                "
+    (ul
+     (li "list item 2.1")
+     (li "list item 2.2")
+     (li "list item 2.3")))
+   (li "list item 3")))
+ (div
+  {:class "column col-4"}
+  (ol
+   {:class "list"}
+   (li "list item 1")
+   (li
+    "list item 2\n                                "
+    (ol
+     (li "list item 2.1")
+     (li "list item 2.2")
+     (li "list item 2.3")))
+   (li "list item 3")))
+ (div
+  {:class "column col-4"}
+  (dl
+   {:class "list"}
+   (dt "description list term 1")
+   (dd "description list description 1")
+   (dt "description list term 2")
+   (dd "description list description 2")
+   (dt "description list term 3")
+   (dd "description list description 3"))))
+(pre
+ {:class "code lang-html"}
+ (span {:class "com"} "<!-- unordered list -->")
+ "\n<"
+ (span {:class "tag"} "ul")
+ ">\n    <"
+ (span {:class "tag"} "li")
+ ">list item 1<"
+ (span {:class "tag"} "/li")
+ ">\n    <"
+ (span {:class "tag"} "li")
+ ">list item 2\n        <"
+ (span {:class "tag"} "ul")
+ ">\n            <"
+ (span {:class "tag"} "li")
+ ">list item 2.1<"
+ (span {:class "tag"} "/li")
+ ">\n            <"
+ (span {:class "tag"} "li")
+ ">list item 2.2<"
+ (span {:class "tag"} "/li")
+ ">\n            <"
+ (span {:class "tag"} "li")
+ ">list item 2.3<"
+ (span {:class "tag"} "/li")
+ ">\n        <"
+ (span {:class "tag"} "/ul")
+ ">\n    <"
+ (span {:class "tag"} "/li")
+ ">\n    <"
+ (span {:class "tag"} "li")
+ ">list item 3<"
+ (span {:class "tag"} "/li")
+ ">\n<"
+ (span {:class "tag"} "/ul")
+ ">\n\n"
+ (span {:class "com"} "<!-- description list -->")
+ "\n<"
+ (span {:class "tag"} "dl")
+ ">\n    <"
+ (span {:class "tag"} "dt")
+ ">description list term<"
+ (span {:class "tag"} "/dt")
+ ">\n    <"
+ (span {:class "tag"} "dd")
+ ">description list description<"
+ (span {:class "tag"} "/dd")
+ ">\n<"
+ (span {:class "tag"} "/dl")
+ ">\n                "))
+(section
+ {:id "tables", :class "container grid-960"}
+ (header {:class "text-center"} (h4 "tables"))
+ (section
+  {:class "notes"}
+  (p
+   (strong "Tables")
+   " include default styles for tables and data sets."))
+ (table
+  {:class "table table-striped table-hover"}
+  (thead
+   (tr
+    (th {:colspan "1", :rowspan "1"} "name")
+    (th {:colspan "1", :rowspan "1"} "duration")
+    (th {:colspan "1", :rowspan "1"} "genre")
+    (th {:colspan "1", :rowspan "1"} "release date")))
+  (tbody
+   (tr
+    (td
+     {:colspan "1", :rowspan "1"}
+     "The Shawshank Redemption")
+    (td {:colspan "1", :rowspan "1"} "2h 22min")
+    (td {:colspan "1", :rowspan "1"} "Crime, Drama")
+    (td
+     {:colspan "1", :rowspan "1"}
+     "14 October 1994 "
+     (span {:class "label"} "USA")))
+   (tr
+    (td {:colspan "1", :rowspan "1"} "The Godfather")
+    (td {:colspan "1", :rowspan "1"} "2h 55min")
+    (td {:colspan "1", :rowspan "1"} "Crime, Drama")
+    (td
+     {:colspan "1", :rowspan "1"}
+     "24 March 1972 "
+     (span {:class "label"} "USA")))
+   (tr
+    (td {:colspan "1", :rowspan "1"} "Schindler's List")
+    (td {:colspan "1", :rowspan "1"} "3h 15min")
+    (td
+     {:colspan "1", :rowspan "1"}
+     "Biography, Drama, History")
+    (td
+     {:colspan "1", :rowspan "1"}
+     "4 February 1994 "
+     (span {:class "label"} "USA")))
+   (tr
+    (td {:colspan "1", :rowspan "1"} "Se7en")
+    (td {:colspan "1", :rowspan "1"} "2h 7min")
+    (td {:colspan "1", :rowspan "1"} "Crime, Drama, Mystery")
+    (td
+     {:colspan "1", :rowspan "1"}
+     "24 March 1972 "
+     (span {:class "label"} "USA")))))
+ (section
+  {:class "notes"}
+  (p
+   "Add the class "
+   (code "table")
+   " to any <table> element. The class will add padding, border and emphasized table header. Use "
+   (code "table-striped")
+   " to <table> to add zebra striped style. For hoverable table rows, you can add the class "
+   (code "table-hover")
+   " to enable hover style. ")
+  (p
+   "Use the class "
+   (code "selected")
+   " to make <tr> element highlighted. "))
+ (pre
+  {:class "code lang-html"}
+  "<"
+  (span {:class "tag"} "table")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"table table-striped table-hover\"")
+  ">\n    <"
+  (span {:class "tag"} "thead")
+  ">\n        <"
+  (span {:class "tag"} "tr")
+  ">\n            <"
+  (span {:class "tag"} "th")
+  ">name<"
+  (span {:class "tag"} "/th")
+  ">\n            <"
+  (span {:class "tag"} "th")
+  ">duration<"
+  (span {:class "tag"} "/th")
+  ">\n            <"
+  (span {:class "tag"} "th")
+  ">genre<"
+  (span {:class "tag"} "/th")
+  ">\n            <"
+  (span {:class "tag"} "th")
+  ">release date<"
+  (span {:class "tag"} "/th")
+  ">\n        <"
+  (span {:class "tag"} "/tr")
+  ">\n    <"
+  (span {:class "tag"} "/thead")
+  ">\n    <"
+  (span {:class "tag"} "tbody")
+  ">\n        <"
+  (span {:class "tag"} "tr")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"selected\"")
+  ">\n            <"
+  (span {:class "tag"} "td")
+  ">The Shawshank Redemption<"
+  (span {:class "tag"} "/td")
+  ">\n            <"
+  (span {:class "tag"} "td")
+  ">2h 22min<"
+  (span {:class "tag"} "/td")
+  ">\n            <"
+  (span {:class "tag"} "td")
+  ">Crime, Drama<"
+  (span {:class "tag"} "/td")
+  ">\n            <"
+  (span {:class "tag"} "td")
+  ">14 October 1994<"
+  (span {:class "tag"} "/td")
+  ">\n        <"
+  (span {:class "tag"} "/tr")
+  ">\n    <"
+  (span {:class "tag"} "/tbody")
+  ">\n<"
+  (span {:class "tag"} "/table")
+  ">\n                "))
+(section
+ {:id "buttons", :class "container grid-960"}
+ (header {:class "text-center"} (h4 "buttons"))
+ (section
+  {:class "notes"}
+  (p
+   (strong "Buttons")
+   " include simple button styles for actions in different types and sizes. "))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column"}
+   (button {:type "submit", :class "btn"} "default button")
+   (button
+    {:type "submit", :class "btn loading"}
+    "default button"))
+  (div
+   {:class "column"}
+   (button
+    {:type "submit", :class "btn btn-primary"}
+    "primary button")
+   (button
+    {:type "submit", :class "btn btn-primary loading"}
+    "primary button"))
+  (div
+   {:class "column"}
+   (button
+    {:type "submit", :class "btn btn-link"}
+    "link button")
+   (button
+    {:type "submit", :class "btn btn-link loading"}
+    "link button")))
+ (section
+  {:class "notes"}
+  (p
+   "Add the class "
+   (code "btn")
+   " to <a>, <input> or <button> elements for a default button. There are classes "
+   (code "btn-primary")
+   " and "
+   (code "btn-link")
+   " for predefined primary and link buttons. A button with the class "
+   (code "loading")
+   " can show loading indicator.  "))
+ (pre
+  {:class "code lang-html"}
+  "<"
+  (span {:class "tag"} "button")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"btn\"")
+  ">default button<"
+  (span {:class "tag"} "/button")
+  ">\n<"
+  (span {:class "tag"} "button")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"btn btn-primary\"")
+  ">primary button<"
+  (span {:class "tag"} "/button")
+  ">\n<"
+  (span {:class "tag"} "button")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"btn btn-link\"")
+  ">link button<"
+  (span {:class "tag"} "/button")
+  ">\n\n"
+  (span {:class "com"} "<!-- a button with loading state -->")
+  "\n<"
+  (span {:class "tag"} "button")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"btn loading\"")
+  ">button<"
+  (span {:class "tag"} "/button")
+  ">\n                ")
+ (header {:class "text-center"} (h5 "button sizes"))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column"}
+   (button
+    {:type "submit", :class "btn btn-lg"}
+    "large button")
+   (button {:type "submit", :class "btn"} "normal button")
+   (button
+    {:type "submit", :class "btn btn-sm"}
+    "small button"))
+  (div
+   {:class "column"}
+   (button
+    {:type "submit", :class "btn btn-block"}
+    "block button")))
+ (section
+  {:class "notes"}
+  (p
+   "Add the class "
+   (code "btn-sm")
+   " or "
+   (code "btn-lg")
+   " for small or large button size. Also, you can add the class "
+   (code "btn-block")
+   " for a full-width button. "))
+(pre
+ {:class "code lang-html"}
+ "<"
+ (span {:class "tag"} "button")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"btn btn-lg\"")
+ ">large button<"
+ (span {:class "tag"} "/button")
+ ">\n<"
+ (span {:class "tag"} "button")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"btn btn-sm\"")
+ ">small button<"
+ (span {:class "tag"} "/button")
+ ">\n\n<"
+ (span {:class "tag"} "button")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"btn btn-block\"")
+ ">block button<"
+ (span {:class "tag"} "/button")
+ ">\n                ")
+(div
+ {:class "columns"}
+ (div
+  {:class "column"}
+  (button
+   {:type "submit", :class "btn btn-primary btn-lg"}
+   (span {:class "icon icon-markunread"})
+   " large")
+  (button
+   {:type "submit", :class "btn btn-primary"}
+   (span {:class "icon icon-markunread"})
+   " normal")
+  (button
+   {:type "submit", :class "btn btn-primary btn-sm"}
+   (span {:class "icon icon-markunread"})
+   " small")))
+(section
+ {:class "notes"}
+ (p
+  "Icons with the class "
+  (code "icon")
+  " can be correctly rendered in each button size. "))
+(pre
+ {:class "code lang-html"}
+ "<"
+ (span {:class "tag"} "button")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"btn btn-primary btn-lg\"")
+ "><"
+ (span {:class "tag"} "span")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"icon icon-markunread\"")
+ "><"
+ (span {:class "tag"} "/span")
+ "> large<"
+ (span {:class "tag"} "/button")
+ ">\n<"
+ (span {:class "tag"} "button")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"btn btn-primary\"")
+ "><"
+ (span {:class "tag"} "span")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"icon icon-markunread\"")
+ "><"
+ (span {:class "tag"} "/span")
+ "> normal<"
+ (span {:class "tag"} "/button")
+ ">\n<"
+ (span {:class "tag"} "button")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"btn btn-primary btn-sm\"")
+ "><"
+ (span {:class "tag"} "span")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"icon icon-markunread\"")
+ "><"
+ (span {:class "tag"} "/span")
+ "> small<"
+ (span {:class "tag"} "/button")
+ ">\n                ")
+(header {:class "text-center"} (h5 "button groups"))
+(div
+ {:class "columns"}
+ (div
+  {:class "column"}
+  (div
+   {:class "btn-group"}
+   (button {:type "submit", :class "btn"} "first button")
+   (button {:type "submit", :class "btn"} "second button")
+   (button {:type "submit", :class "btn"} "third button")))
+ (div
+  {:class "column"}
+  (div
+   {:class "btn-group btn-group-block"}
+   (button
+    {:type "submit", :class "btn btn-primary"}
+    "first button")
+   (button
+    {:type "submit", :class "btn btn-primary"}
+    "second button")
+   (button
+    {:type "submit", :class "btn btn-primary"}
+    "third button"))))
+(div
+ {:class "columns"}
+ (div
+  {:class "column"}
+  (div
+   {:class "btn-group"}
+   (button
+    {:type "submit", :class "btn btn-sm"}
+    "first button")
+   (button
+    {:type "submit", :class "btn btn-sm"}
+    "second button")
+   (button
+    {:type "submit", :class "btn btn-sm"}
+    "third button"))))
+(section
+ {:class "notes"}
+ (p
+  "If you want to use buttons as a group, add the class "
+  (code "btn-group")
+  " to the container. You can add the class "
+  (code "btn-group-block")
+  " for a full-width button group."))
+(pre
+ {:class "code lang-html"}
+ "<"
+ (span {:class "tag"} "div")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"btn-group btn-group-block\"")
+ ">\n    <"
+ (span {:class "tag"} "button")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"btn\"")
+ ">first button<"
+ (span {:class "tag"} "/button")
+ ">\n    <"
+ (span {:class "tag"} "button")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"btn\"")
+ ">second button<"
+ (span {:class "tag"} "/button")
+ ">\n    <"
+ (span {:class "tag"} "button")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"btn\"")
+ ">third button<"
+ (span {:class "tag"} "/button")
+ ">\n<"
+ (span {:class "tag"} "/div")
+ ">\n                "))
+(section
+ {:id "forms", :class "container grid-960"}
+ (header {:class "text-center"} (h4 "forms"))
+ (section
+  {:class "notes"}
+  (p
+   (strong "Forms")
+   " provide the most common control styles used in forms, including label, input, textarea, select, checkbox, radio and switch.  ")
+  (p))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column col-6"}
+   (form
+    {:enctype "application/x-www-form-urlencoded",
+     :method "get",
+     :action "https://picturepan2.github.io/spectre/#forms"}
+    (div
+     {:class "form-group"}
+     (label
+      {:for "input-example-1", :class "form-label"}
+      "Name")
+     (input
+      {:type "text",
+       :class "form-input is-danger",
+       :id "input-example-1",
+       :placeholder "Name"}))
+    (div
+     {:class "form-group has-success"}
+     (label
+      {:for "input-example-2", :class "form-label"}
+      "Email")
+     (input
+      {:type "email",
+       :class "form-input",
+       :id "input-example-2",
+       :placeholder "Email"}))
+    (div
+     {:class "form-group"}
+     (label {:class "form-label"} "Gender")
+     (label
+      {:class "form-radio"}
+      (input {:type "radio", :name "gender"})
+      (i {:class "form-icon"})
+      " Male\n                                ")
+     (label
+      {:class "form-radio"}
+      (input {:checked "", :type "radio", :name "gender"})
+      (i {:class "form-icon"})
+      " Female\n                                "))
+    (div
+     {:class "form-group hide"}
+     (label
+      {:class "form-file"}
+      (input {:type "file", :id "file"})
+      (span {:class "file-custom"})))
+    (div
+     {:class "form-group"}
+     (select
+      {:class "form-select"}
+      (option "Choose an option")
+      (option "Slack")
+      (option "Skype")
+      (option "Hipchat")))
+    (div
+     {:class "form-group"}
+     (label
+      {:class "form-switch"}
+      (input {:type "checkbox"})
+      (i {:class "form-icon"})
+      " Send me emails with news and tips\n                                "))
+    (div
+     {:class "form-group"}
+     (label
+      {:for "input-example-3", :class "form-label"}
+      "Message")
+     (textarea
+      {:rows "3",
+       :class "form-input",
+       :id "input-example-3",
+       :placeholder "Textarea"}))
+    (div
+     {:class "form-group"}
+     (label
+      {:class "form-checkbox"}
+      (input {:type "checkbox"})
+      (i {:class "form-icon"})
+      " Remember me\n                                "))
+    (div
+     {:class "form-group"}
+     (button
+      {:type "submit", :class "btn btn-primary"}
+      "Submit")
+     (button
+      {:type "reset", :class "btn btn-link"}
+      "Cancel"))))
+  (div
+   {:class "column col-6"}
+   (form
+    {:enctype "application/x-www-form-urlencoded",
+     :method "get",
+     :class "form-horizontal",
+     :action "https://picturepan2.github.io/spectre/#forms"}
+    (div
+     {:class "form-group"}
+     (div
+      {:class "col-sm-3"}
+      (label
+       {:for "input-example-4", :class "form-label"}
+       "Name"))
+     (div
+      {:class "col-sm-9"}
+      (input
+       {:type "text",
+        :class "form-input",
+        :id "input-example-4",
+        :placeholder "Name"})))
+    (div
+     {:class "form-group"}
+     (div
+      {:class "col-sm-3"}
+      (label
+       {:for "input-example-5", :class "form-label"}
+       "Email"))
+     (div
+      {:class "col-sm-9"}
+      (input
+       {:type "email",
+        :class "form-input",
+        :id "input-example-5",
+        :placeholder "Email"})))
+    (div
+     {:class "form-group"}
+     (div
+      {:class "col-sm-3"}
+      (label {:class "form-label"} "Gender"))
+     (div
+      {:class "col-sm-9"}
+      (label
+       {:class "form-radio"}
+       (input {:type "radio", :name "gender"})
+       (i {:class "form-icon"})
+       " Male\n                                    ")
+      (label
+       {:class "form-radio"}
+       (input
+        {:checked "", :type "radio", :name "gender"})
+       (i {:class "form-icon"})
+       " Female\n                                    ")))
+    (div
+     {:class "form-group"}
+     (div {:class "col-sm-3"})
+     (div
+      {:class "col-sm-9"}
+      (select
+       {:class "form-select"}
+       (option "Choose an option")
+       (option "Slack")
+       (option "Skype")
+       (option "Hipchat"))))
+    (div
+     {:class "form-group"}
+     (div {:class "col-sm-3"})
+     (div
+      {:class "col-sm-9"}
+      (label
+       {:class "form-switch"}
+       (input {:type "checkbox"})
+       (i {:class "form-icon"})
+       " Send me emails with news and tips\n                                    ")))
+    (div
+     {:class "form-group"}
+     (div
+      {:class "col-sm-3"}
+      (label
+       {:for "input-example-6", :class "form-label"}
+       "Message"))
+     (div
+      {:class "col-sm-9"}
+      (textarea
+       {:rows "3",
+        :class "form-input",
+        :id "input-example-6",
+        :placeholder "Textarea"})))
+    (div
+     {:class "form-group"}
+     (div {:class "col-sm-3"})
+     (div
+      {:class "col-sm-9"}
+      (label
+       {:class "form-checkbox"}
+       (input {:type "checkbox"})
+       (i {:class "form-icon"})
+       " Remember me\n                                    ")))
+    (div
+     {:class "form-group"}
+     (div {:class "col-sm-3"})
+     (div
+      {:class "col-sm-9"}
+      (button
+       {:type "submit", :class "btn btn-primary"}
+       "Submit")
+      (button
+       {:type "reset", :class "btn btn-link"}
+       "Cancel"))))))
+(pre
+ {:class "code lang-html"}
+ "<"
+ (span {:class "tag"} "form")
+ ">\n    "
+ (span {:class "com"} "<!-- form input control -->")
+ "\n    <"
+ (span {:class "tag"} "div")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"form-group\"")
+ ">\n        <"
+ (span {:class "tag"} "label")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"form-label\"")
+ " "
+ (span {:class "atn"} "for")
+ "="
+ (span {:class "atv"} "\"input-example-1\"")
+ ">Name<"
+ (span {:class "tag"} "/label")
+ ">\n        <"
+ (span {:class "tag"} "input")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"form-input\"")
+ " "
+ (span {:class "atn"} "type")
+ "="
+ (span {:class "atv"} "\"text\"")
+ " "
+ (span {:class "atn"} "id")
+ "="
+ (span {:class "atv"} "\"input-example-1\"")
+ " "
+ (span {:class "atn"} "placeholder")
+ "="
+ (span {:class "atv"} "\"Name\"")
+ " />\n    <"
+ (span {:class "tag"} "/div")
+ ">\n    "
+ (span {:class "com"} "<!-- form radio control -->")
+ "\n    <"
+ (span {:class "tag"} "div")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"form-group\"")
+ ">\n        <"
+ (span {:class "tag"} "label")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"form-label\"")
+ ">Gender<"
+ (span {:class "tag"} "/label")
+ ">\n        <"
+ (span {:class "tag"} "label")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"form-radio\"")
+ ">\n            <"
+ (span {:class "tag"} "input")
+ " "
+ (span {:class "atn"} "type")
+ "="
+ (span {:class "atv"} "\"radio\"")
+ " "
+ (span {:class "atn"} "name")
+ "="
+ (span {:class "atv"} "\"gender\"")
+ " />\n            <"
+ (span {:class "tag"} "i")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"form-icon\"")
+ "><"
+ (span {:class "tag"} "/i")
+ "> Male\n        <"
+ (span {:class "tag"} "/label")
+ ">\n        <"
+ (span {:class "tag"} "label")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"form-radio\"")
+ ">\n            <"
+ (span {:class "tag"} "input")
+ " "
+ (span {:class "atn"} "type")
+ "="
+ (span {:class "atv"} "\"radio\"")
+ " "
+ (span {:class "atn"} "name")
+ "="
+(span {:class "atv"} "\"gender\"")
+" "
+(span {:class "atn"} "checked")
+" />\n            <"
+(span {:class "tag"} "i")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"form-icon\"")
+"><"
+(span {:class "tag"} "/i")
+"> Female\n        <"
+(span {:class "tag"} "/label")
+">\n    <"
+(span {:class "tag"} "/div")
+">\n    "
+(span {:class "com"} "<!-- form select control -->")
+"\n    <"
+(span {:class "tag"} "div")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"form-group\"")
+">\n        <"
+(span {:class "tag"} "select")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"form-select\"")
+">\n            <"
+(span {:class "tag"} "option")
+">Choose an option<"
+(span {:class "tag"} "/option")
+">\n            <"
+(span {:class "tag"} "option")
+">Slack<"
+(span {:class "tag"} "/option")
+">\n            <"
+(span {:class "tag"} "option")
+">Skype<"
+(span {:class "tag"} "/option")
+">\n            <"
+(span {:class "tag"} "option")
+">Hipchat<"
+(span {:class "tag"} "/option")
+">\n        <"
+(span {:class "tag"} "/select")
+">\n    <"
+(span {:class "tag"} "/div")
+">\n    "
+(span {:class "com"} "<!-- form switch control -->")
+"\n    <"
+(span {:class "tag"} "div")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"form-group\"")
+">\n        <"
+(span {:class "tag"} "label")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"form-switch\"")
+">\n            <"
+(span {:class "tag"} "input")
+" "
+(span {:class "atn"} "type")
+"="
+(span {:class "atv"} "\"checkbox\"")
+" />\n            <"
+(span {:class "tag"} "i")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"form-icon\"")
+"><"
+(span {:class "tag"} "/i")
+"> Send me emails with news and tips\n        <"
+(span {:class "tag"} "/label")
+">\n    <"
+(span {:class "tag"} "/div")
+">\n    "
+(span {:class "com"} "<!-- form textarea control -->")
+"\n    <"
+(span {:class "tag"} "div")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"form-group\"")
+">\n        <"
+(span {:class "tag"} "label")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"form-label\"")
+" "
+(span {:class "atn"} "for")
+"="
+(span {:class "atv"} "\"input-example-3\"")
+">Message<"
+(span {:class "tag"} "/label")
+">\n        <"
+(span {:class "tag"} "textarea")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"form-input\"")
+" "
+(span {:class "atn"} "id")
+"="
+(span {:class "atv"} "\"input-example-3\"")
+" "
+(span {:class "atn"} "placeholder")
+"="
+(span {:class "atv"} "\"Textarea\"")
+" "
+(span {:class "atn"} "rows")
+"="
+(span {:class "atv"} "\"3\"")
+"><"
+(span {:class "tag"} "/textarea")
+">\n    <"
+(span {:class "tag"} "/div")
+">\n    "
+(span {:class "com"} "<!-- form checkbox control -->")
+"\n    <"
+(span {:class "tag"} "div")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"form-group\"")
+">\n        <"
+(span {:class "tag"} "label")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"form-checkbox\"")
+">\n            <"
+(span {:class "tag"} "input")
+" "
+(span {:class "atn"} "type")
+"="
+(span {:class "atv"} "\"checkbox\"")
+" />\n            <"
+(span {:class "tag"} "i")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"form-icon\"")
+"><"
+(span {:class "tag"} "/i")
+">  Remember me\n        <"
+(span {:class "tag"} "/label")
+">\n    <"
+(span {:class "tag"} "/div")
+">\n<"
+(span {:class "tag"} "/form")
+">\n                ")
+(section
+ {:class "notes"}
+ (p
+  "If you want to have a horizontal form, add the class "
+  (code "form-horizontal")
+  " to the <form> container. And add the class "
+  (code "col-[1-12]")
+  " to the child elements for form row layout. Please note "
+  (code "form-horizontal")
+  " only works in viewports that are at least 840px wide."))
+(pre
+ {:class "code lang-html"}
+ "<"
+ (span {:class "tag"} "form")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"form-horizontal\"")
+ ">\n    <"
+ (span {:class "tag"} "div")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"form-group\"")
+ ">\n        <"
+ (span {:class "tag"} "div")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"col-sm-3\"")
+ ">\n            <"
+ (span {:class "tag"} "label")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"form-label\"")
+ " "
+ (span {:class "atn"} "for")
+ "="
+ (span {:class "atv"} "\"input-example-1\"")
+ ">Name<"
+ (span {:class "tag"} "/label")
+ ">\n        <"
+ (span {:class "tag"} "/div")
+ ">\n        <"
+ (span {:class "tag"} "div")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"col-sm-9\"")
+ ">\n            <"
+ (span {:class "tag"} "input")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"form-input\"")
+ " "
+ (span {:class "atn"} "type")
+ "="
+ (span {:class "atv"} "\"text\"")
+ " "
+ (span {:class "atn"} "id")
+ "="
+ (span {:class "atv"} "\"input-example-1\"")
+ " "
+ (span {:class "atn"} "placeholder")
+ "="
+ (span {:class "atv"} "\"Name\"")
+ " />\n        <"
+ (span {:class "tag"} "/div")
+ ">\n    <"
+ (span {:class "tag"} "/div")
+ ">\n    "
+ (span {:class "com"} "<!-- form structure -->")
+ "\n<"
+ (span {:class "tag"} "/form")
+ ">\n                ")
+(section
+ {:class "notes"}
+ (p
+  "To use form validation styles, add "
+  (code "is-success")
+  " and "
+  (code "is-danger")
+  " to the controls or add "
+  (code "has-success")
+  " and "
+  (code "has-danger")
+  " to parent elements."))
+(pre
+ {:class "code lang-html"}
+ "<"
+ (span {:class "tag"} "form")
+ ">\n    "
+ (span {:class "com"} "<!-- form validation styles -->")
+ "\n    <"
+ (span {:class "tag"} "div")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"form-group has-success\"")
+ ">\n        <"
+ (span {:class "tag"} "label")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"form-label\"")
+ " "
+ (span {:class "atn"} "for")
+ "="
+ (span {:class "atv"} "\"input-example-1\"")
+ ">Name<"
+ (span {:class "tag"} "/label")
+ ">\n        <"
+ (span {:class "tag"} "input")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"form-input is-success\"")
+ " "
+ (span {:class "atn"} "type")
+ "="
+ (span {:class "atv"} "\"text\"")
+ " "
+ (span {:class "atn"} "id")
+ "="
+ (span {:class "atv"} "\"input-example-1\"")
+ " "
+ (span {:class "atn"} "placeholder")
+ "="
+ (span {:class "atv"} "\"Name\"")
+ " />\n    <"
+ (span {:class "tag"} "/div")
+ ">\n<"
+ (span {:class "tag"} "/form")
+ ">\n                ")
+(section
+ {:class "notes"}
+ (p
+  "For smaller or larger input and select controls, you could add "
+  (code "input-sm")
+  "/"
+  (code "input-lg")
+  " and "
+  (code "select-sm")
+  "/"
+  (code "select-lg")
+  " to the elements."))
+(div
+ {:class "columns"}
+ (div
+  {:class "column"}
+  (input
+   {:type "text",
+    :class "form-input input-sm",
+    :placeholder "Name"}))
+ (div
+  {:class "column"}
+  (input
+   {:type "text",
+    :class "form-input input-lg",
+    :placeholder "Name"}))
+ (div
+  {:class "column"}
+  (select
+   {:class "form-select select-sm"}
+   (option "Choose an option")
+   (option "Slack")
+   (option "Skype")
+   (option "Hipchat"))
+  (select
+   {:class "form-select select-lg"}
+   (option "Choose an option")
+   (option "Slack")
+   (option "Skype")
+   (option "Hipchat"))))
+(header {:class "text-center"} (h5 "input groups"))
+(div
+ {:class "columns"}
+ (div
+  {:class "column"}
+  (div
+   {:class "input-group"}
+   (span {:class "input-group-addon"} "slack.com/")
+   (input
+    {:type "text",
+     :class "form-input",
+     :placeholder "site name"})))
+ (div
+  {:class "column"}
+  (div
+   {:class "input-group"}
+   (input
+    {:type "text",
+     :class "form-input",
+     :placeholder "username"})
+   (span {:class "input-group-addon"} "@slack.com")))
+ (div
+  {:class "column"}
+  (div
+   {:class "input-group"}
+   (span {:class "input-group-addon"} "slack.com/")
+   (input
+    {:type "text",
+     :class "form-input",
+     :placeholder "site name"})
+   (button
+    {:type "submit",
+     :class "btn btn-primary input-group-btn"}
+    "Submit"))))
+(div
+ {:class "columns"}
+ (div
+  {:class "column"}
+  (div
+   {:class "input-group"}
+   (span {:class "input-group-addon addon-sm"} "slack.com/")
+   (input
+    {:type "text",
+     :class "form-input input-sm",
+     :placeholder "site name"})))
+ (div
+  {:class "column"}
+  (div
+   {:class "input-group"}
+   (input
+    {:type "text",
+     :class "form-input input-lg",
+     :placeholder "username"})
+   (span
+    {:class "input-group-addon addon-lg"}
+    "@slack.com")))
+ (div {:class "column"}))
+(section
+ {:class "notes"}
+ (p
+  "If you want to attach text and button along with an input, add the class "
+  (code "input-group")
+  " to the input container. And add the class "
+  (code "input-group-addon")
+  " to the text element and "
+  (code "input-group-btn")
+  " to the button element."))
+(pre
+ {:class "code lang-html"}
+ (span {:class "com"} "<!-- normal input group -->")
+ "\n<"
+ (span {:class "tag"} "div")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"input-group\"")
+ ">\n    <"
+ (span {:class "tag"} "span")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"input-group-addon\"")
+ ">slack.com/<"
+ (span {:class "tag"} "/span")
+ ">\n    <"
+ (span {:class "tag"} "input")
+ " "
+ (span {:class "atn"} "type")
+ "="
+ (span {:class "atv"} "\"text\"")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"form-input\"")
+ " "
+ (span {:class "atn"} "placeholder")
+ "="
+ (span {:class "atv"} "\"site name\"")
+ " />\n<"
+ (span {:class "tag"} "/div")
+ ">\n\n"
+ (span {:class "com"} "<!-- large input group -->")
+ "\n<"
+ (span {:class "tag"} "div")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"input-group\"")
+ ">\n    <"
+ (span {:class "tag"} "span")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"input-group-addon addon-lg\"")
+ ">slack.com/<"
+ (span {:class "tag"} "/span")
+ ">\n    <"
+ (span {:class "tag"} "input")
+ " "
+ (span {:class "atn"} "type")
+ "="
+ (span {:class "atv"} "\"text\"")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"form-input input-lg\"")
+ " "
+ (span {:class "atn"} "placeholder")
+ "="
+ (span {:class "atv"} "\"site name\"")
+ " />\n<"
+ (span {:class "tag"} "/div")
+ ">\n\n"
+ (span
+  {:class "com"}
+  "<!-- normal input group with button -->")
+ "\n<"
+ (span {:class "tag"} "div")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"input-group\"")
+ ">\n    <"
+ (span {:class "tag"} "span")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"input-group-addon\"")
+ ">slack.com/<"
+ (span {:class "tag"} "/span")
+ ">\n    <"
+ (span {:class "tag"} "input")
+ " "
+ (span {:class "atn"} "type")
+ "="
+ (span {:class "atv"} "\"text\"")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"form-input\"")
+ " "
+ (span {:class "atn"} "placeholder")
+ "="
+ (span {:class "atv"} "\"site name\"")
+ " />\n    <"
+ (span {:class "tag"} "button")
+ " "
+ (span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"btn btn-primary input-group-btn\"")
+">Submit<"
+(span {:class "tag"} "/button")
+">\n<"
+(span {:class "tag"} "/div")
+">\n                "))
+(section
+ {:id "media", :class "container grid-960"}
+ (header {:class "text-center"} (h4 "media"))
+ (section
+  {:class "notes"}
+  (p
+   (strong "Media")
+   " include responsive image and video class. "))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column col-6"}
+   (img
+    {:class "img-responsive rounded",
+     :src "./spectre_files/osx-el-capitan.jpg"})))
+ (section
+  {:class "notes"}
+  (p
+   "Add the class "
+   (code "img-responsive")
+   " to <img> elements. The images will scale with the parent sizes."))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column col-6"}
+   (div
+    {:class "video-responsive"}
+    (iframe
+     {:frameborder "0",
+      :scrolling "auto",
+      :src "./spectre_files/vBfBa-gCMQk.html",
+      :width "560",
+      :height "315",
+      :allowfullscreen ""}))))
+ (section
+  {:class "notes"}
+  (p
+   "For responsive video, add a container with the class "
+   (code "video-responsive")
+   ". Insert any YouTube, Youku or other iframe/embed video inside the container. The ratio is 16:9 by default. You may add "
+   (code ".video-responsive-4-3")
+   " for 4:3 ratio video container."))
+ (pre
+  {:class "code lang-html"}
+  "<"
+  (span {:class "tag"} "img")
+  " "
+  (span {:class "atn"} "src")
+  "="
+  (span {:class "atv"} "\"img/osx-el-capitan.jpg\"")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"img-responsive rounded\"")
+  " />\n\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"video-responsive\"")
+  ">\n    <"
+  (span {:class "tag"} "iframe")
+  " "
+  (span {:class "atn"} "src")
+  "="
+  (span
+   {:class "atv"}
+   "\"https://www.youtube.com/embed/vBfBa-gCMQk\"")
+  " "
+  (span {:class "atn"} "width")
+  "="
+  (span {:class "atv"} "\"560\"")
+  " "
+  (span {:class "atn"} "height")
+  "="
+  (span {:class "atv"} "\"315\"")
+  " "
+  (span {:class "atn"} "frameborder")
+  "="
+  (span {:class "atv"} "\"0\"")
+  " "
+  (span {:class "atn"} "allowfullscreen")
+  "><"
+  (span {:class "tag"} "/iframe")
+  ">\n<"
+  (span {:class "tag"} "/div")
+  ">\n                "))
+(section
+ {:id "layout", :class "container grid-960"}
+ (section
+  {:class "notes text-center"}
+  (ul
+   {:class "tab inline-flex"}
+   (li
+    {:class "tab-item"}
+    (a
+     {:shape "rect",
+      :href
+      "https://picturepan2.github.io/spectre/#elements"}
+     "\n                                elements\n                            "))
+   (li
+    {:class "tab-item active"}
+    (a
+     {:shape "rect",
+      :href "https://picturepan2.github.io/spectre/#layout"}
+     "\n                                layout\n                            "))
+   (li
+    {:class "tab-item"}
+    (a
+     {:shape "rect",
+      :href
+      "https://picturepan2.github.io/spectre/#components"}
+     "\n                                components\n                            "))
+   (li
+    {:class "tab-item"}
+    (a
+     {:shape "rect",
+      :href
+      "https://picturepan2.github.io/spectre/#utilities"}
+     "\n                                utilities\n                            "))))
+ (section
+  {:class "notes text-center"}
+  (div
+   {:class "btn-group"}
+   (a
+    {:shape "rect",
+     :class "btn btn-primary",
+     :href "https://picturepan2.github.io/spectre/#grid"}
+    "flexbox grid")
+   (a
+    {:shape "rect",
+     :class "btn btn-primary",
+     :href
+     "https://picturepan2.github.io/spectre/#responsive"}
+    "responsive")
+   (a
+    {:shape "rect",
+     :class "btn btn-primary",
+     :href "https://picturepan2.github.io/spectre/#navbar"}
+    "navbar")
+   (a
+    {:shape "rect",
+     :class "btn btn-primary",
+     :href "https://picturepan2.github.io/spectre/#empty"}
+    "empty states"))))
+(section
+ {:id "grid", :class "container grid-960"}
+ (header {:class "text-center"} (h4 "flexbox grid"))
+ (section
+  {:class "notes"}
+  (p
+   (strong "Layout")
+   " includes flexbox based responsive grid system with 12 columns. "))
+ (div
+  {:class "columns"}
+  (div {:class "column"} (div {:class "bg-grey"}))
+  (div {:class "column"} (div {:class "bg-grey"}))
+  (div {:class "column"} (div {:class "bg-grey"}))
+  (div {:class "column"} (div {:class "bg-grey"}))
+  (div {:class "column"} (div {:class "bg-grey"}))
+  (div {:class "column"} (div {:class "bg-grey"}))
+  (div {:class "column"} (div {:class "bg-grey"}))
+  (div {:class "column"} (div {:class "bg-grey"}))
+  (div {:class "column"} (div {:class "bg-grey"}))
+  (div {:class "column"} (div {:class "bg-grey"}))
+  (div {:class "column"} (div {:class "bg-grey"}))
+  (div {:class "column"} (div {:class "bg-grey"})))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column col-12"}
+   (div {:class "bg-grey"} "col-12 (100%)")))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column col-9"}
+   (div {:class "bg-grey"} "col-9 (75%)")))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column col-9"}
+   (div {:class "bg-grey"} "col-9 (75%)")))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column col-6"}
+   (div {:class "bg-grey"} "col-6 (50%)")))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column col-3"}
+   (div {:class "bg-grey"} "col-3 (25%)")))
+ (section
+  {:class "notes"}
+  (p
+   "Add the class "
+   (code "columns")
+   " to a container with the class "
+   (code "container")
+   ". And add any element you want with classname "
+   (code "column")
+   " inside the container. These columns will take up the space equally. You can specific the width of each column by adding class "
+   (code "col-[1-12]")
+   ".")
+  (p
+   "And you can add the class "
+   (code "col-gapless")
+   " to have gapless columns."))
+ (div
+  {:class "columns col-gapless"}
+  (div
+   {:class "column col-6"}
+   (div {:class "bg-grey"} "col-6 (gapless)"))
+  (div
+   {:class "column col-6"}
+   (div {:class "bg-grey"} "col-6 (gapless)")))
+ (pre
+  {:class "code lang-html"}
+  "<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"container\"")
+  ">\n    <"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"columns\"")
+  ">\n        <"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"column col-6\"")
+  ">col-6<"
+  (span {:class "tag"} "/div")
+  ">\n        <"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"column col-3\"")
+  ">col-3<"
+  (span {:class "tag"} "/div")
+  ">\n        <"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"column col-2\"")
+  ">col-2<"
+  (span {:class "tag"} "/div")
+  ">\n        <"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"column col-1\"")
+  ">col-1<"
+  (span {:class "tag"} "/div")
+  ">\n    <"
+  (span {:class "tag"} "/div")
+  ">\n\n    <"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"columns col-gapless\"")
+  ">\n        <"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"column col-6\"")
+  ">col-6<"
+  (span {:class "tag"} "/div")
+  ">\n        <"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"column col-6\"")
+  ">col-6<"
+  (span {:class "tag"} "/div")
+  ">\n    <"
+  (span {:class "tag"} "/div")
+  ">\n<"
+  (span {:class "tag"} "/div")
+  ">\n                "))
+(section
+ {:id "responsive", :class "container grid-960"}
+ (header {:class "text-center"} (h4 "responsive grid"))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column col-md-6"}
+   (div {:class "bg-grey"} "col-md-6"))
+  (div
+   {:class "column col-md-3"}
+   (div {:class "bg-grey"} "col-md-3"))
+  (div
+   {:class "column col-md-3"}
+   (div {:class "bg-grey"} "col-md-3")))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column col-sm-6"}
+   (div {:class "bg-grey"} "col-sm-6"))
+  (div
+   {:class "column col-sm-3"}
+   (div {:class "bg-grey"} "col-sm-3"))
+  (div
+   {:class "column col-sm-3"}
+   (div {:class "bg-grey"} "col-sm-3")))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column col-xs-6"}
+   (div {:class "bg-grey"} "col-xs-6"))
+  (div
+   {:class "column col-xs-3"}
+   (div {:class "bg-grey"} "col-xs-3"))
+  (div
+   {:class "column col-xs-3"}
+   (div {:class "bg-grey"} "col-xs-3")))
+ (section
+  {:class "notes"}
+  (p
+   "Spectre provides a neat responsive layout grid system. There are "
+   (code ".col-xs-[1-12]")
+   ", "
+   (code ".col-sm-[1-12]")
+   " and "
+   (code ".col-md-[1-12]")
+   " available for flexible grid across mobile, tablet and desktop viewport usage.")
+  (ul
+   (li
+    "For window width less than "
+    (strong "480px")
+    ", all columns will show as a single row.")
+   (li
+    (code "col-xs-[1-12]")
+    " apply to window width greater than or equal to "
+    (strong "481px")
+    ". ")
+   (li
+    (code "col-sm-[1-12]")
+    " apply to window width greater than or equal to "
+    (strong "601px")
+    ". ")
+   (li
+    (code "col-md-[1-12]")
+    " apply to window width greater than or equal to "
+    (strong "841px")
+    ". ")))
+ (pre
+  {:class "code lang-html"}
+  "<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"container\"")
+  ">\n    <"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"columns\"")
+  ">\n        <"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"column col-xs-6\"")
+  ">col-xs-6<"
+  (span {:class "tag"} "/div")
+  ">\n        <"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"column col-xs-3\"")
+  ">col-xs-3<"
+  (span {:class "tag"} "/div")
+  ">\n        <"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"column col-xs-3\"")
+  ">col-xs-3<"
+  (span {:class "tag"} "/div")
+  ">\n    <"
+  (span {:class "tag"} "/div")
+  ">\n<"
+  (span {:class "tag"} "/div")
+  ">\n                ")
+(section
+ {:class "notes"}
+ (p
+  "For hiding elements on specific viewport sizes, there are classes "
+  (code ".hide-xs")
+  ", "
+  (code ".hide-sm")
+  ", "
+  (code ".hide-md")
+  ", "
+  (code ".hide-lg")
+  " and "
+  (code ".hide-xl")
+  " available.")
+ (ul
+  (li
+   (code "hide-xs")
+   " hides elements when the viewport is smaller than or equal to "
+   (strong "480px")
+   ". ")
+  (li
+   (code "hide-sm")
+   " hides elements when the viewport is smaller than or equal to "
+   (strong "600px")
+   ". ")
+  (li
+   (code "hide-md")
+   " hides elements when the viewport is smaller than or equal to "
+   (strong "840px")
+   ". ")
+  (li
+   (code "hide-lg")
+   " hides elements when the viewport is smaller than or equal to "
+   (strong "960px")
+   ". ")
+  (li
+   (code "hide-xl")
+   " hides elements when the viewport is smaller than or equal to "
+   (strong "1280px")
+   ". "))
+ (p
+  "Spectre also has a responsive web test tool Responsive Resizer. You can use it locally in the directory "
+  (code "/tools/resizer")
+  " or online.")
+ (p
+  (a
+   {:shape "rect",
+    :class "btn btn-primary",
+    :href
+    "http://picturepan2.github.io/spectre/tools/resizer/",
+    :target "_blank"}
+   "Responsive Resizer"))))
+(section
+ {:id "navbar", :class "container grid-960"}
+ (header {:class "text-center"} (h4 "navbar"))
+ (section
+  {:class "notes"}
+  (p
+   (strong "Navbar")
+   " is a layout container that appear in the header of apps and websites. "))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column"}
+   (header
+    {:class "navbar bg-grey"}
+    (section
+     {:class "navbar-section"}
+     (a
+      {:shape "rect",
+       :class "btn btn-link btn-lg",
+       :href
+       "https://picturepan2.github.io/spectre/#navbar"}
+      (i {:class "icon icon-menu"}))
+     (a
+      {:shape "rect",
+       :class "navbar-brand",
+       :href
+       "https://picturepan2.github.io/spectre/#navbar"}
+      "Spectre.css"))
+    (section
+     {:class "navbar-section"}
+     (input
+      {:type "text",
+       :class "form-input input-inline",
+       :placeholder "search"})
+     (a
+      {:shape "rect",
+       :class "btn btn-link",
+       :href
+       "https://picturepan2.github.io/spectre/#navbar"}
+      "documents")
+     (a
+      {:shape "rect",
+       :class "btn btn-link",
+       :href
+       "https://picturepan2.github.io/spectre/#navbar"}
+      "login")
+     (a
+      {:shape "rect",
+       :class "btn btn-primary",
+       :href
+       "https://picturepan2.github.io/spectre/#navbar"}
+      "signup")))))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column"}
+   (header
+    {:class "navbar"}
+    (section
+     {:class "navbar-section"}
+     (a
+      {:shape "rect",
+       :class "btn btn-link btn-lg",
+       :href
+       "https://picturepan2.github.io/spectre/#navbar"}
+      (i {:class "icon icon-menu"}))
+     (a
+      {:shape "rect",
+       :class "navbar-brand",
+       :href
+       "https://picturepan2.github.io/spectre/#navbar"}
+      "Spectre.css"))
+    (section
+     {:class "navbar-section"}
+     (input
+      {:type "text",
+       :class "form-input input-inline",
+       :placeholder "search"})
+     (figure
+      {:class "avatar ml-10 mr-10"}
+      (img {:src "./spectre_files/avatar-4.png"}))
+     (a
+      {:shape "rect",
+       :class "btn btn-primary",
+       :href
+       "https://picturepan2.github.io/spectre/#navbar"}
+      "share")))))
+ (section
+  {:class "notes"}
+  (p
+   "A navbar component can include logo brand, nav links and buttons, search box or any combination of those elements. By default, there is no grey background."))
+ (pre
+  {:class "code lang-html"}
+  "<"
+  (span {:class "tag"} "header")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"navbar\"")
+  ">\n    <"
+  (span {:class "tag"} "section")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"navbar-section\"")
+  ">\n        <"
+  (span {:class "tag"} "a")
+  " "
+  (span {:class "atn"} "href")
+  "="
+  (span {:class "atv"} "\"#\"")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"btn btn-link btn-lg\"")
+  ">\n            <"
+  (span {:class "tag"} "i")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"icon icon-people\"")
+  "><"
+  (span {:class "tag"} "/i")
+  ">\n        <"
+  (span {:class "tag"} "/a")
+  ">\n        <"
+  (span {:class "tag"} "a")
+  " "
+  (span {:class "atn"} "href")
+  "="
+  (span {:class "atv"} "\"#\"")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"navbar-brand\"")
+  ">Spectre.css<"
+  (span {:class "tag"} "/a")
+  ">\n    <"
+  (span {:class "tag"} "/section")
+  ">\n    <"
+  (span {:class "tag"} "section")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"navbar-section\"")
+  ">\n        <"
+  (span {:class "tag"} "input")
+  " "
+  (span {:class "atn"} "type")
+  "="
+  (span {:class "atv"} "\"text\"")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"form-input input-inline\"")
+  " "
+  (span {:class "atn"} "placeholder")
+  "="
+  (span {:class "atv"} "\"search\"")
+  " />\n        <"
+  (span {:class "tag"} "a")
+  " "
+  (span {:class "atn"} "href")
+  "="
+  (span {:class "atv"} "\"#\"")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"btn btn-link\"")
+  ">documents<"
+  (span {:class "tag"} "/a")
+  ">\n        <"
+  (span {:class "tag"} "a")
+  " "
+  (span {:class "atn"} "href")
+  "="
+  (span {:class "atv"} "\"#\"")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"btn btn-link\"")
+  ">login<"
+  (span {:class "tag"} "/a")
+  ">\n        <"
+  (span {:class "tag"} "a")
+  " "
+  (span {:class "atn"} "href")
+  "="
+  (span {:class "atv"} "\"#\"")
+  " "
+  (span {:class "atn"} "class")
+  "="
+(span {:class "atv"} "\"btn btn-primary\"")
+">signup<"
+(span {:class "tag"} "/a")
+">\n    <"
+(span {:class "tag"} "/section")
+">\n<"
+(span {:class "tag"} "/header")
+">\n                "))
+(section
+ {:id "empty", :class "container grid-960"}
+ (header
+  {:class "text-center"}
+  (h4 "empty states/blank slates"))
+ (section
+  {:class "notes"}
+  (p
+   (strong "Empty states/blank slates")
+   " are commonly used as placeholders for first time use, empty data and error screens."))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column col-6"}
+   (section
+    {:class "empty"}
+    (i {:class "icon icon-markunread"})
+    (p {:class "empty-title"} "You have no new messages")
+    (p
+     {:class "empty-meta"}
+     "Click the button to start a conversation.")
+    (button
+     {:type "submit", :class "empty-action btn btn-primary"}
+     "Send a message")))
+  (div
+   {:class "column col-6"}
+   (section
+    {:class "empty"}
+    (i {:class "icon icon-people"})
+    (p {:class "empty-title"} "You are not following anyone")
+    (div
+     {:class "empty-action input-group"}
+     (input
+      {:type "text", :class "form-input", :placeholder ""})
+     (button
+      {:type "submit",
+       :class "btn btn-primary input-group-btn"}
+      "Search")))))
+ (section
+  {:class "notes"}
+  (p
+   "An empty state component can include icons, messages(title and meta messages) and action buttons or any combination of those elements. Add "
+   (code "empty-title")
+   ", "
+   (code "empty-meta")
+   " or "
+   (code "empty-action")
+   " to the elements. HTML structure is exampled below. "))
+ (pre
+  {:class "code lang-html"}
+  "<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"empty\"")
+  ">\n    <"
+  (span {:class "tag"} "i")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"icon icon-people\"")
+  "><"
+  (span {:class "tag"} "/i")
+  ">\n    <"
+  (span {:class "tag"} "p")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"empty-title\"")
+  ">You have no new messages<"
+  (span {:class "tag"} "/p")
+  ">\n    <"
+  (span {:class "tag"} "p")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"empty-meta\"")
+  ">Click the button to start a conversation.<"
+  (span {:class "tag"} "/p")
+  ">\n    <"
+  (span {:class "tag"} "button")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"empty-action btn btn-primary\"")
+  ">Send a message<"
+  (span {:class "tag"} "/button")
+  ">\n<"
+  (span {:class "tag"} "/div")
+  ">\n                "))
+(section
+ {:id "components", :class "container grid-960"}
+ (section
+  {:class "notes text-center"}
+  (ul
+   {:class "tab inline-flex"}
+   (li
+    {:class "tab-item"}
+    (a
+     {:shape "rect",
+      :href
+      "https://picturepan2.github.io/spectre/#elements"}
+     "\n                                elements\n                            "))
+   (li
+    {:class "tab-item"}
+    (a
+     {:shape "rect",
+      :href "https://picturepan2.github.io/spectre/#layout"}
+     "\n                                layout\n                            "))
+   (li
+    {:class "tab-item active"}
+    (a
+     {:shape "rect",
+      :href
+      "https://picturepan2.github.io/spectre/#components"}
+     "\n                                components\n                            "))
+   (li
+    {:class "tab-item"}
+    (a
+     {:shape "rect",
+      :href
+      "https://picturepan2.github.io/spectre/#utilities"}
+     "\n                                utilities\n                            "))))
+ (section
+  {:class "notes text-center"}
+  (div
+   {:class "btn-group"}
+   (a
+    {:shape "rect",
+     :class "btn btn-primary",
+     :href "https://picturepan2.github.io/spectre/#avatars"}
+    "avatars")
+   (a
+    {:shape "rect",
+     :class "btn btn-primary",
+     :href "https://picturepan2.github.io/spectre/#chips"}
+    "chips")
+   (a
+    {:shape "rect",
+     :class "btn btn-primary",
+     :href
+     "https://picturepan2.github.io/spectre/#autocomplete"}
+    "autocomplete")
+   (a
+    {:shape "rect",
+     :class "btn btn-primary",
+     :href "https://picturepan2.github.io/spectre/#tooltips"}
+    "tooltips")
+   (a
+    {:shape "rect",
+     :class "btn btn-primary",
+     :href "https://picturepan2.github.io/spectre/#labels"}
+    "labels")
+   (a
+    {:shape "rect",
+     :class "btn btn-primary",
+     :href "https://picturepan2.github.io/spectre/#badges"}
+    "badges")
+   (a
+    {:shape "rect",
+     :class "btn btn-primary",
+     :href "https://picturepan2.github.io/spectre/#toasts"}
+    "toasts")
+   (a
+    {:shape "rect",
+     :class "btn btn-primary",
+     :href "https://picturepan2.github.io/spectre/#menus"}
+    "menus")
+   (a
+    {:shape "rect",
+     :class "btn btn-primary",
+     :href
+     "https://picturepan2.github.io/spectre/#navigation"}
+    "navigation")
+   (a
+    {:shape "rect",
+     :class "btn btn-primary",
+     :href "https://picturepan2.github.io/spectre/#modals"}
+    "modals")
+   (a
+    {:shape "rect",
+     :class "btn btn-primary",
+     :href "https://picturepan2.github.io/spectre/#cards"}
+    "cards"))))
+(section
+ {:id "avatars", :class "container grid-960"}
+ (header {:class "text-center"} (h4 "avatars"))
+ (section
+  {:class "notes"}
+  (p (strong "Avatars") " are user profile pictures. "))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column col-3"}
+   (figure
+    {:class "avatar avatar-xl"}
+    (img {:src "./spectre_files/avatar-1.png"}))
+   (figure
+    {:class "avatar avatar-lg"}
+    (img {:src "./spectre_files/avatar-2.png"}))
+   (figure
+    {:class "avatar"}
+    (img {:src "./spectre_files/avatar-3.png"}))
+   (figure
+    {:class "avatar avatar-sm"}
+    (img {:src "./spectre_files/avatar-4.png"}))
+   (figure
+    {:class "avatar avatar-xs"}
+    (img {:src "./spectre_files/avatar-5.png"})))
+  (div
+   {:class "column col-3"}
+   (figure
+    {:class "avatar avatar-xl"}
+    (img {:src "./spectre_files/avatar-1.png"})
+    (img
+     {:class "avatar-icon",
+      :src "./spectre_files/avatar-2.png"}))
+   (figure
+    {:class "avatar avatar-lg"}
+    (img {:src "./spectre_files/avatar-2.png"})
+    (img
+     {:class "avatar-icon",
+      :src "./spectre_files/avatar-3.png"}))
+   (figure
+    {:class "avatar"}
+    (img {:src "./spectre_files/avatar-3.png"})
+    (img
+     {:class "avatar-icon",
+      :src "./spectre_files/avatar-4.png"}))
+   (figure
+    {:class "avatar avatar-sm"}
+    (img {:src "./spectre_files/avatar-4.png"})
+    (img
+     {:class "avatar-icon",
+      :src "./spectre_files/avatar-5.png"}))
+   (figure
+    {:class "avatar avatar-xs"}
+    (img {:src "./spectre_files/avatar-5.png"})
+    (img
+     {:class "avatar-icon",
+      :src "./spectre_files/avatar-1.png"})))
+  (div
+   {:class "column col-3"}
+   (figure
+    {:class "avatar avatar-xl",
+     :data-initial "YZ",
+     :style "background-color: #5764c6;"})
+   (figure
+    {:class "avatar avatar-lg",
+     :data-initial "YZ",
+     :style "background-color: #6874cc;"})
+   (figure
+    {:class "avatar",
+     :data-initial "YZ",
+     :style "background-color: #7983d2;"})
+   (figure
+    {:class "avatar avatar-sm",
+     :data-initial "YZ",
+     :style "background-color: #8a93d7;"})
+   (figure
+    {:class "avatar avatar-xs",
+     :data-initial "YZ",
+     :style "background-color: #9ba2dd;"})))
+ (section
+  {:class "notes"}
+  (p
+   "Add the class "
+   (code "avatar")
+   " to <img> element. There are 4 additional sizes available, including "
+   (code "avatar-xl")
+   " (64px), "
+   (code "avatar-lg")
+   " (48px), "
+   (code "avatar-sm")
+   " (24px), and "
+   (code "avatar-xs")
+   " (16px). By default, the avatar size is 32px.")
+  (p
+   "For users who don't have profile pictures, you may use their initials for avatars. Add the class "
+   (code "avatar")
+   " and avatar size class to <div> element. The attribute "
+   (code "data-initial")
+   " is the name appear inside the avatar."))
+ (pre
+  {:class "code lang-html"}
+  "<"
+  (span {:class "tag"} "figure")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"avatar avatar-xl\"")
+  ">\n    <"
+  (span {:class "tag"} "img")
+  " "
+  (span {:class "atn"} "src")
+  "="
+  (span {:class "atv"} "\"img/avatar-1.png\"")
+  " />\n<"
+  (span {:class "tag"} "/figure")
+  ">\n\n<"
+  (span {:class "tag"} "figure")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"avatar avatar-xl\"")
+  ">\n    <"
+  (span {:class "tag"} "img")
+  " "
+  (span {:class "atn"} "src")
+  "="
+  (span {:class "atv"} "\"img/avatar-1.png\"")
+  " />\n    <"
+  (span {:class "tag"} "img")
+  " "
+  (span {:class "atn"} "src")
+  "="
+  (span {:class "atv"} "\"img/avatar-5.png\"")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"avatar-icon\"")
+  " />\n<"
+  (span {:class "tag"} "/figure")
+  ">\n\n<"
+  (span {:class "tag"} "figure")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"avatar avatar-xl\"")
+  " "
+  (span {:class "atn"} "data-initial")
+  "="
+  (span {:class "atv"} "\"YZ\"")
+  " "
+  (span {:class "atn"} "style")
+  "="
+  (span {:class "atv"} "\"background-color: #5764c6;\"")
+  "><"
+  (span {:class "tag"} "/figure")
+  ">\n                "))
+(section
+ {:id "chips", :class "container grid-960"}
+ (header {:class "text-center"} (h4 "chips"))
+ (section
+  {:class "notes"}
+  (p
+   (strong "Chips")
+   " are complex entities in small blocks. "))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column"}
+   (div
+    {:class "chip-sm"}
+    (span {:class "chip-name"} "Crime")
+    (button {:type "submit", :class "btn btn-clear"}))
+   (div
+    {:class "chip-sm"}
+    (span {:class "icon icon-favorite_border"})
+    (span {:class "chip-name"} "Drama")
+    (button {:type "submit", :class "btn btn-clear"}))
+   (div
+    {:class "chip-sm"}
+    (span {:class "chip-name"} "Biography")
+    (button {:type "submit", :class "btn btn-clear"}))
+   (div
+    {:class "chip-sm"}
+    (span {:class "chip-name"} "Mystery")
+    (button {:type "submit", :class "btn btn-clear"})))
+  (div
+   {:class "column"}
+   (div
+    {:class "chip-sm"}
+    (img
+     {:class "avatar", :src "./spectre_files/avatar-1.png"})
+    (span {:class "chip-name"} "Tony Stark")
+    (button {:type "submit", :class "btn btn-clear"}))
+   (div
+    {:class "chip-sm"}
+    (img
+     {:class "avatar", :src "./spectre_files/avatar-2.png"})
+    (span {:class "chip-name"} "Thor Odinson")
+    (button {:type "submit", :class "btn btn-clear"}))
+   (div
+    {:class "chip-sm"}
+    (img
+     {:class "avatar", :src "./spectre_files/avatar-4.png"})
+    (span {:class "chip-name"} "Steve Rogers")
+    (button {:type "submit", :class "btn btn-clear"}))))
+ (section
+  {:class "notes"}
+  (p
+   "Add a container element with the class "
+   (code "chip")
+   ". And add child text elements with "
+   (code "chip-name")
+   " or icons with  "
+   (code "icon")
+   "."))
+ (pre
+  {:class "code lang-html"}
+  "<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"chip-sm\"")
+  ">\n    <"
+  (span {:class "tag"} "span")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"chip-name\"")
+  ">Crime<"
+  (span {:class "tag"} "/span")
+  ">\n    <"
+  (span {:class "tag"} "button")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"btn btn-clear\"")
+  "><"
+  (span {:class "tag"} "/button")
+  ">\n<"
+  (span {:class "tag"} "/div")
+  ">\n\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"chip-sm\"")
+  ">\n    <"
+  (span {:class "tag"} "span")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"icon icon-favorite_border\"")
+  "><"
+  (span {:class "tag"} "/span")
+  ">\n    <"
+  (span {:class "tag"} "span")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"chip-name\"")
+  ">Drama<"
+  (span {:class "tag"} "/span")
+  ">\n    <"
+  (span {:class "tag"} "button")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"btn btn-clear\"")
+  "><"
+  (span {:class "tag"} "/button")
+  ">\n<"
+  (span {:class "tag"} "/div")
+  ">\n\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"chip-sm\"")
+  ">\n    <"
+  (span {:class "tag"} "img")
+  " "
+  (span {:class "atn"} "src")
+  "="
+  (span {:class "atv"} "\"img/avatar-1.png\"")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"avatar\"")
+  " />\n    <"
+  (span {:class "tag"} "span")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"chip-name\"")
+  ">Yan Zhu<"
+  (span {:class "tag"} "/span")
+  ">\n    <"
+  (span {:class "tag"} "button")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"btn btn-clear\"")
+  "><"
+  (span {:class "tag"} "/button")
+  ">\n<"
+  (span {:class "tag"} "/div")
+  ">\n                "))
+(section
+ {:id "autocomplete", :class "container grid-960"}
+ (header {:class "text-center"} (h4 "autocomplete"))
+ (section
+  {:class "notes"}
+  (p
+   (strong "Autocomplete")
+   " form component provides suggestions while you type. It is often used for tags and contacts input. "))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column col-6"}
+   (div
+    {:class "form-group"}
+    (div
+     {:class "form-autocomplete"}
+     (div
+      {:class "form-autocomplete-input"}
+      (div
+       {:class "chip-sm"}
+       (img
+        {:class "avatar",
+         :src "./spectre_files/avatar-1.png"})
+       (span {:class "chip-name"} "Tony Stark")
+       (button {:type "submit", :class "btn btn-clear"}))
+      (div
+       {:class "chip-sm"}
+       (img
+        {:class "avatar",
+         :src "./spectre_files/avatar-2.png"})
+       (span {:class "chip-name"} "Thor Odinson")
+       (button {:type "submit", :class "btn btn-clear"}))
+      (div
+       {:class "chip-sm"}
+       (img
+        {:class "avatar",
+         :src "./spectre_files/avatar-4.png"})
+       (span {:class "chip-name"} "Steve Rogers")
+       (button {:type "submit", :class "btn btn-clear"}))
+      (div
+       {:class "chip-sm"}
+       (img
+        {:class "avatar",
+         :src "./spectre_files/avatar-1.png"})
+       (span {:class "chip-name"} "Bruce Banner")
+       (button {:type "submit", :class "btn btn-clear"}))
+      (div
+       {:class "chip-sm selected"}
+       (img
+        {:class "avatar",
+         :src "./spectre_files/avatar-2.png"})
+       (span {:class "chip-name"} "Natasha Romanoff")
+       (button {:type "submit", :class "btn btn-clear"}))
+      (input
+       {:type "text",
+        :class "form-input",
+        :placeholder ""}))))
+   (div
+    {:class "form-group"}
+    (div
+     {:class "form-autocomplete"}
+     (div
+      {:class "form-autocomplete-input"}
+      (div
+       {:class "chip-sm"}
+       (span {:class "chip-name"} "Tony Stark")
+       (button {:type "submit", :class "btn btn-clear"}))
+      (div
+       {:class "chip-sm"}
+       (span {:class "chip-name"} "Thor Odinson")
+       (button {:type "submit", :class "btn btn-clear"}))
+      (div
+       {:class "chip-sm"}
+       (span {:class "chip-name"} "Steve Rogers")
+       (button {:type "submit", :class "btn btn-clear"}))
+      (div
+       {:class "chip-sm"}
+       (span {:class "chip-name"} "Bruce Banner")
+       (button {:type "submit", :class "btn btn-clear"}))
+      (div
+       {:class "chip-sm selected"}
+       (span {:class "chip-name"} "Natasha Romanoff")
+       (button {:type "submit", :class "btn btn-clear"}))
+      (input
+       {:type "text",
+        :class "form-input",
+        :placeholder ""})))))
+  (div
+   {:class "column col-6"}
+   (div
+    {:class "form-group"}
+    (div
+     {:class "form-autocomplete"}
+     (div
+      {:class "form-autocomplete-input"}
+      (div
+       {:class "chip-sm"}
+       (img
+        {:class "avatar",
+         :src "./spectre_files/avatar-1.png"})
+       (span {:class "chip-name"} "Tony Stark")
+       (button {:type "submit", :class "btn btn-clear"}))
+      (div
+       {:class "chip-sm"}
+       (img
+        {:class "avatar",
+         :src "./spectre_files/avatar-2.png"})
+       (span {:class "chip-name"} "Thor Odinson")
+       (button {:type "submit", :class "btn btn-clear"}))
+      (input
+       {:type "text",
+        :class "form-input",
+        :placeholder "typing here"}))
+     (ul
+      {:class "form-autocomplete-list"}
+      (li
+       {:class "form-autocomplete-item"}
+       (div
+        {:class "chip hand"}
+        (div
+         {:class "chip-icon"}
+         (img
+          {:class "avatar",
+           :src "./spectre_files/avatar-4.png"}))
+        (div
+         {:class "chip-content"}
+         "\n                                                Steve Rogers\n                                            ")))
+      (li
+       {:class "form-autocomplete-item"}
+       (div
+        {:class "chip hand"}
+        (div
+         {:class "chip-icon"}
+         (img
+          {:class "avatar",
+           :src "./spectre_files/avatar-2.png"}))
+        (div
+         {:class "chip-content"}
+         "\n                                                Yan Zhu\n                                            "))))))))
+(section
+ {:class "notes"}
+ (p
+  "Add a container element with the class "
+  (code "form-autocomplete")
+  ". There are 2 parts of it, one is  "
+  (code "form-autocomplete-input")
+  ", another is "
+  (code "form-autocomplete-list")
+  ". Spectre.css does not include JavaScript code, you will need to implement your JS to interact with the autocomplete. The autocomplete HTML structure is exampled below. "))
+(pre
+ {:class "code lang-html"}
+ "<"
+ (span {:class "tag"} "div")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"form-autocomplete\"")
+ ">\n    "
+ (span {:class "com"} "<!-- autocomplete input container -->")
+ "\n    <"
+ (span {:class "tag"} "div")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"form-autocomplete-input\"")
+ ">\n        "
+ (span {:class "com"} "<!-- autocomplete chips -->")
+ "\n        <"
+ (span {:class "tag"} "div")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"chip-sm\"")
+ ">\n            <"
+ (span {:class "tag"} "img")
+ " "
+ (span {:class "atn"} "src")
+ "="
+ (span {:class "atv"} "\"img/avatar-1.png\"")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"avatar\"")
+ " />\n            <"
+ (span {:class "tag"} "span")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"chip-name\"")
+ ">Yan Zhu<"
+ (span {:class "tag"} "/span")
+ ">\n            <"
+ (span {:class "tag"} "button")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"btn btn-clear\"")
+ "><"
+ (span {:class "tag"} "/button")
+ ">\n        <"
+ (span {:class "tag"} "/div")
+ ">\n        <"
+ (span {:class "tag"} "div")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"chip-sm selected\"")
+ ">\n            <"
+ (span {:class "tag"} "img")
+ " "
+ (span {:class "atn"} "src")
+ "="
+ (span {:class "atv"} "\"img/avatar-2.png\"")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"avatar\"")
+ " />\n            <"
+ (span {:class "tag"} "span")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"chip-name\"")
+ ">Yan Zhu<"
+ (span {:class "tag"} "/span")
+ ">\n            <"
+ (span {:class "tag"} "button")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"btn btn-clear\"")
+ "><"
+ (span {:class "tag"} "/button")
+ ">\n        <"
+ (span {:class "tag"} "/div")
+ ">\n        "
+ (span {:class "com"} "<!-- autocomplete real input box -->")
+ "\n        <"
+ (span {:class "tag"} "input")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"form-input\"")
+ " "
+ (span {:class "atn"} "type")
+ "="
+ (span {:class "atv"} "\"text\"")
+ " "
+ (span {:class "atn"} "placeholder")
+ "="
+(span {:class "atv"} "\"typing here\"")
+" />\n    <"
+(span {:class "tag"} "/div")
+">\n    "
+(span {:class "com"} "<!-- autocomplete suggestion list -->")
+"\n    <"
+(span {:class "tag"} "ul")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"form-autocomplete-list\"")
+">\n        "
+(span {:class "com"} "<!-- autocomplete list chips -->")
+"\n        <"
+(span {:class "tag"} "li")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"form-autocomplete-item\"")
+">\n            <"
+(span {:class "tag"} "div")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"chip hand\"")
+">\n                <"
+(span {:class "tag"} "div")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"chip-icon\"")
+">\n                    <"
+(span {:class "tag"} "img")
+" "
+(span {:class "atn"} "src")
+"="
+(span {:class "atv"} "\"img/avatar-4.png\"")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"avatar\"")
+" />\n                <"
+(span {:class "tag"} "/div")
+">\n                <"
+(span {:class "tag"} "div")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"chip-content\"")
+">\n                    Steve Rogers\n                <"
+(span {:class "tag"} "/div")
+">\n            <"
+(span {:class "tag"} "/div")
+">\n        <"
+(span {:class "tag"} "/li")
+">\n        <"
+(span {:class "tag"} "li")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"form-autocomplete-item\"")
+">\n            <"
+(span {:class "tag"} "div")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"chip hand\"")
+">\n                <"
+(span {:class "tag"} "div")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"chip-icon\"")
+">\n                    <"
+(span {:class "tag"} "img")
+" "
+(span {:class "atn"} "src")
+"="
+(span {:class "atv"} "\"img/avatar-3.png\"")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"avatar\"")
+" />\n                <"
+(span {:class "tag"} "/div")
+">\n                <"
+(span {:class "tag"} "div")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"chip-content\"")
+">\n                    Yan Zhu\n                <"
+(span {:class "tag"} "/div")
+">\n            <"
+(span {:class "tag"} "/div")
+">\n        <"
+(span {:class "tag"} "/li")
+">\n    <"
+(span {:class "tag"} "/ul")
+">\n<"
+(span {:class "tag"} "/div")
+">\n                "))
+(section
+ {:id "tooltips", :class "container grid-960"}
+ (header {:class "text-center"} (h4 "tooltips"))
+ (section
+  {:class "notes"}
+  (p
+   (strong "Tooltips")
+   " provide context information labels that appear on hover and focus."))
+ (div
+  {:class "columns text-center"}
+  (div
+   {:class "column"}
+   (button
+    {:type "submit",
+     :class "btn btn-primary tooltip",
+     :data-tooltip
+     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.",
+     :data-tooltip-pos "top"}
+    "top tooltip"))
+  (div
+   {:class "column"}
+   (button
+    {:type "submit",
+     :class "btn btn-primary tooltip tooltip-right",
+     :data-tooltip "Lorem ipsum dolor sit amet"}
+    "right tooltip"))
+  (div
+   {:class "column"}
+   (button
+    {:type "submit",
+     :class "btn btn-primary tooltip tooltip-bottom",
+     :data-tooltip "Lorem ipsum dolor sit amet"}
+    "bottom tooltip"))
+  (div
+   {:class "column"}
+   (button
+    {:type "submit",
+     :class "btn btn-primary tooltip tooltip-left",
+     :data-tooltip "Lorem ipsum dolor sit amet"}
+    "left tooltip")))
+ (section
+  {:class "notes"}
+  (p "Tooltip component is built entirely in CSS.")
+  (p
+   "Add the class "
+   (code "tooltip")
+   " and the attribute "
+   (code "data-tooltip")
+   ", which contains the tooltip content, to non self closing elements. And add the class name "
+   (code "tooltip-right")
+   ", "
+   (code "tooltip-bottom")
+   " or "
+   (code "tooltip-left")
+   " to define the position of a tooltip. By default, the tooltip appears above the element."))
+ (pre
+  {:class "code lang-html"}
+  "<"
+  (span {:class "tag"} "button")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"btn tooltip\"")
+  " "
+  (span {:class "atn"} "data-tooltip")
+  "="
+  (span {:class "atv"} "\"Lorem ipsum dolor sit amet\"")
+  ">top tooltip<"
+  (span {:class "tag"} "/button")
+  ">\n<"
+  (span {:class "tag"} "button")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"btn tooltip tooltip-right\"")
+  " "
+  (span {:class "atn"} "data-tooltip")
+  "="
+  (span {:class "atv"} "\"Lorem ipsum dolor sit amet\"")
+  ">right tooltip<"
+  (span {:class "tag"} "/button")
+  ">\n                "))
+(section
+ {:id "labels", :class "container grid-960"}
+ (header {:class "text-center"} (h4 "labels"))
+ (section
+  {:class "notes"}
+  (p
+   (strong "Labels")
+   " are formatted text tags for highlighted, informative information."))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column"}
+   (span {:class "label"} "default label")
+   (span {:class "label label-primary"} "primary label")))
+ (section
+  {:class "notes"}
+  (p
+   "Add the class "
+   (code "label")
+   " to <span> or <small> elements. You can add another class "
+   (code "label-primary")
+   " for a primary colored label."))
+ (pre
+  {:class "code lang-html"}
+  "<"
+  (span {:class "tag"} "span")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"label\"")
+  ">default label<"
+  (span {:class "tag"} "/span")
+  ">\n<"
+  (span {:class "tag"} "span")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"label label-primary\"")
+  ">primary label<"
+  (span {:class "tag"} "/span")
+  ">\n                "))
+(section
+ {:id "badges", :class "container grid-960"}
+ (header {:class "text-center"} (h4 "badges"))
+ (section
+  {:class "notes"}
+  (p
+   (strong "Badges")
+   " are often used as unread number indicators."))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column"}
+   (span
+    {:class "badge", :data-badge "1"}
+    "\n                            Notifications\n                        "))
+  (div
+   {:class "column"}
+   (span
+    {:class "badge", :data-badge "99"}
+    "\n                            Notifications\n                        "))
+  (div
+   {:class "column"}
+   (span
+    {:class "badge", :data-badge "999"}
+    "\n                            Notifications\n                        "))
+  (div
+   {:class "column"}
+   (span
+    {:class "badge", :data-badge "♀"}
+    "\n                            Notifications\n                        ")))
+ (section
+  {:class "notes"}
+  (p
+   "Add the class "
+   (code "badge")
+   " to non self closing elements. And add the attribute "
+   (code "data-badge")
+   " to define the content of a badge. The badge will appear in the top-right direction of the element."))
+ (pre
+  {:class "code lang-html"}
+  "<"
+  (span {:class "tag"} "span")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"badge\"")
+  " "
+  (span {:class "atn"} "data-badge")
+  "="
+  (span {:class "atv"} "\"99\"")
+  ">\n    Notifications\n<"
+  (span {:class "tag"} "/span")
+  ">\n                "))
+(section
+ {:id "toasts", :class "container grid-960"}
+ (header {:class "text-center"} (h4 "toasts"))
+ (section
+  {:class "notes"}
+  (p
+   (strong "Toasts")
+   " are used to show alert or information to users."))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column"}
+   (div
+    {:class "toast"}
+    (button
+     {:type "submit", :class "btn btn-clear float-right"})
+    (span {:class "icon icon-error_outline"})
+    " Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                        "))
+  (div
+   {:class "column"}
+   (div
+    {:class "toast toast-primary"}
+    (button
+     {:type "submit", :class "btn btn-clear float-right"})
+    (span {:class "icon icon-error_outline"})
+    " Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                        ")))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column"}
+   (div
+    {:class "toast toast-success"}
+    (button
+     {:type "submit", :class "btn btn-clear float-right"})
+    (span {:class "icon icon-error_outline"})
+    " Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                        "))
+  (div
+   {:class "column"}
+   (div
+    {:class "toast toast-danger"}
+    (button
+     {:type "submit", :class "btn btn-clear float-right"})
+    (span {:class "icon icon-error_outline"})
+    " Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                        ")))
+ (section
+  {:class "notes"}
+  (p
+   "Add a container element with the class "
+   (code "toast")
+   ". You can add any text within the container, and even icons. You may also add a close button with the class "
+   (code "btn-clear")
+   " if you need. ")
+  (p
+   "And you can add the class "
+   (code "toast-primary")
+   ", "
+   (code "toast-success")
+   " or "
+   (code "toast-danger")
+   " for additional toast colors."))
+ (pre
+  {:class "code lang-html"}
+  "<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"toast\"")
+  ">\n    <"
+  (span {:class "tag"} "button")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"btn btn-clear float-right\"")
+  "><"
+  (span {:class "tag"} "/button")
+  ">\n    Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n<"
+  (span {:class "tag"} "/div")
+  ">\n\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"toast toast-primary\"")
+  ">\n    <"
+  (span {:class "tag"} "button")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"btn btn-clear float-right\"")
+  "><"
+  (span {:class "tag"} "/button")
+  ">\n    <"
+  (span {:class "tag"} "span")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"icon icon-error_outline\"")
+  "><"
+  (span {:class "tag"} "/span")
+  ">\n    Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n<"
+  (span {:class "tag"} "/div")
+  ">\n                "))
+(section
+ {:id "menus", :class "container grid-960"}
+ (header {:class "text-center"} (h4 "menus"))
+ (section
+  {:class "notes"}
+  (p
+   "A "
+   (strong "menu")
+   " is a vertical list of links or buttons for actions and navigation."))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column"}
+   (ul
+    {:class "menu"}
+    (li
+     {:class "menu-item"}
+     (div
+      {:class "chip"}
+      (div
+       {:class "chip-icon"}
+       (img
+        {:class "avatar",
+         :src "./spectre_files/avatar-4.png"}))
+      (div
+       {:class "chip-content"}
+       "\n                                        Steve Rogers\n                                    ")
+      (div {:class "chip-action"})))
+    (li
+     {:class "menu-item"}
+     (a
+      {:shape "rect",
+       :class "active",
+       :href
+       "https://picturepan2.github.io/spectre/#menus"}
+      "\n                                    My profile\n                                "))
+    (li {:class "divider"})
+    (li
+     {:class "menu-item"}
+     (a
+      {:shape "rect",
+       :href
+       "https://picturepan2.github.io/spectre/#menus"}
+      "\n                                    Settings\n                                "))
+    (li
+     {:class "menu-item"}
+     (a
+      {:shape "rect",
+       :href
+       "https://picturepan2.github.io/spectre/#menus"}
+      "\n                                    Logout\n                                "))))
+  (div
+   {:class "column"}
+   (ul
+    {:class "menu"}
+    (li
+     {:class "menu-header"}
+     (span
+      {:class "menu-header-text"}
+      "\n                                    Go to\n                                "))
+    (li
+     {:class "menu-item"}
+     (a
+      {:shape "rect",
+       :href
+       "https://picturepan2.github.io/spectre/#menus"}
+      "\n                                    Slack\n                                "))
+    (li
+     {:class "menu-item"}
+     (a
+      {:shape "rect",
+       :href
+       "https://picturepan2.github.io/spectre/#menus"}
+      "\n                                    Hipchat\n                                "))
+    (li
+     {:class "menu-item"}
+     "\n                                Skype\n                            ")))
+  (div
+   {:class "column"}
+   (ul
+    {:class "menu"}
+    (li
+     {:class "menu-header"}
+     (span
+      {:class "menu-header-text"}
+      "\n                                    Go to\n                                "))
+    (li
+     {:class "menu-item"}
+     (a
+      {:shape "rect",
+       :href
+       "https://picturepan2.github.io/spectre/#menus"}
+      (span {:class "icon icon-link"})
+      " Slack\n                                "))
+    (li
+     {:class "menu-item"}
+     (a
+      {:shape "rect",
+       :href
+       "https://picturepan2.github.io/spectre/#menus"}
+      (span {:class "icon icon-link"})
+      " Hipchat\n                                "))
+    (li
+     {:class "menu-item"}
+     (span {:class "icon icon-link"})
+     " Skype\n                            "))))
+(section
+ {:class "notes"}
+ (p
+  "Add a container element with the class "
+  (code "menu")
+  ". And add child elements with the classname "
+  (code "menu-item")
+  ". You can separate menu items with a "
+  (code "divider")
+  " or "
+  (code "menu-header")
+  ". Spectre.css does not include JavaScript code, you will need to implement your JS to interact with the menus."))
+(pre
+ {:class "code lang-html"}
+ "<"
+ (span {:class "tag"} "ul")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"menu\"")
+ ">\n    "
+ (span {:class "com"} "<!-- menu header -->")
+ "\n    <"
+ (span {:class "tag"} "li")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"menu-header\"")
+ ">\n        <"
+ (span {:class "tag"} "span")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"menu-header-text\"")
+ ">\n            Go to\n        <"
+ (span {:class "tag"} "/span")
+ ">\n    <"
+ (span {:class "tag"} "/li")
+ ">\n    "
+ (span {:class "com"} "<!-- menu item -->")
+ "\n    <"
+ (span {:class "tag"} "li")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"menu-item\"")
+ ">\n        <"
+ (span {:class "tag"} "a")
+ " "
+ (span {:class "atn"} "href")
+ "="
+ (span {:class "atv"} "\"#\"")
+ ">\n            <"
+ (span {:class "tag"} "span")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"icon icon-link\"")
+ "><"
+ (span {:class "tag"} "/span")
+ "> Slack\n        <"
+ (span {:class "tag"} "/a")
+ ">\n    <"
+ (span {:class "tag"} "/li")
+ ">\n    <"
+ (span {:class "tag"} "li")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"menu-item\"")
+ ">\n        <"
+ (span {:class "tag"} "a")
+ " "
+ (span {:class "atn"} "href")
+ "="
+ (span {:class "atv"} "\"#\"")
+ ">\n            <"
+ (span {:class "tag"} "span")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"icon icon-link\"")
+ "><"
+ (span {:class "tag"} "/span")
+ "> Hipchat\n        <"
+ (span {:class "tag"} "/a")
+ ">\n    <"
+ (span {:class "tag"} "/li")
+ ">\n    <"
+ (span {:class "tag"} "li")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"menu-item\"")
+ ">\n        <"
+ (span {:class "tag"} "a")
+ " "
+ (span {:class "atn"} "href")
+ "="
+ (span {:class "atv"} "\"#\"")
+ ">\n            <"
+ (span {:class "tag"} "span")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"icon icon-link\"")
+ "><"
+ (span {:class "tag"} "/span")
+ "> Skype\n        <"
+ (span {:class "tag"} "/a")
+ ">\n    <"
+ (span {:class "tag"} "/li")
+ ">\n    "
+(span {:class "com"} "<!-- menu divider -->")
+"\n    <"
+(span {:class "tag"} "li")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"divider\"")
+"><"
+(span {:class "tag"} "/li")
+">\n    <"
+(span {:class "tag"} "li")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"menu-item\"")
+">\n        <"
+(span {:class "tag"} "a")
+" "
+(span {:class "atn"} "href")
+"="
+(span {:class "atv"} "\"#\"")
+">\n            <"
+(span {:class "tag"} "span")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"icon icon-link\"")
+"><"
+(span {:class "tag"} "/span")
+"> Settings\n        <"
+(span {:class "tag"} "/a")
+">\n    <"
+(span {:class "tag"} "/li")
+">\n<"
+(span {:class "tag"} "/ul")
+">\n                "))
+(section
+ {:id "navigation", :class "container grid-960"}
+ (header {:class "text-center"} (h4 "navigation"))
+ (section
+  {:class "notes"}
+  (p
+   (strong "Navigation")
+   " includes several components, including breadcrumbs and tabs."))
+ (header
+  {:id "breadcrumbs", :class "text-center"}
+  (h5 "breadcrumbs"))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column"}
+   (ul
+    {:class "breadcrumb"}
+    (li
+     {:class "breadcrumb-item"}
+     (a
+      {:shape "rect",
+       :href
+       "https://picturepan2.github.io/spectre/#breadcrumbs"}
+      "\n                                    Home\n                                "))
+    (li
+     {:class "breadcrumb-item"}
+     (a
+      {:shape "rect",
+       :href
+       "https://picturepan2.github.io/spectre/#breadcrumbs"}
+      "\n                                    Profile\n                                "))
+    (li
+     {:class "breadcrumb-item"}
+     (a
+      {:shape "rect",
+       :href
+       "https://picturepan2.github.io/spectre/#breadcrumbs"}
+      "\n                                    Change avatar\n                                ")))))
+ (section
+  {:class "notes"}
+  (p
+   "Add a container element with the class "
+   (code "breadcrumb")
+   ". And add child elements with the classname "
+   (code "breadcrumb-item")
+   "."))
+ (pre
+  {:class "code lang-html"}
+  "<"
+  (span {:class "tag"} "ul")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"breadcrumb\"")
+  ">\n    <"
+  (span {:class "tag"} "li")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"breadcrumb-item\"")
+  ">\n        <"
+  (span {:class "tag"} "a")
+  " "
+  (span {:class "atn"} "href")
+  "="
+  (span {:class "atv"} "\"#\"")
+  ">\n            Home\n        <"
+  (span {:class "tag"} "/a")
+  ">\n    <"
+  (span {:class "tag"} "/li")
+  ">\n    <"
+  (span {:class "tag"} "li")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"breadcrumb-item\"")
+  ">\n        <"
+  (span {:class "tag"} "a")
+  " "
+  (span {:class "atn"} "href")
+  "="
+  (span {:class "atv"} "\"#\"")
+  ">\n            Profile\n        <"
+  (span {:class "tag"} "/a")
+  ">\n    <"
+  (span {:class "tag"} "/li")
+  ">\n    <"
+  (span {:class "tag"} "li")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"breadcrumb-item\"")
+  ">\n        <"
+  (span {:class "tag"} "a")
+  " "
+  (span {:class "atn"} "href")
+  "="
+  (span {:class "atv"} "\"#\"")
+  ">\n            Change avatar\n        <"
+  (span {:class "tag"} "/a")
+  ">\n    <"
+  (span {:class "tag"} "/li")
+  ">\n<"
+  (span {:class "tag"} "/ul")
+  ">\n                ")
+(header {:id "tabs", :class "text-center"} (h5 "tabs"))
+(div
+ {:class "columns"}
+ (div
+  {:class "column"}
+  (ul
+   {:class "tab"}
+   (li
+    {:class "tab-item active"}
+    (a
+     {:shape "rect",
+      :href "https://picturepan2.github.io/spectre/#tabs"}
+     "\n                                    Music\n                                "))
+   (li
+    {:class "tab-item"}
+    (a
+     {:shape "rect",
+      :href "https://picturepan2.github.io/spectre/#tabs"}
+     "\n                                    Playlists\n                                "))
+   (li
+    {:class "tab-item"}
+    (a
+     {:shape "rect",
+      :href "https://picturepan2.github.io/spectre/#tabs"}
+     "\n                                    Radio\n                                "))
+   (li
+    {:class "tab-item"}
+    (a
+     {:shape "rect",
+      :href "https://picturepan2.github.io/spectre/#tabs"}
+     "\n                                    Connect\n                                "))))
+ (div
+  {:class "column"}
+  (ul
+   {:class "tab tab-block"}
+   (li
+    {:class "tab-item active"}
+    (a
+     {:shape "rect",
+      :href "https://picturepan2.github.io/spectre/#tabs"}
+     "\n                                    Music\n                                "))
+   (li
+    {:class "tab-item"}
+    (a
+     {:shape "rect",
+      :href "https://picturepan2.github.io/spectre/#tabs"}
+     "\n                                    Playlists\n                                "))
+   (li
+    {:class "tab-item"}
+    (a
+     {:shape "rect",
+      :href "https://picturepan2.github.io/spectre/#tabs"}
+     "\n                                    Radio\n                                "))
+   (li
+    {:class "tab-item"}
+    (a
+     {:shape "rect",
+      :href "https://picturepan2.github.io/spectre/#tabs"}
+     "\n                                    Connect\n                                ")))))
+(section
+ {:class "notes"}
+ (p
+  "Add a container element with the class "
+  (code "tab")
+  ". And add child elements with the classname "
+  (code "tab-item")
+  ". You can add the class "
+  (code "tab-block")
+  " for a full-width tab."))
+(pre
+ {:class "code lang-html"}
+ "<"
+ (span {:class "tag"} "ul")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"tab tab-block\"")
+ ">\n    <"
+ (span {:class "tag"} "li")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"tab-item active\"")
+ ">\n        <"
+ (span {:class "tag"} "a")
+ " "
+ (span {:class "atn"} "href")
+ "="
+ (span {:class "atv"} "\"#\"")
+ ">\n            Music\n        <"
+ (span {:class "tag"} "/a")
+ ">\n    <"
+ (span {:class "tag"} "/li")
+ ">\n    <"
+ (span {:class "tag"} "li")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"tab-item\"")
+ ">\n        <"
+ (span {:class "tag"} "a")
+ " "
+ (span {:class "atn"} "href")
+ "="
+ (span {:class "atv"} "\"#\"")
+ ">\n            Playlists\n        <"
+ (span {:class "tag"} "/a")
+ ">\n    <"
+ (span {:class "tag"} "/li")
+ ">\n    <"
+ (span {:class "tag"} "li")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"tab-item\"")
+ ">\n        <"
+ (span {:class "tag"} "a")
+ " "
+ (span {:class "atn"} "href")
+ "="
+ (span {:class "atv"} "\"#\"")
+ ">\n            Radio\n        <"
+ (span {:class "tag"} "/a")
+ ">\n    <"
+ (span {:class "tag"} "/li")
+ ">\n    <"
+ (span {:class "tag"} "li")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"tab-item\"")
+ ">\n        <"
+ (span {:class "tag"} "a")
+ " "
+ (span {:class "atn"} "href")
+ "="
+ (span {:class "atv"} "\"#\"")
+ ">\n            Connect\n        <"
+ (span {:class "tag"} "/a")
+ ">\n    <"
+ (span {:class "tag"} "/li")
+ ">\n<"
+ (span {:class "tag"} "/ul")
+ ">\n                ")
+(div
+ {:class "columns"}
+ (div
+  {:class "column"}
+  (ul
+   {:class "tab"}
+   (li
+    {:class "tab-item active"}
+    (a
+     {:shape "rect",
+      :class "badge",
+      :href "https://picturepan2.github.io/spectre/#tabs",
+      :data-badge "9"}
+     "\n                                    Music\n                                "))
+   (li
+    {:class "tab-item"}
+    (a
+     {:shape "rect",
+      :href "https://picturepan2.github.io/spectre/#tabs"}
+     "\n                                    Playlists\n                                "))
+   (li
+    {:class "tab-item"}
+    (a
+     {:shape "rect",
+      :href "https://picturepan2.github.io/spectre/#tabs"}
+     "\n                                    Radio\n                                "))
+   (li
+    {:class "tab-item"}
+    (a
+     {:shape "rect",
+      :href "https://picturepan2.github.io/spectre/#tabs"}
+     "\n                                    Connect\n                                "))))
+ (div
+  {:class "column"}
+  (ul
+   {:class "tab tab-block"}
+   (li
+    {:class "tab-item active"}
+    (a
+     {:shape "rect",
+      :class "badge",
+      :href "https://picturepan2.github.io/spectre/#tabs",
+      :data-badge "9"}
+     "\n                                    Music\n                                "))
+   (li
+    {:class "tab-item"}
+    (a
+     {:shape "rect",
+      :href "https://picturepan2.github.io/spectre/#tabs"}
+     "\n                                    Playlists\n                                "))
+   (li
+    {:class "tab-item"}
+    (a
+     {:shape "rect",
+      :href "https://picturepan2.github.io/spectre/#tabs"}
+     "\n                                    Radio\n                                "))
+   (li
+    {:class "tab-item"}
+    (a
+     {:shape "rect",
+      :href "https://picturepan2.github.io/spectre/#tabs"}
+     "\n                                    Connect\n                                ")))))
+(section
+ {:class "notes"}
+ (p
+  "If you need "
+  (code "badges")
+  " on tabs, you can add badge class to the element within "
+  (code "tab-item")
+  ". "))
+(pre
+ {:class "code lang-html"}
+ "<"
+ (span {:class "tag"} "ul")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"tab tab-block\"")
+ ">\n    <"
+ (span {:class "tag"} "li")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"tab-item active\"")
+ ">\n        <"
+ (span {:class "tag"} "a")
+ " "
+ (span {:class "atn"} "href")
+ "="
+ (span {:class "atv"} "\"#\"")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"badge\"")
+ " "
+ (span {:class "atn"} "data-badge")
+ "="
+ (span {:class "atv"} "\"9\"")
+ ">\n            Music\n        <"
+ (span {:class "tag"} "/a")
+ ">\n    <"
+ (span {:class "tag"} "/li")
+ ">\n<"
+ (span {:class "tag"} "/ul")
+ ">\n                ")
+(header
+ {:id "pagination", :class "text-center"}
+ (h5 "pagination"))
+(div
+ {:class "columns"}
+ (div
+  {:class "column"}
+  (ul
+   {:class "pagination"}
+   (li
+    {:class "page-item"}
+    (a
+     {:shape "rect",
+      :href
+      "https://picturepan2.github.io/spectre/#pagination"}
+     "\n                                    Previous\n                                "))
+   (li
+    {:class "page-item"}
+    (a
+     {:shape "rect",
+      :href
+      "https://picturepan2.github.io/spectre/#pagination"}
+     "\n                                    1\n                                "))
+   (li {:class "page-item"} (span "..."))
+   (li
+    {:class "page-item"}
+    (a
+     {:shape "rect",
+      :href
+      "https://picturepan2.github.io/spectre/#pagination"}
+     "\n                                    6\n                                "))
+   (li
+    {:class "page-item active"}
+    (a
+     {:shape "rect",
+      :href
+      "https://picturepan2.github.io/spectre/#pagination"}
+     "\n                                    7\n                                "))
+   (li
+    {:class "page-item"}
+    (a
+     {:shape "rect",
+      :href
+      "https://picturepan2.github.io/spectre/#pagination"}
+     "\n                                    8\n                                "))
+   (li {:class "page-item"} (span "..."))
+   (li
+    {:class "page-item"}
+    (a
+     {:shape "rect",
+      :href
+      "https://picturepan2.github.io/spectre/#pagination"}
+     "\n                                    12\n                                "))
+   (li
+    {:class "page-item"}
+    (a
+     {:shape "rect",
+      :href
+      "https://picturepan2.github.io/spectre/#pagination"}
+     "\n                                    Next\n                                "))))
+ (div
+  {:class "column"}
+  (ul
+   {:class "pagination"}
+   (li
+    {:class "page-item"}
+    (a
+     {:shape "rect",
+      :class "disabled",
+      :href
+      "https://picturepan2.github.io/spectre/#pagination"}
+     "\n                                    Previous\n                                "))
+   (li
+    {:class "page-item active"}
+    (a
+     {:shape "rect",
+      :href
+      "https://picturepan2.github.io/spectre/#pagination"}
+     "\n                                    1\n                                "))
+   (li
+    {:class "page-item"}
+    (a
+     {:shape "rect",
+      :href
+      "https://picturepan2.github.io/spectre/#pagination"}
+     "\n                                    2\n                                "))
+   (li
+    {:class "page-item"}
+    (a
+     {:shape "rect",
+      :href
+      "https://picturepan2.github.io/spectre/#pagination"}
+     "\n                                    3\n                                "))
+   (li {:class "page-item"} (span "..."))
+   (li
+    {:class "page-item"}
+    (a
+     {:shape "rect",
+      :href
+      "https://picturepan2.github.io/spectre/#pagination"}
+     "\n                                    12\n                                "))
+   (li
+    {:class "page-item"}
+    (a
+     {:shape "rect",
+      :href
+      "https://picturepan2.github.io/spectre/#pagination"}
+     "\n                                    Next\n                                ")))))
+(section
+ {:class "notes"}
+ (p
+  "Add a container element with the class "
+  (code "pagination")
+  ". And add child elements with the classname "
+  (code "page-item")
+  "."))
+(pre
+ {:class "code lang-html"}
+ "<"
+ (span {:class "tag"} "ul")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"pagination\"")
+ ">\n    <"
+ (span {:class "tag"} "li")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"page-item\"")
+ ">\n        <"
+ (span {:class "tag"} "a")
+ " "
+ (span {:class "atn"} "href")
+ "="
+ (span {:class "atv"} "\"#\"")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"disabled\"")
+ ">\n            Previous\n        <"
+ (span {:class "tag"} "/a")
+ ">\n    <"
+ (span {:class "tag"} "/li")
+ ">\n    <"
+ (span {:class "tag"} "li")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"page-item active\"")
+ ">\n        <"
+ (span {:class "tag"} "a")
+ " "
+ (span {:class "atn"} "href")
+ "="
+ (span {:class "atv"} "\"#\"")
+ ">\n            1\n        <"
+ (span {:class "tag"} "/a")
+ ">\n    <"
+ (span {:class "tag"} "/li")
+ ">\n    <"
+ (span {:class "tag"} "li")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"page-item\"")
+ ">\n        <"
+ (span {:class "tag"} "a")
+ " "
+ (span {:class "atn"} "href")
+ "="
+ (span {:class "atv"} "\"#\"")
+ ">\n            2\n        <"
+ (span {:class "tag"} "/a")
+ ">\n    <"
+ (span {:class "tag"} "/li")
+ ">\n    <"
+ (span {:class "tag"} "li")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"page-item\"")
+ ">\n        <"
+ (span {:class "tag"} "a")
+ " "
+ (span {:class "atn"} "href")
+ "="
+ (span {:class "atv"} "\"#\"")
+ ">\n            3\n        <"
+ (span {:class "tag"} "/a")
+ ">\n    <"
+ (span {:class "tag"} "/li")
+ ">\n    <"
+ (span {:class "tag"} "li")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"page-item\"")
+ ">\n        <"
+ (span {:class "tag"} "span")
+ ">...<"
+ (span {:class "tag"} "/span")
+ ">\n    <"
+ (span {:class "tag"} "/li")
+ ">\n    <"
+ (span {:class "tag"} "li")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"page-item\"")
+ ">\n        <"
+ (span {:class "tag"} "a")
+ " "
+ (span {:class "atn"} "href")
+ "="
+ (span {:class "atv"} "\"#\"")
+ ">\n            12\n        <"
+(span {:class "tag"} "/a")
+">\n    <"
+(span {:class "tag"} "/li")
+">\n    <"
+(span {:class "tag"} "li")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"page-item\"")
+">\n        <"
+(span {:class "tag"} "a")
+" "
+(span {:class "atn"} "href")
+"="
+(span {:class "atv"} "\"#\"")
+">\n            Next\n        <"
+(span {:class "tag"} "/a")
+">\n    <"
+(span {:class "tag"} "/li")
+">\n<"
+(span {:class "tag"} "/ul")
+">\n                "))
+(section
+ {:id "modals", :class "container grid-960"}
+ (header {:class "text-center"} (h4 "modals"))
+ (section
+  {:class "notes"}
+  (p (strong "Modals") " are flexible dialog prompts."))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column"}
+   (div
+    {:class "modal-temp"}
+    (div {:class "modal-overlay"})
+    (div
+     {:class "modal-container", :role "document"}
+     (div
+      {:class "modal-header"}
+      (button
+       {:type "button",
+        :class "btn btn-clear float-right",
+        :aria-label "Close"})
+      (div {:class "modal-title"} "Modal title"))
+     (div
+      {:class "modal-body"}
+      (div
+       {:class "content"}
+       (p
+        "\n                                        This is the content inside the modal.\n                                        ")
+       (h4 "Lorem ipsum")
+       (p
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus leo, dictum in vehicula sit amet, feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.")
+       (p
+        "Climb leg rub face on everything give attitude nap all day for under the bed. Chase mice attack feet but rub face on everything hopped up on goofballs.")
+       (h4 "Cupcake ipsum")
+       (p
+        "Jelly-o sesame snaps halvah croissant oat cake cookie. Cheesecake bear claw topping. Chupa chups apple pie carrot cake chocolate cake caramels.")
+       (p
+        "De braaaiiiins apocalypsi gorger omero prefrontal cortex undead survivor fornix dictum mauris. Hi brains mindless mortuis limbic cortex soulless creaturas optic nerve.")
+       (h4 "Candy ipsum")
+       (p
+        "Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar.")
+       (p
+        "Caerphilly swiss fromage frais. Brie cheese and wine fromage frais chalk and cheese danish fontina smelly cheese who moved my cheese cow.")))
+     (div
+      {:class "modal-footer"}
+      (button
+       {:type "submit", :class "btn btn-link"}
+       "Close")
+      (button
+       {:type "submit", :class "btn btn-primary"}
+       "Share"))))))
+ (section
+  {:class "notes"}
+  (p
+   "Add a container element with the class "
+   (code "modal")
+   ". And add a real container "
+   (code "modal-container")
+   " and overlay "
+   (code "modal-overlay")
+   " inside it. You can add child elements with the class name "
+   (code "modal-header")
+   ", "
+   (code "modal-content")
+   " and "
+   (code "modal-footer")
+   " - any or all of them. ")
+  (p
+   "Spectre.css does not include JavaScript code, you will need to implement your JS to interact with modals. To make a modal appear, add the class "
+   (code "active")
+   " to the "
+   (code "modal")
+   " container"))
+ (pre
+  {:class "code lang-html"}
+  "<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"modal active\"")
+  ">\n    <"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"modal-overlay\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n    <"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"modal-container\"")
+  ">\n        <"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"modal-header\"")
+  ">\n            <"
+  (span {:class "tag"} "button")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"btn btn-clear float-right\"")
+  "><"
+  (span {:class "tag"} "/button")
+  ">\n            <"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"modal-title\"")
+  ">Modal title<"
+  (span {:class "tag"} "/div")
+  ">\n        <"
+  (span {:class "tag"} "/div")
+  ">\n        <"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"modal-body\"")
+  ">\n            <"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"content\"")
+  ">\n                "
+  (span {:class "com"} "<!-- content here -->")
+  "\n            <"
+  (span {:class "tag"} "/div")
+  ">\n        <"
+  (span {:class "tag"} "/div")
+  ">\n        <"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"modal-footer\"")
+  ">\n            <"
+  (span {:class "tag"} "button")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"btn btn-link\"")
+  ">Close<"
+  (span {:class "tag"} "/button")
+  ">\n            <"
+  (span {:class "tag"} "button")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"btn btn-primary\"")
+  ">Share<"
+  (span {:class "tag"} "/button")
+  ">\n        <"
+  (span {:class "tag"} "/div")
+  ">\n    <"
+  (span {:class "tag"} "/div")
+  ">\n<"
+  (span {:class "tag"} "/div")
+  ">\n                ")
+(header {:class "text-center"} (h5 "modal sizes"))
+(div
+ {:class "columns"}
+ (div
+  {:class "column"}
+  (div
+   {:class "modal-temp modal-sm"}
+   (div {:class "modal-overlay"})
+   (div
+    {:class "modal-container", :role "document"}
+    (div
+     {:class "modal-header"}
+     (button
+      {:type "button",
+       :class "btn btn-clear float-right",
+       :aria-label "Close"})
+     (div {:class "modal-title"} "Modal title"))
+    (div
+     {:class "modal-body"}
+     (div
+      {:class "content"}
+      "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                                    "))
+    (div
+     {:class "modal-footer"}
+     (button
+      {:type "submit", :class "btn btn-link"}
+      "Close")
+     (button
+      {:type "submit", :class "btn btn-primary"}
+      "Share")))))
+ (div
+  {:class "column"}
+  (div
+   {:class "modal-temp modal-sm"}
+   (div {:class "modal-overlay"})
+   (div
+    {:class "modal-container", :role "document"}
+    (div
+     {:class "modal-header"}
+     (button
+      {:type "button",
+       :class "btn btn-clear float-right",
+       :aria-label "Close"})
+     (div {:class "modal-title"} "Modal title"))
+    (div
+     {:class "modal-body"}
+     (div
+      {:class "content"}
+      (form
+       {:enctype "application/x-www-form-urlencoded",
+        :method "get",
+        :lpformnum "1"}
+       (div
+        {:class "form-group"}
+        (label
+         {:for "input-example-7", :class "form-label"}
+         "Name")
+        (input
+         {:type "text",
+          :class "form-input",
+          :id "input-example-7",
+          :placeholder "Name"}))
+       (div
+        {:class "form-group"}
+        (label {:class "form-label"} "Gender")
+        (label
+         {:class "form-radio"}
+         (input {:type "radio", :name "gender"})
+         (i {:class "form-icon"})
+         " Male\n                                                ")
+        (label
+         {:class "form-radio"}
+         (input
+          {:checked "",
+           :type "radio",
+           :name "gender"})
+         (i {:class "form-icon"})
+         " Female\n                                                ")))))
+    (div
+     {:class "modal-footer"}
+     (button
+      {:type "submit", :class "btn btn-link"}
+      "Close")
+     (button
+      {:type "submit", :class "btn btn-primary"}
+      "Submit"))))))
+(section
+ {:class "notes"}
+ (p
+  "Add the class "
+  (code "modal-sm")
+  " for a smaller modal dialog. "))
+(pre
+ {:class "code lang-html"}
+ "<"
+ (span {:class "tag"} "div")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"modal modal-sm\"")
+ ">\n    <"
+ (span {:class "tag"} "div")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"modal-overlay\"")
+ "><"
+ (span {:class "tag"} "/div")
+ ">\n    <"
+ (span {:class "tag"} "div")
+ " "
+ (span {:class "atn"} "class")
+ "="
+ (span {:class "atv"} "\"modal-container\"")
+ ">\n        "
+ (span {:class "com"} "<!-- modal structure here -->")
+ "\n    <"
+ (span {:class "tag"} "/div")
+ ">\n<"
+ (span {:class "tag"} "/div")
+ ">\n                "))
+(section
+ {:id "cards", :class "container grid-960"}
+ (header {:class "text-center"} (h4 "cards"))
+ (section
+  {:class "notes"}
+  (p (strong "Cards") " are flexible content containers."))
+ (div
+  {:class "columns"}
+  (div
+   {:class "column col-4"}
+   (div
+    {:class "card"}
+    (div
+     {:class "card-image"}
+     (img
+      {:class "img-responsive",
+       :src "./spectre_files/osx-el-capitan.jpg"}))
+    (div
+     {:class "card-header"}
+     (h4 {:class "card-title"} "Microsoft")
+     (h6 {:class "card-meta"} "Software and hardware"))
+    (div
+     {:class "card-body"}
+     "\n                                Empower every person and every organization on the planet to achieve more.\n                            ")
+    (div
+     {:class "card-footer"}
+     (a
+      {:shape "rect",
+       :class "btn btn-primary",
+       :href "https://picturepan2.github.io/spectre/#"}
+      "Do"))))
+  (div
+   {:class "column col-4"}
+   (div
+    {:class "card"}
+    (div
+     {:class "card-header"}
+     (h4 {:class "card-title"} "Apple")
+     (h6 {:class "card-meta"} "Hardware and software"))
+    (div
+     {:class "card-image"}
+     (img
+      {:class "img-responsive",
+       :src "./spectre_files/osx-yosemite.jpg"}))
+    (div
+     {:class "card-body"}
+     "\n                                To make a contribution to the world by making tools for the mind that advance humankind.\n                            ")
+    (div
+     {:class "card-footer"}
+     (div
+      {:class "btn-group btn-group-block"}
+      (button
+       {:type "submit", :class "btn btn-primary"}
+       "Buy")
+      (button {:type "submit", :class "btn"} "Buy")
+      (button {:type "submit", :class "btn"} "Buy")))))
+  (div
+   {:class "column col-4"}
+   (div
+    {:class "card"}
+    (div
+     {:class "card-header"}
+     (h4 {:class "card-title"} "Google")
+     (h6 {:class "card-meta"} "Software and hardware"))
+    (div
+     {:class "card-body"}
+     "\n                                Organize the world’s information and make it universally accessible and useful.\n                            ")
+    (div
+     {:class "card-image"}
+     (img
+      {:class "img-responsive",
+       :src "./spectre_files/osx-yosemite-2.jpg"})))))
+ (section
+  {:class "notes"}
+  (p
+   "Add a container element with the class "
+   (code "card")
+   ". And add child elements with the class name "
+   (code "card-image")
+   ", "
+   (code "card-header")
+   ", "
+   (code "card-content")
+   " and/or "
+   (code "card-footer")
+   ". The "
+   (code "card-image")
+   " can be placed in any position. "))
+ (pre
+  {:class "code lang-html"}
+  "<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"card\"")
+  ">\n    <"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"card-image\"")
+  ">\n        <"
+  (span {:class "tag"} "img")
+  " "
+  (span {:class "atn"} "src")
+  "="
+  (span {:class "atv"} "\"img/osx-el-capitan.jpg\"")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"img-responsive\"")
+  " />\n    <"
+  (span {:class "tag"} "/div")
+  ">\n    <"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"card-header\"")
+  ">\n        <"
+  (span {:class "tag"} "h4")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"card-title\"")
+  ">Microsoft<"
+  (span {:class "tag"} "/h4")
+  ">\n        <"
+  (span {:class "tag"} "h6")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"card-meta\"")
+  ">Software and hardware<"
+  (span {:class "tag"} "/h6")
+  ">\n    <"
+  (span {:class "tag"} "/div")
+  ">\n    <"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"card-body\"")
+  ">\n        To make a contribution to the world by making tools for the mind that advance humankind.\n    <"
+  (span {:class "tag"} "/div")
+  ">\n    <"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"card-footer\"")
+  ">\n        <"
+  (span {:class "tag"} "button")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"btn btn-primary\"")
+  ">Do<"
+  (span {:class "tag"} "/button")
+  ">\n    <"
+  (span {:class "tag"} "/div")
+  ">\n<"
+  (span {:class "tag"} "/div")
+  ">\n                "))
+(section
+ {:id "utilities", :class "container grid-960"}
+ (section
+  {:class "notes text-center"}
+  (ul
+   {:class "tab inline-flex"}
+   (li
+    {:class "tab-item"}
+    (a
+     {:shape "rect",
+      :href
+      "https://picturepan2.github.io/spectre/#elements"}
+     "\n                                elements\n                            "))
+   (li
+    {:class "tab-item"}
+    (a
+     {:shape "rect",
+      :href "https://picturepan2.github.io/spectre/#layout"}
+     "\n                                layout\n                            "))
+   (li
+    {:class "tab-item"}
+    (a
+     {:shape "rect",
+      :href
+      "https://picturepan2.github.io/spectre/#components"}
+     "\n                                components\n                            "))
+   (li
+    {:class "tab-item active"}
+    (a
+     {:shape "rect",
+      :href
+      "https://picturepan2.github.io/spectre/#utilities"}
+     "\n                                utilities\n                            "))))
+ (section
+  {:class "notes text-center"}
+  (div
+   {:class "btn-group"}
+   (a
+    {:shape "rect",
+     :class "btn btn-primary",
+     :href "https://picturepan2.github.io/spectre/#position"}
+    "position")
+   (a
+    {:shape "rect",
+     :class "btn btn-primary",
+     :href "https://picturepan2.github.io/spectre/#display"}
+    "display")
+   (a
+    {:shape "rect",
+     :class "btn btn-primary",
+     :href "https://picturepan2.github.io/spectre/#text"}
+    "text")
+   (a
+    {:shape "rect",
+     :class "btn btn-primary",
+     :href "https://picturepan2.github.io/spectre/#shapes"}
+    "shapes")
+   (a
+    {:shape "rect",
+     :class "btn btn-primary",
+     :href "https://picturepan2.github.io/spectre/#loading"}
+    "loading"))))
+(section
+ {:id "position", :class "container grid-960"}
+ (section
+  {:class "notes"}
+  (p
+   (strong "Position utilities")
+   " are used for useful layout and position things, including clearfix, float, position and margin/padding utilities."))
+ (pre
+  {:class "code lang-html"}
+  (span {:class "com"} "<!-- clear float -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"clearfix\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n"
+  (span {:class "com"} "<!-- float: left and right-->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"float-left\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"float-right\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n"
+  (span
+   {:class "com"}
+   "<!-- position: relative, absolute and fixed-->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"rel\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"abs\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"fixed\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n"
+  (span {:class "com"} "<!-- centered block -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"centered\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n"
+  (span
+   {:class "com"}
+   "<!-- margin: 10px and 5px in 4 directions. mt-10 = margin-top: 10px; -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"mt-10\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"mt-5\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n"
+  (span
+   {:class "com"}
+   "<!-- padding: 10px and 5px in 4 directions. pt-10 = padding-top: 10px; -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"pt-10\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n<"
+  (span {:class "tag"} "div")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"pt-5\"")
+"><"
+(span {:class "tag"} "/div")
+">\n                "))
+(section
+ {:id "display", :class "container grid-960"}
+ (section
+  {:class "notes"}
+  (p
+   (strong "Display utilities")
+   " are used for display and hidden things."))
+ (pre
+  {:class "code lang-html"}
+  (span {:class "com"} "<!-- display: block; -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"block\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n"
+  (span {:class "com"} "<!-- display: inline; -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"inline\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n"
+  (span {:class "com"} "<!-- display: inline-block; -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"inline-block\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n"
+  (span {:class "com"} "<!-- display: flex; -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"flex\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n"
+  (span {:class "com"} "<!-- display: inline-flex; -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"inline-flex\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n"
+  (span {:class "com"} "<!-- display: none; -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"hide\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n"
+  (span {:class "com"} "<!-- visibility: visible; -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"visible\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n"
+  (span {:class "com"} "<!-- visibility: hidden; -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"invisible\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n"
+  (span {:class "com"} "<!-- hide text contents -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"text-hide\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n                "))
+(section
+ {:id "text", :class "container grid-960"}
+ (section
+  {:class "notes"}
+  (p
+   (strong "Text utilities")
+   " are used for text alignment, styles and overflow things."))
+ (pre
+  {:class "code lang-html"}
+  (span {:class "com"} "<!-- left-aligned text -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"text-left\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n"
+  (span {:class "com"} "<!-- center-aligned text -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"text-center\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n"
+  (span {:class "com"} "<!-- right-aligned text -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"text-right\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n"
+  (span {:class "com"} "<!-- justified text -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"text-justify\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n\n"
+  (span {:class "com"} "<!-- Lowercased text -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"text-lowercase\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n"
+  (span {:class "com"} "<!-- Uppercased text -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"text-uppercase\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n"
+  (span {:class "com"} "<!-- Capitalized text -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"text-capitalize\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n\n"
+  (span {:class "com"} "<!-- Normal weight text -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"text-normal\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n"
+  (span {:class "com"} "<!-- Bold text -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"text-bold\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n"
+  (span {:class "com"} "<!-- Italicized text -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"text-italic\"")
+  "><"
+  (span {:class "tag"} "/div")
+">\n\n"
+(span
+ {:class "com"}
+ "<!-- Overflow behavior: display an ellipsis to represent clipped text -->")
+"\n<"
+(span {:class "tag"} "div")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"text-ellipsis\"")
+"><"
+(span {:class "tag"} "/div")
+">\n"
+(span
+ {:class "com"}
+ "<!-- Overflow behavior: truncate the text -->")
+"\n<"
+(span {:class "tag"} "div")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"text-clip\"")
+"><"
+(span {:class "tag"} "/div")
+">\n"
+(span
+ {:class "com"}
+ "<!-- Text may be broken at arbitrary points -->")
+"\n<"
+(span {:class "tag"} "div")
+" "
+(span {:class "atn"} "class")
+"="
+(span {:class "atv"} "\"text-break\"")
+"><"
+(span {:class "tag"} "/div")
+">\n                "))
+(section
+ {:id "shapes", :class "container grid-960"}
+ (section
+  {:class "notes"}
+  (p
+   (strong "Shape utilities")
+   " are used for change element shapes."))
+ (pre
+  {:class "code lang-html"}
+  (span {:class "com"} "<!-- rounded element -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"rounded\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n"
+  (span {:class "com"} "<!-- circle element -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"circle\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n                "))
+(section
+ {:id "divider", :class "container grid-960"}
+ (section
+  {:class "notes"}
+  (p
+   "A "
+   (strong "Divider")
+   " is used for separating elements."))
+ (div
+  {:class "columns"}
+  (div {:class "column"} (div {:class "divider"})))
+ (pre
+  {:class "code lang-html"}
+  (span {:class "com"} "<!-- divider element -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"divider\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n                "))
+(section
+ {:id "loading", :class "container grid-960"}
+ (section
+  {:class "notes"}
+  (p
+   (strong "Loading indicator")
+   " is used for loading or updating. Also, you can add the class "
+   (code "loading")
+   " to buttons for loading status."))
+ (div
+  {:class "columns"}
+  (div {:class "column"} (div {:class "loading"})))
+ (pre
+  {:class "code lang-html"}
+  (span {:class "com"} "<!-- loading element -->")
+  "\n<"
+  (span {:class "tag"} "div")
+  " "
+  (span {:class "atn"} "class")
+  "="
+  (span {:class "atv"} "\"loading\"")
+  "><"
+  (span {:class "tag"} "/div")
+  ">\n                ")))
+  (footer
+   {:class "bg-grey"}
+   (section
+    {:id "copyright", :class "grid-footer container grid-960"}
+    (p
+     (a
+      {:shape "rect",
+       :href "https://github.com/picturepan2/spectre",
+       :target "_blank"}
+      "GitHub Repo")
+     " | "
+     (a
+      {:shape "rect",
+       :href "https://picturepan2.github.io/spectre/#"}
+      "Back to top")
+     " | version: 0.1.24\n                ")
+    (p
+     "Designed and built with love by "
+     (a
+      {:shape "rect",
+       :href "https://twitter.com/picturepan2",
+       :target "_blank"}
+      "Yan Zhu")
+     ". Licensed under the "
+     (a
+      {:shape "rect",
+       :href
+       "https://github.com/picturepan2/spectre/blob/master/LICENSE",
+       :target "_blank"}
+      "MIT License")
+     ".")))
   (h1 "Hoplon Spectre Demo")
   (s/header (h1 "typography"))
   (s/header (h2 "headings"))
