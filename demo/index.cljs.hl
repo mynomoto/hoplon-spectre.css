@@ -304,82 +304,58 @@
      " sets default styles for headings, paragraphs, blockquote, lists and code elements. "))
    (s/header (h5 "headings"))
    (h1 "H1 Title " (small :class "label" "5rem"))
-   (h2 "H2 Title" (small :class "label" "4rem"))
-   (h3 "H3 Title" (small :class "label" "3rem"))
-   (h4 "H4 Title" (small :class "label" "2.4rem"))
-   (h5 "H5 Title" (small :class "label" "2rem"))
-   (h6 "H6 Title" (small :class "label" "1.6rem"))
+   (h2 "H2 Title " (small :class "label" "4rem"))
+   (h3 "H3 Title " (small :class "label" "3rem"))
+   (h4 "H4 Title " (small :class "label" "2.4rem"))
+   (h5 "H5 Title " (small :class "label" "2rem"))
+   (h6 "H6 Title " (small :class "label" "1.6rem"))
    (hl/highlight
-    :class "html"
-    "<h1>H1 Title</h1>
-<h2>H2 Title <small class=\"label\">4rem</small></h2>")
-   (pre
-    {:class "code lang-html"}
-    "<"
-    (span {:class "tag"} "h1")
-    ">H1 Title<"
-    (span {:class "tag"} "/h1")
-    ">\n<"
-    (span {:class "tag"} "h2")
-    ">H2 Title <"
-    (span {:class "tag"} "small")
-    " "
-    (span {:class "atn"} "class")
-    "="
-    (span {:class "atv"} "\"label\"")
-    ">4rem<"
-    (span {:class "tag"} "/small")
-    "><"
-    (span {:class "tag"} "/h2")
-    ">\n                ")
+    :class "clojure"
+    ;;{{
+    (h1 "H1 Title " (small :class "label" "5rem"))
+    (h2 "H2 Title " (small :class "label" "4rem"))
+    (h3 "H3 Title " (small :class "label" "3rem"))
+    (h4 "H4 Title " (small :class "label" "2.4rem"))
+    (h5 "H5 Title " (small :class "label" "2rem"))
+    (h6 "H6 Title " (small :class "label" "1.6rem"))
+    ;;}}
+    )
    (header {:class "text-center"} (h5 "paragraphs"))
    (p
     "Lorem ipsum dolor sit amet, "
-    (span {:class "highlight"} "consectetur")
+    (span
+     :class "highlight"
+     "consectetur")
     " adipiscing elit. Praesent risus leo, "
     (a
-     {:shape "rect",
-      :href "https://picturepan2.github.io/spectre/#typography"}
+     :href "#typography"
      "dictum in vehicula sit amet")
     ", feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.")
    (p
-    {:class "lead"}
+    :class "lead"
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
-   (pre
-    {:class "code lang-html"}
-    "<"
-    (span {:class "tag"} "p")
-    ">Lorem ipsum dolor sit amet, <"
-    (span {:class "tag"} "span")
-    " "
-    (span {:class "atn"} "class")
-    "="
-    (span {:class "atv"} "\"highlight\"")
-    ">consectetur<"
-    (span {:class "tag"} "/span")
-    "> adipiscing elit. Praesent risus leo, <"
-    (span {:class "tag"} "a")
-    " "
-    (span {:class "atn"} "href")
-    "="
-    (span {:class "atv"} "\"#\"")
-    ">dictum in vehicula sit amet<"
-    (span {:class "tag"} "/a")
-    ">, feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.<"
-    (span {:class "tag"} "/p")
-    ">\n<"
-    (span {:class "tag"} "p")
-    " "
-    (span {:class "atn"} "class")
-    "="
-    (span {:class "atv"} "\"lead\"")
-    ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<"
-    (span {:class "tag"} "/p")
-    ">\n                ")
-   (header
-    {:class "text-center"}
-    (h5 "optimized for asian fonts"))
-   (p {:class "lead"} "你好, こんにちは, 안녕하세요")
+   (hl/highlight
+    :class "clojure"
+    ;;{{
+    (p
+     "Lorem ipsum dolor sit amet, "
+     (span
+      :class "highlight"
+      "consectetur")
+     " adipiscing elit. Praesent risus leo, "
+     (a
+      :href "#typography"
+      "dictum in vehicula sit amet")
+     ", feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.")
+    (p
+     :class "lead"
+     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
+    ;;}}
+    )
+   (s/header (h5 "optimized for asian fonts"))
+   (p
+    :class "lead"
+    "好, こんにちは, 안녕하세요")
    (h6 "Chinese (Simplified)")
    (p
     "革命不是请客吃饭，不是做文章，不是绘画绣花，不能那样雅致，那样从容不迫，“文质彬彬”，那样“温良恭俭让”。革命就是暴动，是一个阶级推翻一个阶级的暴烈的行动。")
@@ -389,113 +365,86 @@
    (h6 "Korean")
    (p
     "나라말이 중국과 달라, 한문・한자와 서로 통하지 아니하므로, 어리석은 백성들이 말하고자 하는 바가 있어도, 끝내 제 뜻을 펴지 못하는 사람이 많다. 내가 이를 불쌍히 여겨, 새로 스물 여덟 글자를 만드니, 사람마다 하여금 쉽게 익혀, 날마다 씀에 편하게 하고자 할 따름이다.")
-   (header {:class "text-center"} (h5 "blockquote"))
+   (s/header (h5 "blockquote"))
    (blockquote
     (p
      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
     (cite "- Source"))
-   (pre
-    {:class "code lang-html"}
-    "<"
-    (span {:class "tag"} "blockquote")
-    ">\n    <"
-    (span {:class "tag"} "p")
-    ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<"
-    (span {:class "tag"} "/p")
-    ">\n    <"
-    (span {:class "tag"} "cite")
-    ">- Source<"
-    (span {:class "tag"} "/cite")
-    ">\n<"
-    (span {:class "tag"} "/blockquote")
-    ">\n                ")
-(header {:class "text-center"} (h5 "lists"))
-(div
- {:class "columns"}
- (div
-  {:class "column col-4"}
-  (ul
-   {:class "list"}
-   (li "list item 1")
-   (li
-    "list item 2\n                                "
+   (hl/highlight
+    :class "clojure"
+    ;;{{
+    (blockquote
+     (p
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
+     (cite "- Source"))
+    ;;}}
+    )
+   (s/header (h5 "lists"))
+   (div
+    :class "columns"
+    (div
+     :class "column col-4"
+     (ul
+      :class "list"
+      (li "list item 1")
+      (li "list item 2"
+       (ul
+        (li "list item 2.1")
+        (li "list item 2.2")
+        (li "list item 2.3")))
+      (li "list item 3")))
+    (div
+     :class "column col-4"
+     (ol
+      :class "list"
+      (li "list item 1")
+      (li "list item 2"
+       (ol
+        (li "list item 2.1")
+        (li "list item 2.2")
+        (li "list item 2.3")))
+      (li "list item 3")))
+    (div
+     :class "column col-4"
+     (dl
+      :class "list"
+      (dt "description list term 1")
+      (dd "description list description 1")
+      (dt "description list term 2")
+      (dd "description list description 2")
+      (dt "description list term 3")
+      (dd "description list description 3"))))
+   (hl/highlight
+    :class "clojure"
+    ;;{{
     (ul
-     (li "list item 2.1")
-     (li "list item 2.2")
-     (li "list item 2.3")))
-   (li "list item 3")))
- (div
-  {:class "column col-4"}
-  (ol
-   {:class "list"}
-   (li "list item 1")
-   (li
-    "list item 2\n                                "
+     :class "list"
+     (li "list item 1")
+     (li "list item 2"
+         (ul
+          (li "list item 2.1")
+          (li "list item 2.2")
+          (li "list item 2.3")))
+     (li "list item 3"))
     (ol
-     (li "list item 2.1")
-     (li "list item 2.2")
-     (li "list item 2.3")))
-   (li "list item 3")))
- (div
-  {:class "column col-4"}
-  (dl
-   {:class "list"}
-   (dt "description list term 1")
-   (dd "description list description 1")
-   (dt "description list term 2")
-   (dd "description list description 2")
-   (dt "description list term 3")
-   (dd "description list description 3"))))
-(pre
- {:class "code lang-html"}
- (span {:class "com"} "<!-- unordered list -->")
- "\n<"
- (span {:class "tag"} "ul")
- ">\n    <"
- (span {:class "tag"} "li")
- ">list item 1<"
- (span {:class "tag"} "/li")
- ">\n    <"
- (span {:class "tag"} "li")
- ">list item 2\n        <"
- (span {:class "tag"} "ul")
- ">\n            <"
- (span {:class "tag"} "li")
- ">list item 2.1<"
- (span {:class "tag"} "/li")
- ">\n            <"
- (span {:class "tag"} "li")
- ">list item 2.2<"
- (span {:class "tag"} "/li")
- ">\n            <"
- (span {:class "tag"} "li")
- ">list item 2.3<"
- (span {:class "tag"} "/li")
- ">\n        <"
- (span {:class "tag"} "/ul")
- ">\n    <"
- (span {:class "tag"} "/li")
- ">\n    <"
- (span {:class "tag"} "li")
- ">list item 3<"
- (span {:class "tag"} "/li")
- ">\n<"
- (span {:class "tag"} "/ul")
- ">\n\n"
- (span {:class "com"} "<!-- description list -->")
- "\n<"
- (span {:class "tag"} "dl")
- ">\n    <"
- (span {:class "tag"} "dt")
- ">description list term<"
- (span {:class "tag"} "/dt")
- ">\n    <"
- (span {:class "tag"} "dd")
- ">description list description<"
- (span {:class "tag"} "/dd")
- ">\n<"
- (span {:class "tag"} "/dl")
- ">\n                ")))
+     :class "list"
+     (li "list item 1")
+     (li "list item 2"
+         (ol
+          (li "list item 2.1")
+          (li "list item 2.2")
+          (li "list item 2.3")))
+     (li "list item 3"))
+    (dl
+     :class "list"
+     (dt "description list term 1")
+     (dd "description list description 1")
+     (dt "description list term 2")
+     (dd "description list description 2")
+     (dt "description list term 3")
+     (dd "description list description 3"))
+    ;;}}
+    )))
 
 (html
  html-head

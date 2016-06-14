@@ -3,6 +3,10 @@ header > h5 {
   margin-top: 4rem;
   margin-bottom: 2rem;
 }
+code {
+  white-space: pre;
+  padding-left: 0;
+}
 .bg-grey {
   background-color: #efefef;
   padding: 1rem;

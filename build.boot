@@ -1,17 +1,22 @@
 (set-env!
- :dependencies '[[adzerk/boot-cljs "1.7.228-1" :scope "provided"]
-                 [adzerk/boot-reload "0.4.8" :scope "provided"]
+ :dependencies '[[org.clojure/clojure "1.9.0-alpha5" :scope "provided"]
+
+                 [org.clojure/clojurescript "1.9.36" :scope "provided"]
+                 [adzerk/boot-cljs "1.7.228-1" :scope "provided"]
+
+                 [adzerk/boot-reload "0.4.8" :scope "test"]
+                 [tailrecursion/boot-jetty "0.1.3" :scope "test"]
+
                  [hoplon/boot-hoplon "0.1.13" :scope "provided"]
                  [hoplon/hoplon "6.0.0-alpha16" :scope "provided"]
-                 [org.clojure/clojure "1.9.0-alpha5" :scope "provided"]
-                 [org.clojure/clojurescript "1.9.36" :scope "provided"]
-                 [tailrecursion/boot-jetty "0.1.3" :scope "provided"]]
+                 [tailrecursion/boot-heredoc "0.1.1" :scope "test"]]
  :source-paths #{"src"})
 
 (require
  '[adzerk.boot-cljs         :refer [cljs]]
  '[adzerk.boot-reload       :refer [reload]]
  '[hoplon.boot-hoplon       :refer [hoplon]]
+ '[boot.heredoc             :refer  [heredoc]]
  '[tailrecursion.boot-jetty :refer [serve]])
 
 (deftask demo
@@ -28,6 +33,7 @@
    (demo)
    (watch)
    (speak)
+   (heredoc)
    (hoplon)
    (reload)
    (cljs)
@@ -37,6 +43,7 @@
   "Build hoplon-spectre for production deployment."
   []
   (comp
+   (heredoc)
    (hoplon)
    (cljs :optimizations :advanced)
    (target :dir #{"target"})))
