@@ -426,6 +426,7 @@
           (li "list item 2.2")
           (li "list item 2.3")))
      (li "list item 3"))
+
     (ol
      :class "list"
      (li "list item 1")
@@ -435,6 +436,7 @@
           (li "list item 2.2")
           (li "list item 2.3")))
      (li "list item 3"))
+
     (dl
      :class "list"
      (dt "description list term 1")
@@ -443,6 +445,106 @@
      (dd "description list description 2")
      (dt "description list term 3")
      (dd "description list description 3"))
+    ;;}}
+    )))
+
+(def tables-section
+  (section
+   :id "tables"
+   :class "container grid-960"
+   (s/header (h4 "tables"))
+   (section
+    :class "notes"
+    (p
+     (strong "Tables")
+     " include default styles for tables and data sets."))
+   (table
+    :class "table table-striped table-hover"
+    (thead
+     (tr
+      (th :colspan "1" :rowspan "1" "name")
+      (th :colspan "1" :rowspan "1" "duration")
+      (th :colspan "1" :rowspan "1" "genre")
+      (th :colspan "1" :rowspan "1" "release date")))
+    (tbody
+     (tr
+      (td
+       :colspan "1" :rowspan "1"
+       "The Shawshank Redemption")
+      (td :colspan "1" :rowspan "1" "2h 22min")
+      (td :colspan "1" :rowspan "1" "Crime, Drama")
+      (td :colspan "1" :rowspan "1" "14 October 1994 "
+          (span :class "label" "USA")))
+     (tr
+      (td :colspan "1" :rowspan "1" "The Godfather")
+      (td :colspan "1" :rowspan "1" "2h 55min")
+      (td :colspan "1" :rowspan "1" "Crime, Drama")
+      (td :colspan "1" :rowspan "1" "24 March 1972 "
+          (span :class "label" "USA")))
+     (tr
+      (td :colspan "1" :rowspan "1" "Schindler's List")
+      (td :colspan "1" :rowspan "1" "3h 15min")
+      (td :colspan "1" :rowspan "1" "Biography, Drama, History")
+      (td :colspan "1" :rowspan "1" "4 February 1994 "
+          (span :class "label" "USA")))
+     (tr
+      (td :colspan "1" :rowspan "1" "Se7en")
+      (td :colspan "1" :rowspan "1" "2h 7min")
+      (td :colspan "1" :rowspan "1" "Crime, Drama, Mystery")
+      (td :colspan "1" :rowspan "1" "24 March 1972"
+          (span :class "label" "USA")))))
+   (section
+    :class "notes"
+    (p
+     "Add the class "
+     (code "table")
+     " to any <table> element. The class will add padding, border and emphasized table header. Use "
+     (code "table-striped")
+     " to <table> to add zebra striped style. For hoverable table rows, you can add the class "
+     (code "table-hover")
+     " to enable hover style. ")
+    (p
+     "Use the class "
+     (code "selected")
+     " to make <tr> element highlighted. "))
+   (hl/highlight
+    :class "clojure"
+    ;;{{
+    (table
+     :class "table table-striped table-hover"
+     (thead
+      (tr
+       (th :colspan "1" :rowspan "1" "name")
+       (th :colspan "1" :rowspan "1" "duration")
+       (th :colspan "1" :rowspan "1" "genre")
+       (th :colspan "1" :rowspan "1" "release date")))
+     (tbody
+      (tr
+       (td
+        :colspan "1" :rowspan "1"
+        "The Shawshank Redemption")
+       (td :colspan "1" :rowspan "1" "2h 22min")
+       (td :colspan "1" :rowspan "1" "Crime, Drama")
+       (td :colspan "1" :rowspan "1" "14 October 1994 "
+        (span :class "label" "USA")))
+      (tr
+       (td :colspan "1" :rowspan "1" "The Godfather")
+       (td :colspan "1" :rowspan "1" "2h 55min")
+       (td :colspan "1" :rowspan "1" "Crime, Drama")
+       (td :colspan "1" :rowspan "1" "24 March 1972 "
+        (span :class "label" "USA")))
+      (tr
+       (td :colspan "1" :rowspan "1" "Schindler's List")
+       (td :colspan "1" :rowspan "1" "3h 15min")
+       (td :colspan "1" :rowspan "1" "Biography, Drama, History")
+       (td :colspan "1" :rowspan "1" "4 February 1994 "
+        (span :class "label" "USA")))
+      (tr
+       (td :colspan "1" :rowspan "1" "Se7en")
+       (td :colspan "1" :rowspan "1" "2h 7min")
+       (td :colspan "1" :rowspan "1" "Crime, Drama, Mystery")
+       (td :colspan "1" :rowspan "1" "24 March 1972"
+        (span :class "label" "USA")))))
     ;;}}
     )))
 
@@ -456,136 +558,7 @@
    compiling-custom-version
    elements-header
    typography-section
-   (section
-    {:id "tables", :class "container grid-960"}
-    (header {:class "text-center"} (h4 "tables"))
-    (section
-     {:class "notes"}
-     (p
-      (strong "Tables")
-      " include default styles for tables and data sets."))
-    (table
-     {:class "table table-striped table-hover"}
-     (thead
-      (tr
-       (th {:colspan "1", :rowspan "1"} "name")
-       (th {:colspan "1", :rowspan "1"} "duration")
-       (th {:colspan "1", :rowspan "1"} "genre")
-       (th {:colspan "1", :rowspan "1"} "release date")))
-     (tbody
-      (tr
-       (td
-        {:colspan "1", :rowspan "1"}
-        "The Shawshank Redemption")
-       (td {:colspan "1", :rowspan "1"} "2h 22min")
-       (td {:colspan "1", :rowspan "1"} "Crime, Drama")
-       (td
-        {:colspan "1", :rowspan "1"}
-        "14 October 1994 "
-        (span {:class "label"} "USA")))
-      (tr
-       (td {:colspan "1", :rowspan "1"} "The Godfather")
-       (td {:colspan "1", :rowspan "1"} "2h 55min")
-       (td {:colspan "1", :rowspan "1"} "Crime, Drama")
-       (td
-        {:colspan "1", :rowspan "1"}
-        "24 March 1972 "
-        (span {:class "label"} "USA")))
-      (tr
-       (td {:colspan "1", :rowspan "1"} "Schindler's List")
-       (td {:colspan "1", :rowspan "1"} "3h 15min")
-       (td
-        {:colspan "1", :rowspan "1"}
-        "Biography, Drama, History")
-       (td
-        {:colspan "1", :rowspan "1"}
-        "4 February 1994 "
-        (span {:class "label"} "USA")))
-      (tr
-       (td {:colspan "1", :rowspan "1"} "Se7en")
-       (td {:colspan "1", :rowspan "1"} "2h 7min")
-       (td {:colspan "1", :rowspan "1"} "Crime, Drama, Mystery")
-       (td
-        {:colspan "1", :rowspan "1"}
-        "24 March 1972 "
-        (span {:class "label"} "USA")))))
-    (section
-     {:class "notes"}
-     (p
-      "Add the class "
-      (code "table")
-      " to any <table> element. The class will add padding, border and emphasized table header. Use "
-      (code "table-striped")
-      " to <table> to add zebra striped style. For hoverable table rows, you can add the class "
-      (code "table-hover")
-      " to enable hover style. ")
-     (p
-      "Use the class "
-      (code "selected")
-      " to make <tr> element highlighted. "))
-    (pre
-     {:class "code lang-html"}
-     "<"
-     (span {:class "tag"} "table")
-     " "
-     (span {:class "atn"} "class")
-     "="
-     (span {:class "atv"} "\"table table-striped table-hover\"")
-     ">\n    <"
-     (span {:class "tag"} "thead")
-     ">\n        <"
-     (span {:class "tag"} "tr")
-     ">\n            <"
-     (span {:class "tag"} "th")
-     ">name<"
-     (span {:class "tag"} "/th")
-     ">\n            <"
-     (span {:class "tag"} "th")
-     ">duration<"
-     (span {:class "tag"} "/th")
-     ">\n            <"
-     (span {:class "tag"} "th")
-     ">genre<"
-     (span {:class "tag"} "/th")
-     ">\n            <"
-     (span {:class "tag"} "th")
-     ">release date<"
-     (span {:class "tag"} "/th")
-     ">\n        <"
-     (span {:class "tag"} "/tr")
-     ">\n    <"
-     (span {:class "tag"} "/thead")
-     ">\n    <"
-     (span {:class "tag"} "tbody")
-     ">\n        <"
-     (span {:class "tag"} "tr")
-     " "
-     (span {:class "atn"} "class")
-     "="
-     (span {:class "atv"} "\"selected\"")
-     ">\n            <"
-     (span {:class "tag"} "td")
-     ">The Shawshank Redemption<"
-     (span {:class "tag"} "/td")
-     ">\n            <"
-     (span {:class "tag"} "td")
-     ">2h 22min<"
-     (span {:class "tag"} "/td")
-     ">\n            <"
-     (span {:class "tag"} "td")
-     ">Crime, Drama<"
-     (span {:class "tag"} "/td")
-     ">\n            <"
-     (span {:class "tag"} "td")
-     ">14 October 1994<"
-     (span {:class "tag"} "/td")
-     ">\n        <"
-     (span {:class "tag"} "/tr")
-     ">\n    <"
-     (span {:class "tag"} "/tbody")
-     ">\n<"
-     (span {:class "tag"} "/table")
-     ">\n                "))
+   tables-section
 (section
  {:id "buttons", :class "container grid-960"}
  (header {:class "text-center"} (h4 "buttons"))
