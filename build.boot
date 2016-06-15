@@ -1,5 +1,5 @@
 (set-env!
- :dependencies '[[org.clojure/clojure "1.9.0-alpha5" :scope "provided"]
+ :dependencies '[[org.clojure/clojure "1.9.0-alpha6" :scope "provided"]
 
                  [org.clojure/clojurescript "1.9.36" :scope "provided"]
                  [adzerk/boot-cljs "1.7.228-1" :scope "provided"]
@@ -10,13 +10,13 @@
                  [hoplon/boot-hoplon "0.1.13" :scope "provided"]
                  [hoplon/hoplon "6.0.0-alpha16" :scope "provided"]
                  [tailrecursion/boot-heredoc "0.1.1" :scope "test"]]
- :source-paths #{"src"})
+ :resource-paths #{"src"})
 
 (require
  '[adzerk.boot-cljs         :refer [cljs]]
  '[adzerk.boot-reload       :refer [reload]]
  '[hoplon.boot-hoplon       :refer [hoplon]]
- '[boot.heredoc             :refer  [heredoc]]
+ '[boot.heredoc             :refer [heredoc]]
  '[tailrecursion.boot-jetty :refer [serve]])
 
 (deftask demo
