@@ -216,84 +216,6 @@
       :href "#media"
       "media")))))
 
-(def ty
-  [
-   (h1 "H1 Title")
-   (h2 "H2 Title" (small :class "label" "4rem"))
-   (h3 "H3 Title" (small :class "label" "3rem"))
-   (h4 "H4 Title" (small :class "label" "2.4rem"))
-   (h5 "H5 Title" (small :class "label" "2rem"))
-   (h6 "H6 Title" (small :class "label" "1.6rem"))
-   (s/header (h2 "paragraphs"))
-   (p
-    "Lorem ipsum dolor sit amet, "
-    (span
-     :class "highlight"
-     "consectetur")
-    " adipiscing elit. Praesent risus leo, "
-    (a :href "#" "dictum in vehicula sit amet")
-    ", feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.")
-   (p
-    :class "lead"
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
-   (s/header (h2 "blockquote"))
-   (blockquote
-    (p "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
-    (cite " - Source"))
-   (s/header (h2 "lists"))
-   (ul
-    (li "list item 1")
-    (li
-     "list item 2"
-     (ul
-      (li "list item 2.1")
-      (li "list item 2.2")
-      (li "list item 2.3")))
-    (li "list item 3"))
-   (ol
-    (li "list item 1")
-    (li
-     "list item 2"
-     (ul
-      (li "list item 2.1")
-      (li "list item 2.2")
-      (li "list item 2.3")))
-    (li "list item 3"))
-   (dl
-    (dt "description list term")
-    (dd "description list description"))
-   (s/header (h2 "tables"))
-   (table
-    :class "table table-striped table-hover"
-    (thead
-     (tr
-      (th "name")
-      (th "duration")
-      (th "genre")
-      (th "release date")))
-    (tbody
-     (tr
-      (td "The Shawshank Redemption")
-      (td "2h 22min")
-      (td "Crime, Drama")
-      (td "14 October 1994" (span :class "label" "USA")))
-     (tr
-      (td "The Godfather")
-      (td "2h 55min")
-      (td "Crime, Drama")
-      (td "24 March 1972" (span :class "label" "USA")))
-     (tr
-      (td "Schindler's List")
-      (td "3h 15min")
-      (td "Biography, Drama, History")
-      (td "4 February 1994" (span :class "label" "USA")))
-     (tr
-      (td "Se7en")
-      (td "2h 7min")
-      (td "Crime, Drama, Mystery")
-      (td "24 March 1972" (span :class "label" "USA")))))
-   ])
-
 (def typography-section
   (section
    :id "typography", :class "container grid-960"
@@ -629,377 +551,307 @@
     ;;}}
     )
    (div
-    {:class "columns"}
+    :class "columns"
     (div
-     {:class "column"}
+     :class "column"
      (button
-      {:type "submit", :class "btn btn-primary btn-lg"}
-      (span {:class "icon icon-markunread"})
+      :class "btn btn-primary btn-lg"
+      (span :class "icon icon-markunread")
       " large")
      (button
-      {:type "submit", :class "btn btn-primary"}
-      (span {:class "icon icon-markunread"})
+      :class "btn btn-primary"
+      (span :class "icon icon-markunread")
       " normal")
      (button
-      {:type "submit", :class "btn btn-primary btn-sm"}
-      (span {:class "icon icon-markunread"})
+      :class "btn btn-primary btn-sm"
+      (span :class "icon icon-markunread")
       " small")))
-(section
- {:class "notes"}
- (p
-  "Icons with the class "
-  (code "icon")
-  " can be correctly rendered in each button size. "))
-(pre
- {:class "code lang-html"}
- "<"
- (span {:class "tag"} "button")
- " "
- (span {:class "atn"} "class")
- "="
- (span {:class "atv"} "\"btn btn-primary btn-lg\"")
- "><"
- (span {:class "tag"} "span")
- " "
- (span {:class "atn"} "class")
- "="
- (span {:class "atv"} "\"icon icon-markunread\"")
- "><"
- (span {:class "tag"} "/span")
- "> large<"
- (span {:class "tag"} "/button")
- ">\n<"
- (span {:class "tag"} "button")
- " "
- (span {:class "atn"} "class")
- "="
- (span {:class "atv"} "\"btn btn-primary\"")
- "><"
- (span {:class "tag"} "span")
- " "
- (span {:class "atn"} "class")
- "="
- (span {:class "atv"} "\"icon icon-markunread\"")
- "><"
- (span {:class "tag"} "/span")
- "> normal<"
- (span {:class "tag"} "/button")
- ">\n<"
- (span {:class "tag"} "button")
- " "
- (span {:class "atn"} "class")
- "="
- (span {:class "atv"} "\"btn btn-primary btn-sm\"")
- "><"
- (span {:class "tag"} "span")
- " "
- (span {:class "atn"} "class")
- "="
- (span {:class "atv"} "\"icon icon-markunread\"")
- "><"
- (span {:class "tag"} "/span")
- "> small<"
- (span {:class "tag"} "/button")
- ">\n                ")
-(header {:class "text-center"} (h5 "button groups"))
-(div
- {:class "columns"}
- (div
-  {:class "column"}
-  (div
-   {:class "btn-group"}
-   (button {:type "submit", :class "btn"} "first button")
-   (button {:type "submit", :class "btn"} "second button")
-   (button {:type "submit", :class "btn"} "third button")))
- (div
-  {:class "column"}
-  (div
-   {:class "btn-group btn-group-block"}
-   (button
-    {:type "submit", :class "btn btn-primary"}
-    "first button")
-   (button
-    {:type "submit", :class "btn btn-primary"}
-    "second button")
-   (button
-    {:type "submit", :class "btn btn-primary"}
-    "third button"))))
-(div
- {:class "columns"}
- (div
-  {:class "column"}
-  (div
-   {:class "btn-group"}
-   (button
-    {:type "submit", :class "btn btn-sm"}
-    "first button")
-   (button
-    {:type "submit", :class "btn btn-sm"}
-    "second button")
-   (button
-    {:type "submit", :class "btn btn-sm"}
-    "third button"))))
-(section
- {:class "notes"}
- (p
-  "If you want to use buttons as a group, add the class "
-  (code "btn-group")
-  " to the container. You can add the class "
-  (code "btn-group-block")
-  " for a full-width button group."))
-(pre
- {:class "code lang-html"}
- "<"
- (span {:class "tag"} "div")
- " "
- (span {:class "atn"} "class")
- "="
- (span {:class "atv"} "\"btn-group btn-group-block\"")
- ">\n    <"
- (span {:class "tag"} "button")
- " "
- (span {:class "atn"} "class")
- "="
- (span {:class "atv"} "\"btn\"")
- ">first button<"
- (span {:class "tag"} "/button")
- ">\n    <"
- (span {:class "tag"} "button")
- " "
- (span {:class "atn"} "class")
- "="
- (span {:class "atv"} "\"btn\"")
- ">second button<"
- (span {:class "tag"} "/button")
- ">\n    <"
- (span {:class "tag"} "button")
- " "
- (span {:class "atn"} "class")
- "="
- (span {:class "atv"} "\"btn\"")
- ">third button<"
- (span {:class "tag"} "/button")
- ">\n<"
- (span {:class "tag"} "/div")
- ">\n                ")))
-
-(html
- html-head
- (body
-  page-header
-  (section
-   :class "section"
-   getting-started
-   compiling-custom-version
-   elements-header
-   typography-section
-   tables-section
-   buttons-section
    (section
-    {:id "forms", :class "container grid-960"}
-    (header {:class "text-center"} (h4 "forms"))
-    (section
-     {:class "notes"}
-     (p
-      (strong "Forms")
-      " provide the most common control styles used in forms, including label, input, textarea, select, checkbox, radio and switch.  ")
-     (p))
+    {:class "notes"}
+    (p
+     "Icons with the class "
+     (code "icon")
+     " can be correctly rendered in each button size. "))
+   (hl/highlight
+    :class "clojure"
+    ;;{{
+    (button
+     :class "btn btn-primary btn-lg"
+     (span :class "icon icon-markunread")
+     " large")
+    (button
+     :class "btn btn-primary"
+     (span :class "icon icon-markunread")
+     " normal")
+    (button
+     :class "btn btn-primary btn-sm"
+     (span :class "icon icon-markunread")
+     " small")
+    ;;}}
+    )
+   (s/header (h5 "button groups"))
+   (div
+    :class "columns"
     (div
-     {:class "columns"}
+     :class "column"
      (div
-      {:class "column col-6"}
-      (form
-       {:enctype "application/x-www-form-urlencoded",
-        :method "get",
-        :action "https://picturepan2.github.io/spectre/#forms"}
+      :class "btn-group"
+      (button :class "btn" "first button")
+      (button :class "btn" "second button")
+      (button :class "btn" "third button")))
+    (div
+     :class "column"
+     (div
+      :class "btn-group btn-group-block"
+      (button :class "btn btn-primary" "first button")
+      (button :class "btn btn-primary" "second button")
+      (button :class "btn btn-primary" "third button"))))
+   (div
+    :class "columns"
+    (div
+     :class "column"
+     (div
+      :class "btn-group"
+      (button :class "btn btn-sm" "first button")
+      (button :class "btn btn-sm" "second button")
+      (button :class "btn btn-sm" "third button"))))
+   (section
+    :class "notes"
+    (p
+     "If you want to use buttons as a group, add the class "
+     (code "btn-group")
+     " to the container. You can add the class "
+     (code "btn-group-block")
+     " for a full-width button group."))
+   (hl/highlight
+    :class "clojure"
+    ;;{{
+    (div
+     :class "btn-group"
+     (button :class "btn" "first button")
+     (button :class "btn" "second button")
+     (button :class "btn" "third button"))
+
+    (div
+     :class "btn-group btn-group-block"
+     (button :class "btn btn-primary" "first button")
+     (button :class "btn btn-primary" "second button")
+     (button :class "btn btn-primary" "third button"))
+
+    (div
+     :class "btn-group"
+     (button :class "btn btn-sm" "first button")
+     (button :class "btn btn-sm" "second button")
+     (button :class "btn btn-sm" "third button"))
+    ;;}}
+    )))
+
+(def form-section
+  (section
+   {:id "forms", :class "container grid-960"}
+   (header {:class "text-center"} (h4 "forms"))
+   (section
+    {:class "notes"}
+    (p
+     (strong "Forms")
+     " provide the most common control styles used in forms, including label, input, textarea, select, checkbox, radio and switch.  ")
+    (p))
+   (div
+    {:class "columns"}
+    (div
+     {:class "column col-6"}
+     (form
+      {:enctype "application/x-www-form-urlencoded",
+       :method "get",
+       :action "https://picturepan2.github.io/spectre/#forms"}
+      (div
+       {:class "form-group"}
+       (label
+        {:for "input-example-1", :class "form-label"}
+        "Name")
+       (input
+        {:type "text",
+         :class "form-input is-danger",
+         :id "input-example-1",
+         :placeholder "Name"}))
+      (div
+       {:class "form-group has-success"}
+       (label
+        {:for "input-example-2", :class "form-label"}
+        "Email")
+       (input
+        {:type "email",
+         :class "form-input",
+         :id "input-example-2",
+         :placeholder "Email"}))
+      (div
+       {:class "form-group"}
+       (label {:class "form-label"} "Gender")
+       (label
+        {:class "form-radio"}
+        (input {:type "radio", :name "gender"})
+        (i {:class "form-icon"})
+        " Male\n                                ")
+       (label
+        {:class "form-radio"}
+        (input {:checked "", :type "radio", :name "gender"})
+        (i {:class "form-icon"})
+        " Female\n                                "))
+      (div
+       {:class "form-group hide"}
+       (label
+        {:class "form-file"}
+        (input {:type "file", :id "file"})
+        (span {:class "file-custom"})))
+      (div
+       {:class "form-group"}
+       (select
+        {:class "form-select"}
+        (option "Choose an option")
+        (option "Slack")
+        (option "Skype")
+        (option "Hipchat")))
+      (div
+       {:class "form-group"}
+       (label
+        {:class "form-switch"}
+        (input {:type "checkbox"})
+        (i {:class "form-icon"})
+        " Send me emails with news and tips\n                                "))
+      (div
+       {:class "form-group"}
+       (label
+        {:for "input-example-3", :class "form-label"}
+        "Message")
+       (textarea
+        {:rows "3",
+         :class "form-input",
+         :id "input-example-3",
+         :placeholder "Textarea"}))
+      (div
+       {:class "form-group"}
+       (label
+        {:class "form-checkbox"}
+        (input {:type "checkbox"})
+        (i {:class "form-icon"})
+        " Remember me\n                                "))
+      (div
+       {:class "form-group"}
+       (button
+        {:type "submit", :class "btn btn-primary"}
+        "Submit")
+       (button
+        {:type "reset", :class "btn btn-link"}
+        "Cancel"))))
+    (div
+     {:class "column col-6"}
+     (form
+      {:enctype "application/x-www-form-urlencoded",
+       :method "get",
+       :class "form-horizontal",
+       :action "https://picturepan2.github.io/spectre/#forms"}
+      (div
+       {:class "form-group"}
        (div
-        {:class "form-group"}
+        {:class "col-sm-3"}
         (label
-         {:for "input-example-1", :class "form-label"}
-         "Name")
+         {:for "input-example-4", :class "form-label"}
+         "Name"))
+       (div
+        {:class "col-sm-9"}
         (input
          {:type "text",
-          :class "form-input is-danger",
-          :id "input-example-1",
-          :placeholder "Name"}))
+          :class "form-input",
+          :id "input-example-4",
+          :placeholder "Name"})))
+      (div
+       {:class "form-group"}
        (div
-        {:class "form-group has-success"}
+        {:class "col-sm-3"}
         (label
-         {:for "input-example-2", :class "form-label"}
-         "Email")
+         {:for "input-example-5", :class "form-label"}
+         "Email"))
+       (div
+        {:class "col-sm-9"}
         (input
          {:type "email",
           :class "form-input",
-          :id "input-example-2",
-          :placeholder "Email"}))
+          :id "input-example-5",
+          :placeholder "Email"})))
+      (div
+       {:class "form-group"}
        (div
-        {:class "form-group"}
-        (label {:class "form-label"} "Gender")
+        {:class "col-sm-3"}
+        (label {:class "form-label"} "Gender"))
+       (div
+        {:class "col-sm-9"}
         (label
          {:class "form-radio"}
          (input {:type "radio", :name "gender"})
          (i {:class "form-icon"})
-         " Male\n                                ")
+         " Male\n                                    ")
         (label
          {:class "form-radio"}
-         (input {:checked "", :type "radio", :name "gender"})
+         (input
+          {:checked "", :type "radio", :name "gender"})
          (i {:class "form-icon"})
-         " Female\n                                "))
+         " Female\n                                    ")))
+      (div
+       {:class "form-group"}
+       (div {:class "col-sm-3"})
        (div
-        {:class "form-group hide"}
-        (label
-         {:class "form-file"}
-         (input {:type "file", :id "file"})
-         (span {:class "file-custom"})))
-       (div
-        {:class "form-group"}
+        {:class "col-sm-9"}
         (select
          {:class "form-select"}
          (option "Choose an option")
          (option "Slack")
          (option "Skype")
-         (option "Hipchat")))
+         (option "Hipchat"))))
+      (div
+       {:class "form-group"}
+       (div {:class "col-sm-3"})
        (div
-        {:class "form-group"}
+        {:class "col-sm-9"}
         (label
          {:class "form-switch"}
          (input {:type "checkbox"})
          (i {:class "form-icon"})
-         " Send me emails with news and tips\n                                "))
+         " Send me emails with news and tips\n                                    ")))
+      (div
+       {:class "form-group"}
        (div
-        {:class "form-group"}
+        {:class "col-sm-3"}
         (label
-         {:for "input-example-3", :class "form-label"}
-         "Message")
+         {:for "input-example-6", :class "form-label"}
+         "Message"))
+       (div
+        {:class "col-sm-9"}
         (textarea
          {:rows "3",
           :class "form-input",
-          :id "input-example-3",
-          :placeholder "Textarea"}))
+          :id "input-example-6",
+          :placeholder "Textarea"})))
+      (div
+       {:class "form-group"}
+       (div {:class "col-sm-3"})
        (div
-        {:class "form-group"}
+        {:class "col-sm-9"}
         (label
          {:class "form-checkbox"}
          (input {:type "checkbox"})
          (i {:class "form-icon"})
-         " Remember me\n                                "))
+         " Remember me\n                                    ")))
+      (div
+       {:class "form-group"}
+       (div {:class "col-sm-3"})
        (div
-        {:class "form-group"}
+        {:class "col-sm-9"}
         (button
          {:type "submit", :class "btn btn-primary"}
          "Submit")
         (button
          {:type "reset", :class "btn btn-link"}
-         "Cancel"))))
-     (div
-      {:class "column col-6"}
-      (form
-       {:enctype "application/x-www-form-urlencoded",
-        :method "get",
-        :class "form-horizontal",
-        :action "https://picturepan2.github.io/spectre/#forms"}
-       (div
-        {:class "form-group"}
-        (div
-         {:class "col-sm-3"}
-         (label
-          {:for "input-example-4", :class "form-label"}
-          "Name"))
-        (div
-         {:class "col-sm-9"}
-         (input
-          {:type "text",
-           :class "form-input",
-           :id "input-example-4",
-           :placeholder "Name"})))
-       (div
-        {:class "form-group"}
-        (div
-         {:class "col-sm-3"}
-         (label
-          {:for "input-example-5", :class "form-label"}
-          "Email"))
-        (div
-         {:class "col-sm-9"}
-         (input
-          {:type "email",
-           :class "form-input",
-           :id "input-example-5",
-           :placeholder "Email"})))
-       (div
-        {:class "form-group"}
-        (div
-         {:class "col-sm-3"}
-         (label {:class "form-label"} "Gender"))
-        (div
-         {:class "col-sm-9"}
-         (label
-          {:class "form-radio"}
-          (input {:type "radio", :name "gender"})
-          (i {:class "form-icon"})
-          " Male\n                                    ")
-         (label
-          {:class "form-radio"}
-          (input
-           {:checked "", :type "radio", :name "gender"})
-          (i {:class "form-icon"})
-          " Female\n                                    ")))
-       (div
-        {:class "form-group"}
-        (div {:class "col-sm-3"})
-        (div
-         {:class "col-sm-9"}
-         (select
-          {:class "form-select"}
-          (option "Choose an option")
-          (option "Slack")
-          (option "Skype")
-          (option "Hipchat"))))
-       (div
-        {:class "form-group"}
-        (div {:class "col-sm-3"})
-        (div
-         {:class "col-sm-9"}
-         (label
-          {:class "form-switch"}
-          (input {:type "checkbox"})
-          (i {:class "form-icon"})
-          " Send me emails with news and tips\n                                    ")))
-       (div
-        {:class "form-group"}
-        (div
-         {:class "col-sm-3"}
-         (label
-          {:for "input-example-6", :class "form-label"}
-          "Message"))
-        (div
-         {:class "col-sm-9"}
-         (textarea
-          {:rows "3",
-           :class "form-input",
-           :id "input-example-6",
-           :placeholder "Textarea"})))
-       (div
-        {:class "form-group"}
-        (div {:class "col-sm-3"})
-        (div
-         {:class "col-sm-9"}
-         (label
-          {:class "form-checkbox"}
-          (input {:type "checkbox"})
-          (i {:class "form-icon"})
-          " Remember me\n                                    ")))
-       (div
-        {:class "form-group"}
-        (div {:class "col-sm-3"})
-        (div
-         {:class "col-sm-9"}
-         (button
-          {:type "submit", :class "btn btn-primary"}
-          "Submit")
-         (button
-          {:type "reset", :class "btn btn-link"}
-          "Cancel"))))))
+         "Cancel"))))))
 (pre
  {:class "code lang-html"}
  "<"
@@ -1609,7 +1461,21 @@
 (span {:class "tag"} "/button")
 ">\n<"
 (span {:class "tag"} "/div")
-">\n                "))
+">\n                ")))
+(html
+ html-head
+ (body
+  page-header
+  (section
+   :class "section"
+   getting-started
+   compiling-custom-version
+   elements-header
+   typography-section
+   tables-section
+   buttons-section
+   form-section
+   
 (section
  {:id "media", :class "container grid-960"}
  (header {:class "text-center"} (h4 "media"))
