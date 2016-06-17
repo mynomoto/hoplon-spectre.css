@@ -648,480 +648,321 @@
 
 (def form-section
   (section
-   {:id "forms", :class "container grid-960"}
-   (header {:class "text-center"} (h4 "forms"))
+   :id "forms"
+   :class "container grid-960"
+   (s/header (h4 "forms"))
    (section
-    {:class "notes"}
+    :class "notes"
     (p
      (strong "Forms")
-     " provide the most common control styles used in forms, including label, input, textarea, select, checkbox, radio and switch.  ")
-    (p))
+     " provide the most common control styles used in forms, including label, input, textarea, select, checkbox, radio and switch."))
    (div
-    {:class "columns"}
+    :class "columns"
     (div
-     {:class "column col-6"}
+     :class "column col-6"
      (form
-      {:enctype "application/x-www-form-urlencoded",
-       :method "get",
-       :action "https://picturepan2.github.io/spectre/#forms"}
+      :enctype "application/x-www-form-urlencoded"
+      :method "get"
+      :action "#forms"
       (div
-       {:class "form-group"}
+       :class "form-group"
        (label
-        {:for "input-example-1", :class "form-label"}
+        :for "input-example-1"
+        :class "form-label"
         "Name")
        (input
-        {:type "text",
-         :class "form-input is-danger",
-         :id "input-example-1",
-         :placeholder "Name"}))
+        :type "text"
+        :class "form-input is-danger"
+        :id "input-example-1"
+        :placeholder "Name"))
       (div
-       {:class "form-group has-success"}
+       :class "form-group has-success"
        (label
-        {:for "input-example-2", :class "form-label"}
+        :for "input-example-2"
+        :class "form-label"
         "Email")
        (input
-        {:type "email",
-         :class "form-input",
-         :id "input-example-2",
-         :placeholder "Email"}))
+        :type "email"
+        :class "form-input"
+        :id "input-example-2"
+        :placeholder "Email"))
       (div
-       {:class "form-group"}
-       (label {:class "form-label"} "Gender")
+       :class "form-group"
+       (label :class "form-label" "Gender")
        (label
-        {:class "form-radio"}
-        (input {:type "radio", :name "gender"})
-        (i {:class "form-icon"})
-        " Male\n                                ")
+        :class "form-radio"
+        (input
+         :type "radio"
+         :name "gender")
+        (i :class "form-icon")
+        "Male")
        (label
-        {:class "form-radio"}
-        (input {:checked "", :type "radio", :name "gender"})
-        (i {:class "form-icon"})
-        " Female\n                                "))
+        :class "form-radio"
+        (input
+         :checked ""
+         :type "radio"
+         :name "gender")
+        (i :class "form-icon")
+        "Female"))
       (div
-       {:class "form-group hide"}
+       :class "form-group hide"
        (label
-        {:class "form-file"}
-        (input {:type "file", :id "file"})
-        (span {:class "file-custom"})))
+        :class "form-file"
+        (input
+         :type "file"
+         :id "file")
+        (span :class "file-custom")))
       (div
-       {:class "form-group"}
+       :class "form-group"
        (select
-        {:class "form-select"}
+        :class "form-select"
         (option "Choose an option")
         (option "Slack")
         (option "Skype")
         (option "Hipchat")))
       (div
-       {:class "form-group"}
+       :class "form-group"
        (label
-        {:class "form-switch"}
-        (input {:type "checkbox"})
-        (i {:class "form-icon"})
-        " Send me emails with news and tips\n                                "))
+        :class "form-switch"
+        (input :type "checkbox")
+        (i :class "form-icon")
+        "Send me emails with news and tips"))
       (div
-       {:class "form-group"}
+       :class "form-group"
        (label
-        {:for "input-example-3", :class "form-label"}
+        :for "input-example-3"
+        :class "form-label"
         "Message")
        (textarea
-        {:rows "3",
-         :class "form-input",
-         :id "input-example-3",
-         :placeholder "Textarea"}))
+        :rows "3"
+        :class "form-input"
+        :id "input-example-3"
+        :placeholder "Textarea"))
       (div
-       {:class "form-group"}
+       :class "form-group"
        (label
-        {:class "form-checkbox"}
-        (input {:type "checkbox"})
-        (i {:class "form-icon"})
-        " Remember me\n                                "))
+        :class "form-checkbox"
+        (input :type "checkbox")
+        (i :class "form-icon")
+        "Remember me"))
       (div
-       {:class "form-group"}
+       :class "form-group"
        (button
-        {:type "submit", :class "btn btn-primary"}
+        :type "submit"
+        :class "btn btn-primary"
         "Submit")
        (button
-        {:type "reset", :class "btn btn-link"}
+        :type "reset"
+        :class "btn btn-link"
         "Cancel"))))
     (div
-     {:class "column col-6"}
+     :class "column col-6"
      (form
-      {:enctype "application/x-www-form-urlencoded",
-       :method "get",
-       :class "form-horizontal",
-       :action "https://picturepan2.github.io/spectre/#forms"}
+      :enctype "application/x-www-form-urlencoded"
+      :method "get"
+      :class "form-horizontal"
+      :action "#forms"
       (div
-       {:class "form-group"}
+       :class "form-group"
        (div
-        {:class "col-sm-3"}
+        :class "col-sm-3"
         (label
-         {:for "input-example-4", :class "form-label"}
+         :for "input-example-4"
+         :class "form-label"
          "Name"))
        (div
-        {:class "col-sm-9"}
+        :class "col-sm-9"
         (input
-         {:type "text",
-          :class "form-input",
-          :id "input-example-4",
-          :placeholder "Name"})))
+         :type "text"
+         :class "form-input"
+         :id "input-example-4"
+         :placeholder "Name")))
       (div
-       {:class "form-group"}
+       :class "form-group"
        (div
-        {:class "col-sm-3"}
+        :class "col-sm-3"
         (label
-         {:for "input-example-5", :class "form-label"}
+         :for "input-example-5"
+         :class "form-label"
          "Email"))
        (div
-        {:class "col-sm-9"}
+        :class "col-sm-9"
         (input
-         {:type "email",
-          :class "form-input",
-          :id "input-example-5",
-          :placeholder "Email"})))
+         :type "email"
+         :class "form-input"
+         :id "input-example-5"
+         :placeholder "Email")))
       (div
-       {:class "form-group"}
+       :class "form-group"
        (div
-        {:class "col-sm-3"}
-        (label {:class "form-label"} "Gender"))
+        :class "col-sm-3"
+        (label :class "form-label" "Gender"))
        (div
-        {:class "col-sm-9"}
+        :class "col-sm-9"
         (label
-         {:class "form-radio"}
-         (input {:type "radio", :name "gender"})
-         (i {:class "form-icon"})
-         " Male\n                                    ")
-        (label
-         {:class "form-radio"}
+         :class "form-radio"
          (input
-          {:checked "", :type "radio", :name "gender"})
-         (i {:class "form-icon"})
-         " Female\n                                    ")))
+          :type "radio"
+          :name "gender")
+         (i :class "form-icon")
+         "Male")
+        (label
+         :class "form-radio"
+         (input
+          :checked ""
+          :type "radio"
+          :name "gender")
+         (i :class "form-icon")
+         "Female")))
       (div
-       {:class "form-group"}
-       (div {:class "col-sm-3"})
+       :class "form-group"
+       (div :class "col-sm-3")
        (div
-        {:class "col-sm-9"}
+        :class "col-sm-9"
         (select
-         {:class "form-select"}
+         :class "form-select"
          (option "Choose an option")
          (option "Slack")
          (option "Skype")
          (option "Hipchat"))))
       (div
-       {:class "form-group"}
-       (div {:class "col-sm-3"})
+       :class "form-group"
+       (div :class "col-sm-3")
        (div
-        {:class "col-sm-9"}
+        :class "col-sm-9"
         (label
-         {:class "form-switch"}
-         (input {:type "checkbox"})
-         (i {:class "form-icon"})
-         " Send me emails with news and tips\n                                    ")))
+         :class "form-switch"
+         (input :type "checkbox")
+         (i :class "form-icon")
+         "Send me emails with news and tips")))
       (div
-       {:class "form-group"}
+       :class "form-group"
        (div
-        {:class "col-sm-3"}
+        :class "col-sm-3"
         (label
-         {:for "input-example-6", :class "form-label"}
+         :for "input-example-6"
+         :class "form-label"
          "Message"))
        (div
-        {:class "col-sm-9"}
+        :class "col-sm-9"
         (textarea
-         {:rows "3",
-          :class "form-input",
-          :id "input-example-6",
-          :placeholder "Textarea"})))
+         :rows "3"
+         :class "form-input"
+         :id "input-example-6"
+         :placeholder "Textarea")))
       (div
-       {:class "form-group"}
-       (div {:class "col-sm-3"})
+       :class "form-group"
+       (div :class "col-sm-3")
        (div
-        {:class "col-sm-9"}
+        :class "col-sm-9"
         (label
-         {:class "form-checkbox"}
-         (input {:type "checkbox"})
-         (i {:class "form-icon"})
-         " Remember me\n                                    ")))
+         :class "form-checkbox"
+         (input :type "checkbox")
+         (i :class "form-icon")
+         " Remember me")))
       (div
-       {:class "form-group"}
-       (div {:class "col-sm-3"})
+       :class "form-group"
+       (div :class "col-sm-3")
        (div
-        {:class "col-sm-9"}
+        :class "col-sm-9"
         (button
-         {:type "submit", :class "btn btn-primary"}
+         :type "submit"
+         :class "btn btn-primary"
          "Submit")
         (button
-         {:type "reset", :class "btn btn-link"}
+         :type "reset"
+         :class "btn btn-link"
          "Cancel"))))))
-(pre
- {:class "code lang-html"}
- "<"
- (span {:class "tag"} "form")
- ">\n    "
- (span {:class "com"} "<!-- form input control -->")
- "\n    <"
- (span {:class "tag"} "div")
- " "
- (span {:class "atn"} "class")
- "="
- (span {:class "atv"} "\"form-group\"")
- ">\n        <"
- (span {:class "tag"} "label")
- " "
- (span {:class "atn"} "class")
- "="
- (span {:class "atv"} "\"form-label\"")
- " "
- (span {:class "atn"} "for")
- "="
- (span {:class "atv"} "\"input-example-1\"")
- ">Name<"
- (span {:class "tag"} "/label")
- ">\n        <"
- (span {:class "tag"} "input")
- " "
- (span {:class "atn"} "class")
- "="
- (span {:class "atv"} "\"form-input\"")
- " "
- (span {:class "atn"} "type")
- "="
- (span {:class "atv"} "\"text\"")
- " "
- (span {:class "atn"} "id")
- "="
- (span {:class "atv"} "\"input-example-1\"")
- " "
- (span {:class "atn"} "placeholder")
- "="
- (span {:class "atv"} "\"Name\"")
- " />\n    <"
- (span {:class "tag"} "/div")
- ">\n    "
- (span {:class "com"} "<!-- form radio control -->")
- "\n    <"
- (span {:class "tag"} "div")
- " "
- (span {:class "atn"} "class")
- "="
- (span {:class "atv"} "\"form-group\"")
- ">\n        <"
- (span {:class "tag"} "label")
- " "
- (span {:class "atn"} "class")
- "="
- (span {:class "atv"} "\"form-label\"")
- ">Gender<"
- (span {:class "tag"} "/label")
- ">\n        <"
- (span {:class "tag"} "label")
- " "
- (span {:class "atn"} "class")
- "="
- (span {:class "atv"} "\"form-radio\"")
- ">\n            <"
- (span {:class "tag"} "input")
- " "
- (span {:class "atn"} "type")
- "="
- (span {:class "atv"} "\"radio\"")
- " "
- (span {:class "atn"} "name")
- "="
- (span {:class "atv"} "\"gender\"")
- " />\n            <"
- (span {:class "tag"} "i")
- " "
- (span {:class "atn"} "class")
- "="
- (span {:class "atv"} "\"form-icon\"")
- "><"
- (span {:class "tag"} "/i")
- "> Male\n        <"
- (span {:class "tag"} "/label")
- ">\n        <"
- (span {:class "tag"} "label")
- " "
- (span {:class "atn"} "class")
- "="
- (span {:class "atv"} "\"form-radio\"")
- ">\n            <"
- (span {:class "tag"} "input")
- " "
- (span {:class "atn"} "type")
- "="
- (span {:class "atv"} "\"radio\"")
- " "
- (span {:class "atn"} "name")
- "="
-(span {:class "atv"} "\"gender\"")
-" "
-(span {:class "atn"} "checked")
-" />\n            <"
-(span {:class "tag"} "i")
-" "
-(span {:class "atn"} "class")
-"="
-(span {:class "atv"} "\"form-icon\"")
-"><"
-(span {:class "tag"} "/i")
-"> Female\n        <"
-(span {:class "tag"} "/label")
-">\n    <"
-(span {:class "tag"} "/div")
-">\n    "
-(span {:class "com"} "<!-- form select control -->")
-"\n    <"
-(span {:class "tag"} "div")
-" "
-(span {:class "atn"} "class")
-"="
-(span {:class "atv"} "\"form-group\"")
-">\n        <"
-(span {:class "tag"} "select")
-" "
-(span {:class "atn"} "class")
-"="
-(span {:class "atv"} "\"form-select\"")
-">\n            <"
-(span {:class "tag"} "option")
-">Choose an option<"
-(span {:class "tag"} "/option")
-">\n            <"
-(span {:class "tag"} "option")
-">Slack<"
-(span {:class "tag"} "/option")
-">\n            <"
-(span {:class "tag"} "option")
-">Skype<"
-(span {:class "tag"} "/option")
-">\n            <"
-(span {:class "tag"} "option")
-">Hipchat<"
-(span {:class "tag"} "/option")
-">\n        <"
-(span {:class "tag"} "/select")
-">\n    <"
-(span {:class "tag"} "/div")
-">\n    "
-(span {:class "com"} "<!-- form switch control -->")
-"\n    <"
-(span {:class "tag"} "div")
-" "
-(span {:class "atn"} "class")
-"="
-(span {:class "atv"} "\"form-group\"")
-">\n        <"
-(span {:class "tag"} "label")
-" "
-(span {:class "atn"} "class")
-"="
-(span {:class "atv"} "\"form-switch\"")
-">\n            <"
-(span {:class "tag"} "input")
-" "
-(span {:class "atn"} "type")
-"="
-(span {:class "atv"} "\"checkbox\"")
-" />\n            <"
-(span {:class "tag"} "i")
-" "
-(span {:class "atn"} "class")
-"="
-(span {:class "atv"} "\"form-icon\"")
-"><"
-(span {:class "tag"} "/i")
-"> Send me emails with news and tips\n        <"
-(span {:class "tag"} "/label")
-">\n    <"
-(span {:class "tag"} "/div")
-">\n    "
-(span {:class "com"} "<!-- form textarea control -->")
-"\n    <"
-(span {:class "tag"} "div")
-" "
-(span {:class "atn"} "class")
-"="
-(span {:class "atv"} "\"form-group\"")
-">\n        <"
-(span {:class "tag"} "label")
-" "
-(span {:class "atn"} "class")
-"="
-(span {:class "atv"} "\"form-label\"")
-" "
-(span {:class "atn"} "for")
-"="
-(span {:class "atv"} "\"input-example-3\"")
-">Message<"
-(span {:class "tag"} "/label")
-">\n        <"
-(span {:class "tag"} "textarea")
-" "
-(span {:class "atn"} "class")
-"="
-(span {:class "atv"} "\"form-input\"")
-" "
-(span {:class "atn"} "id")
-"="
-(span {:class "atv"} "\"input-example-3\"")
-" "
-(span {:class "atn"} "placeholder")
-"="
-(span {:class "atv"} "\"Textarea\"")
-" "
-(span {:class "atn"} "rows")
-"="
-(span {:class "atv"} "\"3\"")
-"><"
-(span {:class "tag"} "/textarea")
-">\n    <"
-(span {:class "tag"} "/div")
-">\n    "
-(span {:class "com"} "<!-- form checkbox control -->")
-"\n    <"
-(span {:class "tag"} "div")
-" "
-(span {:class "atn"} "class")
-"="
-(span {:class "atv"} "\"form-group\"")
-">\n        <"
-(span {:class "tag"} "label")
-" "
-(span {:class "atn"} "class")
-"="
-(span {:class "atv"} "\"form-checkbox\"")
-">\n            <"
-(span {:class "tag"} "input")
-" "
-(span {:class "atn"} "type")
-"="
-(span {:class "atv"} "\"checkbox\"")
-" />\n            <"
-(span {:class "tag"} "i")
-" "
-(span {:class "atn"} "class")
-"="
-(span {:class "atv"} "\"form-icon\"")
-"><"
-(span {:class "tag"} "/i")
-">  Remember me\n        <"
-(span {:class "tag"} "/label")
-">\n    <"
-(span {:class "tag"} "/div")
-">\n<"
-(span {:class "tag"} "/form")
-">\n                ")
-(section
- {:class "notes"}
- (p
-  "If you want to have a horizontal form, add the class "
-  (code "form-horizontal")
-  " to the <form> container. And add the class "
-  (code "col-[1-12]")
-  " to the child elements for form row layout. Please note "
-  (code "form-horizontal")
-  " only works in viewports that are at least 840px wide."))
-(pre
+   (hl/highlight
+    :class "clojure"
+    ;;{{
+    (form
+     ;; form input control
+     (div
+      :class "form-group"
+      (label
+       :for "input-example-1"
+       :class "form-label"
+       "Name")
+      (input
+       :type "text"
+       :class "form-input"
+       :id "input-example-1"
+       :placeholder "Name")))
+
+     ;; form radio control
+     (div
+      :class "form-group"
+      (label :class "form-label" "Gender")
+      (label
+       :class "form-radio"
+       (input
+        :type "radio"
+        :name "gender")
+       (i :class "form-icon")
+       "Male")
+      (label
+       :class "form-radio"
+       (input
+        :checked ""
+        :type "radio"
+        :name "gender")
+       (i :class "form-icon")
+       "Female"))
+
+     ;; form select control
+     (div
+      :class "form-group"
+      (select
+       :class "form-select"
+       (option "Choose an option")
+       (option "Slack")
+       (option "Skype")
+       (option "Hipchat")))
+
+     ;; form switch control
+     (div
+      :class "form-group"
+      (label
+       :class "form-switch"
+       (input :type "checkbox")
+       (i :class "form-icon")
+       "Send me emails with news and tips"))
+
+     ;; form textarea control
+     (div
+      :class "form-group"
+      (label
+       :for "input-example-3"
+       :class "form-label"
+       "Message")
+      (textarea
+       :rows "3"
+       :class "form-input"
+       :id "input-example-3"
+       :placeholder "Textarea"))
+
+     ;; form checkbox control
+     (div
+      :class "form-group"
+      (label
+       :class "form-checkbox"
+       (input :type "checkbox")
+       (i :class "form-icon")
+       "Remember me"))
+    ;;}}
+    )
+   (section
+    {:class "notes"}
+    (p
+     "If you want to have a horizontal form, add the class "
+     (code "form-horizontal")
+     " to the <form> container. And add the class "
+     (code "col-[1-12]")
+     " to the child elements for form row layout. Please note "
+     (code "form-horizontal")
+     " only works in viewports that are at least 840px wide."))
+   (pre
  {:class "code lang-html"}
  "<"
  (span {:class "tag"} "form")
