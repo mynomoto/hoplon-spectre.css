@@ -45,8 +45,7 @@
         "soon"))))
     (section
      :class "notes text-center"
-     (div
-      :class "btn-group"
+     (s/button-group
       (s/button-primary
        :href "https://github.com/mynomoto/hoplon-spectre.css",
        :target "_blank"
@@ -193,8 +192,7 @@
    "elements"
    (section
     :class "notes text-center"
-    (div
-     :class "btn-group"
+    (s/button-group
      (s/button-primary
       :href "#typography"
       "typography")
@@ -241,9 +239,7 @@
    (s/header (h5 "paragraphs"))
    (p
     "Lorem ipsum dolor sit amet, "
-    (span
-     :class "highlight"
-     "consectetur")
+    (s/highlight "consectetur")
     " adipiscing elit. Praesent risus leo, "
     (a
      :href "#typography"
@@ -257,9 +253,7 @@
     ;;{{
     (p
      "Lorem ipsum dolor sit amet, "
-     (span
-      :class "highlight"
-      "consectetur")
+     (s/highlight "consectetur")
      " adipiscing elit. Praesent risus leo, "
      (a
       :href "#typography"
@@ -302,8 +296,7 @@
     :class "columns"
     (div
      :class "column col-4"
-     (ul
-      :class "list"
+     (s/ul
       (li "list item 1")
       (li "list item 2"
        (ul
@@ -313,8 +306,7 @@
       (li "list item 3")))
     (div
      :class "column col-4"
-     (ol
-      :class "list"
+     (s/ol
       (li "list item 1")
       (li "list item 2"
        (ol
@@ -324,8 +316,7 @@
       (li "list item 3")))
     (div
      :class "column col-4"
-     (dl
-      :class "list"
+     (s/dl
       (dt "description list term 1")
       (dd "description list description 1")
       (dt "description list term 2")
@@ -335,8 +326,7 @@
    (hl/highlight
     :class "clojure"
     ;;{{
-    (ul
-     :class "list"
+    (s/ul
      (li "list item 1")
      (li "list item 2"
          (ul
@@ -345,8 +335,7 @@
           (li "list item 2.3")))
      (li "list item 3"))
 
-    (ol
-     :class "list"
+    (s/ol
      (li "list item 1")
      (li "list item 2"
          (ol
@@ -355,8 +344,7 @@
           (li "list item 2.3")))
      (li "list item 3"))
 
-    (dl
-     :class "list"
+    (s/dl
      (dt "description list term 1")
      (dd "description list description 1")
      (dt "description list term 2")
@@ -589,15 +577,13 @@
     :class "columns"
     (div
      :class "column"
-     (div
-      :class "btn-group"
+     (s/button-group
       (button :class "btn" "first button")
       (button :class "btn" "second button")
       (button :class "btn" "third button")))
     (div
      :class "column"
-     (div
-      :class "btn-group btn-group-block"
+     (s/button-group-block
       (button :class "btn btn-primary" "first button")
       (button :class "btn btn-primary" "second button")
       (button :class "btn btn-primary" "third button"))))
@@ -605,36 +591,32 @@
     :class "columns"
     (div
      :class "column"
-     (div
-      :class "btn-group"
+     (s/button-group
       (button :class "btn btn-sm" "first button")
       (button :class "btn btn-sm" "second button")
       (button :class "btn btn-sm" "third button"))))
    (section
     :class "notes"
     (p
-     "If you want to use buttons as a group, add the class "
-     (code "btn-group")
-     " to the container. You can add the class "
-     (code "btn-group-block")
+     "If you want to use buttons as a group, use the element "
+     (code "(s/button-group)")
+     ". You can add use the element "
+     (code "(s/button-group-block)")
      " for a full-width button group."))
    (hl/highlight
     :class "clojure"
     ;;{{
-    (div
-     :class "btn-group"
+    (s/button-group
      (button :class "btn" "first button")
      (button :class "btn" "second button")
      (button :class "btn" "third button"))
 
-    (div
-     :class "btn-group btn-group-block"
+    (s/button-group-block
      (button :class "btn btn-primary" "first button")
      (button :class "btn btn-primary" "second button")
      (button :class "btn btn-primary" "third button"))
 
-    (div
-     :class "btn-group"
+    (s/button-group
      (button :class "btn btn-sm" "first button")
      (button :class "btn btn-sm" "second button")
      (button :class "btn btn-sm" "third button"))
@@ -1204,8 +1186,7 @@
    "layout"
    (section
     :class "notes text-center"
-    (div
-     :class "btn-group"
+    (s/button-group
      (s/button-primary
       :href "#grid"
       "flexbox grid")
@@ -1619,8 +1600,7 @@
    "components"
    (section
     :class "notes text-center"
-    (div
-     :class "btn-group"
+    (s/button-group
      (s/button-primary
       :href "#avatars"
       "avatars")
@@ -3091,8 +3071,7 @@
        "To make a contribution to the world by making tools for the mind that advance humankind.")
       (div
        :class "card-footer"
-       (div
-        :class "btn-group btn-group-block"
+       (s/button-group-block
         (button
          :type "submit", :class "btn btn-primary"
          "Buy")
@@ -3162,8 +3141,7 @@
   "utilities"
   (section
    :class "notes text-center"
-   (div
-    :class "btn-group"
+   (s/button-group
     (s/button-primary
      :href "#position"
      "position")
