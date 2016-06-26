@@ -9,7 +9,7 @@
 (def html-head
   (head
    (html-meta :charset "UTF-8")
-   (link :href "https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.1.24/spectre.min.css" :rel "stylesheet" :type "text/css")
+   (link :href "spectre.css" #_"https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.1.24/spectre.min.css" :rel "stylesheet" :type "text/css")
    (link :href "style.css" :rel "stylesheet" :type "text/css")
    (link :href "solarized_light.css" :rel "stylesheet" :type "text/css")
    (link :href "font.css" :rel "stylesheet" :type "text/css")
@@ -292,8 +292,7 @@
     ;;}}
     )
    (s/header (h5 "lists"))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column col-4"
      (s/ul
@@ -459,90 +458,86 @@
     (p
      (strong "Buttons")
      " include simple button styles for actions in different types and sizes. "))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column"
-     (button :class "btn" "default button")
-     (button :class "btn loading" "default button"))
+     (s/button "default button")
+     (s/button :options #{:loading} "default button"))
     (div
      :class "column"
-     (button :class "btn btn-primary" "primary button")
-     (button :class "btn btn-primary loading" "primary button"))
+     (s/button-primary "primary button")
+     (s/button-primary :options #{:loading} "primary button"))
     (div
      :class "column"
-     (button :class "btn btn-link" "link button")
-     (button :class "btn btn-link loading" "link button")))
+     (s/button-link "link button")
+     (s/button-link :options #{:loading} "link button")))
    (section
     :class "notes"
     (p
-     "Add the class "
-     (code "btn")
-     " to <a>, <input> or <button> elements for a default button. There are classes "
-     (code "btn-primary")
+     "Use the element "
+     (code "(s/button)")
+     " for a default button. There are elements "
+     (code "(s/button-primary)")
      " and "
-     (code "btn-link")
-     " for predefined primary and link buttons. A button with the class "
-     (code "loading")
+     (code "(s/button-link)")
+     " for predefined primary and link buttons. A button with "
+     (code ":options #{:loading}")
      " can show loading indicator.  "))
    (hl/highlight
     :class "clojure"
     ;;{{
-    (button :class "btn" "default button")
-    (button :class "btn btn-primary" "primary button")
-    (button :class "btn btn-link" "link button")
+    (s/button "default button")
+    (s/button-primary "primary button")
+    (s/button-link "link button")
 
     ;; buttons with loading state
-    (button :class "btn loading" "default button")
-    (button :class "btn btn-primary loading" "primary button")
-    (button :class "btn btn-link loading" "link button")
+    (s/button :options #{:loading} "default button")
+    (s/button-primary :options #{:loading} "primary button")
+    (s/button-link :options #{:loading} "link button")
     ;;}}
     )
    (s/header (h5 "button sizes"))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column"
-     (button :class "btn btn-lg" "large button")
-     (button :class "btn" "normal button")
-     (button :class "btn btn-sm" "small button"))
+     (s/button :options #{:large} "large button")
+     (s/button "normal button")
+     (s/button :options #{:small} "small button"))
     (div
      :class "column"
-     (button :class "btn btn-block" "block button")))
+     (s/button :options #{:block} "block button")))
    (section
     :class "notes"
     (p
-     "Add the class "
-     (code "btn-sm")
+     "Add "
+     (code ":options #{:small}")
      " or "
-     (code "btn-lg")
-     " for small or large button size. Also, you can add the class "
-     (code "btn-block")
+     (code ":options #{:large}")
+     " for small or large button size. Also, you can add "
+     (code ":options #{:block}")
      " for a full-width button. "))
    (hl/highlight
     :class "clojure"
     ;;{{
-     (button :class "btn btn-lg" "large button")
-     (button :class "btn" "normal button")
-     (button :class "btn btn-sm" "small button")
+     (s/button :options #{:large} "large button")
+     (s/button "normal button")
+     (s/button :options #{:small} "small button")
 
-     (button :class "btn btn-block" "block button")
+     (s/button :options #{:block} "block button")
     ;;}}
     )
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column"
-     (button
-      :class "btn btn-primary btn-lg"
+     (s/button-primary
+      :options #{:large}
       (span :class "icon icon-markunread")
       " large")
-     (button
-      :class "btn btn-primary"
+     (s/button-primary
       (span :class "icon icon-markunread")
       " normal")
-     (button
-      :class "btn btn-primary btn-sm"
+     (s/button-primary
+      :options #{:small}
       (span :class "icon icon-markunread")
       " small")))
    (section
@@ -554,68 +549,67 @@
    (hl/highlight
     :class "clojure"
     ;;{{
-    (button
-     :class "btn btn-primary btn-lg"
+    (s/button-primary
+     :options #{:large}
      (span :class "icon icon-markunread")
      " large")
-    (button
-     :class "btn btn-primary"
+    (s/button-primary
      (span :class "icon icon-markunread")
      " normal")
-    (button
-     :class "btn btn-primary btn-sm"
+    (s/button-primary
+     :options #{:small}
      (span :class "icon icon-markunread")
      " small")
     ;;}}
     )
    (s/header (h5 "button groups"))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column"
      (s/button-group
-      (button :class "btn" "first button")
-      (button :class "btn" "second button")
-      (button :class "btn" "third button")))
-    (div
-     :class "column"
-     (s/button-group-block
-      (button :class "btn btn-primary" "first button")
-      (button :class "btn btn-primary" "second button")
-      (button :class "btn btn-primary" "third button"))))
-   (div
-    :class "columns"
+      (s/button "first button")
+      (s/button "second button")
+      (s/button "third button")))
     (div
      :class "column"
      (s/button-group
-      (button :class "btn btn-sm" "first button")
-      (button :class "btn btn-sm" "second button")
-      (button :class "btn btn-sm" "third button"))))
+      :options #{:block}
+      (s/button-primary "first button")
+      (s/button-primary "second button")
+      (s/button-primary "third button"))))
+   (s/columns
+    (div
+     :class "column"
+     (s/button-group
+      (s/button :options #{:small} "first button")
+      (s/button :options #{:small} "second button")
+      (s/button :options #{:small} "third button"))))
    (section
     :class "notes"
     (p
      "If you want to use buttons as a group, use the element "
      (code "(s/button-group)")
-     ". You can add use the element "
-     (code "(s/button-group-block)")
+     ". You can add use the "
+     (code ":options #{:block}")
      " for a full-width button group."))
    (hl/highlight
     :class "clojure"
     ;;{{
     (s/button-group
-     (button :class "btn" "first button")
-     (button :class "btn" "second button")
-     (button :class "btn" "third button"))
-
-    (s/button-group-block
-     (button :class "btn btn-primary" "first button")
-     (button :class "btn btn-primary" "second button")
-     (button :class "btn btn-primary" "third button"))
+     (s/button "first button")
+     (s/button "second button")
+     (s/button "third button"))
 
     (s/button-group
-     (button :class "btn btn-sm" "first button")
-     (button :class "btn btn-sm" "second button")
-     (button :class "btn btn-sm" "third button"))
+     :options #{:block}
+     (s/button-primary "first button")
+     (s/button-primary "second button")
+     (s/button-primary "third button"))
+
+    (s/button-group
+     (s/button :options #{:small} "first button")
+     (s/button :options #{:small} "second button")
+     (s/button :options #{:small} "third button"))
     ;;}}
     )))
 
@@ -629,300 +623,158 @@
     (p
      (strong "Forms")
      " provide the most common control styles used in forms, including label, input, textarea, select, checkbox, radio and switch."))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column col-6"
      (form
-      :enctype "application/x-www-form-urlencoded"
-      :method "get"
-      :action "#forms"
-      (div
-       :class "form-group"
-       (label
-        :for "input-example-1"
-        :class "form-label"
-        "Name")
-       (input
+      (s/form-group
+       (s/form-label "Name")
+       (s/input
+        :options #{:error}
         :type "text"
-        :class "form-input is-danger"
-        :id "input-example-1"
         :placeholder "Name"))
-      (div
-       :class "form-group has-success"
-       (label
-        :for "input-example-2"
-        :class "form-label"
-        "Email")
-       (input
+      (s/form-group
+       (s/form-label "Email")
+       (s/input
+        :options #{:success}
         :type "email"
-        :class "form-input"
-        :id "input-example-2"
         :placeholder "Email"))
-      (div
-       :class "form-group"
-       (label :class "form-label" "Gender")
-       (label
-        :class "form-radio"
-        (input
-         :type "radio"
-         :name "gender")
-        (i :class "form-icon")
+      (s/form-group
+       (s/form-label "Gender")
+       (s/input-radio
+        :name "gender"
         "Male")
-       (label
-        :class "form-radio"
-        (input
-         :checked ""
-         :type "radio"
-         :name "gender")
-        (i :class "form-icon")
+       (s/input-radio
+        :name "gender"
         "Female"))
-      (div
-       :class "form-group hide"
-       (label
-        :class "form-file"
-        (input
-         :type "file"
-         :id "file")
-        (span :class "file-custom")))
-      (div
-       :class "form-group"
-       (select
-        :class "form-select"
+      (s/form-group
+       (s/select
         (option "Choose an option")
         (option "Slack")
         (option "Skype")
         (option "Hipchat")))
-      (div
-       :class "form-group"
-       (label
-        :class "form-switch"
-        (input :type "checkbox")
-        (i :class "form-icon")
-        "Send me emails with news and tips"))
-      (div
-       :class "form-group"
-       (label
-        :for "input-example-3"
-        :class "form-label"
-        "Message")
-       (textarea
+      (s/form-group
+       (s/input-switch "Send me emails with news and tips"))
+      (s/form-group
+       (s/form-label "Message")
+       (s/textarea
         :rows "3"
-        :class "form-input"
-        :id "input-example-3"
         :placeholder "Textarea"))
-      (div
-       :class "form-group"
-       (label
-        :class "form-checkbox"
-        (input :type "checkbox")
-        (i :class "form-icon")
-        "Remember me"))
-      (div
-       :class "form-group"
-       (button
-        :type "submit"
-        :class "btn btn-primary"
-        "Submit")
-       (button
-        :type "reset"
-        :class "btn btn-link"
-        "Cancel"))))
+      (s/form-group
+       (s/input-checkbox "Remember me"))
+      (s/form-group
+       (s/button-primary "Submit")
+       (s/button-link "Cancel"))))
     (div
      :class "column col-6"
      (form
-      :enctype "application/x-www-form-urlencoded"
-      :method "get"
       :class "form-horizontal"
-      :action "#forms"
-      (div
-       :class "form-group"
-       (div
+      (s/form-group
+       (s/form-label
         :class "col-sm-3"
-        (label
-         :for "input-example-4"
-         :class "form-label"
-         "Name"))
+        "Name")
+       (s/input
+        :type "text"
+        :class "col-sm-9"
+        :placeholder "Name"))
+      (s/form-group
+       (s/form-label
+        :class "col-sm-3"
+        "Email")
+       (s/input
+        :type "email"
+        :class "col-sm-9"
+        :placeholder "Email"))
+      (s/form-group
+       (s/form-label
+        :class "col-sm-3"
+        (label "Gender"))
        (div
         :class "col-sm-9"
-        (input
-         :type "text"
-         :class "form-input"
-         :id "input-example-4"
-         :placeholder "Name")))
-      (div
-       :class "form-group"
-       (div
-        :class "col-sm-3"
-        (label
-         :for "input-example-5"
-         :class "form-label"
-         "Email"))
-       (div
-        :class "col-sm-9"
-        (input
-         :type "email"
-         :class "form-input"
-         :id "input-example-5"
-         :placeholder "Email")))
-      (div
-       :class "form-group"
-       (div
-        :class "col-sm-3"
-        (label :class "form-label" "Gender"))
-       (div
-        :class "col-sm-9"
-        (label
-         :class "form-radio"
-         (input
-          :type "radio"
-          :name "gender")
-         (i :class "form-icon")
+        (s/input-radio
+         :name "gender"
          "Male")
-        (label
-         :class "form-radio"
-         (input
-          :checked ""
-          :type "radio"
-          :name "gender")
-         (i :class "form-icon")
+        (s/input-radio
+         :name "gender"
          "Female")))
-      (div
-       :class "form-group"
+      (s/form-group
        (div :class "col-sm-3")
        (div
         :class "col-sm-9"
-        (select
-         :class "form-select"
+        (s/select
          (option "Choose an option")
          (option "Slack")
          (option "Skype")
          (option "Hipchat"))))
-      (div
-       :class "form-group"
+      (s/form-group
        (div :class "col-sm-3")
        (div
         :class "col-sm-9"
-        (label
-         :class "form-switch"
-         (input :type "checkbox")
-         (i :class "form-icon")
-         "Send me emails with news and tips")))
-      (div
-       :class "form-group"
-       (div
+        (s/input-switch "Send me emails with news and tips")))
+      (s/form-group
+       (s/form-label
         :class "col-sm-3"
-        (label
-         :for "input-example-6"
-         :class "form-label"
-         "Message"))
-       (div
+        "Message")
+       (s/textarea
+        :rows "3"
         :class "col-sm-9"
-        (textarea
-         :rows "3"
-         :class "form-input"
-         :id "input-example-6"
-         :placeholder "Textarea")))
-      (div
-       :class "form-group"
+        :placeholder "Textarea"))
+      (s/form-group
        (div :class "col-sm-3")
        (div
         :class "col-sm-9"
-        (label
-         :class "form-checkbox"
-         (input :type "checkbox")
-         (i :class "form-icon")
-         " Remember me")))
-      (div
-       :class "form-group"
+        (s/input-checkbox "Remember me")))
+      (s/form-group
        (div :class "col-sm-3")
        (div
         :class "col-sm-9"
-        (button
-         :type "submit"
-         :class "btn btn-primary"
+        (s/button-primary
          "Submit")
-        (button
-         :type "reset"
-         :class "btn btn-link"
+        (s/button-link
          "Cancel"))))))
    (hl/highlight
     :class "clojure"
     ;;{{
     (form
      ;; form input control
-     (div
-      :class "form-group"
-      (label
-       :for "input-example-1"
-       :class "form-label"
-       "Name")
-      (input
+     (s/form-group
+      (s/form-label "Name")
+      (s/input
        :type "text"
-       :class "form-input"
-       :id "input-example-1"
        :placeholder "Name")))
 
      ;; form radio control
-     (div
-      :class "form-group"
-      (label :class "form-label" "Gender")
-      (label
-       :class "form-radio"
-       (input
-        :type "radio"
-        :name "gender")
-       (i :class "form-icon")
-       "Male")
-      (label
-       :class "form-radio"
-       (input
-        :checked ""
-        :type "radio"
-        :name "gender")
-       (i :class "form-icon")
-       "Female"))
+     (s/form-group
+      (s/form-label "Gender")
+       (s/input-radio
+        :name "gender"
+        "Male")
+       (s/input-radio
+        :name "gender"
+        "Female"))
 
      ;; form select control
-     (div
-      :class "form-group"
-      (select
-       :class "form-select"
+     (s/form-group
+      (s/select
        (option "Choose an option")
        (option "Slack")
        (option "Skype")
        (option "Hipchat")))
 
      ;; form switch control
-     (div
-      :class "form-group"
-      (label
-       :class "form-switch"
-       (input :type "checkbox")
-       (i :class "form-icon")
-       "Send me emails with news and tips"))
+     (s/form-group
+      (s/input-switch "Send me emails with news and tips"))
 
      ;; form textarea control
-     (div
-      :class "form-group"
-      (label
-       :for "input-example-3"
-       :class "form-label"
-       "Message")
-      (textarea
+     (s/form-group
+      (s/form-label "Message")
+      (s/textarea
        :rows "3"
-       :class "form-input"
-       :id "input-example-3"
        :placeholder "Textarea"))
 
      ;; form checkbox control
-     (div
-      :class "form-group"
-      (label
-       :class "form-checkbox"
-       (input :type "checkbox")
-       (i :class "form-icon")
-       "Remember me"))
+     (s/form-group
+      (s/input-checkbox "Remember me"))
     ;;}}
     )
    (section
@@ -933,7 +785,7 @@
      " to the "
      (code "(form)")
      " function. And add the class "
-     (code "col-[1-12]")
+     (code "col-[xs|sm|md|lg|xl]-[1-12]")
      " to the child elements for form row layout. Please note "
      (code "form-horizontal")
      " only works in viewports that are at least 840px wide."))
@@ -942,21 +794,14 @@
     ;;{{
     (form
      :class "form-horizontal"
-     (div
-      :class "form-group"
+     (s/form-group
       (div
        :class "col-sm-3"
-       (label
-        :class "form-label"
-        :for "input-example-1"
-        "Name"))
-      (div
+       (s/form-label "Name"))
+      (s/input
        :class "col-sm-9"
-       (input
-        :class "form-input"
-        :type "text"
-        :placeholder "Name"
-        :id "input-example-1")))
+       :type "text"
+       :placeholder "Name"))
      ;; Form structure
      )
     ;;}}
@@ -965,160 +810,149 @@
     :class "notes"
     (p
      "To use form validation styles, add "
-     (code "is-success")
+     (code ":options #{:success}")
      " and "
-     (code "is-danger")
-     " to the controls or add "
-     (code "has-success")
-     " and "
-     (code "has-danger")
-     " to parent elements."))
+     (code ":options #{:error}")
+     " to the inputs or their  "
+     (code "(s/form-group)")
+     "."))
    (hl/highlight
     :class "clojure"
     ;;{{
     (form
-     ;; form validation styles
-     (div
-      :class "form-group has-success"
-      (label
-       :class "form-label"
-       :form "input-example-1"
-       "Name")
-      (input
-       :class "form-input is-success"
+     ;; on form-group
+     (s/form-group
+      :options #{:success}
+      (s/form-label "Name")
+      (s/input
        :type "text"
-       :id "input-example-1"
-       :placeholder "Name")))
+       :placeholder "Name"))
+
+     ;; on input
+     (s/form-group
+      (s/form-label "Email")
+      (s/input
+       :options #{:success}
+       :type "text"
+       :placeholder "Email")))
     ;;}}
     )
    (section
     :class "notes"
     (p
      "For smaller or larger input and select controls, you could add "
-     (code "input-sm")
-     "/"
-     (code "input-lg")
-     " and "
-     (code "select-sm")
-     "/"
-     (code "select-lg")
+     (code ":options #{:small}")
+     " or "
+     (code ":options #{:large}")
      " to the elements."))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column"
-     (input
-      :type "text",
-      :class "form-input input-sm",
+     (s/input
+      :options #{:small}
+      :type "text"
       :placeholder "Name"))
     (div
      :class "column"
-     (input
-      :type "text",
-      :class "form-input input-lg",
+     (s/input
+      :options #{:large}
+      :type "text"
       :placeholder "Name"))
     (div
      :class "column"
-     (select
-      :class "form-select select-sm"
+     (s/select
+      :options #{:small}
       (option "Choose an option")
       (option "Slack")
       (option "Skype")
       (option "Hipchat"))
-     (select
-      :class "form-select select-lg"
+     (s/select
+      :options #{:large}
       (option "Choose an option")
       (option "Slack")
       (option "Skype")
       (option "Hipchat"))))
    (s/header (h5 "input groups"))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column"
-     (div
-      :class "input-group"
-      (span :class "input-group-addon" "slack.com/")
-      (input
-       :type "text",
-       :class "form-input",
+     (s/input-group
+      (s/input-group-text "slack.com/")
+      (s/input
+       :type "text"
        :placeholder "site name")))
     (div
      :class "column"
-     (div
-      :class "input-group"
-      (input
-       :type "text",
-       :class "form-input",
+     (s/input-group
+      (s/input
+       :type "text"
        :placeholder "username")
-      (span :class "input-group-addon" "@slack.com")))
+      (s/input-group-text "@slack.com")))
     (div
      :class "column"
-     (div
-      :class "input-group"
-      (span :class "input-group-addon" "slack.com/")
-      (input
-       :type "text",
-       :class "form-input",
+     (s/input-group
+      (s/input-group-text "slack.com/")
+      (s/input
+       :type "text"
        :placeholder "site name")
-      (button
-       :type "submit",
-       :class "btn btn-primary input-group-btn"
+      (s/button-primary
+       :options #{:input-group}
        "Submit"))))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column"
-     (div
-      :class "input-group"
-      (span :class "input-group-addon addon-sm" "slack.com/")
-      (input
-       :type "text",
-       :class "form-input input-sm",
+     (s/input-group
+      (s/input-group-text :options #{:small} "slack.com/")
+      (s/input
+       :options #{:small}
+       :type "text"
        :placeholder "site name")))
     (div
      :class "column"
-     (div
-      :class "input-group"
-      (input
-       :type "text",
-       :class "form-input input-lg",
+     (s/input-group
+      (s/input
+       :options #{:large}
+       :type "text"
        :placeholder "username")
-      (span
-       :class "input-group-addon addon-lg"
-       "@slack.com")))
+      (s/input-group-text :options #{:large} "@slack.com")))
     (div :class "column"))
    (section
     :class "notes"
     (p
-     "If you want to attach text and button along with an input, add the class "
-     (code "input-group")
-     " to the input container. And add the class "
-     (code "input-group-addon")
-     " to the text element and "
-     (code "input-group-btn")
-     " to the button element."))
+     "If you want to attach text and button along with an input, use the element "
+     (code "(s/input-group)")
+     ". And use the element "
+     (code "(s/input-group-text)")
+     " for text and add "
+     (code ":options #{:input-group}")
+     " to the button element. Buttons, inputs and text can be made large or small using "
+     (code ":options #{:large}")
+     " or "
+     (code ":options #{:small}")
+     "."))
    (hl/highlight
     :class "clojure"
     ;;{{
     ;; normal input group
-    (div
-     :class "input-group"
-     (span :class "input-group-addon" "slack.com/")
-     (input :type "text" :class "form-input" :placeholder "site name"))
+    (s/input-group
+     (s/input-group-text "slack.com/")
+     (s/input :type "text" :placeholder "site name"))
 
     ;; large input group
-    (div
-     :class "input-group"
-     (span :class "input-group-addon addon-lg" "slack.com/")
-     (input :type "text" :class "form-input input-lg" :placeholder "site name"))
+    (s/input-group
+     (s/input
+      :options #{:large}
+      :type "text"
+      :placeholder "username")
+     (s/input-group-text :options #{:large} "@slack.com"))
 
     ;; normal input group with button
-    (div
-     :class "input-group"
-     (span :class "input-group-addon" "slack.com/")
-     (input :type "text" :class "form-input" :placeholder "site name")
-     (button :class "btn btn-primary input-group-btn" "Submit"))
+    (s/input-group
+     (s/input-group-text "slack.com/")
+     (s/input :type "text" :placeholder "site name")
+     (s/button-primary
+      :options #{:input-group}
+      "Submit"))
     ;;}}
     )))
 
@@ -1132,23 +966,22 @@
     (p
      (strong "Media")
      " include responsive image and video class."))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column col-6"
-     (img
-      :class "img-responsive rounded",
-      :src "images/osx-el-capitan.jpg")))
+     (s/img :options #{:rounded} :src "images/osx-el-capitan.jpg")))
    (section
     :class "notes"
     (p
-     "Add the class "
-     (code "img-responsive")
-     " to <img> elements. The images will scale with the parent sizes."))
-   (div
-    :class "columns"
+     "Use the element "
+     (code "(s/img)")
+     ". The images will scale with the parent sizes."))
+   (s/columns
     (div
      :class "column col-6"
+     (div
+      :class "video-responsive"
+      (iframe :src "https://www.youtube.com/embed/vBfBa-gCMQk" :width "560" :height "315" :frameborder "0" :allowfullscreen true))
      (div
       :class "video-responsive"
       (iframe
@@ -1163,13 +996,13 @@
     (p
      "For responsive video, add a container with the class "
      (code "video-responsive")
-     ". Insert any YouTube, Youku or other iframe/embed video inside the container. The ratio is 16:9 by default. You may add "
-     (code ".video-responsive-4-3")
+     ". Insert any YouTube, Youku or other iframe/embed video inside the container. The ratio is 16:9 by default. You may add the class "
+     (code "video-responsive-4-3")
      " for 4:3 ratio video container."))
    (hl/highlight
     :class "clojure"
     ;;{{
-    (img :src "images/osx-el-capitan.jpg" :class "img-responsive rounded")
+    (s/img :options #{:rounded} :src "images/osx-el-capitan.jpg")
 
     (div
      :class "video-responsive"
@@ -1206,8 +1039,7 @@
     (p
      (strong "Layout")
      " includes flexbox based responsive grid system with 12 columns. "))
-   (div
-    :class "columns"
+   (s/columns
     (div :class "column" (div :class "bg-grey"))
     (div :class "column" (div :class "bg-grey"))
     (div :class "column" (div :class "bg-grey"))
@@ -1220,28 +1052,23 @@
     (div :class "column" (div :class "bg-grey"))
     (div :class "column" (div :class "bg-grey"))
     (div :class "column" (div :class "bg-grey")))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column col-12"
      (div :class "bg-grey" "col-12 (100%)")))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column col-9"
      (div :class "bg-grey" "col-9 (75%)")))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column col-9"
      (div :class "bg-grey" "col-9 (75%)")))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column col-6"
      (div :class "bg-grey" "col-6 (50%)")))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column col-3"
      (div :class "bg-grey" "col-3 (25%)")))
@@ -1249,7 +1076,6 @@
     :class "notes"
     (p
      "Add the class "
-     (code "columns")
      " to a container with the class "
      (code "container")
      ". And add any element you want with classname "
@@ -1274,8 +1100,7 @@
     ;;{{
     (div
      :class "container"
-     (div
-      :class "columns"
+     (s/columns
       (div :class "column col-6" "col-6")
       (div :class "column col-3" "col-3")
       (div :class "column col-2" "col-2")
@@ -1293,8 +1118,7 @@
    :id "responsive"
    :class "container grid-960"
    (s/header (h4 "responsive grid"))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column col-md-6"
      (div :class "bg-grey" "col-md-6"))
@@ -1304,8 +1128,7 @@
     (div
      :class "column col-md-3"
      (div :class "bg-grey" "col-md-3")))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column col-sm-6"
      (div :class "bg-grey" "col-sm-6"))
@@ -1315,8 +1138,7 @@
     (div
      :class "column col-sm-3"
      (div :class "bg-grey" "col-sm-3")))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column col-xs-6"
      (div :class "bg-grey" "col-xs-6"))
@@ -1361,8 +1183,7 @@
     ;;{{
     (div
      :class "container"
-     (div
-      :class "columns"
+     (s/columns
       (div :class "column col-xs-6" "col-xs-6")
       (div :class "column col-xs-3" "col-xs-3")
       (div :class "column col-xs-3" "col-xs-3")))
@@ -1428,8 +1249,7 @@
     (p
      (strong "Navbar")
      " is a layout container that appear in the header of apps and websites. "))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column"
      (header
@@ -1450,9 +1270,9 @@
         "Spectre.css"))
       (section
        :class "navbar-section"
-       (input
+       (s/input
         :type "text",
-        :class "form-input input-inline",
+        :class "input-inline",
         :placeholder "search")
        (a
         :shape "rect",
@@ -1472,8 +1292,7 @@
         :href
         "https://picturepan2.github.io/spectre/#navbar"
         "signup")))))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column"
      (header
@@ -1494,9 +1313,9 @@
         "Spectre.css"))
       (section
        :class "navbar-section"
-       (input
+       (s/input
         :type "text",
-        :class "form-input input-inline",
+        :class "input-inline",
         :placeholder "search")
        (figure
         :class "avatar ml-10 mr-10"
@@ -1524,7 +1343,7 @@
       (a :href "#" :class "navbar-brand" "Spectre.css"))
      (section
       :class "navbar-section"
-      (input :text "text" :class "form-input input-inline" :placeholder "search")
+      (s/input :text "text" :class "input-inline" :placeholder "search")
       (a :href "#" :class "btn btn-link" "documents")
       (a :href "#" :class "btn btn-link" "login")
       (a :href "#" :class "btn btn-primary" "signup")))
@@ -1541,8 +1360,7 @@
     (p
      (strong "Empty states/blank slates")
      " are commonly used as placeholders for first time use, empty data and error screens."))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column col-6"
      (section
@@ -1563,8 +1381,8 @@
       (p :class "empty-title" "You are not following anyone")
       (div
        :class "empty-action input-group"
-       (input
-        :type "text" :class "form-input" :placeholder "")
+       (s/input
+        :type "text" :placeholder "")
        (button
         :type "submit"
         :class "btn btn-primary input-group-btn"
@@ -1639,8 +1457,7 @@
    (section
     :class "notes"
     (p (strong "Avatars") " are user profile pictures. "))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column col-3"
      (figure
@@ -1758,8 +1575,7 @@
     (p
      (strong "Chips")
      " are complex entities in small blocks. "))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column"
      (div
@@ -1841,12 +1657,10 @@
     (p
      (strong "Autocomplete")
      " form component provides suggestions while you type. It is often used for tags and contacts input."))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column col-6"
-     (div
-      :class "form-group"
+     (s/form-group
       (div
        :class "form-autocomplete"
        (div
@@ -1886,12 +1700,10 @@
           :src "images/avatar-2.png")
          (span :class "chip-name" "Natasha Romanoff")
          (button :type "submit", :class "btn btn-clear"))
-        (input
-         :type "text",
-         :class "form-input",
+        (s/input
+         :type "text"
          :placeholder ""))))
-     (div
-      :class "form-group"
+     (s/form-group
       (div
        :class "form-autocomplete"
        (div
@@ -1916,14 +1728,12 @@
          :class "chip-sm selected"
          (span :class "chip-name" "Natasha Romanoff")
          (button :type "submit", :class "btn btn-clear"))
-        (input
+        (s/input
          :type "text",
-         :class "form-input",
          :placeholder "")))))
     (div
      :class "column col-6"
-     (div
-      :class "form-group"
+     (s/form-group
       (div
        :class "form-autocomplete"
        (div
@@ -1942,9 +1752,8 @@
           :src "images/avatar-2.png")
          (span :class "chip-name" "Thor Odinson")
          (button :type "submit", :class "btn btn-clear"))
-        (input
-         :type "text",
-         :class "form-input",
+        (s/input
+         :type "text"
          :placeholder "typing here"))
        (ul
         :class "form-autocomplete-list"
@@ -2002,7 +1811,7 @@
        (span :class "chip-name" "Yan Zhu")
        (button :class "btn btn-clear" ))
       ; autocomplete real input box
-      (input :class "form-input" :text "text" :placeholder "typing here"))
+      (s/input :text "text" :placeholder "typing here"))
      ; autocomplete suggestion list
      (ul
       :class "form-autocomplete-list"
@@ -2101,8 +1910,7 @@
     (p
      (strong "Labels")
      " are formatted text tags for highlighted, informative information."))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column"
      (span :class "label" "default label")
@@ -2130,8 +1938,7 @@
     (p
      (strong "Badges")
      " are often used as unread number indicators."))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column"
      (span
@@ -2179,8 +1986,7 @@
     (p
      (strong "Toasts")
      " are used to show alert or information to users."))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column"
      (div
@@ -2197,8 +2003,7 @@
        :type "submit", :class "btn btn-clear float-right")
       (span :class "icon icon-error_outline")
       " Lorem ipsum dolor sit amet, consectetur adipiscing elit.")))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column"
      (div
@@ -2258,8 +2063,7 @@
      "A "
      (strong "menu")
      " is a vertical list of links or buttons for actions and navigation."))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column"
      (ul
@@ -2409,8 +2213,7 @@
     :id "breadcrumbs"
     :class "text-center"
     (h5 "breadcrumbs"))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column"
      (ul
@@ -2467,8 +2270,7 @@
     ;;}}
     )
    (s/header (h5 "tabs"))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column"
      (ul
@@ -2566,8 +2368,7 @@
        "Connect")))
     ;;}}
     )
-(div
- :class "columns"
+(s/columns
  (div
   :class "column"
   (ul
@@ -2651,8 +2452,7 @@
 (s/header
  :id "pagination"
  (h5 "pagination"))
-(div
- :class "columns"
+(s/columns
  (div
   :class "column"
   (ul
@@ -2812,8 +2612,7 @@
    (section
     :class "notes"
     (p (strong "Modals") " are flexible dialog prompts."))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column"
      (div
@@ -2911,8 +2710,7 @@
     ;;}}
     )
    (s/header  (h5 "modal sizes"))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column"
      (div
@@ -2962,19 +2760,13 @@
           :enctype "application/x-www-form-urlencoded",
           :method "get",
           :lpformnum "1"
-          (div
-           :class "form-group"
-           (label
-            :for "input-example-7", :class "form-label"
-            "Name")
-           (input
-            :type "text",
-            :class "form-input",
-            :id "input-example-7",
+          (s/form-group
+           (s/form-label "Name")
+           (s/input
+            :type "text"
             :placeholder "Name"))
-          (div
-           :class "form-group"
-           (label :class "form-label" "Gender")
+          (s/form-group
+           (s/form-label "Gender")
            (label
             :class "form-radio"
             (input :type "radio", :name "gender")
@@ -2982,10 +2774,7 @@
             "Male")
            (label
             :class "form-radio"
-            (input
-             :checked "",
-             :type "radio",
-             :name "gender")
+            (input :checked "", :type "radio", :name "gender")
             (i :class "form-icon")
             "Female")))))
        (div
@@ -3024,8 +2813,7 @@
    (section
     :class "notes"
     (p (strong "Cards") " are flexible content containers."))
-   (div
-    :class "columns"
+   (s/columns
     (div
      :class "column col-4"
      (div
@@ -3067,7 +2855,8 @@
        "To make a contribution to the world by making tools for the mind that advance humankind.")
       (div
        :class "card-footer"
-       (s/button-group-block
+       (s/button-group
+        :options #{:block}
         (button
          :type "submit", :class "btn btn-primary"
          "Buy")
@@ -3292,8 +3081,7 @@
      "A "
      (strong "Divider")
      " is used for separating elements."))
-   (div
-    :class "columns"
+   (s/columns
     (div :class "column" (div :class "divider")))
    (hl/highlight
     :class "clojure"
@@ -3314,8 +3102,7 @@
      " is used for loading or updating. Also, you can add the class "
      (code "loading")
      " to buttons for loading status."))
-   (div
-    :class "columns"
+   (s/columns
     (div :class "column" (div :class "loading")))
    (hl/highlight
     :class "clojure"
