@@ -294,7 +294,7 @@
    (s/header (h5 "lists"))
    (s/columns
     (div
-     :class "column col-4"
+     :column 4
      (s/ul
       (li "list item 1")
       (li "list item 2"
@@ -304,7 +304,7 @@
         (li "list item 2.3")))
       (li "list item 3")))
     (div
-     :class "column col-4"
+     :column 4
      (s/ol
       (li "list item 1")
       (li "list item 2"
@@ -314,7 +314,7 @@
         (li "list item 2.3")))
       (li "list item 3")))
     (div
-     :class "column col-4"
+     :column 4
      (s/dl
       (dt "description list term 1")
       (dd "description list description 1")
@@ -500,9 +500,9 @@
    (s/columns
     (div
      :class "column"
-     (s/button :options #{:large} "large button")
+     (s/button :options #{:lg} "large button")
      (s/button "normal button")
-     (s/button :options #{:small} "small button"))
+     (s/button :options #{:sm} "small button"))
     (div
      :class "column"
      (s/button :options #{:block} "block button")))
@@ -510,18 +510,18 @@
     :class "notes"
     (p
      "Add "
-     (code ":options #{:small}")
+     (code ":options #{:sm}")
      " or "
-     (code ":options #{:large}")
+     (code ":options #{:lg}")
      " for small or large button size. Also, you can add "
      (code ":options #{:block}")
      " for a full-width button. "))
    (hl/highlight
     :class "clojure"
     ;;{{
-     (s/button :options #{:large} "large button")
+     (s/button :options #{:lg} "large button")
      (s/button "normal button")
-     (s/button :options #{:small} "small button")
+     (s/button :options #{:sm} "small button")
 
      (s/button :options #{:block} "block button")
     ;;}}
@@ -530,15 +530,15 @@
     (div
      :class "column"
      (s/button-primary
-      :options #{:large}
-      (span :class "icon icon-markunread")
+      :options #{:lg}
+      (s/icon "icon-markunread")
       " large")
      (s/button-primary
-      (span :class "icon icon-markunread")
+      (s/icon "icon-markunread")
       " normal")
      (s/button-primary
-      :options #{:small}
-      (span :class "icon icon-markunread")
+      :options #{:sm}
+      (s/icon "icon-markunread")
       " small")))
    (section
     :class "notes"
@@ -550,15 +550,15 @@
     :class "clojure"
     ;;{{
     (s/button-primary
-     :options #{:large}
-     (span :class "icon icon-markunread")
+     :options #{:lg}
+     (s/icon "icon-markunread")
      " large")
     (s/button-primary
-     (span :class "icon icon-markunread")
+     (s/icon "icon-markunread")
      " normal")
     (s/button-primary
-     :options #{:small}
-     (span :class "icon icon-markunread")
+     :options #{:sm}
+     (s/icon "icon-markunread")
      " small")
     ;;}}
     )
@@ -581,9 +581,9 @@
     (div
      :class "column"
      (s/button-group
-      (s/button :options #{:small} "first button")
-      (s/button :options #{:small} "second button")
-      (s/button :options #{:small} "third button"))))
+      (s/button :options #{:sm} "first button")
+      (s/button :options #{:sm} "second button")
+      (s/button :options #{:sm} "third button"))))
    (section
     :class "notes"
     (p
@@ -607,9 +607,9 @@
      (s/button-primary "third button"))
 
     (s/button-group
-     (s/button :options #{:small} "first button")
-     (s/button :options #{:small} "second button")
-     (s/button :options #{:small} "third button"))
+     (s/button :options #{:sm} "first button")
+     (s/button :options #{:sm} "second button")
+     (s/button :options #{:sm} "third button"))
     ;;}}
     )))
 
@@ -625,7 +625,7 @@
      " provide the most common control styles used in forms, including label, input, textarea, select, checkbox, radio and switch."))
    (s/columns
     (div
-     :class "column col-6"
+     :column 6
      (form
       (s/form-group
        (s/form-label "Name")
@@ -666,7 +666,7 @@
        (s/button-primary "Submit")
        (s/button-link "Cancel"))))
     (div
-     :class "column col-6"
+     :column 6
      (form
       :class "form-horizontal"
       (s/form-group
@@ -841,33 +841,33 @@
     :class "notes"
     (p
      "For smaller or larger input and select controls, you could add "
-     (code ":options #{:small}")
+     (code ":options #{:sm}")
      " or "
-     (code ":options #{:large}")
+     (code ":options #{:lg}")
      " to the elements."))
    (s/columns
     (div
      :class "column"
      (s/input
-      :options #{:small}
+      :options #{:sm}
       :type "text"
       :placeholder "Name"))
     (div
      :class "column"
      (s/input
-      :options #{:large}
+      :options #{:lg}
       :type "text"
       :placeholder "Name"))
     (div
      :class "column"
      (s/select
-      :options #{:small}
+      :options #{:sm}
       (option "Choose an option")
       (option "Slack")
       (option "Skype")
       (option "Hipchat"))
      (s/select
-      :options #{:large}
+      :options #{:lg}
       (option "Choose an option")
       (option "Slack")
       (option "Skype")
@@ -902,19 +902,19 @@
     (div
      :class "column"
      (s/input-group
-      (s/input-group-text :options #{:small} "slack.com/")
+      (s/input-group-text :options #{:sm} "slack.com/")
       (s/input
-       :options #{:small}
+       :options #{:sm}
        :type "text"
        :placeholder "site name")))
     (div
      :class "column"
      (s/input-group
       (s/input
-       :options #{:large}
+       :options #{:lg}
        :type "text"
        :placeholder "username")
-      (s/input-group-text :options #{:large} "@slack.com")))
+      (s/input-group-text :options #{:lg} "@slack.com")))
     (div :class "column"))
    (section
     :class "notes"
@@ -926,9 +926,9 @@
      " for text and add "
      (code ":options #{:input-group}")
      " to the button element. Buttons, inputs and text can be made large or small using "
-     (code ":options #{:large}")
+     (code ":options #{:lg}")
      " or "
-     (code ":options #{:small}")
+     (code ":options #{:sm}")
      "."))
    (hl/highlight
     :class "clojure"
@@ -941,10 +941,10 @@
     ;; large input group
     (s/input-group
      (s/input
-      :options #{:large}
+      :options #{:lg}
       :type "text"
       :placeholder "username")
-     (s/input-group-text :options #{:large} "@slack.com"))
+     (s/input-group-text :options #{:lg} "@slack.com"))
 
     ;; normal input group with button
     (s/input-group
@@ -968,7 +968,7 @@
      " include responsive image and video class."))
    (s/columns
     (div
-     :class "column col-6"
+     :column 6
      (s/img :options #{:rounded} :src "images/osx-el-capitan.jpg")))
    (section
     :class "notes"
@@ -978,10 +978,7 @@
      ". The images will scale with the parent sizes."))
    (s/columns
     (div
-     :class "column col-6"
-     (div
-      :class "video-responsive"
-      (iframe :src "https://www.youtube.com/embed/vBfBa-gCMQk" :width "560" :height "315" :frameborder "0" :allowfullscreen true))
+     :column 6
      (div
       :class "video-responsive"
       (iframe
@@ -1040,76 +1037,73 @@
      (strong "Layout")
      " includes flexbox based responsive grid system with 12 columns. "))
    (s/columns
-    (div :class "column" (div :class "bg-grey"))
-    (div :class "column" (div :class "bg-grey"))
-    (div :class "column" (div :class "bg-grey"))
-    (div :class "column" (div :class "bg-grey"))
-    (div :class "column" (div :class "bg-grey"))
-    (div :class "column" (div :class "bg-grey"))
-    (div :class "column" (div :class "bg-grey"))
-    (div :class "column" (div :class "bg-grey"))
-    (div :class "column" (div :class "bg-grey"))
-    (div :class "column" (div :class "bg-grey"))
-    (div :class "column" (div :class "bg-grey"))
-    (div :class "column" (div :class "bg-grey")))
+    (div :column true (div :class "bg-grey"))
+    (div :column true (div :class "bg-grey"))
+    (div :column true (div :class "bg-grey"))
+    (div :column true (div :class "bg-grey"))
+    (div :column true (div :class "bg-grey"))
+    (div :column true (div :class "bg-grey"))
+    (div :column true (div :class "bg-grey"))
+    (div :column true (div :class "bg-grey"))
+    (div :column true (div :class "bg-grey"))
+    (div :column true (div :class "bg-grey"))
+    (div :column true (div :class "bg-grey"))
+    (div :column true (div :class "bg-grey")))
    (s/columns
     (div
-     :class "column col-12"
-     (div :class "bg-grey" "col-12 (100%)")))
+     :column 12
+     (div :class "bg-grey" ":column 12 (100%)")))
    (s/columns
     (div
-     :class "column col-9"
-     (div :class "bg-grey" "col-9 (75%)")))
+     :column 9
+     (div :class "bg-grey" ":column 9 (75%)")))
    (s/columns
     (div
-     :class "column col-9"
-     (div :class "bg-grey" "col-9 (75%)")))
+     :column 6
+     (div :class "bg-grey" ":column 6 (50%)")))
    (s/columns
     (div
-     :class "column col-6"
-     (div :class "bg-grey" "col-6 (50%)")))
-   (s/columns
-    (div
-     :class "column col-3"
-     (div :class "bg-grey" "col-3 (25%)")))
+     :column 3
+     (div :class "bg-grey" ":column 3 (25%)")))
    (section
     :class "notes"
     (p
-     "Add the class "
-     " to a container with the class "
+     "Use the element "
+     (code "(s/columns)")
+     " inside a container with the class "
      (code "container")
-     ". And add any element you want with classname "
-     (code "column")
-     " inside the container. These columns will take up the space equally. You can specific the width of each column by adding class "
-     (code "col-[1-12]")
+     ". And add any element you want with the attribute "
+     (code ":column")
+     " inside the container. These columns will take up the space equally. You can specific the width of each column by adding the number of columns "
+     (code ":column [1-12]")
      ".")
     (p
-     "And you can add the class "
-     (code "col-gapless")
+     "And you can add "
+     (code ":options #{:gapless}")
      " to have gapless columns."))
-   (div
-    :class "columns col-gapless"
+   (s/columns
+    :options #{:gapless}
     (div
-     :class "column col-6"
-     (div :class "bg-grey" "col-6 (gapless)"))
+     :column 6
+     (div :class "bg-grey" ":column 6 (gapless)"))
     (div
-     :class "column col-6"
-     (div :class "bg-grey" "col-6 (gapless)")))
+     :column 6
+     (div :class "bg-grey" ":column 6 (gapless)")))
    (hl/highlight
     :class "clojure"
     ;;{{
     (div
      :class "container"
      (s/columns
-      (div :class "column col-6" "col-6")
-      (div :class "column col-3" "col-3")
-      (div :class "column col-2" "col-2")
-      (div :class "column col-1" "col-1"))
+      (div :column 6 ":column 6")
+      (div :column 3 ":column 3")
+      (div :column 2 ":column 2")
+      (div :column 1 ":column 1"))
 
-     (div
-      :class "columns col-gapless"
-      (div :class "column col-6" "col-6")
-      (div :class "column col-6" "col-6")))
+     (s/columns
+      :options #{:gapless}
+      (div :column 6 ":column 6")
+      (div :column 6 ":column 6")))
     ;;}}
     )))
 
@@ -1120,43 +1114,43 @@
    (s/header (h4 "responsive grid"))
    (s/columns
     (div
-     :class "column col-md-6"
-     (div :class "bg-grey" "col-md-6"))
+     :column-md 6
+     (div :class "bg-grey" ":column-md 6"))
     (div
-     :class "column col-md-3"
-     (div :class "bg-grey" "col-md-3"))
+     :column-md 3
+     (div :class "bg-grey" ":column-md 3"))
     (div
-     :class "column col-md-3"
-     (div :class "bg-grey" "col-md-3")))
+     :column-md 3
+     (div :class "bg-grey" ":column-md 3")))
    (s/columns
     (div
-     :class "column col-sm-6"
-     (div :class "bg-grey" "col-sm-6"))
+     :column-sm 6
+     (div :class "bg-grey" ":column-sm 6"))
     (div
-     :class "column col-sm-3"
-     (div :class "bg-grey" "col-sm-3"))
+     :column-sm 3
+     (div :class "bg-grey" ":column-sm 3"))
     (div
-     :class "column col-sm-3"
-     (div :class "bg-grey" "col-sm-3")))
+     :column-sm 3
+     (div :class "bg-grey" ":column-sm 3")))
    (s/columns
     (div
-     :class "column col-xs-6"
-     (div :class "bg-grey" "col-xs-6"))
+     :column-xs 6
+     (div :class "bg-grey" ":column-xs 6"))
     (div
-     :class "column col-xs-3"
-     (div :class "bg-grey" "col-xs-3"))
+     :column-xs 3
+     (div :class "bg-grey" ":column-xs 3"))
     (div
-     :class "column col-xs-3"
-     (div :class "bg-grey" "col-xs-3")))
+     :column-xs 3
+     (div :class "bg-grey" ":column-xs 3")))
    (section
     :class "notes"
     (p
-     "Spectre provides a neat responsive layout grid system. There are "
-     (code ".col-xs-[1-12]")
+     "Hoplon Spectre provides a neat responsive layout grid system. There are "
+     (code ":column-xs [1-12]")
      ", "
-     (code ".col-sm-[1-12]")
+     (code ":column-sm [1-12]")
      " and "
-     (code ".col-md-[1-12]")
+     (code ":column-md [1-12]")
      " available for flexible grid across mobile, tablet and desktop viewport usage.")
     (ul
      (li
@@ -1164,17 +1158,17 @@
       (strong "480px")
       ", all columns will show as a single row.")
      (li
-      (code "col-xs-[1-12]")
+      (code ":column-xs [1-12]")
       " apply to window width greater than or equal to "
       (strong "481px")
       ". ")
      (li
-      (code "col-sm-[1-12]")
+      (code ":column-sm [1-12]")
       " apply to window width greater than or equal to "
       (strong "601px")
       ". ")
      (li
-      (code "col-md-[1-12]")
+      (code ":column-md [1-12]")
       " apply to window width greater than or equal to "
       (strong "841px")
       ". ")))
@@ -1184,60 +1178,51 @@
     (div
      :class "container"
      (s/columns
-      (div :class "column col-xs-6" "col-xs-6")
-      (div :class "column col-xs-3" "col-xs-3")
-      (div :class "column col-xs-3" "col-xs-3")))
+      (div :column-xs 6 ":column-xs 6")
+      (div :column-xs 3 ":column-xs 3")
+      (div :column-xs 3 ":column-xs 3")))
     ;;}}
     )
    (section
     :class "notes"
     (p
-     "For hiding elements on specific viewport sizes, there are classes "
-     (code ".hide-xs")
+     "For hiding elements on specific viewport sizes, there are the hide attribute "
+     (code ":hide #{:xs}")
      ", "
-     (code ".hide-sm")
+     (code ":hide #{:sm}")
      ", "
-     (code ".hide-md")
+     (code ":hide #{:md}")
      ", "
-     (code ".hide-lg")
+     (code ":hide #{:lg}")
      " and "
-     (code ".hide-xl")
+     (code ":hide #{:xl}")
      " available.")
     (ul
      (li
-      (code "hide-xs")
+      (code ":hide #{:xs}")
       " hides elements when the viewport is smaller than or equal to "
       (strong "480px")
       ". ")
      (li
-      (code "hide-sm")
+      (code ":hide #{:sm}")
       " hides elements when the viewport is smaller than or equal to "
       (strong "600px")
       ". ")
      (li
-      (code "hide-md")
+      (code ":hide #{:md}")
       " hides elements when the viewport is smaller than or equal to "
       (strong "840px")
       ". ")
      (li
-      (code "hide-lg")
+      (code ":hide #{:lg}")
       " hides elements when the viewport is smaller than or equal to "
       (strong "960px")
       ". ")
      (li
-      (code "hide-xl")
+      (code ":hide #{:xl}")
       " hides elements when the viewport is smaller than or equal to "
       (strong "1280px")
-      ". "))
-    #_(p
-     "Spectre also has a responsive web test tool Responsive Resizer. You can use it locally in the directory "
-     (code "/tools/resizer")
-     " or online.")
-    #_(p
-     (s/button-primary
-      :href "http://picturepan2.github.io/spectre/tools/resizer/",
-      :target "_blank"
-      "Responsive Resizer")))))
+      ". ")))))
 
 (def navbar-section
   (section
@@ -1251,81 +1236,40 @@
      " is a layout container that appear in the header of apps and websites. "))
    (s/columns
     (div
-     :class "column"
-     (header
-      :class "navbar bg-grey"
-      (section
-       :class "navbar-section"
-       (a
-        :shape "rect",
-        :class "btn btn-link btn-lg",
-        :href
-        "https://picturepan2.github.io/spectre/#navbar"
+     :column true
+     (s/navbar
+      :class "bg-grey"
+      (s/navbar-section
+       (s/button-link
+        :options #{:lg}
+        :href "#navbar"
         (i :class "icon icon-menu"))
-       (a
-        :shape "rect",
-        :class "navbar-brand",
-        :href
-        "https://picturepan2.github.io/spectre/#navbar"
+       (s/navbar-title-link
+        :href "#navbar"
         "Spectre.css"))
-      (section
-       :class "navbar-section"
-       (s/input
-        :type "text",
-        :class "input-inline",
-        :placeholder "search")
-       (a
-        :shape "rect",
-        :class "btn btn-link",
-        :href
-        "https://picturepan2.github.io/spectre/#navbar"
-        "documents")
-       (a
-        :shape "rect",
-        :class "btn btn-link",
-        :href
-        "https://picturepan2.github.io/spectre/#navbar"
-        "login")
-       (a
-        :shape "rect",
-        :class "btn btn-primary",
-        :href
-        "https://picturepan2.github.io/spectre/#navbar"
-        "signup")))))
+      (s/navbar-section
+       (s/input :options #{:inline} :type "text" :placeholder "search")
+       (s/button-link :href "#navbar" "documents")
+       (s/button-link :href "#navbar" "login")
+       (s/button-primary :href "#navbar" "signup")))))
    (s/columns
     (div
-     :class "column"
-     (header
-      :class "navbar"
-      (section
-       :class "navbar-section"
-       (a
-        :shape "rect",
-        :class "btn btn-link btn-lg",
-        :href
-        "https://picturepan2.github.io/spectre/#navbar"
+     :column true
+     (s/navbar
+      (s/navbar-section
+       (s/button-link
+        :options #{:lg}
+        :href "#navbar"
         (i :class "icon icon-menu"))
-       (a
-        :shape "rect",
-        :class "navbar-brand",
-        :href
-        "https://picturepan2.github.io/spectre/#navbar"
+       (s/navbar-title-link
+        :href "#navbar"
         "Spectre.css"))
-      (section
-       :class "navbar-section"
-       (s/input
-        :type "text",
-        :class "input-inline",
-        :placeholder "search")
-       (figure
-        :class "avatar ml-10 mr-10"
+      (s/navbar-section
+       (s/input :options #{:inline} :type "text" :placeholder "search")
+       (s/avatar
+        :class "ml-10 mr-10"
         (img :src "images/avatar-4.png"))
-       (a
-        :shape "rect",
-        :class "btn btn-primary",
-        :href
-        "https://picturepan2.github.io/spectre/#navbar"
-        "share")))))
+       (s/button-primary :href "#navbar" "share")))))
    (section
     :class "notes"
     (p
@@ -1333,20 +1277,18 @@
    (hl/highlight
     :class "clojure"
     ;;{{
-    (header
-     :class "navbar"
-     (section
-      :class "navbar-section"
-      (a
-       :href "#" :class "btn btn-link btn-lg"
+    (s/navbar
+     (s/navbar-section
+      (s/button-link
+       :options #{:lg}
+       :href "#navbar"
        (i :class "icon icon-people"))
-      (a :href "#" :class "navbar-brand" "Spectre.css"))
-     (section
-      :class "navbar-section"
-      (s/input :text "text" :class "input-inline" :placeholder "search")
-      (a :href "#" :class "btn btn-link" "documents")
-      (a :href "#" :class "btn btn-link" "login")
-      (a :href "#" :class "btn btn-primary" "signup")))
+      (s/navbar-title-link :href "#navbar" "Spectre.css"))
+     (s/navbar-section
+      (s/input :options #{:inline} :text "text" :placeholder "search")
+      (s/button-link :href "#navbar" "documents")
+      (s/button-link :href "#navbar" "login")
+      (s/button-primary :href "#navbar" "signup")))
     ;;}}
     )))
 
@@ -1362,7 +1304,7 @@
      " are commonly used as placeholders for first time use, empty data and error screens."))
    (s/columns
     (div
-     :class "column col-6"
+     :column 6
      (section
       :class "empty"
       (i :class "icon icon-markunread")
@@ -1370,22 +1312,20 @@
       (p
        :class "empty-meta"
        "Click the button to start a conversation.")
-      (button
-       :type "submit" :class "empty-action btn btn-primary"
+      (s/button-primary
+       :class "empty-action"
        "Send a message")))
     (div
-     :class "column col-6"
+     :column 6
      (section
       :class "empty"
       (i :class "icon icon-people")
       (p :class "empty-title" "You are not following anyone")
-      (div
-       :class "empty-action input-group"
-       (s/input
-        :type "text" :placeholder "")
-       (button
-        :type "submit"
-        :class "btn btn-primary input-group-btn"
+      (s/input-group
+       :class "empty-action"
+       (s/input :type "text" :placeholder "")
+       (s/button-primary
+        :options #{:input-group}
         "Search")))))
    (section
     :class "notes"
@@ -1400,12 +1340,12 @@
    (hl/highlight
     :class "clojure"
     ;;{{
-    (div
+    (section
      :class "empty"
      (i :class "icon icon-markunread")
      (p :class "empty-title" "You have no new messages")
      (p :class "empty-meta" "Click the button to start a conversation.")
-     (button :class "empty-action btn btn-primary" "Send a message"))
+     (s/button-primary :class "empty-action" "Send a message"))
     ;;}}
     )))
 
@@ -1453,115 +1393,112 @@
   (section
    :id "avatars"
    :class "container grid-960"
-   (header :class "text-center" (h4 "avatars"))
+   (s/header (h4 "avatars"))
    (section
     :class "notes"
     (p (strong "Avatars") " are user profile pictures. "))
    (s/columns
     (div
-     :class "column col-3"
-     (figure
-      :class "avatar avatar-xl"
+     :column 3
+     (s/avatar
+      :options #{:xl}
       (img :src "images/avatar-1.png"))
-     (figure
-      :class "avatar avatar-lg"
+     (s/avatar
+      :options #{:lg}
       (img :src "images/avatar-2.png"))
-     (figure
-      :class "avatar"
+     (s/avatar
       (img :src "images/avatar-3.png"))
-     (figure
-      :class "avatar avatar-sm"
+     (s/avatar
+      :options #{:sm}
       (img :src "images/avatar-4.png"))
-     (figure
-      :class "avatar avatar-xs"
+     (s/avatar
+      :options #{:xs}
       (img :src "images/avatar-5.png")))
     (div
-     :class "column col-3"
-     (figure
-      :class "avatar avatar-xl"
+     :column 3
+     (s/avatar
+      :options #{:xl}
       (img :src "images/avatar-1.png")
-      (img
-       :class "avatar-icon",
+      (s/avatar-icon
        :src "images/avatar-2.png"))
-     (figure
-      :class "avatar avatar-lg"
+     (s/avatar
+      :options #{:lg}
       (img :src "images/avatar-2.png")
-      (img
-       :class "avatar-icon",
+      (s/avatar-icon
        :src "images/avatar-3.png"))
-     (figure
-      :class "avatar"
+     (s/avatar
       (img :src "images/avatar-3.png")
-      (img
-       :class "avatar-icon",
+      (s/avatar-icon
        :src "images/avatar-4.png"))
-     (figure
-      :class "avatar avatar-sm"
+     (s/avatar
+      :options #{:sm}
       (img :src "images/avatar-4.png")
-      (img
-       :class "avatar-icon",
+      (s/avatar-icon
        :src "images/avatar-5.png"))
-     (figure
-      :class "avatar avatar-xs"
+     (s/avatar
+      :options #{:xs}
       (img :src "images/avatar-5.png")
-      (img
-       :class "avatar-icon",
+      (s/avatar-icon
        :src "images/avatar-1.png")))
     (div
-     :class "column col-3"
-     (figure
-      :class "avatar avatar-xl",
+     :column 3
+     (s/avatar
+      :options #{:xl}
       :data-initial "YZ",
-      :style "background-color: #5764c6;")
-     (figure
-      :class "avatar avatar-lg",
+      :css {:background-color "#5764c6"})
+     (s/avatar
+      :options #{:lg}
       :data-initial "YZ",
-      :style "background-color: #6874cc;")
-     (figure
-      :class "avatar",
+      :css {:background-color "#6874cc"})
+     (s/avatar
       :data-initial "YZ",
-      :style "background-color: #7983d2;")
-     (figure
-      :class "avatar avatar-sm",
+      :css {:background-color "#7983d2"})
+     (s/avatar
+      :options #{:sm}
       :data-initial "YZ",
-      :style "background-color: #8a93d7;")
-     (figure
-      :class "avatar avatar-xs",
+      :css {:background-color "#8a93d7"})
+     (s/avatar
+      :options #{:xs}
       :data-initial "YZ",
-      :style "background-color: #9ba2dd;")))
+      :css {:background-color "#9ba2dd"})))
    (section
     :class "notes"
     (p
-     "Add the class "
-     (code "avatar")
-     " to <img> element. There are 4 additional sizes available, including "
-     (code "avatar-xl")
+     "Use the element "
+     (code "(s/avatar)")
+     " or "
+     (code "(s/avatar-img)")
+     ". There are 4 additional sizes available, including "
+     (code ":options #{:xl}")
      " (64px), "
-     (code "avatar-lg")
+     (code ":options #{:lg}")
      " (48px), "
-     (code "avatar-sm")
+     (code ":options #{:sm}")
      " (24px), and "
-     (code "avatar-xs")
+     (code ":options #{:xs}")
      " (16px). By default, the avatar size is 32px.")
     (p
      "For users who don't have profile pictures, you may use their initials for avatars. Add the class "
-     (code "avatar")
-     " and avatar size class to <div> element. The attribute "
-     (code "data-initial")
-     " is the name appear inside the avatar."))
+     (code "(s/avatar)")
+     " with the attribute "
+     (code ":data-initial \"XY\"")
+     " where XY is the name that will appear inside the avatar."))
    (hl/highlight
     :class "clojure"
     ;;{{
-    (figure
-     :class "avatar avatar-xl"
+    (s/avatar
+     :options #{:xl}
      (img :src "images/avatar-1.png"))
 
-    (figure
-     :class "avatar avatar-xl"
+    (s/avatar
+     :options #{:xl}
      (img :src "images/avatar-1.png")
-     (img :src "images/avatar-5.png" :class "avatar-icon"))
+     (s/avatar-icon :src "images/avatar-5.png"))
 
-    (figure :class "avatar avatar-xl" :data-initial "YZ" :style "background-color: #5764c6;")
+    (s/avatar
+     :options #{:xl}
+     :data-initial "YZ"
+     :css {:background-color "#5764c6"})
     ;;}}
     )))
 
@@ -1578,72 +1515,59 @@
    (s/columns
     (div
      :class "column"
-     (div
-      :class "chip-sm"
-      (span :class "chip-name" "Crime")
-      (button :type "submit", :class "btn btn-clear"))
-     (div
-      :class "chip-sm"
-      (span :class "icon icon-favorite_border")
-      (span :class "chip-name" "Drama")
-      (button :type "submit", :class "btn btn-clear"))
-     (div
-      :class "chip-sm"
-      (span :class "chip-name" "Biography")
-      (button :type "submit", :class "btn btn-clear"))
-     (div
-      :class "chip-sm"
-      (span :class "chip-name" "Mystery")
-      (button :type "submit", :class "btn btn-clear")))
+     (s/chip
+      (s/chip-text "Crime")
+      (s/button-clear))
+     (s/chip
+      (s/icon "icon-favorite_border")
+      (s/chip-text "Drama")
+      (s/button-clear))
+     (s/chip
+      (s/chip-text "Biography")
+      (s/button-clear))
+     (s/chip
+      (s/chip-text "Mystery")
+      (s/button-clear)))
     (div
      :class "column"
-     (div
-      :class "chip-sm"
-      (img
-       :class "avatar", :src "images/avatar-1.png")
-      (span :class "chip-name" "Tony Stark")
-      (button :type "submit", :class "btn btn-clear"))
-     (div
-      :class "chip-sm"
-      (img
-       :class "avatar", :src "images/avatar-2.png")
-      (span :class "chip-name" "Thor Odinson")
-      (button :type "submit", :class "btn btn-clear"))
-     (div
-      :class "chip-sm"
-      (img
-       :class "avatar", :src "images/avatar-4.png")
-      (span :class "chip-name" "Steve Rogers")
-      (button :type "submit", :class "btn btn-clear"))))
+     (s/chip
+      (s/avatar-img :src "images/avatar-1.png")
+      (s/chip-text "Tony Stark")
+      (s/button-clear))
+     (s/chip
+      (s/avatar-img :src "images/avatar-2.png")
+      (s/chip-text "Thor Odinson")
+      (s/button-clear))
+     (s/chip
+      (s/avatar-img :src "images/avatar-4.png")
+      (s/chip-text "Steve Rogers")
+      (s/button-clear))))
    (section
     :class "notes"
     (p
-     "Add a container element with the class "
-     (code "chip")
+     "Add a container element "
+     (code "(s/chip)")
      ". And add child text elements with "
-     (code "chip-name")
+     (code "(s/chip-text)")
      " or icons with  "
-     (code "icon")
+     (code "(s/icon)")
      "."))
    (hl/highlight
     :class "clojure"
     ;;{{
-    (div
-     :class "chip-sm"
-     (span :class "chip-name" "Crime")
-     (button :class "btn btn-clear" ))
+    (s/chip
+     (s/chip-text "Crime")
+     (s/button-clear))
 
-    (div
-     :class "chip-sm"
-     (span :class "icon icon-favorite_border")
-     (span :class "chip-name" "Drama")
-     (button :class "btn btn-clear"))
+    (s/chip
+     (s/icon "icon-favorite_border")
+     (s/chip-text "Drama")
+     (s/button-clear))
 
-    (div
-     :class "chip-sm"
-     (img :src "images/avatar-1.png" :class "avatar")
-     (span :class "chip-name" "Yan Zhu")
-     (button :class "btn btn-clear"))
+    (s/chip
+     (s/avatar-img :src "images/avatar-1.png")
+     (s/chip-text "Yan Zhu")
+     (s/button-clear))
     ;;}}
     )))
 
@@ -1659,47 +1583,34 @@
      " form component provides suggestions while you type. It is often used for tags and contacts input."))
    (s/columns
     (div
-     :class "column col-6"
+     :column 6
      (s/form-group
       (div
        :class "form-autocomplete"
        (div
         :class "form-autocomplete-input"
-        (div
-         :class "chip-sm"
-         (img
-          :class "avatar",
+        (s/chip
+         (s/avatar-img :src "images/avatar-1.png")
+         (s/chip-text "Tony Stark")
+         (s/button-clear))
+        (s/chip
+         (s/avatar-img :src "images/avatar-2.png")
+         (s/chip-text "Thor Odinson")
+         (s/button-clear))
+        (s/chip
+         (s/avatar-img :src "images/avatar-4.png")
+         (s/chip-text "Steve Rogers")
+         (s/button-clear))
+        (s/chip
+         (s/avatar-img
           :src "images/avatar-1.png")
-         (span :class "chip-name" "Tony Stark")
-         (button :type "submit", :class "btn btn-clear"))
-        (div
-         :class "chip-sm"
-         (img
-          :class "avatar",
-          :src "images/avatar-2.png")
-         (span :class "chip-name" "Thor Odinson")
-         (button :type "submit", :class "btn btn-clear"))
-        (div
-         :class "chip-sm"
-         (img
-          :class "avatar",
-          :src "images/avatar-4.png")
-         (span :class "chip-name" "Steve Rogers")
-         (button :type "submit", :class "btn btn-clear"))
-        (div
-         :class "chip-sm"
-         (img
-          :class "avatar",
-          :src "images/avatar-1.png")
-         (span :class "chip-name" "Bruce Banner")
-         (button :type "submit", :class "btn btn-clear"))
-        (div
-         :class "chip-sm selected"
-         (img
-          :class "avatar",
-          :src "images/avatar-2.png")
-         (span :class "chip-name" "Natasha Romanoff")
-         (button :type "submit", :class "btn btn-clear"))
+         (s/chip-text "Bruce Banner")
+         (s/button-clear))
+        (s/chip
+         :options #{:selected}
+         (s/avatar-img :src "images/avatar-2.png")
+         (s/chip-text "Natasha Romanoff")
+         (s/button-clear))
         (s/input
          :type "text"
          :placeholder ""))))
@@ -1708,50 +1619,40 @@
        :class "form-autocomplete"
        (div
         :class "form-autocomplete-input"
-        (div
-         :class "chip-sm"
-         (span :class "chip-name" "Tony Stark")
-         (button :type "submit", :class "btn btn-clear"))
-        (div
-         :class "chip-sm"
-         (span :class "chip-name" "Thor Odinson")
-         (button :type "submit", :class "btn btn-clear"))
-        (div
-         :class "chip-sm"
-         (span :class "chip-name" "Steve Rogers")
-         (button :type "submit", :class "btn btn-clear"))
-        (div
-         :class "chip-sm"
-         (span :class "chip-name" "Bruce Banner")
-         (button :type "submit", :class "btn btn-clear"))
+        (s/chip
+         (s/chip-text "Tony Stark")
+         (s/button-clear))
+        (s/chip
+         (s/chip-text "Thor Odinson")
+         (s/button-clear))
+        (s/chip
+         (s/chip-text "Steve Rogers")
+         (s/button-clear))
+        (s/chip
+         (s/chip-text "Bruce Banner")
+         (s/button-clear))
         (div
          :class "chip-sm selected"
-         (span :class "chip-name" "Natasha Romanoff")
-         (button :type "submit", :class "btn btn-clear"))
+         (s/chip-text "Natasha Romanoff")
+         (s/button-clear))
         (s/input
          :type "text",
          :placeholder "")))))
     (div
-     :class "column col-6"
+     :column 6
      (s/form-group
       (div
        :class "form-autocomplete"
        (div
         :class "form-autocomplete-input"
-        (div
-         :class "chip-sm"
-         (img
-          :class "avatar",
-          :src "images/avatar-1.png")
-         (span :class "chip-name" "Tony Stark")
-         (button :type "submit", :class "btn btn-clear"))
-        (div
-         :class "chip-sm"
-         (img
-          :class "avatar",
-          :src "images/avatar-2.png")
-         (span :class "chip-name" "Thor Odinson")
-         (button :type "submit", :class "btn btn-clear"))
+        (s/chip
+         (s/avatar-img :src "images/avatar-1.png")
+         (s/chip-text "Tony Stark")
+         (s/button-clear))
+        (s/chip
+         (s/avatar-img :src "images/avatar-2.png")
+         (s/chip-text "Thor Odinson")
+         (s/button-clear))
         (s/input
          :type "text"
          :placeholder "typing here"))
@@ -1763,9 +1664,7 @@
           :class "chip hand"
           (div
            :class "chip-icon"
-           (img
-            :class "avatar",
-            :src "images/avatar-4.png"))
+           (s/avatar-img :src "images/avatar-4.png"))
           (div
            :class "chip-content"
            "Steve Rogers")))
@@ -1775,9 +1674,7 @@
           :class "chip hand"
           (div
            :class "chip-icon"
-           (img
-            :class "avatar",
-            :src "images/avatar-2.png"))
+           (s/avatar-img :src "images/avatar-2.png"))
           (div
            :class "chip-content"
            "Yan Zhu"))))))))
@@ -1800,15 +1697,14 @@
      (div
       :class "form-autocomplete-input"
       ; autocomplete chips
-      (div
-       :class "chip-sm"
-       (img :src "images/avatar-1.png" :class "avatar")
-       (span :class "chip-name"  "Yan Zhu")
+      (s/chip
+       (s/avatar-img :src "images/avatar-1.png")
+       (s/chip-text  "Yan Zhu")
        (button :class "btn btn-clear" ))
       (div
        :class "chip-sm selected"
-       (img :src "images/avatar-2.png" :class "avatar")
-       (span :class "chip-name" "Yan Zhu")
+       (s/avatar-img :src "images/avatar-2.png")
+       (s/chip-text "Yan Zhu")
        (button :class "btn btn-clear" ))
       ; autocomplete real input box
       (s/input :text "text" :placeholder "typing here"))
@@ -1822,7 +1718,7 @@
         :class "chip hand"
         (div
          :class "chip-icon"
-         (img :src "images/avatar-4.png" :class "avatar"))
+         (s/avatar-img :src "images/avatar-4.png"))
         (div :class "chip-content" "Steve Rogers")))
       (li
        :class "form-autocomplete-item"
@@ -1830,7 +1726,7 @@
         :class "chip hand"
         (div
          :class "chip-icon"
-         (img :src "images/avatar-3.png" :class "avatar"))
+         (s/avatar-img :src "images/avatar-3.png"))
         (div :class "chip-content" "Yan Zhu")))))
     ;;}}
     )))
@@ -1993,7 +1889,7 @@
       :class "toast"
       (button
        :type "submit", :class "btn btn-clear float-right")
-      (span :class "icon icon-error_outline")
+      (s/icon "icon-error_outline")
       " Lorem ipsum dolor sit amet, consectetur adipiscing elit."))
     (div
      :class "column"
@@ -2001,7 +1897,7 @@
       :class "toast toast-primary"
       (button
        :type "submit", :class "btn btn-clear float-right")
-      (span :class "icon icon-error_outline")
+      (s/icon "icon-error_outline")
       " Lorem ipsum dolor sit amet, consectetur adipiscing elit.")))
    (s/columns
     (div
@@ -2010,7 +1906,7 @@
       :class "toast toast-success"
       (button
        :type "submit", :class "btn btn-clear float-right")
-      (span :class "icon icon-error_outline")
+      (s/icon "icon-error_outline")
       " Lorem ipsum dolor sit amet, consectetur adipiscing elit."))
     (div
      :class "column"
@@ -2018,7 +1914,7 @@
       :class "toast toast-danger"
       (button
        :type "submit", :class "btn btn-clear float-right")
-      (span :class "icon icon-error_outline")
+      (s/icon "icon-error_outline")
       " Lorem ipsum dolor sit amet, consectetur adipiscing elit.")))
    (section
     :class "notes"
@@ -2047,7 +1943,7 @@
     (div
      :class "toast toast-primary"
      (button :class "btn btn-clear float-right" )
-     (span :class "icon icon-error_outline" )
+     (s/icon "icon-error_outline" )
      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
     ;;}}
     )))
@@ -2074,9 +1970,7 @@
         :class "chip"
         (div
          :class "chip-icon"
-         (img
-          :class "avatar",
-          :src "images/avatar-4.png"))
+         (s/avatar-img :src "images/avatar-4.png"))
         (div
          :class "chip-content"
          "Steve Rogers")
@@ -2139,18 +2033,18 @@
        (a
         :shape "rect"
         :href "#menus"
-        (span :class "icon icon-link")
+        (s/icon "icon-link")
         "Slack"))
       (li
        :class "menu-item"
        (a
         :shape "rect"
         :href "#menus"
-        (span :class "icon icon-link")
+        (s/icon "icon-link")
         "Hipchat"))
       (li
        :class "menu-item"
-       (span :class "icon icon-link")
+       (s/icon "icon-link")
        "Skype"))))
    (section
     :class "notes"
@@ -2178,24 +2072,24 @@
       :class "menu-item"
       (a
        :href "#"
-       (span :class "icon icon-link" "Slack")))
+       (s/icon "icon-link") "Slack"))
      (li
       :class "menu-item"
       (a
        :href "#"
-       (span :class "icon icon-link"  "Hipchat")))
+       (s/icon "icon-link") "Hipchat"))
      (li
       :class "menu-item"
       (a
        :href "#"
-       (span :class "icon icon-link"  "Skype")))
+       (s/icon "icon-link") "Skype"))
      ; menu divider
      (li :class "divider")
      (li
       :class "menu-item"
       (a
        :href "#"
-       (span :class "icon icon-link" "Settings"))))
+       (s/icon "icon-link") "Settings")))
     ;;}}
     )))
 
@@ -2815,7 +2709,7 @@
     (p (strong "Cards") " are flexible content containers."))
    (s/columns
     (div
-     :class "column col-4"
+     :column 4
      (div
       :class "card"
       (div
@@ -2838,7 +2732,7 @@
         :href "#"
         "Do"))))
     (div
-     :class "column col-4"
+     :column 4
      (div
       :class "card"
       (div
@@ -2863,7 +2757,7 @@
         (button :type "submit", :class "btn" "Buy")
         (button :type "submit", :class "btn" "Buy")))))
     (div
-     :class "column col-4"
+     :column 4
      (div
       :class "card"
       (div

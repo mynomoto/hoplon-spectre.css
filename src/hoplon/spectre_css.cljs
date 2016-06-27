@@ -12,8 +12,8 @@
   [options]
   (let [options-set (set options)]
     {"loading" (:loading options-set)
-     "btn-lg" (:large options-set)
-     "btn-sm" (:small options-set)
+     "btn-lg" (:lg options-set)
+     "btn-sm" (:sm options-set)
      "btn-block" (:block options-set)
      "input-group-btn" (:input-group options-set)
      "btn" true}))
@@ -37,6 +37,21 @@
   [attrs children]
   ((button attrs)
    {:class "btn-link"}
+   children))
+
+(h/defelem button*
+  [{:keys [options] :as attrs} children]
+  (let [class (if (j/cell? options)
+                (j/cell= (button-options options))
+                (button-options options))]
+    ((h/button {:class class})
+     (dissoc attrs :options)
+     children)))
+
+(h/defelem button-clear
+  [attrs children]
+  ((button* attrs)
+   {:class "btn-clear"}
    children))
 
 (defn button-group-options
@@ -104,8 +119,9 @@
   [options]
   (let [options-set (set options)]
     {"form-input" true
-     "input-lg" (:large options-set)
-     "input-sm" (:small options-set)
+     "input-lg" (:lg options-set)
+     "input-sm" (:sm options-set)
+     "input-inline" (:inline options-set)
      "is-danger" (:error options-set)
      "is-success" (:success options-set)}))
 
@@ -137,8 +153,8 @@
   [options]
   (let [options-set (set options)]
     {"input-group-addon" true
-     "addon-lg" (:large options-set)
-     "addon-sm" (:small options-set)}))
+     "addon-lg" (:lg options-set)
+     "addon-sm" (:sm options-set)}))
 
 (h/defelem input-group-text
   [{:keys [options] :as attrs} children]
@@ -175,8 +191,8 @@
   [options]
   (let [options-set (set options)]
     {"form-select" true
-     "select-lg" (:large options-set)
-     "select-sm" (:small options-set)}))
+     "select-lg" (:lg options-set)
+     "select-sm" (:sm options-set)}))
 
 (h/defelem select
   [{:keys [options] :as attrs} children]
@@ -230,11 +246,138 @@
      (dissoc attrs :options)
      children)))
 
+(defn columns-class
+  [options]
+  (let [options-set (set options)]
+    {"columns" true
+     "col-gapless" (:gapless options-set)}))
+
 (h/defelem columns
   [{:keys [options] :as attrs} children]
   (let [class (if (j/cell? options)
-                (j/cell= (img-options options))
-                (img-options options))]
-    ((h/div (dissoc attrs :options))
-     :class "columns"
+                (j/cell= (columns-class options))
+                (columns-class options))]
+    ((h/div :class class)
+     (dissoc attrs :options)
      children)))
+
+(defn column-class
+  ([val]
+   (column-class val nil))
+  ([val size]
+   (if (integer? val)
+     {"column" true
+      (str "col-" (when size (str size "-")) val) true}
+     {"column" true})))
+
+(defmethod h/do! :column
+  [elem key val]
+  (h/do! elem :class (column-class val)))
+
+(defmethod h/do! :column-xs
+  [elem key val]
+  (h/do! elem :class (column-class val "xs")))
+
+(defmethod h/do! :column-sm
+  [elem key val]
+  (h/do! elem :class (column-class val "sm")))
+
+(defmethod h/do! :column-md
+  [elem key val]
+  (h/do! elem :class (column-class val "md")))
+
+(defn hide-class
+  [val]
+  (let [options-set (set val)]
+    {"hide-xs" (:xs options-set)
+     "hide-sm" (:sm options-set)
+     "hide-md" (:md options-set)
+     "hide-lg" (:lg options-set)
+     "hide-xl" (:xl options-set)}))
+
+(defmethod h/do! :hide
+  [elem key val]
+  (h/do! elem :class (hide-class val)))
+
+(h/defelem navbar-section
+  [attrs children]
+  ((h/section {:class "navbar-section"})
+   attrs
+   children))
+
+(h/defelem navbar
+  [attrs children]
+  ((h/header {:class "navbar"})
+   attrs
+   children))
+
+(h/defelem navbar-title-link
+  [attrs children]
+  ((h/a {:class "navbar-brand"})
+   attrs
+   children))
+
+(defn avatar-class
+  [options]
+  (let [options-set (set options)]
+    {"avatar-xs" (:xs options-set)
+     "avatar-sm" (:sm options-set)
+     "avatar-lg" (:lg options-set)
+     "avatar-xl" (:xl options-set)
+     "avatar" true}))
+
+(h/defelem avatar
+  [{:keys [options] :as attrs} children]
+  (let [class (if (j/cell? options)
+                (j/cell= (avatar-class options))
+                (avatar-class options))]
+    ((h/figure {:class class})
+     (dissoc attrs :options)
+     children)))
+
+(h/defelem avatar-img
+  [{:keys [options] :as attrs} children]
+  (let [class (if (j/cell? options)
+                (j/cell= (avatar-class options))
+                (avatar-class options))]
+    ((h/img {:class class})
+     (dissoc attrs :options)
+     children)))
+
+(h/defelem avatar-icon
+  [{:keys [options] :as attrs} children]
+  ((h/img {:class "avatar-icon"})
+   (dissoc attrs :options)
+   children))
+
+(defn chip-class
+  [options]
+  (let [options-set (set options)]
+    {"selected" (:selected options-set)
+     "chip-sm" true}))
+
+(h/defelem chip
+  [{:keys [options] :as attrs} children]
+  (let [class (if (j/cell? options)
+                (j/cell= (chip-class options))
+                (chip-class options))]
+    ((h/div {:class class})
+     (dissoc attrs :options)
+     children)))
+
+(h/defelem chip-text
+  [{:keys [options] :as attrs} children]
+  ((h/span {:class "chip-name"})
+   (dissoc attrs :options)
+   children))
+
+(defn icon
+  [icon-class]
+  ((h/span :class "icon")
+   :class icon-class))
+
+(h/defelem autocomplete
+  [{:keys [options] :as attrs} children]
+  ((h/div {:class "form-autocomplete"})
+   (dissoc attrs :options)
+   children))
