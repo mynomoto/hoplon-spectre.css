@@ -381,3 +381,52 @@
   ((h/div {:class "form-autocomplete"})
    (dissoc attrs :options)
    children))
+
+(h/defelem autocomplete-input
+  [{:keys [options] :as attrs} children]
+  ((h/div {:class "form-autocomplete-input"})
+   (dissoc attrs :options)
+   children))
+
+(defn avatar-chip-input
+  ([title avatar-image]
+   (avatar-chip-input title avatar-image nil))
+  ([title avatar-image options]
+   (chip
+    (cond-> {}
+      options (assoc :options options))
+    (avatar-img :src avatar-image)
+    (chip-text title)
+    (button-clear))))
+
+(defn chip-input
+  ([title]
+   (chip-input title nil))
+  ([title options]
+   (chip
+    (cond-> {}
+      options (assoc :options options))
+    (chip-text title)
+    (button-clear))))
+
+(h/defelem autocomplete-list
+  [{:keys [options] :as attrs} children]
+  ((h/ul {:class "form-autocomplete-list"})
+   (dissoc attrs :options)
+   children))
+
+(h/defelem autocomplete-item
+  [{:keys [options] :as attrs} children]
+  ((h/li {:class "form-autocomplete-item"})
+   (dissoc attrs :options)
+   children))
+
+(defn autocomplete-item-avatar-chip
+  [title avatar-image]
+  (autocomplete-item
+   (h/div
+    :class "chip hand"
+    (h/div
+     :class "chip-icon"
+     (avatar-img :src avatar-image))
+    (h/div :class "chip-content" title))))

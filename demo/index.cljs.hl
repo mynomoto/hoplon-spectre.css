@@ -1585,149 +1585,60 @@
     (div
      :column 6
      (s/form-group
-      (div
-       :class "form-autocomplete"
-       (div
-        :class "form-autocomplete-input"
-        (s/chip
-         (s/avatar-img :src "images/avatar-1.png")
-         (s/chip-text "Tony Stark")
-         (s/button-clear))
-        (s/chip
-         (s/avatar-img :src "images/avatar-2.png")
-         (s/chip-text "Thor Odinson")
-         (s/button-clear))
-        (s/chip
-         (s/avatar-img :src "images/avatar-4.png")
-         (s/chip-text "Steve Rogers")
-         (s/button-clear))
-        (s/chip
-         (s/avatar-img
-          :src "images/avatar-1.png")
-         (s/chip-text "Bruce Banner")
-         (s/button-clear))
-        (s/chip
-         :options #{:selected}
-         (s/avatar-img :src "images/avatar-2.png")
-         (s/chip-text "Natasha Romanoff")
-         (s/button-clear))
-        (s/input
-         :type "text"
-         :placeholder ""))))
+      (s/autocomplete
+       (s/autocomplete-input
+        (s/avatar-chip-input "Tony Stark" "images/avatar-1.png")
+        (s/avatar-chip-input "Thor Odinson" "images/avatar-2.png")
+        (s/avatar-chip-input "Steve Rogers" "images/avatar-4.png")
+        (s/avatar-chip-input "Bruce Banner" "images/avatar-1.png")
+        (s/avatar-chip-input "Natasha Romanoff"  "images/avatar-2.png" #{:selected})
+        (s/input :type "text" :placeholder ""))))
      (s/form-group
-      (div
-       :class "form-autocomplete"
-       (div
-        :class "form-autocomplete-input"
-        (s/chip
-         (s/chip-text "Tony Stark")
-         (s/button-clear))
-        (s/chip
-         (s/chip-text "Thor Odinson")
-         (s/button-clear))
-        (s/chip
-         (s/chip-text "Steve Rogers")
-         (s/button-clear))
-        (s/chip
-         (s/chip-text "Bruce Banner")
-         (s/button-clear))
-        (div
-         :class "chip-sm selected"
-         (s/chip-text "Natasha Romanoff")
-         (s/button-clear))
-        (s/input
-         :type "text",
-         :placeholder "")))))
+      (s/autocomplete
+       (s/autocomplete-input
+        (s/chip-input "Tony Stark")
+        (s/chip-input "Thor Odinson")
+        (s/chip-input "Steve Rogers")
+        (s/chip-input "Bruce Banner")
+        (s/chip-input "Natasha Romanoff" #{:selected})
+        (s/input :type "text", :placeholder "")))))
     (div
      :column 6
      (s/form-group
-      (div
-       :class "form-autocomplete"
-       (div
-        :class "form-autocomplete-input"
-        (s/chip
-         (s/avatar-img :src "images/avatar-1.png")
-         (s/chip-text "Tony Stark")
-         (s/button-clear))
-        (s/chip
-         (s/avatar-img :src "images/avatar-2.png")
-         (s/chip-text "Thor Odinson")
-         (s/button-clear))
-        (s/input
-         :type "text"
-         :placeholder "typing here"))
-       (ul
-        :class "form-autocomplete-list"
-        (li
-         :class "form-autocomplete-item"
-         (div
-          :class "chip hand"
-          (div
-           :class "chip-icon"
-           (s/avatar-img :src "images/avatar-4.png"))
-          (div
-           :class "chip-content"
-           "Steve Rogers")))
-        (li
-         :class "form-autocomplete-item"
-         (div
-          :class "chip hand"
-          (div
-           :class "chip-icon"
-           (s/avatar-img :src "images/avatar-2.png"))
-          (div
-           :class "chip-content"
-           "Yan Zhu"))))))))
+      (s/autocomplete
+       (s/autocomplete-input
+        (s/avatar-chip-input "Tony Stark" "images/avatar-1.png")
+        (s/avatar-chip-input "Thor Odinson" "images/avatar-2.png")
+        (s/input :type "text" :placeholder "typing here"))
+       (s/autocomplete-list
+        (s/autocomplete-item-avatar-chip "Steve Rogers" "images/avatar-4.png")
+        (s/autocomplete-item-avatar-chip "Yan Zhu" "images/avatar-2.png"))))))
    (section
     :class "notes"
     (p
-     "Add a container element with the class "
-     (code "form-autocomplete")
+     "Add a container element "
+     (code "(s/autocomplete)")
      ". There are 2 parts of it, one is  "
-     (code "form-autocomplete-input")
+     (code "(s/autocomplete-input)")
      ", another is "
-     (code "form-autocomplete-list")
+     (code "(s/autocomplete-list)")
      ". Spectre.css does not include JavaScript code, you will need to implement your JS to interact with the autocomplete. The autocomplete HTML structure is exampled below."))
    (hl/highlight
     :class "clojure"
     ;;{{
-    (div
-     :class "form-autocomplete"
+    (s/autocomplete
      ; autocomplete input container
-     (div
-      :class "form-autocomplete-input"
+     (s/autocomplete-input
       ; autocomplete chips
-      (s/chip
-       (s/avatar-img :src "images/avatar-1.png")
-       (s/chip-text  "Yan Zhu")
-       (button :class "btn btn-clear" ))
-      (div
-       :class "chip-sm selected"
-       (s/avatar-img :src "images/avatar-2.png")
-       (s/chip-text "Yan Zhu")
-       (button :class "btn btn-clear" ))
+      (s/avatar-chip-input "Tony Stark" "images/avatar-1.png")
+      (s/avatar-chip-input "Thor Odinson" "images/avatar-2.png" #{:selected})
       ; autocomplete real input box
       (s/input :text "text" :placeholder "typing here"))
      ; autocomplete suggestion list
-     (ul
-      :class "form-autocomplete-list"
-      ; autocomplete list chips
-      (li
-       :class "form-autocomplete-item"
-       (div
-        :class "chip hand"
-        (div
-         :class "chip-icon"
-         (s/avatar-img :src "images/avatar-4.png"))
-        (div :class "chip-content" "Steve Rogers")))
-      (li
-       :class "form-autocomplete-item"
-       (div
-        :class "chip hand"
-        (div
-         :class "chip-icon"
-         (s/avatar-img :src "images/avatar-3.png"))
-        (div :class "chip-content" "Yan Zhu")))))
+     (s/autocomplete-list
+      ; autocomplete list avatar chips
+      (s/autocomplete-item-avatar-chip "Steve Rogers" "images/avatar-4.png")
+      (s/autocomplete-item-avatar-chip "Yan Zhu" "images/avatar-2.png")))
     ;;}}
     )))
 
