@@ -1652,58 +1652,54 @@
     (p
      (strong "Tooltips")
      " provide context information labels that appear on hover and focus."))
-   (div
-    :class "columns text-center"
+   (s/columns
+    :class "text-center"
     (div
-     :class "column"
-     (button
-      :type "submit",
-      :class "btn btn-primary tooltip",
-      :data-tooltip
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.",
-      :data-tooltip-pos "top"
-      "top tooltip"))
+     :column true
+     (s/add-tooltip
+      (s/button-primary "top tooltip")
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."))
     (div
-     :class "column"
-     (button
-      :type "submit",
-      :class "btn btn-primary tooltip tooltip-right",
-      :data-tooltip "Lorem ipsum dolor sit amet"
-      "right tooltip"))
+     :column true
+     (s/add-tooltip
+      (s/button-primary "right tooltip")
+      "Lorem ipsum dolor sit amet"
+      :right))
     (div
-     :class "column"
-     (button
-      :type "submit",
-      :class "btn btn-primary tooltip tooltip-bottom",
-      :data-tooltip "Lorem ipsum dolor sit amet"
-      "bottom tooltip"))
+     :column true
+     (s/add-tooltip
+      (s/button-primary "bottom tooltip")
+      "Lorem ipsum dolor sit amet"
+      :bottom))
     (div
-     :class "column"
-     (button
-      :type "submit",
-      :class "btn btn-primary tooltip tooltip-left",
-      :data-tooltip "Lorem ipsum dolor sit amet"
-      "left tooltip")))
+     :column true
+     (s/add-tooltip
+      (s/button-primary "left tooltip")
+      "Lorem ipsum dolor sit amet"
+      :left)))
    (section
     :class "notes"
     (p "Tooltip component is built entirely in CSS.")
     (p
-     "Add the class "
-     (code "tooltip")
-     " and the attribute "
-     (code "data-tooltip")
-     ", which contains the tooltip content, to non self closing elements. And add the class name "
-     (code "tooltip-right")
+     "Use the function "
+     (code "(s/add-tooltip tooltip-content position)")
+     ", where position can be one of "
+     (code ":right")
      ", "
-     (code "tooltip-bottom")
+     (code ":bottom")
      " or "
-     (code "tooltip-left")
+     (code ":left")
      " to define the position of a tooltip. By default, the tooltip appears above the element."))
    (hl/highlight
     :class "clojure"
     ;;{{
-    (button :class "btn tooltip" :data-tooltip "Lorem ipsum dolor sit amet" "top tooltip")
-    (button :class "btn tooltip tooltip-right" :data-tooltip "Lorem ipsum dolor sit amet" "right tooltip")
+    (s/add-tooltip
+     (s/button-primary "top tooltip")
+     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
+    (s/add-tooltip
+     (s/button-primary "right tooltip")
+     "Lorem ipsum dolor sit amet"
+     :right)
     ;;}}
     )))
 

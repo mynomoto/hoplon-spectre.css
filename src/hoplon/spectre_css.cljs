@@ -430,3 +430,18 @@
      :class "chip-icon"
      (avatar-img :src avatar-image))
     (h/div :class "chip-content" title))))
+
+(defn tooltip-class
+  [position]
+  {"tooltip-right" (= position :right)
+   "tooltip-left" (= position :left)
+   "tooltip-bottom" (= position :bottom)
+   "tooltip" true})
+
+(defn add-tooltip
+  ([elem text]
+   (add-tooltip elem text nil))
+  ([elem text position]
+   (elem
+    :data-tooltip text
+    :class (tooltip-class position))))
