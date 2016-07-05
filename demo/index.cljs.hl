@@ -1716,20 +1716,23 @@
    (s/columns
     (div
      :class "column"
-     (span :class "label" "default label")
-     (span :class "label label-primary" "primary label")))
+     (s/label "default label")
+     (s/label-primary "primary label")))
    (section
     :class "notes"
     (p
-     "Add the class "
-     (code "label")
-     " to <span> or <small> elements. You can add another class "
-     (code "label-primary")
+     "Use the element "
+     (code "(s/label)")
+     ". You can use the element "
+     (code "(s/label-primary)")
      " for a primary colored label."))
    (hl/highlight
     :class "clojure"
-    (span :class "label" "default label")
-    (span :class "label label-primary" "primary label"))))
+    ;;{{
+    (s/label "default label")
+    (s/label-primary "primary label")
+    ;;}}
+    )))
 
 (def badges-section
   (section

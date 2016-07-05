@@ -7,16 +7,16 @@
                  [adzerk/boot-reload "0.4.11" :scope "test"]
                  [tailrecursion/boot-jetty "0.1.3" :scope "test"]
 
-                 [hoplon/boot-hoplon "0.1.13" :scope "provided"]
+                 [hoplon/boot-hoplon "0.2.2" :scope "provided"]
                  [hoplon/hoplon "6.0.0-alpha16" :scope "provided"]
                  [tailrecursion/boot-heredoc "0.1.1" :scope "test"]]
  :resource-paths #{"src"})
 
 (require
- '[adzerk.boot-cljs         :refer [cljs]]
- '[adzerk.boot-reload       :refer [reload]]
- '[hoplon.boot-hoplon       :refer [hoplon]]
- '[boot.heredoc             :refer [heredoc]]
+ '[adzerk.boot-cljs :refer [cljs]]
+ '[adzerk.boot-reload :refer [reload]]
+ '[hoplon.boot-hoplon :refer [hoplon]]
+ '[boot.heredoc :refer [heredoc]]
  '[tailrecursion.boot-jetty :refer [serve]])
 
 (deftask demo

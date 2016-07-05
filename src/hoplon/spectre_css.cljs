@@ -445,3 +445,15 @@
    (elem
     :data-tooltip text
     :class (tooltip-class position))))
+
+(h/defelem label
+  [{:keys [options] :as attrs} children]
+  ((h/span {:class "label"})
+   (dissoc attrs :options)
+   children))
+
+(h/defelem label-primary
+  [{:keys [options] :as attrs} children]
+  ((label {:class "label-primary"})
+   (dissoc attrs :options)
+   children))
