@@ -40,9 +40,7 @@
       (li "built in useful components and utilities")
       (li
        "responsive email templates "
-       (span
-        :class "label label-primary"
-        "soon"))))
+       (s/label-primary "soon"))))
     (section
      :class "notes text-center"
      (s/button-group
@@ -219,21 +217,21 @@
      (strong "Typography")
      " sets default styles for headings, paragraphs, blockquote, lists and code elements. "))
    (s/header (h5 "headings"))
-   (h1 "H1 Title " (small :class "label" "5rem"))
-   (h2 "H2 Title " (small :class "label" "4rem"))
-   (h3 "H3 Title " (small :class "label" "3rem"))
-   (h4 "H4 Title " (small :class "label" "2.4rem"))
-   (h5 "H5 Title " (small :class "label" "2rem"))
-   (h6 "H6 Title " (small :class "label" "1.6rem"))
+   (h1 "H1 Title " (s/label "5rem"))
+   (h2 "H2 Title " (s/label "4rem"))
+   (h3 "H3 Title " (s/label "3rem"))
+   (h4 "H4 Title " (s/label "2.4rem"))
+   (h5 "H5 Title " (s/label "2rem"))
+   (h6 "H6 Title " (s/label "1.6rem"))
    (hl/highlight
     :class "clojure"
     ;;{{
-    (h1 "H1 Title " (small :class "label" "5rem"))
-    (h2 "H2 Title " (small :class "label" "4rem"))
-    (h3 "H3 Title " (small :class "label" "3rem"))
-    (h4 "H4 Title " (small :class "label" "2.4rem"))
-    (h5 "H5 Title " (small :class "label" "2rem"))
-    (h6 "H6 Title " (small :class "label" "1.6rem"))
+    (h1 "H1 Title " (s/label "5rem"))
+    (h2 "H2 Title " (s/label "4rem"))
+    (h3 "H3 Title " (s/label "3rem"))
+    (h4 "H4 Title " (s/label "2.4rem"))
+    (h5 "H5 Title " (s/label "2rem"))
+    (h6 "H6 Title " (s/label "1.6rem"))
     ;;}}
     )
    (s/header (h5 "paragraphs"))
@@ -377,25 +375,25 @@
       (td "2h 22min")
       (td "Crime, Drama")
       (td "14 October 1994 "
-          (span :class "label" "USA")))
+          (s/label "USA")))
      (tr
       (td "The Godfather")
       (td "2h 55min")
       (td "Crime, Drama")
       (td "24 March 1972 "
-          (span :class "label" "USA")))
+          (s/label "USA")))
      (tr
       (td "Schindler's List")
       (td "3h 15min")
       (td "Biography, Drama, History")
       (td "4 February 1994 "
-          (span :class "label" "USA")))
+          (s/label "USA")))
      (tr
       (td "Se7en")
       (td "2h 7min")
       (td "Crime, Drama, Mystery")
       (td "24 March 1972 "
-          (span :class "label" "USA")))))
+          (s/label "USA")))))
    (section
     :class "notes"
     (p
@@ -427,25 +425,25 @@
        (td "2h 22min")
        (td "Crime, Drama")
        (td "14 October 1994 "
-        (span :class "label" "USA")))
+        (s/label "USA")))
       (tr
        (td "The Godfather")
        (td "2h 55min")
        (td "Crime, Drama")
        (td "24 March 1972 "
-        (span :class "label" "USA")))
+        (s/label "USA")))
       (tr
        (td "Schindler's List")
        (td "3h 15min")
        (td "Biography, Drama, History")
        (td "4 February 1994 "
-        (span :class "label" "USA")))
+        (s/label "USA")))
       (tr
        (td "Se7en")
        (td "2h 7min")
        (td "Crime, Drama, Mystery")
        (td "24 March 1972 "
-        (span :class "label" "USA")))))
+        (s/label "USA")))))
     ;;}}
     )))
 
