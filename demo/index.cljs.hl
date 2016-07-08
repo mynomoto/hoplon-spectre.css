@@ -1745,37 +1745,37 @@
    (s/columns
     (div
      :class "column"
-     (span
-      :class "badge", :data-badge "1"
+     (s/badge
+      :content "1"
       "Notifications"))
     (div
      :class "column"
-     (span
-      :class "badge", :data-badge "99"
+     (s/badge
+      :content "99"
       "Notifications"))
     (div
      :class "column"
-     (span
-      :class "badge", :data-badge "999"
+     (s/badge
+      :content "999"
       "Notifications"))
     (div
      :class "column"
-     (span
-      :class "badge", :data-badge "♀"
+     (s/badge
+      :content "♀"
       "Notifications")))
    (section
     :class "notes"
     (p
-     "Add the class "
-     (code "badge")
+     "Use the element "
+     (code "(s/badge)")
      " to non self closing elements. And add the attribute "
-     (code "data-badge")
+     (code ":content")
      " to define the content of a badge. The badge will appear in the top-right direction of the element."))
    (hl/highlight
     :class "clojure"
     ;;{{
-    (span
-     :class "badge" :data-badge "99"
+    (s/badge
+     :content "99"
      "Notifications")
     ;;}}
     )))

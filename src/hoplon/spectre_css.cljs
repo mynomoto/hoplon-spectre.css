@@ -457,3 +457,9 @@
   ((label {:class "label-primary"})
    (dissoc attrs :options)
    children))
+
+(h/defelem badge
+  [{:keys [content] :as attrs} children]
+  ((h/span {:class "badge" :data-badge content})
+   (dissoc attrs :content)
+   children))
