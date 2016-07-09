@@ -8,7 +8,7 @@
    attrs
    children))
 
-(defn button-options
+(defn button-class
   [options]
   (let [options-set (set options)]
     {"loading" (:loading options-set)
@@ -21,8 +21,8 @@
 (h/defelem button
   [{:keys [options] :as attrs} children]
   (let [class (if (j/cell? options)
-                (j/cell= (button-options options))
-                (button-options options))]
+                (j/cell= (button-class options))
+                (button-class options))]
     ((h/a {:class class})
      (dissoc attrs :options)
      children)))
@@ -42,8 +42,8 @@
 (h/defelem button*
   [{:keys [options] :as attrs} children]
   (let [class (if (j/cell? options)
-                (j/cell= (button-options options))
-                (button-options options))]
+                (j/cell= (button-class options))
+                (button-class options))]
     ((h/button {:class class})
      (dissoc attrs :options)
      children)))
@@ -421,15 +421,27 @@
    (dissoc attrs :options)
    children))
 
+(defn chip-icon
+  [avatar-image]
+  (h/div
+   :class "chip-icon"
+   (avatar-img :src avatar-image)))
+
+(defn chip-content
+  [title]
+  (h/div :class "chip-content" title))
+
+(defn chip-big-avatar
+  [title avatar-image]
+  (h/div
+   :class "chip"
+   (chip-icon avatar-image)
+   (chip-content title)))
+
 (defn autocomplete-item-avatar-chip
   [title avatar-image]
   (autocomplete-item
-   (h/div
-    :class "chip hand"
-    (h/div
-     :class "chip-icon"
-     (avatar-img :src avatar-image))
-    (h/div :class "chip-content" title))))
+   ((chip-big-avatar title avatar-image) :class "hand")))
 
 (defn tooltip-class
   [position]
@@ -447,19 +459,78 @@
     :class (tooltip-class position))))
 
 (h/defelem label
-  [{:keys [options] :as attrs} children]
+  [attrs children]
   ((h/span {:class "label"})
-   (dissoc attrs :options)
+   attrs
    children))
 
 (h/defelem label-primary
-  [{:keys [options] :as attrs} children]
+  [attrs children]
   ((label {:class "label-primary"})
-   (dissoc attrs :options)
+   attrs
    children))
 
-(h/defelem badge
-  [{:keys [content] :as attrs} children]
-  ((h/span {:class "badge" :data-badge content})
-   (dissoc attrs :content)
+(defn add-badge
+  [elem text]
+  (elem
+   :data-badge text
+   :class "badge"))
+
+(h/defelem toast
+  [attrs children]
+  ((h/div {:class "toast"})
+   attrs
    children))
+
+(h/defelem toast-primary
+  [attrs children]
+  ((toast {:class "toast-primary"})
+   attrs
+   children))
+
+(h/defelem toast-success
+  [attrs children]
+  ((toast {:class "toast-success"})
+   attrs
+   children))
+
+(h/defelem toast-error
+  [attrs children]
+  ((toast {:class "toast-danger"})
+   attrs
+   children))
+
+(h/defelem menu
+  [attrs children]
+  ((h/ul {:class "menu"})
+   attrs
+   children))
+
+(h/defelem menu-item
+  [attrs children]
+  ((h/li {:class "menu-item"})
+   attrs
+   children))
+
+(defn menu-link-class
+  [options]
+  (let [options-set (set options)]
+    {"active" (:active options-set)}))
+
+(h/defelem menu-link
+  [{:keys [options] :as attrs} children]
+  (let [class (if (j/cell? options)
+                (j/cell= (menu-link-class options))
+                (menu-link-class options))]
+  (menu-item
+   ((h/a :class class)
+    (dissoc attrs :options)
+    children))))
+
+(defn menu-header
+  [content]
+  (h/li
+   :class "menu-header"
+   (h/span
+    :class "menu-header-text"
+    content)))

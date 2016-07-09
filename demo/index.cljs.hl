@@ -1745,38 +1745,38 @@
    (s/columns
     (div
      :class "column"
-     (s/badge
-      :content "1"
-      "Notifications"))
+     (s/add-badge
+      (span "Notifications")
+      "1"))
     (div
      :class "column"
-     (s/badge
-      :content "99"
-      "Notifications"))
+     (s/add-badge
+      (span "Notifications")
+      "99"))
     (div
      :class "column"
-     (s/badge
-      :content "999"
-      "Notifications"))
+     (s/add-badge
+      (span "Notifications")
+      "999"))
     (div
      :class "column"
-     (s/badge
-      :content "♀"
-      "Notifications")))
+     (s/add-badge
+      (span "Notifications")
+      "♀")))
    (section
     :class "notes"
     (p
-     "Use the element "
-     (code "(s/badge)")
-     " to non self closing elements. And add the attribute "
-     (code ":content")
-     " to define the content of a badge. The badge will appear in the top-right direction of the element."))
+     "Use the function "
+     (code "(s/add-badge element content)")
+     " to non self closing elements. "
+     (code "content")
+     " is content of a badge. The badge will appear in the top-right direction of the element."))
    (hl/highlight
     :class "clojure"
     ;;{{
-    (s/badge
-     :content "99"
-     "Notifications")
+    (s/add-badge
+     (span "Notifications")
+     "99")
     ;;}}
     )))
 
@@ -1793,64 +1793,54 @@
    (s/columns
     (div
      :class "column"
-     (div
-      :class "toast"
-      (button
-       :type "submit", :class "btn btn-clear float-right")
+     (s/toast
+      (s/button-clear :class "float-right")
       (s/icon "icon-error_outline")
       " Lorem ipsum dolor sit amet, consectetur adipiscing elit."))
     (div
      :class "column"
-     (div
-      :class "toast toast-primary"
-      (button
-       :type "submit", :class "btn btn-clear float-right")
+     (s/toast-primary
+      (s/button-clear :class "float-right")
       (s/icon "icon-error_outline")
       " Lorem ipsum dolor sit amet, consectetur adipiscing elit.")))
    (s/columns
     (div
      :class "column"
-     (div
-      :class "toast toast-success"
-      (button
-       :type "submit", :class "btn btn-clear float-right")
+     (s/toast-success
+      (s/button-clear :class "float-right")
       (s/icon "icon-error_outline")
       " Lorem ipsum dolor sit amet, consectetur adipiscing elit."))
     (div
      :class "column"
-     (div
-      :class "toast toast-danger"
-      (button
-       :type "submit", :class "btn btn-clear float-right")
+     (s/toast-error
+      (s/button-clear :class "float-right")
       (s/icon "icon-error_outline")
       " Lorem ipsum dolor sit amet, consectetur adipiscing elit.")))
    (section
     :class "notes"
     (p
-     "Add a container element with the class "
-     (code "toast")
-     ". You can add any text within the container, and even icons. You may also add a close button with the class "
-     (code "btn-clear")
+     "Use the element "
+     (code "(s/toast)")
+     ". You can add any text within the container, and even icons. You may also add a close button using "
+     (code "(s/button-clear :class \"float-right\")")
      " if you need. ")
     (p
-     "And you can add the class "
-     (code "toast-primary")
+     "And you can use the elements "
+     (code "(s/toast-primary)")
      ", "
-     (code "toast-success")
+     (code "(s/toast-success)")
      " or "
-     (code "toast-danger")
+     (code "(s/toast-error)")
      " for additional toast colors."))
    (hl/highlight
     :class "clojure"
     ;;{{
-    (div
-     :class "toast"
-     (button :class "btn btn-clear float-right")
+    (s/toast
+     (s/button-clear :class "float-right")
      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
 
-    (div
-     :class "toast toast-primary"
-     (button :class "btn btn-clear float-right" )
+    (s/toast-primary
+     (s/button-clear :class "float-right")
      (s/icon "icon-error_outline" )
      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
     ;;}}
@@ -1870,134 +1860,51 @@
    (s/columns
     (div
      :class "column"
-     (ul
-      :class "menu"
-      (li
-       :class "menu-item"
-       (div
-        :class "chip"
-        (div
-         :class "chip-icon"
-         (s/avatar-img :src "images/avatar-4.png"))
-        (div
-         :class "chip-content"
-         "Steve Rogers")
-        (div :class "chip-action")))
-      (li
-       :class "menu-item"
-       (a
-        :shape "rect",
-        :class "active",
-        :href "#menus"
-        "My profile"))
+     (s/menu
+      (s/menu-item
+       (s/chip-big-avatar "Steve Rogers" "images/avatar-4.png"))
+      (s/menu-link :options #{:active} :href "#menus" "My profile")
       (li :class "divider")
-      (li
-       :class "menu-item"
-       (a
-        :shape "rect"
-        :href "#menus"
-        "Settings"))
-      (li
-       :class "menu-item"
-       (a
-        :shape "rect"
-        :href "#menus"
-        "Logout"))))
+      (s/menu-link :href "#menus" "Settings")
+      (s/menu-link :href "#menus" "Logout")))
     (div
      :class "column"
-     (ul
-      :class "menu"
-      (li
-       :class "menu-header"
-       (span
-        :class "menu-header-text"
-        "Go to"))
-      (li
-       :class "menu-item"
-       (a
-        :shape "rect",
-        :href "#menus"
-        "Slack"))
-      (li
-       :class "menu-item"
-       (a
-        :shape "rect"
-        :href "#menus"
-        "Hipchat"))
-      (li
-       :class "menu-item"
-       "Skype")))
+     (s/menu
+      (s/menu-header "Go to")
+      (s/menu-link :href "#menus" "Slack")
+      (s/menu-link :href "#menus" "Hipchat")
+      (s/menu-link :href "#menus" "Skype")))
     (div
      :class "column"
-     (ul
-      :class "menu"
-      (li
-       :class "menu-header"
-       (span
-        :class "menu-header-text"
-        "Go to"))
-      (li
-       :class "menu-item"
-       (a
-        :shape "rect"
-        :href "#menus"
-        (s/icon "icon-link")
-        "Slack"))
-      (li
-       :class "menu-item"
-       (a
-        :shape "rect"
-        :href "#menus"
-        (s/icon "icon-link")
-        "Hipchat"))
-      (li
-       :class "menu-item"
-       (s/icon "icon-link")
-       "Skype"))))
+     (s/menu
+      (s/menu-header "Go to")
+      (s/menu-link :href "#menus" (s/icon "icon-link") "Slack")
+      (s/menu-link :href "#menus" (s/icon "icon-link") "Hipchat")
+      (s/menu-link :href "#menus" (s/icon "icon-link") "Skype"))))
    (section
     :class "notes"
     (p
-     "Add a container element with the class "
-     (code "menu")
-     ". And add child elements with the classname "
-     (code "menu-item")
+     "Add a container element "
+     (code "(s/menu)")
+     ". And add child elements with "
+     (code "(s/menu-item)")
+     " or "
+     (code "(s/menu-link)")
      ". You can separate menu items with a "
      (code "divider")
      " or "
-     (code "menu-header")
+     (code "(s/menu-header)")
      ". Spectre.css does not include JavaScript code, you will need to implement your JS to interact with the menus."))
    (hl/highlight
     :class "clojure"
     ;;{{
-    (ul
-     :class "menu"
-     ; menu header
-     (li
-      :class "menu-header"
-      (span :class "menu-header-text" "Go to"))
-     ; menu item
-     (li
-      :class "menu-item"
-      (a
-       :href "#"
-       (s/icon "icon-link") "Slack"))
-     (li
-      :class "menu-item"
-      (a
-       :href "#"
-       (s/icon "icon-link") "Hipchat"))
-     (li
-      :class "menu-item"
-      (a
-       :href "#"
-       (s/icon "icon-link") "Skype"))
-     ; menu divider
-     (li :class "divider")
-     (li
-      :class "menu-item"
-      (a
-       :href "#"
-       (s/icon "icon-link") "Settings")))
+    (s/menu
+     (s/menu-header "Go to")
+     (s/menu-link :href "#" (s/icon "icon-link") "Slack")
+     (s/menu-link :href "#" (s/icon "icon-link") "Hipchat")
+     (s/menu-link :href "#" (s/icon "icon-link") "Skype")
+     (li :class "divider") ; menu divider
+     (s/menu-link :href "#" (s/icon "icon-link") "Settings"))
     ;;}}
     )))
 
@@ -2177,12 +2084,12 @@
    :class "tab"
    (li
     :class "tab-item active"
-    (a
-     :shape "rect",
-     :class "badge",
-     :href "#tabs",
-     :data-badge "9"
-     "    Music"))
+    (s/add-badge
+     (a
+      :shape "rect",
+      :href "#tabs",
+      "    Music")
+     "9"))
    (li
     :class "tab-item"
     (a
@@ -2207,12 +2114,12 @@
    :class "tab tab-block"
    (li
     :class "tab-item active"
-    (a
-     :shape "rect",
-     :class "badge",
-     :href "#tabs",
-     :data-badge "9"
-     "    Music"))
+    (s/add-badge
+     (a
+      :shape "rect",
+      :href "#tabs",
+      "    Music")
+     "9"))
    (li
     :class "tab-item"
     (a
@@ -2236,7 +2143,9 @@
  (p
   "If you need "
   (code "badges")
-  " on tabs, you can add badge class to the element within "
+  " on tabs, you can use the "
+  (code "s/add-badge")
+  " function in the element within "
   (code "tab-item")
   ". "))
 (hl/highlight
@@ -2246,9 +2155,9 @@
   :class "tab tab-block"
   (li
    :class "tab-item active"
-   (a
-    :href "#" :class "badge" :data-badge "9"
-    "Music")))
+   (s/add-badge
+    (a :href "#" "Music")
+    "9")))
  ;;}}
  )
 (s/header
