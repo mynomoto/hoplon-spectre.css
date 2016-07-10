@@ -50,7 +50,8 @@
 (h/defelem button-clear
   [attrs children]
   ((button* attrs)
-   {:class "btn-clear"}
+   {:class "btn-clear"
+    :aria-label "Close"}
    children))
 
 (defn button-group-class

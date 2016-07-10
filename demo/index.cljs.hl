@@ -2006,28 +2006,21 @@
     :id "modals"
     :class "container grid-960"
     (s/header (h4 "modals"))
-    (section
-      :class "notes"
+    (section :class "notes"
       (p (strong "Modals") " are flexible dialog prompts."))
     (s/columns
-      (div
-        :column true
-        (div
-          :class "modal-active"
+      (div :column true
+        (div :class "modal-active"
           (div :class "modal-overlay")
           (div
-            :class "modal-container", :role "document"
-            (div
-              :class "modal-header"
-              (button
-                :type "button",
-                :class "btn btn-clear float-right",
-                :aria-label "Close")
-              (div :class "modal-title" "Modal title"))
-            (div
-              :class "modal-body"
-              (div
-                :class "content"
+            :class "modal-container"
+            :role "document"
+            (div :class "modal-header"
+              (s/button-clear :class "float-right")
+              (div :class "modal-title"
+                "Modal title"))
+            (div :class "modal-body"
+              (div :class "content"
                 (p
                  "This is the content inside the modal.")
                 (h4 "Lorem ipsum")
@@ -2045,14 +2038,9 @@
                  "Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar.")
                 (p
                  "Caerphilly swiss fromage frais. Brie cheese and wine fromage frais chalk and cheese danish fontina smelly cheese who moved my cheese cow.")))
-            (div
-              :class "modal-footer"
-              (button
-                :type "submit", :class "btn btn-link"
-                "Close")
-              (button
-                :type "submit", :class "btn btn-primary"
-                "Share"))))))
+            (div :class "modal-footer"
+              (s/button-link "Close")
+              (s/button-primary "Share"))))))
     (section
       :class "notes"
       (p
@@ -2074,36 +2062,27 @@
        (code "active")
        " to the "
        (code "modal")
-       " container"))
-    (hl/highlight
-      :class "clojure"
+       " container."))
+    (hl/highlight :class "clojure"
       ;;{{
       (div
         :class "modal-active"
         (div :class "modal-overlay")
         (div
-          :class "modal-container", :role "document"
+          :class "modal-container"
+          :role "document"
           (div
             :class "modal-header"
-            (button
-              :type "button",
-              :class "btn btn-clear float-right",
-              :aria-label "Close")
-            (div :class "modal-title" "Modal title"))
-          (div
-            :class "modal-body"
-            (div
-              :class "content"
+            (s/button-clear :class "float-right")
+            (div :class "modal-title"
+              "Modal title"))
+          (div :class "modal-body"
+            (div :class "content"
               ; content goes here
               ))
-          (div
-            :class "modal-footer"
-            (button
-              :type "submit", :class "btn btn-link"
-              "Close")
-            (button
-              :type "submit", :class "btn btn-primary"
-              "Share"))))
+          (div :class "modal-footer"
+            (s/button-link "Close")
+            (s/button-primary "Share"))))
       ;;}}
       )
     (s/header  (h5 "modal sizes"))
