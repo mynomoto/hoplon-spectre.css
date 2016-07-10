@@ -1,2897 +1,2583 @@
 (page "index.html"
   (:require
-   [hoplon.highlight :as hl]
-   [cljsjs.highlight.langs.bash]
-   [cljsjs.highlight.langs.clojure]
-   [cljsjs.highlight.langs.xml]
-   [hoplon.spectre-css :as s]))
+    [hoplon.highlight :as hl]
+    [cljsjs.highlight.langs.bash]
+    [cljsjs.highlight.langs.clojure]
+    [cljsjs.highlight.langs.xml]
+    [hoplon.spectre-css :as s]))
 
 (def html-head
   (head
-   (html-meta :charset "UTF-8")
-   (link :href "spectre.css" #_"https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.1.24/spectre.min.css" :rel "stylesheet" :type "text/css")
-   (link :href "style.css" :rel "stylesheet" :type "text/css")
-   (link :href "solarized_light.css" :rel "stylesheet" :type "text/css")
-   (link :href "font.css" :rel "stylesheet" :type "text/css")
-   (title "Hoplon Spectre Demo")))
+    (html-meta :charset "UTF-8")
+    (link :href "spectre.css" #_"https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.1.24/spectre.min.css" :rel "stylesheet" :type "text/css")
+    (link :href "style.css" :rel "stylesheet" :type "text/css")
+    (link :href "solarized_light.css" :rel "stylesheet" :type "text/css")
+    (link :href "font.css" :rel "stylesheet" :type "text/css")
+    (title "Hoplon Spectre Demo")))
 
 (def page-header
-  (section
-   :class "section bg-grey"
-   (section
-    :id "overview"
-    :class "grid-hero container grid-960"
-    (s/header
-     (h3 "Hoplon Spectre.css"))
+  (section :class "section bg-grey"
     (section
-     (p
-      "This is an adaptation that mostly replicates "
-      (a :href "https://picturepan2.github.io/spectre/" "the original Spectre.css")
-      " page using hoplon-spectre.css to show it's use.")
-     (p
-      (strong
-       "Spectre.css")
-      " is a lightweight, responsive and modern CSS framework for faster and extensible development.")
-     (ul
-      (li
-       "lightweight and clean starting point for your project and prototype")
-      (li "flexbox, responsive and mobile-friendly layout")
-      (li "carefully designed elements")
-      (li "built in useful components and utilities")
-      (li
-       "responsive email templates "
-       (s/label-primary "soon"))))
-    (section
-     :class "notes text-center"
-     (s/button-group
-      (s/button-primary
-       :href "https://github.com/mynomoto/hoplon-spectre.css",
-       :target "_blank"
-       "Hoplon Spectre GitHub Repo")
-      (s/button-primary
-       :href "https://github.com/picturepan2/spectre",
-       :target "_blank"
-       "Spectre GitHub Repo")
-      (s/button-primary
-       :href "#getting-started"
-       "Documentation"))))))
+      :id "overview"
+      :class "grid-hero container grid-960"
+      (s/header
+        (h3 "Hoplon Spectre.css"))
+      (section
+        (p
+         "This is an adaptation that mostly replicates "
+         (a :href "https://picturepan2.github.io/spectre/"
+           "the original Spectre.css")
+         " page using hoplon-spectre.css to show it's use.")
+        (p
+         (strong
+           "Spectre.css")
+         " is a lightweight, responsive and modern CSS framework for faster and extensible development.")
+        (ul
+          (li
+            "lightweight and clean starting point for your project and prototype")
+          (li "flexbox, responsive and mobile-friendly layout")
+          (li "carefully designed elements")
+          (li "built in useful components and utilities")
+          (li
+            "responsive email templates "
+            (s/label-primary "soon"))))
+      (section :class "notes text-center"
+        (s/button-group
+          (s/button-primary
+            :href "https://github.com/mynomoto/hoplon-spectre.css",
+            :target "_blank"
+            "Hoplon Spectre GitHub Repo")
+          (s/button-primary
+            :href "https://github.com/picturepan2/spectre",
+            :target "_blank"
+            "Spectre GitHub Repo")
+          (s/button-primary
+            :href "#getting-started"
+            "Documentation"))))))
 
 (def manual-install
   [(h5 "Install manually")
    (p
     "Download the compiled and minified "
     (a
-     :shape "rect"
      :href "https://github.com/picturepan2/spectre/tree/master/dist"
      :target "_blank"
      "Spectre CSS file")
     " (about 27KB):")
    (p
     (s/button-primary
-     :href "https://github.com/picturepan2/spectre/tree/master/dist"
-     :target "_blank"
-     "Download Spectre.css"))])
+      :href "https://github.com/picturepan2/spectre/tree/master/dist"
+      :target "_blank"
+      "Download Spectre.css"))])
 
 (def npm-install
   [(h5 "Install with NPM")
    (p "On a terminal window:")
-   (hl/highlight
-    :class "bash"
-    "npm install spectre.css")])
+   (hl/highlight :class "bash"
+     "npm install spectre.css")])
 
 (def bower-install
   [(h5 "Install with Bower")
    (p "On a terminal window:")
-   (hl/highlight
-    :class "bash"
-    "bower install spectre.css")
+   (hl/highlight :class "bash"
+     "bower install spectre.css")
    (p
     "You need to add the file to your project resources.")
    (p
     "And include it in Hoplon page "
     (code "(head)"))
-   (hl/highlight
-    :class "clojure"
-    "(link :href \"dist/spectre.min.css\" :rel \"stylesheet\" :type \"text/css\")")])
+   (hl/highlight :class "clojure"
+     "(link :href \"dist/spectre.min.css\" :rel \"stylesheet\" :type \"text/css\")")])
 
 (def cdn-usage
   [(h5 "Use from a CDN")
    (p
     "Include it in your Hoplon file "
     (code "(head)"))
-   (hl/highlight
-    :class "clojure"
-    "(link :href \"https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.1.24/spectre.min.css\" :rel \"stylesheet\" :type \"text/css\")")])
+   (hl/highlight :class "clojure"
+     "(link :href \"https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.1.24/spectre.min.css\" :rel \"stylesheet\" :type \"text/css\")")])
 
 (def getting-started
   (section
-   :id "getting-started"
-   :class "container grid-960"
-   (s/header
-    (h4 "getting started"))
-   (section
-    :class "notes"
-    (p
-     "There are 4 ways to get started with Spectre CSS framework in your projects. You can either manually install or use NPM and Bower.")
-    manual-install
-    npm-install
-    bower-install
-    cdn-usage)))
+    :id "getting-started"
+    :class "container grid-960"
+    (s/header (h4 "getting started"))
+    (section :class "notes"
+      (p
+       "There are 4 ways to get started with Spectre CSS framework in your projects. You can either manually install or use NPM and Bower.")
+      manual-install
+      npm-install
+      bower-install
+      cdn-usage)))
 
 (def compiling-custom-version
   (section
-   :id "compiling"
-   :class "container grid-960"
-   (s/header
-    (h4 "compiling custom version"))
-   (section
-    :class "notes"
-    (p
-     "Spectre uses "
-     (a
-      :shape "rect",
-      :href "http://gulpjs.com/",
-      :target "_blank"
-      "Gulp")
-     " for compiling CSS. You can customize your version of Spectre.css by editing LESS files in "
-     (code "/src")
-     " directory or removing unneeded components from "
-     (code "spectre.less")
-     ".")
-    (p "Then, you can build the CSS file from the command line:")
-    (ol
-     (li
-      "Navigate to the root directory of Spectre where you can find "
-      (code "package.json")
-      " file.")
-     (li
-      "Run "
-      (code "npm install")
-      ". NPM will install all dev dependencies as listed in package.json.")
-     (li
-      "When completed, run "
-      (code "gulp build")
-      " to compile LESS to CSS and minify files.")
-     (li
-      "You can find compiled CSS files in "
-      (code "/dist")
-      " directory."))
-    (p
-     "You can watch file changes and rebuild CSS files by using "
-     (code "gulp watch")
-     "."))))
+    :id "compiling"
+    :class "container grid-960"
+    (s/header
+      (h4 "compiling custom version"))
+    (section :class "notes"
+      (p
+       "Spectre uses "
+       (a
+        :href "http://gulpjs.com/",
+        :target "_blank"
+        "Gulp")
+       " for compiling CSS. You can customize your version of Spectre.css by editing LESS files in "
+       (code "/src")
+       " directory or removing unneeded components from "
+       (code "spectre.less")
+       ".")
+      (p "Then, you can build the CSS file from the command line:")
+      (ol
+        (li
+          "Navigate to the root directory of Spectre where you can find "
+          (code "package.json")
+          " file.")
+        (li
+          "Run "
+          (code "npm install")
+          ". NPM will install all dev dependencies as listed in package.json.")
+        (li
+          "When completed, run "
+          (code "gulp build")
+          " to compile LESS to CSS and minify files.")
+        (li
+          "You can find compiled CSS files in "
+          (code "/dist")
+          " directory."))
+      (p
+       "You can watch file changes and rebuild CSS files by using "
+       (code "gulp watch")
+       "."))))
 
 (defn header-tab
   [label active]
-  (li
-   :class (str "tab-item" (when (= label active) " active"))
-   (a
-    :shape "rect"
-    :href (str "#" label)
-    label)))
+  (li :class (str "tab-item" (when (= label active) " active"))
+    (a :href (str "#" label)
+      label)))
 
 (defn generic-header
   [active body]
   (section
-   :id active
-   :class "container grid-960"
-   (section
-    :class "notes text-center"
-    (ul
-     :class "tab inline-flex"
-     (header-tab "elements" active)
-     (header-tab "layout" active)
-     (header-tab "components" active)
-     (header-tab "utilities" active)))
-   body))
+    :id active
+    :class "container grid-960"
+    (section :class "notes text-center"
+      (ul :class "tab inline-flex"
+        (header-tab "elements" active)
+        (header-tab "layout" active)
+        (header-tab "components" active)
+        (header-tab "utilities" active)))
+    body))
 
 (def elements-header
   (generic-header
-   "elements"
-   (section
-    :class "notes text-center"
-    (s/button-group
-     (s/button-primary
-      :href "#typography"
-      "typography")
-     (s/button-primary
-      :href "#tables"
-      "tables")
-     (s/button-primary
-      :href "#buttons"
-      "buttons")
-     (s/button-primary
-      :href "#forms"
-      "forms")
-     (s/button-primary
-      :href "#media"
-      "media")))))
+    "elements"
+    (section :class "notes text-center"
+      (s/button-group
+        (s/button-primary :href "#typography"
+          "typography")
+        (s/button-primary :href "#tables"
+          "tables")
+        (s/button-primary :href "#buttons"
+          "buttons")
+        (s/button-primary :href "#forms"
+          "forms")
+        (s/button-primary :href "#media"
+          "media")))))
 
 (def typography-section
   (section
-   :id "typography", :class "container grid-960"
-   (s/header (h4 "typography"))
-   (section
-    :class "notes"
-    (p
-     (strong "Typography")
-     " sets default styles for headings, paragraphs, blockquote, lists and code elements. "))
-   (s/header (h5 "headings"))
-   (h1 "H1 Title " (s/label "5rem"))
-   (h2 "H2 Title " (s/label "4rem"))
-   (h3 "H3 Title " (s/label "3rem"))
-   (h4 "H4 Title " (s/label "2.4rem"))
-   (h5 "H5 Title " (s/label "2rem"))
-   (h6 "H6 Title " (s/label "1.6rem"))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
+    :id "typography"
+    :class "container grid-960"
+    (s/header (h4 "typography"))
+    (section :class "notes"
+      (p
+       (strong "Typography")
+       " sets default styles for headings, paragraphs, blockquote, lists and code elements. "))
+    (s/header (h5 "headings"))
     (h1 "H1 Title " (s/label "5rem"))
     (h2 "H2 Title " (s/label "4rem"))
     (h3 "H3 Title " (s/label "3rem"))
     (h4 "H4 Title " (s/label "2.4rem"))
     (h5 "H5 Title " (s/label "2rem"))
     (h6 "H6 Title " (s/label "1.6rem"))
-    ;;}}
-    )
-   (s/header (h5 "paragraphs"))
-   (p
-    "Lorem ipsum dolor sit amet, "
-    (s/highlight "consectetur")
-    " adipiscing elit. Praesent risus leo, "
-    (a
-     :href "#typography"
-     "dictum in vehicula sit amet")
-    ", feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.")
-   (p
-    :class "lead"
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
-   (hl/highlight
-    :class "clojure"
-    ;;{{
+    (hl/highlight :class "clojure"
+      ;;{{
+      (h1 "H1 Title " (s/label "5rem"))
+      (h2 "H2 Title " (s/label "4rem"))
+      (h3 "H3 Title " (s/label "3rem"))
+      (h4 "H4 Title " (s/label "2.4rem"))
+      (h5 "H5 Title " (s/label "2rem"))
+      (h6 "H6 Title " (s/label "1.6rem"))
+      ;;}}
+      )
+    (s/header (h5 "paragraphs"))
     (p
      "Lorem ipsum dolor sit amet, "
      (s/highlight "consectetur")
      " adipiscing elit. Praesent risus leo, "
-     (a
-      :href "#typography"
+     (a :href "#typography"
       "dictum in vehicula sit amet")
      ", feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.")
-    (p
-     :class "lead"
-     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
-    ;;}}
-    )
-   (s/header (h5 "optimized for asian fonts"))
-   (p
-    :class "lead"
-    "好, こんにちは, 안녕하세요")
-   (h6 "Chinese (Simplified)")
-   (p
-    "革命不是请客吃饭，不是做文章，不是绘画绣花，不能那样雅致，那样从容不迫，“文质彬彬”，那样“温良恭俭让”。革命就是暴动，是一个阶级推翻一个阶级的暴烈的行动。")
-   (h6 "Japanese")
-   (p
-    "祇園精舎の鐘の声、諸行無常の響きあり。沙羅双樹の花の色、盛者必衰の理をあらはす。おごれる人も久しからず。ただ春の夜の夢のごとし。たけき者も遂にはほろびぬ、ひとへ‌​に風の前の塵に同じ。")
-   (h6 "Korean")
-   (p
-    "나라말이 중국과 달라, 한문・한자와 서로 통하지 아니하므로, 어리석은 백성들이 말하고자 하는 바가 있어도, 끝내 제 뜻을 펴지 못하는 사람이 많다. 내가 이를 불쌍히 여겨, 새로 스물 여덟 글자를 만드니, 사람마다 하여금 쉽게 익혀, 날마다 씀에 편하게 하고자 할 따름이다.")
-   (s/header (h5 "blockquote"))
-   (blockquote
-    (p
-     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
-    (cite "- Source"))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (blockquote
-     (p
+    (p :class "lead"
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
-     (cite "- Source"))
-    ;;}}
-    )
-   (s/header (h5 "lists"))
-   (s/columns
-    (div
-     :column 4
-     (s/ul
-      (li "list item 1")
-      (li "list item 2"
-       (ul
-        (li "list item 2.1")
-        (li "list item 2.2")
-        (li "list item 2.3")))
-      (li "list item 3")))
-    (div
-     :column 4
-     (s/ol
-      (li "list item 1")
-      (li "list item 2"
-       (ol
-        (li "list item 2.1")
-        (li "list item 2.2")
-        (li "list item 2.3")))
-      (li "list item 3")))
-    (div
-     :column 4
-     (s/dl
-      (dt "description list term 1")
-      (dd "description list description 1")
-      (dt "description list term 2")
-      (dd "description list description 2")
-      (dt "description list term 3")
-      (dd "description list description 3"))))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (s/ul
-     (li "list item 1")
-     (li "list item 2"
-         (ul
-          (li "list item 2.1")
-          (li "list item 2.2")
-          (li "list item 2.3")))
-     (li "list item 3"))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (p
+       "Lorem ipsum dolor sit amet, "
+       (s/highlight "consectetur")
+       " adipiscing elit. Praesent risus leo, "
+       (a :href "#typography"
+         "dictum in vehicula sit amet")
+       ", feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.")
+      (p :class "lead"
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
+      ;;}}
+      )
+    (s/header (h5 "optimized for asian fonts"))
+    (p :class "lead"
+      "好, こんにちは, 안녕하세요")
+    (h6 "Chinese (Simplified)")
+    (p
+     "革命不是请客吃饭，不是做文章，不是绘画绣花，不能那样雅致，那样从容不迫，“文质彬彬”，那样“温良恭俭让”。革命就是暴动，是一个阶级推翻一个阶级的暴烈的行动。")
+    (h6 "Japanese")
+    (p
+     "祇園精舎の鐘の声、諸行無常の響きあり。沙羅双樹の花の色、盛者必衰の理をあらはす。おごれる人も久しからず。ただ春の夜の夢のごとし。たけき者も遂にはほろびぬ、ひとへ‌​に風の前の塵に同じ。")
+    (h6 "Korean")
+    (p
+     "나라말이 중국과 달라, 한문・한자와 서로 통하지 아니하므로, 어리석은 백성들이 말하고자 하는 바가 있어도, 끝내 제 뜻을 펴지 못하는 사람이 많다. 내가 이를 불쌍히 여겨, 새로 스물 여덟 글자를 만드니, 사람마다 하여금 쉽게 익혀, 날마다 씀에 편하게 하고자 할 따름이다.")
+    (s/header (h5 "blockquote"))
+    (blockquote
+      (p
+       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
+      (cite "- Source"))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (blockquote
+        (p
+         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
+        (cite "- Source"))
+      ;;}}
+      )
+    (s/header (h5 "lists"))
+    (s/columns
+      (div :column 4
+        (s/ul
+          (li "list item 1")
+          (li "list item 2"
+            (ul
+              (li "list item 2.1")
+              (li "list item 2.2")
+              (li "list item 2.3")))
+          (li "list item 3")))
+      (div :column 4
+        (s/ol
+          (li "list item 1")
+          (li "list item 2"
+            (ol
+              (li "list item 2.1")
+              (li "list item 2.2")
+              (li "list item 2.3")))
+          (li "list item 3")))
+      (div :column 4
+        (s/dl
+          (dt "description list term 1")
+          (dd "description list description 1")
+          (dt "description list term 2")
+          (dd "description list description 2")
+          (dt "description list term 3")
+          (dd "description list description 3"))))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (s/ul
+        (li "list item 1")
+        (li "list item 2"
+          (ul
+            (li "list item 2.1")
+            (li "list item 2.2")
+            (li "list item 2.3")))
+        (li "list item 3"))
 
-    (s/ol
-     (li "list item 1")
-     (li "list item 2"
-         (ol
-          (li "list item 2.1")
-          (li "list item 2.2")
-          (li "list item 2.3")))
-     (li "list item 3"))
+      (s/ol
+        (li "list item 1")
+        (li "list item 2"
+          (ol
+            (li "list item 2.1")
+            (li "list item 2.2")
+            (li "list item 2.3")))
+        (li "list item 3"))
 
-    (s/dl
-     (dt "description list term 1")
-     (dd "description list description 1")
-     (dt "description list term 2")
-     (dd "description list description 2")
-     (dt "description list term 3")
-     (dd "description list description 3"))
-    ;;}}
-    )))
+      (s/dl
+        (dt "description list term 1")
+        (dd "description list description 1")
+        (dt "description list term 2")
+        (dd "description list description 2")
+        (dt "description list term 3")
+        (dd "description list description 3"))
+      ;;}}
+      )))
 
 (def tables-section
   (section
-   :id "tables"
-   :class "container grid-960"
-   (s/header (h4 "tables"))
-   (section
-    :class "notes"
-    (p
-     (strong "Tables")
-     " include default styles for tables and data sets."))
-   (s/table
-    :options #{:striped :hover}
-    (thead
-     (tr
-      (th "name")
-      (th "duration")
-      (th "genre")
-      (th "release date")))
-    (tbody
-     (tr
-      (td "The Shawshank Redemption")
-      (td "2h 22min")
-      (td "Crime, Drama")
-      (td "14 October 1994 "
-          (s/label "USA")))
-     (tr
-      (td "The Godfather")
-      (td "2h 55min")
-      (td "Crime, Drama")
-      (td "24 March 1972 "
-          (s/label "USA")))
-     (tr
-      (td "Schindler's List")
-      (td "3h 15min")
-      (td "Biography, Drama, History")
-      (td "4 February 1994 "
-          (s/label "USA")))
-     (tr
-      (td "Se7en")
-      (td "2h 7min")
-      (td "Crime, Drama, Mystery")
-      (td "24 March 1972 "
-          (s/label "USA")))))
-   (section
-    :class "notes"
-    (p
-     "Use the element "
-     (code "(s/table)")
-     " to add padding, border and emphasized table header. Use "
-     (code ":options #{:striped}")
-     " to (s/table) to add zebra striped style. For hoverable table rows, you can add "
-     (code ":options #{:hover}")
-     " to enable hover style.")
-    (p
-     "Use the class "
-     (code "selected")
-     " to make <tr> element highlighted. "))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (s/table
-     :options #{:striped :hover}
-     (thead
-      (tr
-       (th "name")
-       (th "duration")
-       (th "genre")
-       (th "release date")))
-     (tbody
-      (tr
-       (td "The Shawshank Redemption")
-       (td "2h 22min")
-       (td "Crime, Drama")
-       (td "14 October 1994 "
-        (s/label "USA")))
-      (tr
-       (td "The Godfather")
-       (td "2h 55min")
-       (td "Crime, Drama")
-       (td "24 March 1972 "
-        (s/label "USA")))
-      (tr
-       (td "Schindler's List")
-       (td "3h 15min")
-       (td "Biography, Drama, History")
-       (td "4 February 1994 "
-        (s/label "USA")))
-      (tr
-       (td "Se7en")
-       (td "2h 7min")
-       (td "Crime, Drama, Mystery")
-       (td "24 March 1972 "
-        (s/label "USA")))))
-    ;;}}
-    )))
+    :id "tables"
+    :class "container grid-960"
+    (s/header (h4 "tables"))
+    (section :class "notes"
+      (p
+       (strong "Tables")
+       " include default styles for tables and data sets."))
+    (s/table :options #{:striped :hover}
+      (thead
+        (tr
+          (th "name")
+          (th "duration")
+          (th "genre")
+          (th "release date")))
+      (tbody
+        (tr
+          (td "The Shawshank Redemption")
+          (td "2h 22min")
+          (td "Crime, Drama")
+          (td "14 October 1994 "
+            (s/label "USA")))
+        (tr
+          (td "The Godfather")
+          (td "2h 55min")
+          (td "Crime, Drama")
+          (td "24 March 1972 "
+            (s/label "USA")))
+        (tr
+          (td "Schindler's List")
+          (td "3h 15min")
+          (td "Biography, Drama, History")
+          (td "4 February 1994 "
+            (s/label "USA")))
+        (tr
+          (td "Se7en")
+          (td "2h 7min")
+          (td "Crime, Drama, Mystery")
+          (td "24 March 1972 "
+            (s/label "USA")))))
+    (section :class "notes"
+      (p
+       "Use the element "
+       (code "(s/table)")
+       " to add padding, border and emphasized table header. Use "
+       (code ":options #{:striped}")
+       " to (s/table) to add zebra striped style. For hoverable table rows, you can add "
+       (code ":options #{:hover}")
+       " to enable hover style.")
+      (p
+       "Use the class "
+       (code "selected")
+       " to make <tr> element highlighted. "))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (s/table :options #{:striped :hover}
+        (thead
+          (tr
+            (th "name")
+            (th "duration")
+            (th "genre")
+            (th "release date")))
+        (tbody
+          (tr
+            (td "The Shawshank Redemption")
+            (td "2h 22min")
+            (td "Crime, Drama")
+            (td "14 October 1994 "
+              (s/label "USA")))
+          (tr
+            (td "The Godfather")
+            (td "2h 55min")
+            (td "Crime, Drama")
+            (td "24 March 1972 "
+              (s/label "USA")))
+          (tr
+            (td "Schindler's List")
+            (td "3h 15min")
+            (td "Biography, Drama, History")
+            (td "4 February 1994 "
+              (s/label "USA")))
+          (tr
+            (td "Se7en")
+            (td "2h 7min")
+            (td "Crime, Drama, Mystery")
+            (td "24 March 1972 "
+              (s/label "USA")))))
+      ;;}}
+      )))
 
 (def buttons-section
   (section
-   :id "buttons" :class "container grid-960"
-   (s/header (h4 "buttons"))
-   (section
-    :class "notes"
-    (p
-     (strong "Buttons")
-     " include simple button styles for actions in different types and sizes. "))
-   (s/columns
-    (div
-     :class "column"
-     (s/button "default button")
-     (s/button :options #{:loading} "default button"))
-    (div
-     :class "column"
-     (s/button-primary "primary button")
-     (s/button-primary :options #{:loading} "primary button"))
-    (div
-     :class "column"
-     (s/button-link "link button")
-     (s/button-link :options #{:loading} "link button")))
-   (section
-    :class "notes"
-    (p
-     "Use the element "
-     (code "(s/button)")
-     " for a default button. There are elements "
-     (code "(s/button-primary)")
-     " and "
-     (code "(s/button-link)")
-     " for predefined primary and link buttons. A button with "
-     (code ":options #{:loading}")
-     " can show loading indicator.  "))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (s/button "default button")
-    (s/button-primary "primary button")
-    (s/button-link "link button")
+    :id "buttons"
+    :class "container grid-960"
+    (s/header (h4 "buttons"))
+    (section :class "notes"
+      (p
+       (strong "Buttons")
+       " include simple button styles for actions in different types and sizes. "))
+    (s/columns
+      (div :column true
+        (s/button "default button")
+        (s/button :options #{:loading}
+          "default button"))
+      (div :column true
+        (s/button-primary "primary button")
+        (s/button-primary :options #{:loading}
+          "primary button"))
+      (div :column true
+        (s/button-link "link button")
+        (s/button-link :options #{:loading}
+          "link button")))
+    (section :class "notes"
+      (p
+       "Use the element "
+       (code "(s/button)")
+       " for a default button. There are elements "
+       (code "(s/button-primary)")
+       " and "
+       (code "(s/button-link)")
+       " for predefined primary and link buttons. A button with "
+       (code ":options #{:loading}")
+       " can show loading indicator.  "))
+    (hl/highlight
+      :class "clojure"
+      ;;{{
+      (s/button "default button")
+      (s/button-primary "primary button")
+      (s/button-link "link button")
 
-    ;; buttons with loading state
-    (s/button :options #{:loading} "default button")
-    (s/button-primary :options #{:loading} "primary button")
-    (s/button-link :options #{:loading} "link button")
-    ;;}}
-    )
-   (s/header (h5 "button sizes"))
-   (s/columns
-    (div
-     :class "column"
-     (s/button :options #{:lg} "large button")
-     (s/button "normal button")
-     (s/button :options #{:sm} "small button"))
-    (div
-     :class "column"
-     (s/button :options #{:block} "block button")))
-   (section
-    :class "notes"
-    (p
-     "Add "
-     (code ":options #{:sm}")
-     " or "
-     (code ":options #{:lg}")
-     " for small or large button size. Also, you can add "
-     (code ":options #{:block}")
-     " for a full-width button. "))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-     (s/button :options #{:lg} "large button")
-     (s/button "normal button")
-     (s/button :options #{:sm} "small button")
+      ;; buttons with loading state
+      (s/button :options #{:loading}
+        "default button")
+      (s/button-primary :options #{:loading}
+        "primary button")
+      (s/button-link :options #{:loading}
+        "link button")
+      ;;}}
+      )
+    (s/header (h5 "button sizes"))
+    (s/columns
+      (div :column true
+        (s/button :options #{:lg}
+          "large button")
+        (s/button "normal button")
+        (s/button :options #{:sm}
+          "small button"))
+      (div :column true
+        (s/button :options #{:block}
+          "block button")))
+    (section :class "notes"
+      (p
+       "Add "
+       (code ":options #{:sm}")
+       " or "
+       (code ":options #{:lg}")
+       " for small or large button size. Also, you can add "
+       (code ":options #{:block}")
+       " for a full-width button. "))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (s/button :options #{:lg}
+        "large button")
+      (s/button "normal button")
+      (s/button :options #{:sm}
+        "small button")
 
-     (s/button :options #{:block} "block button")
-    ;;}}
-    )
-   (s/columns
-    (div
-     :class "column"
-     (s/button-primary
-      :options #{:lg}
-      (s/icon "icon-markunread")
-      " large")
-     (s/button-primary
-      (s/icon "icon-markunread")
-      " normal")
-     (s/button-primary
-      :options #{:sm}
-      (s/icon "icon-markunread")
-      " small")))
-   (section
-    :class "notes"
-    (p
-     "Icons with the class "
-     (code "icon")
-     " can be correctly rendered in each button size. "))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (s/button-primary
-     :options #{:lg}
-     (s/icon "icon-markunread")
-     " large")
-    (s/button-primary
-     (s/icon "icon-markunread")
-     " normal")
-    (s/button-primary
-     :options #{:sm}
-     (s/icon "icon-markunread")
-     " small")
-    ;;}}
-    )
-   (s/header (h5 "button groups"))
-   (s/columns
-    (div
-     :class "column"
-     (s/button-group
-      (s/button "first button")
-      (s/button "second button")
-      (s/button "third button")))
-    (div
-     :class "column"
-     (s/button-group
-      :options #{:block}
-      (s/button-primary "first button")
-      (s/button-primary "second button")
-      (s/button-primary "third button"))))
-   (s/columns
-    (div
-     :class "column"
-     (s/button-group
-      (s/button :options #{:sm} "first button")
-      (s/button :options #{:sm} "second button")
-      (s/button :options #{:sm} "third button"))))
-   (section
-    :class "notes"
-    (p
-     "If you want to use buttons as a group, use the element "
-     (code "(s/button-group)")
-     ". You can add use the "
-     (code ":options #{:block}")
-     " for a full-width button group."))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (s/button-group
-     (s/button "first button")
-     (s/button "second button")
-     (s/button "third button"))
+      (s/button :options #{:block}
+        "block button")
+      ;;}}
+      )
+    (s/columns
+      (div :column true
+        (s/button-primary :options #{:lg}
+          (s/icon "icon-markunread")
+          " large")
+        (s/button-primary
+          (s/icon "icon-markunread")
+          " normal")
+        (s/button-primary :options #{:sm}
+          (s/icon "icon-markunread")
+          " small")))
+    (section :class "notes"
+      (p
+       "Icons with the class "
+       (code "icon")
+       " can be correctly rendered in each button size. "))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (s/button-primary :options #{:lg}
+        (s/icon "icon-markunread")
+        " large")
+      (s/button-primary
+        (s/icon "icon-markunread")
+        " normal")
+      (s/button-primary :options #{:sm}
+        (s/icon "icon-markunread")
+        " small")
+      ;;}}
+      )
+    (s/header (h5 "button groups"))
+    (s/columns
+      (div :column true
+        (s/button-group
+          (s/button "first button")
+          (s/button "second button")
+          (s/button "third button")))
+      (div :column true
+        (s/button-group :options #{:block}
+          (s/button-primary "first button")
+          (s/button-primary "second button")
+          (s/button-primary "third button"))))
+    (s/columns
+      (div :column true
+        (s/button-group
+          (s/button :options #{:sm}
+            "first button")
+          (s/button :options #{:sm}
+            "second button")
+          (s/button :options #{:sm}
+            "third button"))))
+    (section
+      :class "notes"
+      (p
+       "If you want to use buttons as a group, use the element "
+       (code "(s/button-group)")
+       ". You can add use the "
+       (code ":options #{:block}")
+       " for a full-width button group."))
+    (hl/highlight
+      :class "clojure"
+      ;;{{
+      (s/button-group
+        (s/button "first button")
+        (s/button "second button")
+        (s/button "third button"))
 
-    (s/button-group
-     :options #{:block}
-     (s/button-primary "first button")
-     (s/button-primary "second button")
-     (s/button-primary "third button"))
+      (s/button-group :options #{:block}
+        (s/button-primary "first button")
+        (s/button-primary "second button")
+        (s/button-primary "third button"))
 
-    (s/button-group
-     (s/button :options #{:sm} "first button")
-     (s/button :options #{:sm} "second button")
-     (s/button :options #{:sm} "third button"))
-    ;;}}
-    )))
+      (s/button-group
+        (s/button :options #{:sm}
+          "first button")
+        (s/button :options #{:sm}
+          "second button")
+        (s/button :options #{:sm}
+          "third button"))
+      ;;}}
+      )))
 
 (def form-section
   (section
-   :id "forms"
-   :class "container grid-960"
-   (s/header (h4 "forms"))
-   (section
-    :class "notes"
-    (p
-     (strong "Forms")
-     " provide the most common control styles used in forms, including label, input, textarea, select, checkbox, radio and switch."))
-   (s/columns
-    (div
-     :column 6
-     (form
+    :id "forms"
+    :class "container grid-960"
+    (s/header (h4 "forms"))
+    (section :class "notes"
+      (p
+       (strong "Forms")
+       " provide the most common control styles used in forms, including label, input, textarea, select, checkbox, radio and switch."))
+    (s/columns
+      (div :column 6
+        (form
+          (s/form-group
+            (s/form-label "Name")
+            (s/input
+              :options #{:error}
+              :type "text"
+              :placeholder "Name"))
+          (s/form-group
+            (s/form-label "Email")
+            (s/input
+              :options #{:success}
+              :type "email"
+              :placeholder "Email"))
+          (s/form-group
+            (s/form-label "Gender")
+            (s/input-radio
+              :name "gender"
+              "Male")
+            (s/input-radio
+              :name "gender"
+              "Female"))
+          (s/form-group
+            (s/select
+              (option "Choose an option")
+              (option "Slack")
+              (option "Skype")
+              (option "Hipchat")))
+          (s/form-group
+            (s/input-switch "Send me emails with news and tips"))
+          (s/form-group
+            (s/form-label "Message")
+            (s/textarea
+              :rows "3"
+              :placeholder "Textarea"))
+          (s/form-group
+            (s/input-checkbox "Remember me"))
+          (s/form-group
+            (s/button-primary "Submit")
+            (s/button-link "Cancel"))))
+      (div :column 6
+        (form :class "form-horizontal"
+          (s/form-group
+            (s/form-label :column-sm 3
+              "Name")
+            (s/input
+              :type "text"
+              :column-sm 9
+              :placeholder "Name"))
+          (s/form-group
+            (s/form-label :column-sm 3
+              "Email")
+            (s/input
+              :type "email"
+              :column-sm 9
+              :placeholder "Email"))
+          (s/form-group
+            (s/form-label :column-sm 3
+              (label "Gender"))
+            (div :column-sm 9
+              (s/input-radio
+                :name "gender"
+                "Male")
+              (s/input-radio
+                :name "gender"
+                "Female")))
+          (s/form-group
+            (div :column-sm 3)
+            (div :column-sm 9
+              (s/select
+                (option "Choose an option")
+                (option "Slack")
+                (option "Skype")
+                (option "Hipchat"))))
+          (s/form-group
+            (div :column-sm 3)
+            (div :column-sm 9
+              (s/input-switch "Send me emails with news and tips")))
+          (s/form-group
+            (s/form-label :column-sm 3
+              "Message")
+            (s/textarea
+              :rows "3"
+              :column-sm 9
+              :placeholder "Textarea"))
+          (s/form-group (div :column-sm 3)
+            (div :column-sm 9
+              (s/input-checkbox "Remember me")))
+          (s/form-group
+            (div :column-sm 3)
+            (div :column-sm 9
+              (s/button-primary
+                "Submit")
+              (s/button-link
+                "Cancel"))))))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (form
+        ;; form input control
+        (s/form-group
+          (s/form-label "Name")
+          (s/input
+            :type "text"
+            :placeholder "Name")))
+
+      ;; form radio control
       (s/form-group
-       (s/form-label "Name")
-       (s/input
-        :options #{:error}
-        :type "text"
-        :placeholder "Name"))
-      (s/form-group
-       (s/form-label "Email")
-       (s/input
-        :options #{:success}
-        :type "email"
-        :placeholder "Email"))
-      (s/form-group
-       (s/form-label "Gender")
-       (s/input-radio
-        :name "gender"
-        "Male")
-       (s/input-radio
-        :name "gender"
-        "Female"))
-      (s/form-group
-       (s/select
-        (option "Choose an option")
-        (option "Slack")
-        (option "Skype")
-        (option "Hipchat")))
-      (s/form-group
-       (s/input-switch "Send me emails with news and tips"))
-      (s/form-group
-       (s/form-label "Message")
-       (s/textarea
-        :rows "3"
-        :placeholder "Textarea"))
-      (s/form-group
-       (s/input-checkbox "Remember me"))
-      (s/form-group
-       (s/button-primary "Submit")
-       (s/button-link "Cancel"))))
-    (div
-     :column 6
-     (form
-      :class "form-horizontal"
-      (s/form-group
-       (s/form-label
-        :class "col-sm-3"
-        "Name")
-       (s/input
-        :type "text"
-        :class "col-sm-9"
-        :placeholder "Name"))
-      (s/form-group
-       (s/form-label
-        :class "col-sm-3"
-        "Email")
-       (s/input
-        :type "email"
-        :class "col-sm-9"
-        :placeholder "Email"))
-      (s/form-group
-       (s/form-label
-        :class "col-sm-3"
-        (label "Gender"))
-       (div
-        :class "col-sm-9"
+        (s/form-label "Gender")
         (s/input-radio
-         :name "gender"
-         "Male")
+          :name "gender"
+          "Male")
         (s/input-radio
-         :name "gender"
-         "Female")))
+          :name "gender"
+          "Female"))
+
+      ;; form select control
       (s/form-group
-       (div :class "col-sm-3")
-       (div
-        :class "col-sm-9"
         (s/select
-         (option "Choose an option")
-         (option "Slack")
-         (option "Skype")
-         (option "Hipchat"))))
+          (option "Choose an option")
+          (option "Slack")
+          (option "Skype")
+          (option "Hipchat")))
+
+      ;; form switch control
       (s/form-group
-       (div :class "col-sm-3")
-       (div
-        :class "col-sm-9"
-        (s/input-switch "Send me emails with news and tips")))
+        (s/input-switch "Send me emails with news and tips"))
+
+      ;; form textarea control
       (s/form-group
-       (s/form-label
-        :class "col-sm-3"
-        "Message")
-       (s/textarea
-        :rows "3"
-        :class "col-sm-9"
-        :placeholder "Textarea"))
+        (s/form-label "Message")
+        (s/textarea
+          :rows "3"
+          :placeholder "Textarea"))
+
+      ;; form checkbox control
       (s/form-group
-       (div :class "col-sm-3")
-       (div
-        :class "col-sm-9"
-        (s/input-checkbox "Remember me")))
-      (s/form-group
-       (div :class "col-sm-3")
-       (div
-        :class "col-sm-9"
-        (s/button-primary
-         "Submit")
-        (s/button-link
-         "Cancel"))))))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (form
-     ;; form input control
-     (s/form-group
-      (s/form-label "Name")
-      (s/input
-       :type "text"
-       :placeholder "Name")))
+        (s/input-checkbox "Remember me"))
+      ;;}}
+      )
+    (section :class "notes"
+      (p
+       "If you want to have a horizontal form, add the class "
+       (code "form-horizontal")
+       " to the "
+       (code "(form)")
+       " function. And add the class "
+       (code "col-[xs|sm|md|lg|xl]-[1-12]")
+       " to the child elements for form row layout. Please note "
+       (code "form-horizontal")
+       " only works in viewports that are at least 840px wide."))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (form
+        :class "form-horizontal"
+        (s/form-group
+          (div :column-sm 3
+            (s/form-label "Name"))
+          (s/input
+            :column-sm 9
+            :type "text"
+            :placeholder "Name"))
+        ;; Form structure
+        )
+      ;;}}
+      )
+    (section :class "notes"
+      (p
+       "To use form validation styles, add "
+       (code ":options #{:success}")
+       " and "
+       (code ":options #{:error}")
+       " to the inputs or their  "
+       (code "(s/form-group)")
+       "."))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (form
+        ;; on form-group
+        (s/form-group :options #{:success}
+          (s/form-label "Name")
+          (s/input
+            :type "text"
+            :placeholder "Name"))
 
-     ;; form radio control
-     (s/form-group
-      (s/form-label "Gender")
-       (s/input-radio
-        :name "gender"
-        "Male")
-       (s/input-radio
-        :name "gender"
-        "Female"))
+        ;; on input
+        (s/form-group
+          (s/form-label "Email")
+          (s/input
+            :options #{:success}
+            :type "text"
+            :placeholder "Email")))
+      ;;}}
+      )
+    (section :class "notes"
+      (p
+       "For smaller or larger input and select controls, you could add "
+       (code ":options #{:sm}")
+       " or "
+       (code ":options #{:lg}")
+       " to the elements."))
+    (s/columns
+      (div :column true
+        (s/input
+          :options #{:sm}
+          :type "text"
+          :placeholder "Name"))
+      (div :column true
+        (s/input
+          :options #{:lg}
+          :type "text"
+          :placeholder "Name"))
+      (div :column true
+        (s/select :options #{:sm}
+          (option "Choose an option")
+          (option "Slack")
+          (option "Skype")
+          (option "Hipchat"))
+        (s/select :options #{:lg}
+          (option "Choose an option")
+          (option "Slack")
+          (option "Skype")
+          (option "Hipchat"))))
+    (s/header (h5 "input groups"))
+    (s/columns
+      (div :column true
+        (s/input-group
+          (s/input-group-text "slack.com/")
+          (s/input
+            :type "text"
+            :placeholder "site name")))
+      (div :column true
+        (s/input-group
+          (s/input
+            :type "text"
+            :placeholder "username")
+          (s/input-group-text "@slack.com")))
+      (div :column true
+        (s/input-group
+          (s/input-group-text "slack.com/")
+          (s/input
+            :type "text"
+            :placeholder "site name")
+          (s/button-primary :options #{:input-group}
+            "Submit"))))
+    (s/columns
+      (div :column true
+        (s/input-group
+          (s/input-group-text :options #{:sm}
+            "slack.com/")
+          (s/input
+            :options #{:sm}
+            :type "text"
+            :placeholder "site name")))
+      (div :column true
+        (s/input-group
+          (s/input
+            :options #{:lg}
+            :type "text"
+            :placeholder "username")
+          (s/input-group-text :options #{:lg}
+            "@slack.com")))
+      (div :column true))
+    (section :class "notes"
+      (p
+       "If you want to attach text and button along with an input, use the element "
+       (code "(s/input-group)")
+       ". And use the element "
+       (code "(s/input-group-text)")
+       " for text and add "
+       (code ":options #{:input-group}")
+       " to the button element. Buttons, inputs and text can be made large or small using "
+       (code ":options #{:lg}")
+       " or "
+       (code ":options #{:sm}")
+       "."))
+    (hl/highlight :class "clojure"
+      ;;{{
+      ;; normal input group
+      (s/input-group
+        (s/input-group-text "slack.com/")
+        (s/input
+          :type "text"
+          :placeholder "site name"))
 
-     ;; form select control
-     (s/form-group
-      (s/select
-       (option "Choose an option")
-       (option "Slack")
-       (option "Skype")
-       (option "Hipchat")))
+      ;; large input group
+      (s/input-group
+        (s/input
+          :options #{:lg}
+          :type "text"
+          :placeholder "username")
+        (s/input-group-text :options #{:lg}
+          "@slack.com"))
 
-     ;; form switch control
-     (s/form-group
-      (s/input-switch "Send me emails with news and tips"))
-
-     ;; form textarea control
-     (s/form-group
-      (s/form-label "Message")
-      (s/textarea
-       :rows "3"
-       :placeholder "Textarea"))
-
-     ;; form checkbox control
-     (s/form-group
-      (s/input-checkbox "Remember me"))
-    ;;}}
-    )
-   (section
-    :class "notes"
-    (p
-     "If you want to have a horizontal form, add the class "
-     (code "form-horizontal")
-     " to the "
-     (code "(form)")
-     " function. And add the class "
-     (code "col-[xs|sm|md|lg|xl]-[1-12]")
-     " to the child elements for form row layout. Please note "
-     (code "form-horizontal")
-     " only works in viewports that are at least 840px wide."))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (form
-     :class "form-horizontal"
-     (s/form-group
-      (div
-       :class "col-sm-3"
-       (s/form-label "Name"))
-      (s/input
-       :class "col-sm-9"
-       :type "text"
-       :placeholder "Name"))
-     ;; Form structure
-     )
-    ;;}}
-    )
-   (section
-    :class "notes"
-    (p
-     "To use form validation styles, add "
-     (code ":options #{:success}")
-     " and "
-     (code ":options #{:error}")
-     " to the inputs or their  "
-     (code "(s/form-group)")
-     "."))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (form
-     ;; on form-group
-     (s/form-group
-      :options #{:success}
-      (s/form-label "Name")
-      (s/input
-       :type "text"
-       :placeholder "Name"))
-
-     ;; on input
-     (s/form-group
-      (s/form-label "Email")
-      (s/input
-       :options #{:success}
-       :type "text"
-       :placeholder "Email")))
-    ;;}}
-    )
-   (section
-    :class "notes"
-    (p
-     "For smaller or larger input and select controls, you could add "
-     (code ":options #{:sm}")
-     " or "
-     (code ":options #{:lg}")
-     " to the elements."))
-   (s/columns
-    (div
-     :class "column"
-     (s/input
-      :options #{:sm}
-      :type "text"
-      :placeholder "Name"))
-    (div
-     :class "column"
-     (s/input
-      :options #{:lg}
-      :type "text"
-      :placeholder "Name"))
-    (div
-     :class "column"
-     (s/select
-      :options #{:sm}
-      (option "Choose an option")
-      (option "Slack")
-      (option "Skype")
-      (option "Hipchat"))
-     (s/select
-      :options #{:lg}
-      (option "Choose an option")
-      (option "Slack")
-      (option "Skype")
-      (option "Hipchat"))))
-   (s/header (h5 "input groups"))
-   (s/columns
-    (div
-     :class "column"
-     (s/input-group
-      (s/input-group-text "slack.com/")
-      (s/input
-       :type "text"
-       :placeholder "site name")))
-    (div
-     :class "column"
-     (s/input-group
-      (s/input
-       :type "text"
-       :placeholder "username")
-      (s/input-group-text "@slack.com")))
-    (div
-     :class "column"
-     (s/input-group
-      (s/input-group-text "slack.com/")
-      (s/input
-       :type "text"
-       :placeholder "site name")
-      (s/button-primary
-       :options #{:input-group}
-       "Submit"))))
-   (s/columns
-    (div
-     :class "column"
-     (s/input-group
-      (s/input-group-text :options #{:sm} "slack.com/")
-      (s/input
-       :options #{:sm}
-       :type "text"
-       :placeholder "site name")))
-    (div
-     :class "column"
-     (s/input-group
-      (s/input
-       :options #{:lg}
-       :type "text"
-       :placeholder "username")
-      (s/input-group-text :options #{:lg} "@slack.com")))
-    (div :class "column"))
-   (section
-    :class "notes"
-    (p
-     "If you want to attach text and button along with an input, use the element "
-     (code "(s/input-group)")
-     ". And use the element "
-     (code "(s/input-group-text)")
-     " for text and add "
-     (code ":options #{:input-group}")
-     " to the button element. Buttons, inputs and text can be made large or small using "
-     (code ":options #{:lg}")
-     " or "
-     (code ":options #{:sm}")
-     "."))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    ;; normal input group
-    (s/input-group
-     (s/input-group-text "slack.com/")
-     (s/input :type "text" :placeholder "site name"))
-
-    ;; large input group
-    (s/input-group
-     (s/input
-      :options #{:lg}
-      :type "text"
-      :placeholder "username")
-     (s/input-group-text :options #{:lg} "@slack.com"))
-
-    ;; normal input group with button
-    (s/input-group
-     (s/input-group-text "slack.com/")
-     (s/input :type "text" :placeholder "site name")
-     (s/button-primary
-      :options #{:input-group}
-      "Submit"))
-    ;;}}
-    )))
+      ;; normal input group with button
+      (s/input-group
+        (s/input-group-text "slack.com/")
+        (s/input
+          :type "text"
+          :placeholder "site name")
+        (s/button-primary :options #{:input-group}
+          "Submit"))
+      ;;}}
+      )))
 
 (def media-section
   (section
-   :id "media"
-   :class "container grid-960"
-   (s/header (h4 "media"))
-   (section
-    :class "notes"
-    (p
-     (strong "Media")
-     " include responsive image and video class."))
-   (s/columns
-    (div
-     :column 6
-     (s/img :options #{:rounded} :src "images/osx-el-capitan.jpg")))
-   (section
-    :class "notes"
-    (p
-     "Use the element "
-     (code "(s/img)")
-     ". The images will scale with the parent sizes."))
-   (s/columns
-    (div
-     :column 6
-     (div
-      :class "video-responsive"
-      (iframe
-       :frameborder "0",
-       :scrolling "auto",
-       :src "/vBfBa-gCMQk.html",
-       :width "560",
-       :height "315",
-       :allowfullscreen ""))))
-   (section
-    :class "notes"
-    (p
-     "For responsive video, add a container with the class "
-     (code "video-responsive")
-     ". Insert any YouTube, Youku or other iframe/embed video inside the container. The ratio is 16:9 by default. You may add the class "
-     (code "video-responsive-4-3")
-     " for 4:3 ratio video container."))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (s/img :options #{:rounded} :src "images/osx-el-capitan.jpg")
+    :id "media"
+    :class "container grid-960"
+    (s/header (h4 "media"))
+    (section :class "notes"
+      (p
+       (strong "Media")
+       " include responsive image and video class."))
+    (s/columns
+      (div :column 6
+        (s/img
+          :options #{:rounded}
+          :src "images/osx-el-capitan.jpg")))
+    (section :class "notes"
+      (p
+       "Use the element "
+       (code "(s/img)")
+       ". The images will scale with the parent sizes."))
+    (s/columns
+      (div :column 6
+        (div :class "video-responsive"
+          (iframe
+            :frameborder "0",
+            :scrolling "auto",
+            :src "/vBfBa-gCMQk.html",
+            :width "560",
+            :height "315",
+            :allowfullscreen ""))))
+    (section :class "notes"
+      (p
+       "For responsive video, add a container with the class "
+       (code "video-responsive")
+       ". Insert any YouTube, Youku or other iframe/embed video inside the container. The ratio is 16:9 by default. You may add the class "
+       (code "video-responsive-4-3")
+       " for 4:3 ratio video container."))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (s/img
+        :options #{:rounded}
+        :src "images/osx-el-capitan.jpg")
 
-    (div
-     :class "video-responsive"
-     (iframe :src "https://www.youtube.com/embed/vBfBa-gCMQk" :width "560" :height "315" :frameborder "0" :allowfullscreen true))
-    ;;}}
-    )))
+      (div :class "video-responsive"
+        (iframe
+          :src "https://www.youtube.com/embed/vBfBa-gCMQk"
+          :width "560"
+          :height "315"
+          :frameborder "0"
+          :allowfullscreen true))
+      ;;}}
+      )))
 
 (def layout-header
   (generic-header
-   "layout"
-   (section
-    :class "notes text-center"
-    (s/button-group
-     (s/button-primary
-      :href "#grid"
-      "flexbox grid")
-     (s/button-primary
-      :href "#responsive"
-      "responsive")
-     (s/button-primary
-      :href "#navbar"
-      "navbar")
-     (s/button-primary
-      :href "#empty"
-      "empty states")))))
+    "layout"
+    (section :class "notes text-center"
+      (s/button-group
+        (s/button-primary :href "#grid"
+          "flexbox grid")
+        (s/button-primary :href "#responsive"
+          "responsive")
+        (s/button-primary :href "#navbar"
+          "navbar")
+        (s/button-primary :href "#empty"
+          "empty states")))))
 
 (def grid-section
   (section
-   :id "grid"
-   :class "container grid-960"
-   (s/header (h4 "flexbox grid"))
-   (section
-    :class "notes"
-    (p
-     (strong "Layout")
-     " includes flexbox based responsive grid system with 12 columns. "))
-   (s/columns
-    (div :column true (div :class "bg-grey"))
-    (div :column true (div :class "bg-grey"))
-    (div :column true (div :class "bg-grey"))
-    (div :column true (div :class "bg-grey"))
-    (div :column true (div :class "bg-grey"))
-    (div :column true (div :class "bg-grey"))
-    (div :column true (div :class "bg-grey"))
-    (div :column true (div :class "bg-grey"))
-    (div :column true (div :class "bg-grey"))
-    (div :column true (div :class "bg-grey"))
-    (div :column true (div :class "bg-grey"))
-    (div :column true (div :class "bg-grey")))
-   (s/columns
-    (div
-     :column 12
-     (div :class "bg-grey" ":column 12 (100%)")))
-   (s/columns
-    (div
-     :column 9
-     (div :class "bg-grey" ":column 9 (75%)")))
-   (s/columns
-    (div
-     :column 6
-     (div :class "bg-grey" ":column 6 (50%)")))
-   (s/columns
-    (div
-     :column 3
-     (div :class "bg-grey" ":column 3 (25%)")))
-   (section
-    :class "notes"
-    (p
-     "Use the element "
-     (code "(s/columns)")
-     " inside a container with the class "
-     (code "container")
-     ". And add any element you want with the attribute "
-     (code ":column")
-     " inside the container. These columns will take up the space equally. You can specific the width of each column by adding the number of columns "
-     (code ":column [1-12]")
-     ".")
-    (p
-     "And you can add "
-     (code ":options #{:gapless}")
-     " to have gapless columns."))
-   (s/columns
-    :options #{:gapless}
-    (div
-     :column 6
-     (div :class "bg-grey" ":column 6 (gapless)"))
-    (div
-     :column 6
-     (div :class "bg-grey" ":column 6 (gapless)")))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (div
-     :class "container"
-     (s/columns
-      (div :column 6 ":column 6")
-      (div :column 3 ":column 3")
-      (div :column 2 ":column 2")
-      (div :column 1 ":column 1"))
+    :id "grid"
+    :class "container grid-960"
+    (s/header (h4 "flexbox grid"))
+    (section :class "notes"
+      (p
+       (strong "Layout")
+       " includes flexbox based responsive grid system with 12 columns. "))
+    (s/columns
+      (div :column true
+        (div :class "bg-grey"))
+      (div :column true
+        (div :class "bg-grey"))
+      (div :column true
+        (div :class "bg-grey"))
+      (div :column true
+        (div :class "bg-grey"))
+      (div :column true
+        (div :class "bg-grey"))
+      (div :column true
+        (div :class "bg-grey"))
+      (div :column true
+        (div :class "bg-grey"))
+      (div :column true
+        (div :class "bg-grey"))
+      (div :column true
+        (div :class "bg-grey"))
+      (div :column true
+        (div :class "bg-grey"))
+      (div :column true
+        (div :class "bg-grey"))
+      (div :column true
+        (div :class "bg-grey")))
+    (s/columns
+      (div :column 12
+        (div :class "bg-grey"
+          ":column 12 (100%)")))
+    (s/columns
+      (div :column 9
+        (div :class "bg-grey"
+          ":column 9 (75%)")))
+    (s/columns
+      (div :column 6
+        (div :class "bg-grey"
+          ":column 6 (50%)")))
+    (s/columns
+      (div :column 3
+        (div :class "bg-grey"
+          ":column 3 (25%)")))
+    (section :class "notes"
+      (p
+       "Use the element "
+       (code "(s/columns)")
+       " inside a container with the class "
+       (code "container")
+       ". And add any element you want with the attribute "
+       (code ":column")
+       " inside the container. These columns will take up the space equally. You can specific the width of each column by adding the number of columns "
+       (code ":column [1-12]")
+       ".")
+      (p
+       "And you can add "
+       (code ":options #{:gapless}")
+       " to have gapless columns."))
+    (s/columns :options #{:gapless}
+      (div :column 6
+        (div :class "bg-grey"
+          ":column 6 (gapless)"))
+      (div :column 6
+        (div :class "bg-grey"
+          ":column 6 (gapless)")))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (div :class "container"
+        (s/columns
+          (div :column 6
+            ":column 6")
+          (div :column 3
+            ":column 3")
+          (div :column 2
+            ":column 2")
+          (div :column 1
+            ":column 1"))
 
-     (s/columns
-      :options #{:gapless}
-      (div :column 6 ":column 6")
-      (div :column 6 ":column 6")))
-    ;;}}
-    )))
+        (s/columns :options #{:gapless}
+          (div :column 6
+            ":column 6")
+          (div :column 6
+            ":column 6")))
+      ;;}}
+      )))
 
 (def responsive-section
   (section
-   :id "responsive"
-   :class "container grid-960"
-   (s/header (h4 "responsive grid"))
-   (s/columns
-    (div
-     :column-md 6
-     (div :class "bg-grey" ":column-md 6"))
-    (div
-     :column-md 3
-     (div :class "bg-grey" ":column-md 3"))
-    (div
-     :column-md 3
-     (div :class "bg-grey" ":column-md 3")))
-   (s/columns
-    (div
-     :column-sm 6
-     (div :class "bg-grey" ":column-sm 6"))
-    (div
-     :column-sm 3
-     (div :class "bg-grey" ":column-sm 3"))
-    (div
-     :column-sm 3
-     (div :class "bg-grey" ":column-sm 3")))
-   (s/columns
-    (div
-     :column-xs 6
-     (div :class "bg-grey" ":column-xs 6"))
-    (div
-     :column-xs 3
-     (div :class "bg-grey" ":column-xs 3"))
-    (div
-     :column-xs 3
-     (div :class "bg-grey" ":column-xs 3")))
-   (section
-    :class "notes"
-    (p
-     "Hoplon Spectre provides a neat responsive layout grid system. There are "
-     (code ":column-xs [1-12]")
-     ", "
-     (code ":column-sm [1-12]")
-     " and "
-     (code ":column-md [1-12]")
-     " available for flexible grid across mobile, tablet and desktop viewport usage.")
-    (ul
-     (li
-      "For window width less than "
-      (strong "480px")
-      ", all columns will show as a single row.")
-     (li
-      (code ":column-xs [1-12]")
-      " apply to window width greater than or equal to "
-      (strong "481px")
-      ". ")
-     (li
-      (code ":column-sm [1-12]")
-      " apply to window width greater than or equal to "
-      (strong "601px")
-      ". ")
-     (li
-      (code ":column-md [1-12]")
-      " apply to window width greater than or equal to "
-      (strong "841px")
-      ". ")))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (div
-     :class "container"
-     (s/columns
-      (div :column-xs 6 ":column-xs 6")
-      (div :column-xs 3 ":column-xs 3")
-      (div :column-xs 3 ":column-xs 3")))
-    ;;}}
-    )
-   (section
-    :class "notes"
-    (p
-     "For hiding elements on specific viewport sizes, there are the hide attribute "
-     (code ":hide #{:xs}")
-     ", "
-     (code ":hide #{:sm}")
-     ", "
-     (code ":hide #{:md}")
-     ", "
-     (code ":hide #{:lg}")
-     " and "
-     (code ":hide #{:xl}")
-     " available.")
-    (ul
-     (li
-      (code ":hide #{:xs}")
-      " hides elements when the viewport is smaller than or equal to "
-      (strong "480px")
-      ". ")
-     (li
-      (code ":hide #{:sm}")
-      " hides elements when the viewport is smaller than or equal to "
-      (strong "600px")
-      ". ")
-     (li
-      (code ":hide #{:md}")
-      " hides elements when the viewport is smaller than or equal to "
-      (strong "840px")
-      ". ")
-     (li
-      (code ":hide #{:lg}")
-      " hides elements when the viewport is smaller than or equal to "
-      (strong "960px")
-      ". ")
-     (li
-      (code ":hide #{:xl}")
-      " hides elements when the viewport is smaller than or equal to "
-      (strong "1280px")
-      ". ")))))
+    :id "responsive"
+    :class "container grid-960"
+    (s/header (h4 "responsive grid"))
+    (s/columns
+      (div :column-md 6
+        (div :class "bg-grey"
+          ":column-md 6"))
+      (div :column-md 3
+        (div :class "bg-grey"
+          ":column-md 3"))
+      (div :column-md 3
+        (div :class "bg-grey"
+          ":column-md 3")))
+    (s/columns
+      (div :column-sm 6
+        (div :class "bg-grey"
+          ":column-sm 6"))
+      (div :column-sm 3
+        (div :class "bg-grey"
+          ":column-sm 3"))
+      (div :column-sm 3
+        (div :class "bg-grey"
+          ":column-sm 3")))
+    (s/columns
+      (div :column-xs 6
+        (div :class "bg-grey"
+          ":column-xs 6"))
+      (div :column-xs 3
+        (div :class "bg-grey"
+          ":column-xs 3"))
+      (div :column-xs 3
+        (div :class "bg-grey"
+          ":column-xs 3")))
+    (section :class "notes"
+      (p
+       "Hoplon Spectre provides a neat responsive layout grid system. There are "
+       (code ":column-xs [1-12]")
+       ", "
+       (code ":column-sm [1-12]")
+       " and "
+       (code ":column-md [1-12]")
+       " available for flexible grid across mobile, tablet and desktop viewport usage.")
+      (ul
+        (li
+          "For window width less than "
+          (strong "480px")
+          ", all columns will show as a single row.")
+        (li
+          (code ":column-xs [1-12]")
+          " apply to window width greater than or equal to "
+          (strong "481px")
+          ". ")
+        (li
+          (code ":column-sm [1-12]")
+          " apply to window width greater than or equal to "
+          (strong "601px")
+          ". ")
+        (li
+          (code ":column-md [1-12]")
+          " apply to window width greater than or equal to "
+          (strong "841px")
+          ". ")))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (div :class "container"
+        (s/columns
+          (div :column-xs 6
+            ":column-xs 6")
+          (div :column-xs 3
+            ":column-xs 3")
+          (div :column-xs 3
+            ":column-xs 3")))
+      ;;}}
+      )
+    (section :class "notes"
+      (p
+       "For hiding elements on specific viewport sizes, there are the hide attribute "
+       (code ":hide #{:xs}")
+       ", "
+       (code ":hide #{:sm}")
+       ", "
+       (code ":hide #{:md}")
+       ", "
+       (code ":hide #{:lg}")
+       " and "
+       (code ":hide #{:xl}")
+       " available.")
+      (ul
+        (li
+          (code ":hide #{:xs}")
+          " hides elements when the viewport is smaller than or equal to "
+          (strong "480px")
+          ". ")
+        (li
+          (code ":hide #{:sm}")
+          " hides elements when the viewport is smaller than or equal to "
+          (strong "600px")
+          ". ")
+        (li
+          (code ":hide #{:md}")
+          " hides elements when the viewport is smaller than or equal to "
+          (strong "840px")
+          ". ")
+        (li
+          (code ":hide #{:lg}")
+          " hides elements when the viewport is smaller than or equal to "
+          (strong "960px")
+          ". ")
+        (li
+          (code ":hide #{:xl}")
+          " hides elements when the viewport is smaller than or equal to "
+          (strong "1280px")
+          ". ")))))
 
 (def navbar-section
   (section
-   :id "navbar"
-   :class "container grid-960"
-   (s/header (h4 "navbar"))
-   (section
-    :class "notes"
-    (p
-     (strong "Navbar")
-     " is a layout container that appear in the header of apps and websites. "))
-   (s/columns
-    (div
-     :column true
-     (s/navbar
-      :class "bg-grey"
-      (s/navbar-section
-       (s/button-link
-        :options #{:lg}
-        :href "#navbar"
-        (i :class "icon icon-menu"))
-       (s/navbar-title-link
-        :href "#navbar"
-        "Spectre.css"))
-      (s/navbar-section
-       (s/input :options #{:inline} :type "text" :placeholder "search")
-       (s/button-link :href "#navbar" "documents")
-       (s/button-link :href "#navbar" "login")
-       (s/button-primary :href "#navbar" "signup")))))
-   (s/columns
-    (div
-     :column true
-     (s/navbar
-      (s/navbar-section
-       (s/button-link
-        :options #{:lg}
-        :href "#navbar"
-        (i :class "icon icon-menu"))
-       (s/navbar-title-link
-        :href "#navbar"
-        "Spectre.css"))
-      (s/navbar-section
-       (s/input :options #{:inline} :type "text" :placeholder "search")
-       (s/avatar
-        :class "ml-10 mr-10"
-        (img :src "images/avatar-4.png"))
-       (s/button-primary :href "#navbar" "share")))))
-   (section
-    :class "notes"
-    (p
-     "A navbar component can include logo brand, nav links and buttons, search box or any combination of those elements. By default, there is no grey background."))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (s/navbar
-     (s/navbar-section
-      (s/button-link
-       :options #{:lg}
-       :href "#navbar"
-       (i :class "icon icon-people"))
-      (s/navbar-title-link :href "#navbar" "Spectre.css"))
-     (s/navbar-section
-      (s/input :options #{:inline} :text "text" :placeholder "search")
-      (s/button-link :href "#navbar" "documents")
-      (s/button-link :href "#navbar" "login")
-      (s/button-primary :href "#navbar" "signup")))
-    ;;}}
-    )))
+    :id "navbar"
+    :class "container grid-960"
+    (s/header (h4 "navbar"))
+    (section :class "notes"
+      (p
+       (strong "Navbar")
+       " is a layout container that appear in the header of apps and websites. "))
+    (s/columns
+      (div :column true
+        (s/navbar :class "bg-grey"
+          (s/navbar-section
+            (s/button-link
+              :options #{:lg}
+              :href "#navbar"
+              (i :class "icon icon-menu"))
+            (s/navbar-title-link :href "#navbar"
+              "Spectre.css"))
+          (s/navbar-section
+            (s/input
+              :options #{:inline}
+              :type "text"
+              :placeholder "search")
+            (s/button-link :href "#navbar"
+              "documents")
+            (s/button-link :href "#navbar"
+              "login")
+            (s/button-primary :href "#navbar"
+              "signup")))))
+    (s/columns
+      (div :column true
+        (s/navbar
+          (s/navbar-section
+            (s/button-link
+              :options #{:lg}
+              :href "#navbar"
+              (i :class "icon icon-menu"))
+            (s/navbar-title-link :href "#navbar"
+              "Spectre.css"))
+          (s/navbar-section
+            (s/input
+              :options #{:inline}
+              :type "text"
+              :placeholder "search")
+            (s/avatar :class "ml-10 mr-10"
+              (img :src "images/avatar-4.png"))
+            (s/button-primary :href "#navbar"
+              "share")))))
+    (section :class "notes"
+      (p
+       "A navbar component can include logo brand, nav links and buttons, search box or any combination of those elements. By default, there is no grey background."))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (s/navbar
+        (s/navbar-section
+          (s/button-link
+            :options #{:lg}
+            :href "#navbar"
+            (i :class "icon icon-people"))
+          (s/navbar-title-link :href "#navbar"
+            "Spectre.css"))
+        (s/navbar-section
+          (s/input
+            :options #{:inline}
+            :text "text"
+            :placeholder "search")
+          (s/button-link :href "#navbar"
+            "documents")
+          (s/button-link :href "#navbar"
+            "login")
+          (s/button-primary :href "#navbar"
+            "signup")))
+      ;;}}
+      )))
 
 (def empty-section
   (section
-   :id "empty"
-   :class "container grid-960"
-   (s/header (h4 "empty states/blank slates"))
-   (section
-    :class "notes"
-    (p
-     (strong "Empty states/blank slates")
-     " are commonly used as placeholders for first time use, empty data and error screens."))
-   (s/columns
-    (div
-     :column 6
-     (section
-      :class "empty"
-      (i :class "icon icon-markunread")
-      (p :class "empty-title" "You have no new messages")
+    :id "empty"
+    :class "container grid-960"
+    (s/header (h4 "empty states/blank slates"))
+    (section :class "notes"
       (p
-       :class "empty-meta"
-       "Click the button to start a conversation.")
-      (s/button-primary
-       :class "empty-action"
-       "Send a message")))
-    (div
-     :column 6
-     (section
-      :class "empty"
-      (i :class "icon icon-people")
-      (p :class "empty-title" "You are not following anyone")
-      (s/input-group
-       :class "empty-action"
-       (s/input :type "text" :placeholder "")
-       (s/button-primary
-        :options #{:input-group}
-        "Search")))))
-   (section
-    :class "notes"
-    (p
-     "An empty state component can include icons, messages(title and meta messages) and action buttons or any combination of those elements. Add "
-     (code "empty-title")
-     ", "
-     (code "empty-meta")
-     " or "
-     (code "empty-action")
-     " to the elements. HTML structure is exampled below. "))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (section
-     :class "empty"
-     (i :class "icon icon-markunread")
-     (p :class "empty-title" "You have no new messages")
-     (p :class "empty-meta" "Click the button to start a conversation.")
-     (s/button-primary :class "empty-action" "Send a message"))
-    ;;}}
-    )))
+       (strong "Empty states/blank slates")
+       " are commonly used as placeholders for first time use, empty data and error screens."))
+    (s/columns
+      (div :column 6
+        (section :class "empty"
+          (i :class "icon icon-markunread")
+          (p :class "empty-title"
+            "You have no new messages")
+          (p :class "empty-meta"
+           "Click the button to start a conversation.")
+          (s/button-primary :class "empty-action"
+            "Send a message")))
+      (div :column 6
+        (section :class "empty"
+          (i :class "icon icon-people")
+          (p :class "empty-title"
+            "You are not following anyone")
+          (s/input-group :class "empty-action"
+            (s/input
+              :type "text"
+              :placeholder "")
+            (s/button-primary :options #{:input-group}
+              "Search")))))
+    (section :class "notes"
+      (p
+       "An empty state component can include icons, messages(title and meta messages) and action buttons or any combination of those elements. Add "
+       (code "empty-title")
+       ", "
+       (code "empty-meta")
+       " or "
+       (code "empty-action")
+       " to the elements. HTML structure is exampled below. "))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (section :class "empty"
+        (i :class "icon icon-markunread")
+        (p :class "empty-title"
+          "You have no new messages")
+        (p :class "empty-meta"
+          "Click the button to start a conversation.")
+        (s/button-primary :class "empty-action"
+          "Send a message"))
+      ;;}}
+      )))
 
 (def components-header
   (generic-header
-   "components"
-   (section
-    :class "notes text-center"
-    (s/button-group
-     (s/button-primary
-      :href "#avatars"
-      "avatars")
-     (s/button-primary
-      :href "#chips"
-      "chips")
-     (s/button-primary
-      :href "#autocomplete"
-      "autocomplete")
-     (s/button-primary
-      :href "#tooltips"
-      "tooltips")
-     (s/button-primary
-      :href "#labels"
-      "labels")
-     (s/button-primary
-      :href "#badges"
-      "badges")
-     (s/button-primary
-      :href "#toasts"
-      "toasts")
-     (s/button-primary
-      :href "#menus"
-      "menus")
-     (s/button-primary
-      :href "#navigation"
-      "navigation")
-     (s/button-primary
-      :href "#modals"
-      "modals")
-     (s/button-primary
-      :href "#cards"
-      "cards")))))
+    "components"
+    (section :class "notes text-center"
+      (s/button-group
+        (s/button-primary :href "#avatars"
+          "avatars")
+        (s/button-primary :href "#chips"
+          "chips")
+        (s/button-primary :href "#autocomplete"
+          "autocomplete")
+        (s/button-primary :href "#tooltips"
+          "tooltips")
+        (s/button-primary :href "#labels"
+          "labels")
+        (s/button-primary :href "#badges"
+          "badges")
+        (s/button-primary :href "#toasts"
+          "toasts")
+        (s/button-primary :href "#menus"
+          "menus")
+        (s/button-primary :href "#navigation"
+          "navigation")
+        (s/button-primary :href "#modals"
+          "modals")
+        (s/button-primary :href "#cards"
+          "cards")))))
 
 (def avatar-section
   (section
-   :id "avatars"
-   :class "container grid-960"
-   (s/header (h4 "avatars"))
-   (section
-    :class "notes"
-    (p (strong "Avatars") " are user profile pictures. "))
-   (s/columns
-    (div
-     :column 3
-     (s/avatar
-      :options #{:xl}
-      (img :src "images/avatar-1.png"))
-     (s/avatar
-      :options #{:lg}
-      (img :src "images/avatar-2.png"))
-     (s/avatar
-      (img :src "images/avatar-3.png"))
-     (s/avatar
-      :options #{:sm}
-      (img :src "images/avatar-4.png"))
-     (s/avatar
-      :options #{:xs}
-      (img :src "images/avatar-5.png")))
-    (div
-     :column 3
-     (s/avatar
-      :options #{:xl}
-      (img :src "images/avatar-1.png")
-      (s/avatar-icon
-       :src "images/avatar-2.png"))
-     (s/avatar
-      :options #{:lg}
-      (img :src "images/avatar-2.png")
-      (s/avatar-icon
-       :src "images/avatar-3.png"))
-     (s/avatar
-      (img :src "images/avatar-3.png")
-      (s/avatar-icon
-       :src "images/avatar-4.png"))
-     (s/avatar
-      :options #{:sm}
-      (img :src "images/avatar-4.png")
-      (s/avatar-icon
-       :src "images/avatar-5.png"))
-     (s/avatar
-      :options #{:xs}
-      (img :src "images/avatar-5.png")
-      (s/avatar-icon
-       :src "images/avatar-1.png")))
-    (div
-     :column 3
-     (s/avatar
-      :options #{:xl}
-      :data-initial "YZ",
-      :css {:background-color "#5764c6"})
-     (s/avatar
-      :options #{:lg}
-      :data-initial "YZ",
-      :css {:background-color "#6874cc"})
-     (s/avatar
-      :data-initial "YZ",
-      :css {:background-color "#7983d2"})
-     (s/avatar
-      :options #{:sm}
-      :data-initial "YZ",
-      :css {:background-color "#8a93d7"})
-     (s/avatar
-      :options #{:xs}
-      :data-initial "YZ",
-      :css {:background-color "#9ba2dd"})))
-   (section
-    :class "notes"
-    (p
-     "Use the element "
-     (code "(s/avatar)")
-     " or "
-     (code "(s/avatar-img)")
-     ". There are 4 additional sizes available, including "
-     (code ":options #{:xl}")
-     " (64px), "
-     (code ":options #{:lg}")
-     " (48px), "
-     (code ":options #{:sm}")
-     " (24px), and "
-     (code ":options #{:xs}")
-     " (16px). By default, the avatar size is 32px.")
-    (p
-     "For users who don't have profile pictures, you may use their initials for avatars. Add the class "
-     (code "(s/avatar)")
-     " with the attribute "
-     (code ":data-initial \"XY\"")
-     " where XY is the name that will appear inside the avatar."))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (s/avatar
-     :options #{:xl}
-     (img :src "images/avatar-1.png"))
+    :id "avatars"
+    :class "container grid-960"
+    (s/header (h4 "avatars"))
+    (section :class "notes"
+      (p (strong "Avatars") " are user profile pictures. "))
+    (s/columns
+      (div :column 3
+        (s/avatar :options #{:xl}
+          (img :src "images/avatar-1.png"))
+        (s/avatar :options #{:lg}
+          (img :src "images/avatar-2.png"))
+        (s/avatar
+          (img :src "images/avatar-3.png"))
+        (s/avatar :options #{:sm}
+          (img :src "images/avatar-4.png"))
+        (s/avatar :options #{:xs}
+          (img :src "images/avatar-5.png")))
+      (div :column 3
+        (s/avatar :options #{:xl}
+          (img :src "images/avatar-1.png")
+          (s/avatar-icon :src "images/avatar-2.png"))
+        (s/avatar :options #{:lg}
+          (img :src "images/avatar-2.png")
+          (s/avatar-icon :src "images/avatar-3.png"))
+        (s/avatar
+          (img :src "images/avatar-3.png")
+          (s/avatar-icon :src "images/avatar-4.png"))
+        (s/avatar :options #{:sm}
+          (img :src "images/avatar-4.png")
+          (s/avatar-icon :src "images/avatar-5.png"))
+        (s/avatar :options #{:xs}
+          (img :src "images/avatar-5.png")
+          (s/avatar-icon :src "images/avatar-1.png")))
+      (div :column 3
+        (s/avatar
+          :options #{:xl}
+          :data-initial "YZ",
+          :css {:background-color "#5764c6"})
+        (s/avatar
+          :options #{:lg}
+          :data-initial "YZ",
+          :css {:background-color "#6874cc"})
+        (s/avatar
+          :data-initial "YZ",
+          :css {:background-color "#7983d2"})
+        (s/avatar
+          :options #{:sm}
+          :data-initial "YZ",
+          :css {:background-color "#8a93d7"})
+        (s/avatar
+          :options #{:xs}
+          :data-initial "YZ",
+          :css {:background-color "#9ba2dd"})))
+    (section :class "notes"
+      (p
+       "Use the element "
+       (code "(s/avatar)")
+       " or "
+       (code "(s/avatar-img)")
+       ". There are 4 additional sizes available, including "
+       (code ":options #{:xl}")
+       " (64px), "
+       (code ":options #{:lg}")
+       " (48px), "
+       (code ":options #{:sm}")
+       " (24px), and "
+       (code ":options #{:xs}")
+       " (16px). By default, the avatar size is 32px.")
+      (p
+       "For users who don't have profile pictures, you may use their initials for avatars. Add the class "
+       (code "(s/avatar)")
+       " with the attribute "
+       (code ":data-initial \"XY\"")
+       " where XY is the name that will appear inside the avatar."))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (s/avatar :options #{:xl}
+        (img :src "images/avatar-1.png"))
 
-    (s/avatar
-     :options #{:xl}
-     (img :src "images/avatar-1.png")
-     (s/avatar-icon :src "images/avatar-5.png"))
+      (s/avatar :options #{:xl}
+        (img :src "images/avatar-1.png")
+        (s/avatar-icon :src "images/avatar-5.png"))
 
-    (s/avatar
-     :options #{:xl}
-     :data-initial "YZ"
-     :css {:background-color "#5764c6"})
-    ;;}}
-    )))
+      (s/avatar
+        :options #{:xl}
+        :data-initial "YZ"
+        :css {:background-color "#5764c6"})
+      ;;}}
+      )))
 
 (def chips-section
   (section
-   :id "chips"
-   :class "container grid-960"
-   (s/header (h4 "chips"))
-   (section
-    :class "notes"
-    (p
-     (strong "Chips")
-     " are complex entities in small blocks. "))
-   (s/columns
-    (div
-     :class "column"
-     (s/chip
-      (s/chip-text "Crime")
-      (s/button-clear))
-     (s/chip
-      (s/icon "icon-favorite_border")
-      (s/chip-text "Drama")
-      (s/button-clear))
-     (s/chip
-      (s/chip-text "Biography")
-      (s/button-clear))
-     (s/chip
-      (s/chip-text "Mystery")
-      (s/button-clear)))
-    (div
-     :class "column"
-     (s/chip
-      (s/avatar-img :src "images/avatar-1.png")
-      (s/chip-text "Tony Stark")
-      (s/button-clear))
-     (s/chip
-      (s/avatar-img :src "images/avatar-2.png")
-      (s/chip-text "Thor Odinson")
-      (s/button-clear))
-     (s/chip
-      (s/avatar-img :src "images/avatar-4.png")
-      (s/chip-text "Steve Rogers")
-      (s/button-clear))))
-   (section
-    :class "notes"
-    (p
-     "Add a container element "
-     (code "(s/chip)")
-     ". And add child text elements with "
-     (code "(s/chip-text)")
-     " or icons with  "
-     (code "(s/icon)")
-     "."))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (s/chip
-     (s/chip-text "Crime")
-     (s/button-clear))
+    :id "chips"
+    :class "container grid-960"
+    (s/header (h4 "chips"))
+    (section :class "notes"
+      (p
+       (strong "Chips")
+       " are complex entities in small blocks. "))
+    (s/columns
+      (div :column true
+        (s/chip
+          (s/chip-text "Crime")
+          (s/button-clear))
+        (s/chip
+          (s/icon "icon-favorite_border")
+          (s/chip-text "Drama")
+          (s/button-clear))
+        (s/chip
+          (s/chip-text "Biography")
+          (s/button-clear))
+        (s/chip
+          (s/chip-text "Mystery")
+          (s/button-clear)))
+      (div :column true
+        (s/chip
+          (s/avatar-img :src "images/avatar-1.png")
+          (s/chip-text "Tony Stark")
+          (s/button-clear))
+        (s/chip
+          (s/avatar-img :src "images/avatar-2.png")
+          (s/chip-text "Thor Odinson")
+          (s/button-clear))
+        (s/chip
+          (s/avatar-img :src "images/avatar-4.png")
+          (s/chip-text "Steve Rogers")
+          (s/button-clear))))
+    (section :class "notes"
+      (p
+       "Add a container element "
+       (code "(s/chip)")
+       ". And add child text elements with "
+       (code "(s/chip-text)")
+       " or icons with  "
+       (code "(s/icon)")
+       "."))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (s/chip
+        (s/chip-text "Crime")
+        (s/button-clear))
 
-    (s/chip
-     (s/icon "icon-favorite_border")
-     (s/chip-text "Drama")
-     (s/button-clear))
+      (s/chip
+        (s/icon "icon-favorite_border")
+        (s/chip-text "Drama")
+        (s/button-clear))
 
-    (s/chip
-     (s/avatar-img :src "images/avatar-1.png")
-     (s/chip-text "Yan Zhu")
-     (s/button-clear))
-    ;;}}
-    )))
+      (s/chip
+        (s/avatar-img :src "images/avatar-1.png")
+        (s/chip-text "Yan Zhu")
+        (s/button-clear))
+      ;;}}
+      )))
 
 (def autocomplete-section
   (section
-   :id "autocomplete"
-   :class "container grid-960"
-   (s/header (h4 "autocomplete"))
-   (section
-    :class "notes"
-    (p
-     (strong "Autocomplete")
-     " form component provides suggestions while you type. It is often used for tags and contacts input."))
-   (s/columns
-    (div
-     :column 6
-     (s/form-group
+    :id "autocomplete"
+    :class "container grid-960"
+    (s/header (h4 "autocomplete"))
+    (section :class "notes"
+      (p
+       (strong "Autocomplete")
+       " form component provides suggestions while you type. It is often used for tags and contacts input."))
+    (s/columns
+      (div :column 6
+        (s/form-group
+          (s/autocomplete
+            (s/autocomplete-input
+              (s/avatar-chip-input "Tony Stark" "images/avatar-1.png")
+              (s/avatar-chip-input "Thor Odinson" "images/avatar-2.png")
+              (s/avatar-chip-input "Steve Rogers" "images/avatar-4.png")
+              (s/avatar-chip-input "Bruce Banner" "images/avatar-1.png")
+              (s/avatar-chip-input "Natasha Romanoff" "images/avatar-2.png" #{:selected})
+              (s/input
+                :type "text"
+                :placeholder ""))))
+        (s/form-group
+          (s/autocomplete
+            (s/autocomplete-input
+              (s/chip-input "Tony Stark")
+              (s/chip-input "Thor Odinson")
+              (s/chip-input "Steve Rogers")
+              (s/chip-input "Bruce Banner")
+              (s/chip-input "Natasha Romanoff" #{:selected})
+              (s/input
+                :type "text"
+                :placeholder "")))))
+      (div :column 6
+        (s/form-group
+          (s/autocomplete
+            (s/autocomplete-input
+              (s/avatar-chip-input "Tony Stark" "images/avatar-1.png")
+              (s/avatar-chip-input "Thor Odinson" "images/avatar-2.png")
+              (s/input
+                :type "text"
+                :placeholder "typing here"))
+            (s/autocomplete-list
+              (s/autocomplete-item-avatar-chip "Steve Rogers" "images/avatar-4.png")
+              (s/autocomplete-item-avatar-chip "Yan Zhu" "images/avatar-2.png"))))))
+    (section :class "notes"
+      (p
+       "Add a container element "
+       (code "(s/autocomplete)")
+       ". There are 2 parts of it, one is  "
+       (code "(s/autocomplete-input)")
+       ", another is "
+       (code "(s/autocomplete-list)")
+       ". Spectre.css does not include JavaScript code, you will need to implement your JS to interact with the autocomplete. The autocomplete HTML structure is exampled below."))
+    (hl/highlight :class "clojure"
+      ;;{{
       (s/autocomplete
-       (s/autocomplete-input
-        (s/avatar-chip-input "Tony Stark" "images/avatar-1.png")
-        (s/avatar-chip-input "Thor Odinson" "images/avatar-2.png")
-        (s/avatar-chip-input "Steve Rogers" "images/avatar-4.png")
-        (s/avatar-chip-input "Bruce Banner" "images/avatar-1.png")
-        (s/avatar-chip-input "Natasha Romanoff"  "images/avatar-2.png" #{:selected})
-        (s/input :type "text" :placeholder ""))))
-     (s/form-group
-      (s/autocomplete
-       (s/autocomplete-input
-        (s/chip-input "Tony Stark")
-        (s/chip-input "Thor Odinson")
-        (s/chip-input "Steve Rogers")
-        (s/chip-input "Bruce Banner")
-        (s/chip-input "Natasha Romanoff" #{:selected})
-        (s/input :type "text", :placeholder "")))))
-    (div
-     :column 6
-     (s/form-group
-      (s/autocomplete
-       (s/autocomplete-input
-        (s/avatar-chip-input "Tony Stark" "images/avatar-1.png")
-        (s/avatar-chip-input "Thor Odinson" "images/avatar-2.png")
-        (s/input :type "text" :placeholder "typing here"))
-       (s/autocomplete-list
-        (s/autocomplete-item-avatar-chip "Steve Rogers" "images/avatar-4.png")
-        (s/autocomplete-item-avatar-chip "Yan Zhu" "images/avatar-2.png"))))))
-   (section
-    :class "notes"
-    (p
-     "Add a container element "
-     (code "(s/autocomplete)")
-     ". There are 2 parts of it, one is  "
-     (code "(s/autocomplete-input)")
-     ", another is "
-     (code "(s/autocomplete-list)")
-     ". Spectre.css does not include JavaScript code, you will need to implement your JS to interact with the autocomplete. The autocomplete HTML structure is exampled below."))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (s/autocomplete
-     ; autocomplete input container
-     (s/autocomplete-input
-      ; autocomplete chips
-      (s/avatar-chip-input "Tony Stark" "images/avatar-1.png")
-      (s/avatar-chip-input "Thor Odinson" "images/avatar-2.png" #{:selected})
-      ; autocomplete real input box
-      (s/input :text "text" :placeholder "typing here"))
-     ; autocomplete suggestion list
-     (s/autocomplete-list
-      ; autocomplete list avatar chips
-      (s/autocomplete-item-avatar-chip "Steve Rogers" "images/avatar-4.png")
-      (s/autocomplete-item-avatar-chip "Yan Zhu" "images/avatar-2.png")))
-    ;;}}
-    )))
+        ; autocomplete input container
+        (s/autocomplete-input
+          ; autocomplete chips
+          (s/avatar-chip-input "Tony Stark" "images/avatar-1.png")
+          (s/avatar-chip-input "Thor Odinson" "images/avatar-2.png" #{:selected})
+          ; autocomplete real input box
+          (s/input
+            :text "text"
+            :placeholder "typing here"))
+        ; autocomplete suggestion list
+        (s/autocomplete-list
+          ; autocomplete list avatar chips
+          (s/autocomplete-item-avatar-chip "Steve Rogers" "images/avatar-4.png")
+          (s/autocomplete-item-avatar-chip "Yan Zhu" "images/avatar-2.png")))
+      ;;}}
+      )))
 
 (def tooltips-section
   (section
-   :id "tooltips"
-   :class "container grid-960"
-   (s/header (h4 "tooltips"))
-   (section
-    :class "notes"
-    (p
-     (strong "Tooltips")
-     " provide context information labels that appear on hover and focus."))
-   (s/columns
-    :class "text-center"
-    (div
-     :column true
-     (s/add-tooltip
-      (s/button-primary "top tooltip")
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."))
-    (div
-     :column true
-     (s/add-tooltip
-      (s/button-primary "right tooltip")
-      "Lorem ipsum dolor sit amet"
-      :right))
-    (div
-     :column true
-     (s/add-tooltip
-      (s/button-primary "bottom tooltip")
-      "Lorem ipsum dolor sit amet"
-      :bottom))
-    (div
-     :column true
-     (s/add-tooltip
-      (s/button-primary "left tooltip")
-      "Lorem ipsum dolor sit amet"
-      :left)))
-   (section
-    :class "notes"
-    (p "Tooltip component is built entirely in CSS.")
-    (p
-     "Use the function "
-     (code "(s/add-tooltip tooltip-content position)")
-     ", where position can be one of "
-     (code ":right")
-     ", "
-     (code ":bottom")
-     " or "
-     (code ":left")
-     " to define the position of a tooltip. By default, the tooltip appears above the element."))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (s/add-tooltip
-     (s/button-primary "top tooltip")
-     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
-    (s/add-tooltip
-     (s/button-primary "right tooltip")
-     "Lorem ipsum dolor sit amet"
-     :right)
-    ;;}}
-    )))
+    :id "tooltips"
+    :class "container grid-960"
+    (s/header (h4 "tooltips"))
+    (section :class "notes"
+      (p
+       (strong "Tooltips")
+       " provide context information labels that appear on hover and focus."))
+    (s/columns :class "text-center"
+      (div :column true
+        (s/add-tooltip
+          (s/button-primary "top tooltip")
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."))
+      (div :column true
+        (s/add-tooltip
+          (s/button-primary "right tooltip")
+          "Lorem ipsum dolor sit amet"
+          :right))
+      (div :column true
+        (s/add-tooltip
+          (s/button-primary "bottom tooltip")
+          "Lorem ipsum dolor sit amet"
+          :bottom))
+      (div :column true
+        (s/add-tooltip
+          (s/button-primary "left tooltip")
+          "Lorem ipsum dolor sit amet"
+          :left)))
+    (section :class "notes"
+      (p "Tooltip component is built entirely in CSS.")
+      (p
+       "Use the function "
+       (code "(s/add-tooltip tooltip-content position)")
+       ", where position can be one of "
+       (code ":right")
+       ", "
+       (code ":bottom")
+       " or "
+       (code ":left")
+       " to define the position of a tooltip. By default, the tooltip appears above the element."))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (s/add-tooltip
+        (s/button-primary "top tooltip")
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
+      (s/add-tooltip
+        (s/button-primary "right tooltip")
+        "Lorem ipsum dolor sit amet"
+        :right)
+      ;;}}
+      )))
 
 (def labels-section
   (section
-   :id "labels"
-   :class "container grid-960"
-   (s/header (h4 "labels"))
-   (section
-    :class "notes"
-    (p
-     (strong "Labels")
-     " are formatted text tags for highlighted, informative information."))
-   (s/columns
-    (div
-     :class "column"
-     (s/label "default label")
-     (s/label-primary "primary label")))
-   (section
-    :class "notes"
-    (p
-     "Use the element "
-     (code "(s/label)")
-     ". You can use the element "
-     (code "(s/label-primary)")
-     " for a primary colored label."))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (s/label "default label")
-    (s/label-primary "primary label")
-    ;;}}
-    )))
+    :id "labels"
+    :class "container grid-960"
+    (s/header (h4 "labels"))
+    (section :class "notes"
+      (p
+       (strong "Labels")
+       " are formatted text tags for highlighted, informative information."))
+    (s/columns
+      (div :column true
+        (s/label "default label")
+        (s/label-primary "primary label")))
+    (section :class "notes"
+      (p
+       "Use the element "
+       (code "(s/label)")
+       ". You can use the element "
+       (code "(s/label-primary)")
+       " for a primary colored label."))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (s/label "default label")
+      (s/label-primary "primary label")
+      ;;}}
+      )))
 
 (def badges-section
   (section
-   :id "badges"
-   :class "container grid-960"
-   (s/header (h4 "badges"))
-   (section
-    :class "notes"
-    (p
-     (strong "Badges")
-     " are often used as unread number indicators."))
-   (s/columns
-    (div
-     :class "column"
-     (s/add-badge
-      (span "Notifications")
-      "1"))
-    (div
-     :class "column"
-     (s/add-badge
-      (span "Notifications")
-      "99"))
-    (div
-     :class "column"
-     (s/add-badge
-      (span "Notifications")
-      "999"))
-    (div
-     :class "column"
-     (s/add-badge
-      (span "Notifications")
-      "♀")))
-   (section
-    :class "notes"
-    (p
-     "Use the function "
-     (code "(s/add-badge element content)")
-     " to non self closing elements. "
-     (code "content")
-     " is content of a badge. The badge will appear in the top-right direction of the element."))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (s/add-badge
-     (span "Notifications")
-     "99")
-    ;;}}
-    )))
+    :id "badges"
+    :class "container grid-960"
+    (s/header (h4 "badges"))
+    (section :class "notes"
+      (p
+       (strong "Badges")
+       " are often used as unread number indicators."))
+    (s/columns
+      (div :column true
+        (span :badge "1"
+          "Notifications"))
+      (div :column true
+        (span :badge "99"
+          "Notifications"))
+      (div :column true
+        (span :badge "999"
+          "Notifications"))
+      (div :column true
+        (span :badge "♀"
+          "Notifications")))
+    (section :class "notes"
+      (p
+       "Use the attribute "
+       (code ":badge content")
+       " to non self closing elements. "
+       (code "content")
+       " is content of a badge. The badge will appear in the top-right direction of the element."))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (span :badge "99"
+        "Notifications")
+      ;;}}
+      )))
 
 (def toasts-section
   (section
-   :id "toasts"
-   :class "container grid-960"
-   (s/header (h4 "toasts"))
-   (section
-    :class "notes"
-    (p
-     (strong "Toasts")
-     " are used to show alert or information to users."))
-   (s/columns
-    (div
-     :class "column"
-     (s/toast
-      (s/button-clear :class "float-right")
-      (s/icon "icon-error_outline")
-      " Lorem ipsum dolor sit amet, consectetur adipiscing elit."))
-    (div
-     :class "column"
-     (s/toast-primary
-      (s/button-clear :class "float-right")
-      (s/icon "icon-error_outline")
-      " Lorem ipsum dolor sit amet, consectetur adipiscing elit.")))
-   (s/columns
-    (div
-     :class "column"
-     (s/toast-success
-      (s/button-clear :class "float-right")
-      (s/icon "icon-error_outline")
-      " Lorem ipsum dolor sit amet, consectetur adipiscing elit."))
-    (div
-     :class "column"
-     (s/toast-error
-      (s/button-clear :class "float-right")
-      (s/icon "icon-error_outline")
-      " Lorem ipsum dolor sit amet, consectetur adipiscing elit.")))
-   (section
-    :class "notes"
-    (p
-     "Use the element "
-     (code "(s/toast)")
-     ". You can add any text within the container, and even icons. You may also add a close button using "
-     (code "(s/button-clear :class \"float-right\")")
-     " if you need. ")
-    (p
-     "And you can use the elements "
-     (code "(s/toast-primary)")
-     ", "
-     (code "(s/toast-success)")
-     " or "
-     (code "(s/toast-error)")
-     " for additional toast colors."))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (s/toast
-     (s/button-clear :class "float-right")
-     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+    :id "toasts"
+    :class "container grid-960"
+    (s/header (h4 "toasts"))
+    (section :class "notes"
+      (p
+       (strong "Toasts")
+       " are used to show alert or information to users."))
+    (s/columns
+      (div :column true
+        (s/toast
+          (s/button-clear :class "float-right")
+          (s/icon "icon-error_outline")
+          " Lorem ipsum dolor sit amet, consectetur adipiscing elit."))
+      (div :column true
+        (s/toast-primary
+          (s/button-clear :class "float-right")
+          (s/icon "icon-error_outline")
+          " Lorem ipsum dolor sit amet, consectetur adipiscing elit.")))
+    (s/columns
+      (div :column true
+        (s/toast-success
+          (s/button-clear :class "float-right")
+          (s/icon "icon-error_outline")
+          " Lorem ipsum dolor sit amet, consectetur adipiscing elit."))
+      (div :column true
+        (s/toast-error
+          (s/button-clear :class "float-right")
+          (s/icon "icon-error_outline")
+          " Lorem ipsum dolor sit amet, consectetur adipiscing elit.")))
+    (section :class "notes"
+      (p
+       "Use the element "
+       (code "(s/toast)")
+       ". You can add any text within the container, and even icons. You may also add a close button using "
+       (code "(s/button-clear :class \"float-right\")")
+       " if you need. ")
+      (p
+       "And you can use the elements "
+       (code "(s/toast-primary)")
+       ", "
+       (code "(s/toast-success)")
+       " or "
+       (code "(s/toast-error)")
+       " for additional toast colors."))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (s/toast
+        (s/button-clear :class "float-right")
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
 
-    (s/toast-primary
-     (s/button-clear :class "float-right")
-     (s/icon "icon-error_outline" )
-     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
-    ;;}}
-    )))
+      (s/toast-primary
+        (s/button-clear :class "float-right")
+        (s/icon "icon-error_outline" )
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+      ;;}}
+      )))
 
 (def menus-section
   (section
-   :id "menus"
-   :class "container grid-960"
-   (s/header (h4 "menus"))
-   (section
-    :class "notes"
-    (p
-     "A "
-     (strong "menu")
-     " is a vertical list of links or buttons for actions and navigation."))
-   (s/columns
-    (div
-     :class "column"
-     (s/menu
-      (s/menu-item
-       (s/chip-big-avatar "Steve Rogers" "images/avatar-4.png"))
-      (s/menu-link :options #{:active} :href "#menus" "My profile")
-      (li :class "divider")
-      (s/menu-link :href "#menus" "Settings")
-      (s/menu-link :href "#menus" "Logout")))
-    (div
-     :class "column"
-     (s/menu
-      (s/menu-header "Go to")
-      (s/menu-link :href "#menus" "Slack")
-      (s/menu-link :href "#menus" "Hipchat")
-      (s/menu-link :href "#menus" "Skype")))
-    (div
-     :class "column"
-     (s/menu
-      (s/menu-header "Go to")
-      (s/menu-link :href "#menus" (s/icon "icon-link") "Slack")
-      (s/menu-link :href "#menus" (s/icon "icon-link") "Hipchat")
-      (s/menu-link :href "#menus" (s/icon "icon-link") "Skype"))))
-   (section
-    :class "notes"
-    (p
-     "Add a container element "
-     (code "(s/menu)")
-     ". And add child elements with "
-     (code "(s/menu-item)")
-     " or "
-     (code "(s/menu-link)")
-     ". You can separate menu items with a "
-     (code "divider")
-     " or "
-     (code "(s/menu-header)")
-     ". Spectre.css does not include JavaScript code, you will need to implement your JS to interact with the menus."))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (s/menu
-     (s/menu-header "Go to")
-     (s/menu-link :href "#" (s/icon "icon-link") "Slack")
-     (s/menu-link :href "#" (s/icon "icon-link") "Hipchat")
-     (s/menu-link :href "#" (s/icon "icon-link") "Skype")
-     (li :class "divider") ; menu divider
-     (s/menu-link :href "#" (s/icon "icon-link") "Settings"))
-    ;;}}
-    )))
+    :id "menus"
+    :class "container grid-960"
+    (s/header (h4 "menus"))
+    (section :class "notes"
+      (p
+       "A "
+       (strong "menu")
+       " is a vertical list of links or buttons for actions and navigation."))
+    (s/columns
+      (div :column true
+        (s/menu
+          (s/menu-item
+            (s/chip-big-avatar "Steve Rogers" "images/avatar-4.png"))
+          (s/menu-link
+            :options #{:active}
+            :href "#menus"
+            "My profile")
+          (li :class "divider")
+          (s/menu-link :href "#menus"
+            "Settings")
+          (s/menu-link :href "#menus"
+            "Logout")))
+      (div :column true
+        (s/menu
+          (s/menu-header "Go to")
+          (s/menu-link :href "#menus"
+            "Slack")
+          (s/menu-link :href "#menus"
+            "Hipchat")
+          (s/menu-link :href "#menus"
+            "Skype")))
+      (div :column true
+        (s/menu
+          (s/menu-header "Go to")
+          (s/menu-link :href "#menus"
+            (s/icon "icon-link") "Slack")
+          (s/menu-link :href "#menus"
+            (s/icon "icon-link") "Hipchat")
+          (s/menu-link :href "#menus"
+            (s/icon "icon-link") "Skype"))))
+    (section :class "notes"
+      (p
+       "Add a container element "
+       (code "(s/menu)")
+       ". And add child elements with "
+       (code "(s/menu-item)")
+       " or "
+       (code "(s/menu-link)")
+       ". You can separate menu items with a "
+       (code "divider")
+       " or "
+       (code "(s/menu-header)")
+       ". Spectre.css does not include JavaScript code, you will need to implement your JS to interact with the menus."))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (s/menu
+        (s/menu-header "Go to")
+        (s/menu-link :href "#"
+          (s/icon "icon-link") "Slack")
+        (s/menu-link :href "#"
+          (s/icon "icon-link") "Hipchat")
+        (s/menu-link :href "#"
+          (s/icon "icon-link") "Skype")
+        (li :class "divider") ; menu divider
+        (s/menu-link :href "#"
+          (s/icon "icon-link") "Settings"))
+      ;;}}
+      )))
 
 (def navigation-menu
   (section
-   :id "navigation"
-   :class "container grid-960"
-   (s/header (h4 "navigation"))
-   (section
-    :class "notes"
-    (p
-     (strong "Navigation")
-     " includes several components, including breadcrumbs and tabs."))
-   (header
-    :id "breadcrumbs"
-    :class "text-center"
-    (h5 "breadcrumbs"))
-   (s/columns
-    (div
-     :class "column"
-     (ul
-      :class "breadcrumb"
-      (li
-       :class "breadcrumb-item"
-       (a
-        :shape "rect"
-        :href "#breadcrumbs"
-        "Home"))
-      (li
-       :class "breadcrumb-item"
-       (a
-        :shape "rect"
-        :href "#breadcrumbs"
-        "Profile"))
-      (li
-       :class "breadcrumb-item"
-       (a
-        :shape "rect"
-        :href "#breadcrumbs"
-        "Change avatar")))))
-   (section
-    :class "notes"
-    (p
-     "Add a container element with the class "
-     (code "breadcrumb")
-     ". And add child elements with the classname "
-     (code "breadcrumb-item")
-     "."))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (ul
-     :class "breadcrumb"
-     (li
-      :class "breadcrumb-item"
-      (a
-       :shape "rect"
-       :href "#breadcrumbs"
-       "Home"))
-     (li
-      :class "breadcrumb-item"
-      (a
-       :shape "rect"
-       :href "#breadcrumbs"
-       "Profile"))
-     (li
-      :class "breadcrumb-item"
-      (a
-       :shape "rect"
-       :href "#breadcrumbs"
-       "Change avatar")))
-    ;;}}
-    )
-   (s/header (h5 "tabs"))
-   (s/columns
-    (div
-     :class "column"
-     (ul
-      :class "tab"
-      (li
-       :class "tab-item active"
-       (a
-        :shape "rect",
-        :href "#tabs"
-        "Music"))
-      (li
-       :class "tab-item"
-       (a
-        :shape "rect",
-        :href "#tabs"
-        "Playlists"))
-      (li
-       :class "tab-item"
-       (a
-        :shape "rect",
-        :href "#tabs"
-        "Radio"))
-      (li
-       :class "tab-item"
-       (a
-        :shape "rect",
-        :href "#tabs"
-        "Connect"))))
-    (div
-     :class "column"
-     (ul
-      :class "tab tab-block"
-      (li
-       :class "tab-item active"
-       (a
-        :shape "rect",
-        :href "#tabs"
-        "Music"))
-      (li
-       :class "tab-item"
-       (a
-        :shape "rect",
-        :href "#tabs"
-        "Playlists"))
-      (li
-       :class "tab-item"
-       (a
-        :shape "rect",
-        :href "#tabs"
-        "Radio"))
-      (li
-       :class "tab-item"
-       (a
-        :shape "rect",
-        :href "#tabs"
-        "Connect")))))
-   (section
-    :class "notes"
-    (p
-     "Add a container element with the class "
-     (code "tab")
-     ". And add child elements with the classname "
-     (code "tab-item")
-     ". You can add the class "
-     (code "tab-block")
-     " for a full-width tab."))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (ul
-     :class "tab tab-block"
-     (li
-      :class "tab-item active"
-      (a
-       :shape "rect",
-       :href "#tabs"
-       "Music"))
-     (li
-      :class "tab-item"
-      (a
-       :shape "rect",
-       :href "#tabs"
-       "Playlists"))
-     (li
-      :class "tab-item"
-      (a
-       :shape "rect",
-       :href "#tabs"
-       "Radio"))
-     (li
-      :class "tab-item"
-      (a
-       :shape "rect",
-       :href "#tabs"
-       "Connect")))
-    ;;}}
-    )
-(s/columns
- (div
-  :class "column"
-  (ul
-   :class "tab"
-   (li
-    :class "tab-item active"
-    (s/add-badge
-     (a
-      :shape "rect",
-      :href "#tabs",
-      "    Music")
-     "9"))
-   (li
-    :class "tab-item"
-    (a
-     :shape "rect",
-     :href "#tabs"
-     "    Playlists"))
-   (li
-    :class "tab-item"
-    (a
-     :shape "rect",
-     :href "#tabs"
-     "    Radio"))
-   (li
-    :class "tab-item"
-    (a
-     :shape "rect",
-     :href "#tabs"
-     "    Connect"))))
- (div
-  :class "column"
-  (ul
-   :class "tab tab-block"
-   (li
-    :class "tab-item active"
-    (s/add-badge
-     (a
-      :shape "rect",
-      :href "#tabs",
-      "    Music")
-     "9"))
-   (li
-    :class "tab-item"
-    (a
-     :shape "rect",
-     :href "#tabs"
-     "    Playlists"))
-   (li
-    :class "tab-item"
-    (a
-     :shape "rect",
-     :href "#tabs"
-     "    Radio"))
-   (li
-    :class "tab-item"
-    (a
-     :shape "rect",
-     :href "#tabs"
-     "    Connect")))))
-(section
- :class "notes"
- (p
-  "If you need "
-  (code "badges")
-  " on tabs, you can use the "
-  (code "s/add-badge")
-  " function in the element within "
-  (code "tab-item")
-  ". "))
-(hl/highlight
- :class "clojure"
- ;;{{
- (ul
-  :class "tab tab-block"
-  (li
-   :class "tab-item active"
-   (s/add-badge
-    (a :href "#" "Music")
-    "9")))
- ;;}}
- )
-(s/header
- :id "pagination"
- (h5 "pagination"))
-(s/columns
- (div
-  :class "column"
-  (ul
-   :class "pagination"
-   (li
-    :class "page-item"
-    (a
-     :shape "rect",
-     :href "#pagination"
-     "Previous"))
-   (li
-    :class "page-item"
-    (a
-     :shape "rect",
-     :href "#pagination"
-     "1"))
-   (li :class "page-item" (span "..."))
-   (li
-    :class "page-item"
-    (a
-     :shape "rect",
-     :href "#pagination"
-     "6"))
-   (li
-    :class "page-item active"
-    (a
-     :shape "rect",
-     :href "#pagination"
-     "7"))
-   (li
-    :class "page-item"
-    (a
-     :shape "rect",
-     :href "#pagination"
-     "8"))
-   (li :class "page-item" (span "..."))
-   (li
-    :class "page-item"
-    (a
-     :shape "rect",
-     :href "#pagination"
-     "12"))
-   (li
-    :class "page-item"
-    (a
-     :shape "rect",
-     :href
-     "#pagination"
-     "Next"))))
- (div
-  :class "column"
-  (ul
-   :class "pagination"
-   (li
-    :class "page-item"
-    (a
-     :shape "rect",
-     :class "disabled",
-     :href
-     "#pagination"
-     "Previous"))
-   (li
-    :class "page-item active"
-    (a
-     :shape "rect",
-     :href "#pagination"
-     "    1"))
-   (li
-    :class "page-item"
-    (a
-     :shape "rect",
-     :href "#pagination"
-     "2"))
-   (li
-    :class "page-item"
-    (a
-     :shape "rect",
-     :href
-     "#pagination"
-     "3"))
-   (li :class "page-item" (span "..."))
-   (li
-    :class "page-item"
-    (a
-     :shape "rect",
-     :href "#pagination"
-     "12"))
-   (li
-    :class "page-item"
-    (a
-     :shape "rect",
-     :href
-     "#pagination"
-     "Next")))))
-(section
- :class "notes"
- (p
-  "Add a container element with the class "
-  (code "pagination")
-  ". And add child elements with the classname "
-  (code "page-item")
-  "."))
-(hl/highlight
- :class "clojure"
- ;;{{
- (ul
-  :class "pagination"
-  (li
-   :class "page-item"
-   (a
-    :shape "rect",
-    :class "disabled",
-    :href
-    "#pagination"
-    "Previous"))
-  (li
-   :class "page-item active"
-   (a
-    :shape "rect",
-    :href "#pagination"
-    "    1"))
-  (li
-   :class "page-item"
-   (a
-    :shape "rect",
-    :href "#pagination"
-    "2"))
-  (li
-   :class "page-item"
-   (a
-    :shape "rect",
-    :href
-    "#pagination"
-    "3"))
-  (li :class "page-item" (span "..."))
-  (li
-   :class "page-item"
-   (a
-    :shape "rect",
-    :href "#pagination"
-    "12"))
-  (li
-   :class "page-item"
-   (a
-    :shape "rect",
-    :href
-    "#pagination"
-    "Next")))
- ;;}}
- )))
+    :id "navigation"
+    :class "container grid-960"
+    (s/header (h4 "navigation"))
+    (section :class "notes"
+      (p
+       (strong "Navigation")
+       " includes several components, including breadcrumbs and tabs."))
+    (s/header :id "breadcrumbs"
+      (h5 "breadcrumbs"))
+    (s/columns
+      (div :column true
+        (s/breadcrumb
+          (s/breadcrumb-item :href "#breadcrumbs"
+            "Home")
+          (s/breadcrumb-item :href "#breadcrumbs"
+            "Profile")
+          (s/breadcrumb-item :href "#breadcrumbs"
+            "Change avatar"))))
+    (section :class "notes"
+      (p
+       "Use the element "
+       (code "(s/breadcrumb)")
+       ". And add child elements with the element "
+       (code "(s/breadcrumb-item)")
+       "."))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (s/breadcrumb
+        (s/breadcrumb-item :href "#breadcrumbs"
+          "Home")
+        (s/breadcrumb-item :href "#breadcrumbs"
+          "Profile")
+        (s/breadcrumb-item :href "#breadcrumbs"
+          "Change avatar"))
+      ;;}}
+      )
+    (s/header :id "tabs"
+      (h5 "tabs"))
+    (s/columns
+      (div :column true
+        (s/tab
+          (s/tab-item
+            :options #{:active}
+            :href "#tabs"
+            "Music")
+          (s/tab-item :href "#tabs"
+            "Playlists")
+          (s/tab-item :href "#tabs"
+            "Radio")
+          (s/tab-item :href "#tabs"
+            "Connect")))
+      (div :column true
+        (s/tab :options #{:block}
+          (s/tab-item
+            :options #{:active}
+            :href "#tabs"
+            "Music")
+          (s/tab-item :href "#tabs"
+            "Playlists")
+          (s/tab-item :href "#tabs"
+            "Radio")
+          (s/tab-item :href "#tabs"
+            "Connect"))))
+    (section :class "notes"
+      (p
+       "Use a element "
+       (code "(s/tab)")
+       ". And add child elements "
+       (code "(s/tab-item)")
+       ". You can add "
+       (code ":options #{:block}")
+       " for a full-width tab."))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (s/tab :options #{:block}
+        (s/tab-item
+          :options #{:active}
+          :href "#tabs"
+          "Music")
+        (s/tab-item :href "#tabs"
+          "Playlists")
+        (s/tab-item :href "#tabs"
+          "Radio")
+        (s/tab-item :href "#tabs"
+          "Connect"))
+      ;;}}
+      )
+    (s/columns
+      (div :column true
+        (s/tab
+          (s/tab-item
+            :options #{:active}
+            :href "#tabs"
+            :badge "9"
+            "Music")
+          (s/tab-item :href "#tabs"
+            "Playlists")
+          (s/tab-item :href "#tabs"
+            "Radio")
+          (s/tab-item :href "#tabs"
+            "Connect")))
+      (div :column true
+        (s/tab :options #{:block}
+          (s/tab-item
+            :options #{:active}
+            :href "#tabs"
+            :badge "9"
+            "Music")
+          (s/tab-item :href "#tabs"
+            "Playlists")
+          (s/tab-item :href "#tabs"
+            "Radio")
+          (s/tab-item :href "#tabs"
+            "Connect"))))
+    (section :class "notes"
+      (p
+       "If you need "
+       (code "badges")
+       " on tabs, you can use the "
+       (code ":badge")
+       " attribute in the element "
+       (code "(s/tab-item)")
+       "."))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (s/tab :options #{:block}
+        (s/tab-item
+          :options #{:active}
+          :href "#tabs"
+          :badge "9"
+          "Music"))
+      ;;}}
+      )
+    (s/header :id "pagination"
+      (h5 "pagination"))
+    (s/columns
+      (div :column true
+        (s/pagination
+          (s/page-item :href "#pagination"
+            "Previous")
+          (s/page-item :href "#pagination"
+            "1")
+          (s/page-item "…")
+          (s/page-item :href "#pagination"
+            "6")
+          (s/page-item
+            :options #{:active}
+            :href "#pagination"
+            "7")
+          (s/page-item :href "#pagination"
+            "8")
+          (s/page-item "…")
+          (s/page-item :href "#pagination"
+            "12")
+          (s/page-item :href "#pagination"
+            "Next")))
+      (div
+        :column true
+        (s/pagination
+          (s/page-item
+            :class "disabled"
+            :href "#pagination"
+            "Previous")
+          (s/page-item
+            :options #{:active}
+            :href "#pagination"
+            "1")
+          (s/page-item :href "#pagination"
+            "2")
+          (s/page-item :href "#pagination"
+            "3")
+          (s/page-item "…")
+          (s/page-item :href "#pagination"
+            "12")
+          (s/page-item :href "#pagination"
+            "Next"))))
+    (section
+      :class "notes"
+      (p
+       "Add a container element "
+       (code "(s/pagination)")
+       ". And add child elements "
+       (code "(s/page-item)")
+       "."))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (s/pagination
+        (s/page-item
+          :class "disabled"
+          :href "#pagination"
+          "Previous")
+        (s/page-item
+          :options #{:active}
+          :href "#pagination"
+          "1")
+        (s/page-item :href "#pagination"
+          "2")
+        (s/page-item :href "#pagination"
+          "3")
+        (s/page-item "…")
+        (s/page-item :href "#pagination"
+          "12")
+        (s/page-item :href "#pagination"
+          "Next"))
+      ;;}}
+      )))
 
 (def modals-section
   (section
-   :id "modals"
-   :class "container grid-960"
-   (s/header (h4 "modals"))
-   (section
-    :class "notes"
-    (p (strong "Modals") " are flexible dialog prompts."))
-   (s/columns
-    (div
-     :class "column"
-     (div
-      :class "modal-active"
-      (div :class "modal-overlay")
+    :id "modals"
+    :class "container grid-960"
+    (s/header (h4 "modals"))
+    (section
+      :class "notes"
+      (p (strong "Modals") " are flexible dialog prompts."))
+    (s/columns
       (div
-       :class "modal-container", :role "document"
-       (div
-        :class "modal-header"
-        (button
-         :type "button",
-         :class "btn btn-clear float-right",
-         :aria-label "Close")
-        (div :class "modal-title" "Modal title"))
-       (div
-        :class "modal-body"
+        :column true
         (div
-         :class "content"
-         (p
-          "This is the content inside the modal.")
-         (h4 "Lorem ipsum")
-         (p
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus leo, dictum in vehicula sit amet, feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.")
-         (p
-          "Climb leg rub face on everything give attitude nap all day for under the bed. Chase mice attack feet but rub face on everything hopped up on goofballs.")
-         (h4 "Cupcake ipsum")
-         (p
-          "Jelly-o sesame snaps halvah croissant oat cake cookie. Cheesecake bear claw topping. Chupa chups apple pie carrot cake chocolate cake caramels.")
-         (p
-          "De braaaiiiins apocalypsi gorger omero prefrontal cortex undead survivor fornix dictum mauris. Hi brains mindless mortuis limbic cortex soulless creaturas optic nerve.")
-         (h4 "Candy ipsum")
-         (p
-          "Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar.")
-         (p
-          "Caerphilly swiss fromage frais. Brie cheese and wine fromage frais chalk and cheese danish fontina smelly cheese who moved my cheese cow.")))
-       (div
-        :class "modal-footer"
-        (button
-         :type "submit", :class "btn btn-link"
-         "Close")
-        (button
-         :type "submit", :class "btn btn-primary"
-         "Share"))))))
-   (section
-    :class "notes"
-    (p
-     "Add a container element with the class "
-     (code "modal")
-     ". And add a real container "
-     (code "modal-container")
-     " and overlay "
-     (code "modal-overlay")
-     " inside it. You can add child elements with the class name "
-     (code "modal-header")
-     ", "
-     (code "modal-content")
-     " and "
-     (code "modal-footer")
-     " - any or all of them. ")
-    (p
-     "Spectre.css does not include JavaScript code, you will need to implement your JS to interact with modals. To make a modal appear, add the class "
-     (code "active")
-     " to the "
-     (code "modal")
-     " container"))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (div
-     :class "modal-active"
-     (div :class "modal-overlay")
-     (div
-      :class "modal-container", :role "document"
+          :class "modal-active"
+          (div :class "modal-overlay")
+          (div
+            :class "modal-container", :role "document"
+            (div
+              :class "modal-header"
+              (button
+                :type "button",
+                :class "btn btn-clear float-right",
+                :aria-label "Close")
+              (div :class "modal-title" "Modal title"))
+            (div
+              :class "modal-body"
+              (div
+                :class "content"
+                (p
+                 "This is the content inside the modal.")
+                (h4 "Lorem ipsum")
+                (p
+                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus leo, dictum in vehicula sit amet, feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.")
+                (p
+                 "Climb leg rub face on everything give attitude nap all day for under the bed. Chase mice attack feet but rub face on everything hopped up on goofballs.")
+                (h4 "Cupcake ipsum")
+                (p
+                 "Jelly-o sesame snaps halvah croissant oat cake cookie. Cheesecake bear claw topping. Chupa chups apple pie carrot cake chocolate cake caramels.")
+                (p
+                 "De braaaiiiins apocalypsi gorger omero prefrontal cortex undead survivor fornix dictum mauris. Hi brains mindless mortuis limbic cortex soulless creaturas optic nerve.")
+                (h4 "Candy ipsum")
+                (p
+                 "Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar.")
+                (p
+                 "Caerphilly swiss fromage frais. Brie cheese and wine fromage frais chalk and cheese danish fontina smelly cheese who moved my cheese cow.")))
+            (div
+              :class "modal-footer"
+              (button
+                :type "submit", :class "btn btn-link"
+                "Close")
+              (button
+                :type "submit", :class "btn btn-primary"
+                "Share"))))))
+    (section
+      :class "notes"
+      (p
+       "Add a container element with the class "
+       (code "modal")
+       ". And add a real container "
+       (code "modal-container")
+       " and overlay "
+       (code "modal-overlay")
+       " inside it. You can add child elements with the class name "
+       (code "modal-header")
+       ", "
+       (code "modal-content")
+       " and "
+       (code "modal-footer")
+       " - any or all of them. ")
+      (p
+       "Spectre.css does not include JavaScript code, you will need to implement your JS to interact with modals. To make a modal appear, add the class "
+       (code "active")
+       " to the "
+       (code "modal")
+       " container"))
+    (hl/highlight
+      :class "clojure"
+      ;;{{
       (div
-       :class "modal-header"
-       (button
-        :type "button",
-        :class "btn btn-clear float-right",
-        :aria-label "Close")
-       (div :class "modal-title" "Modal title"))
-      (div
-       :class "modal-body"
-       (div
-        :class "content"
-        ; content goes here
-        ))
-      (div
-       :class "modal-footer"
-       (button
-        :type "submit", :class "btn btn-link"
-        "Close")
-       (button
-        :type "submit", :class "btn btn-primary"
-        "Share"))))
-    ;;}}
-    )
-   (s/header  (h5 "modal sizes"))
-   (s/columns
-    (div
-     :class "column"
-     (div
-      :class "modal-temp modal-sm"
-      (div :class "modal-overlay")
-      (div
-       :class "modal-container", :role "document"
-       (div
-        :class "modal-header"
-        (button
-         :type "button",
-         :class "btn btn-clear float-right",
-         :aria-label "Close")
-        (div :class "modal-title" "Modal title"))
-       (div
-        :class "modal-body"
+        :class "modal-active"
+        (div :class "modal-overlay")
         (div
-         :class "content"
-         "Lorem ipsum dolor sit amet, consectetur adipiscing elit."))
-       (div
-        :class "modal-footer"
-        (button
-         :type "submit", :class "btn btn-link"
-         "Close")
-        (button
-         :type "submit", :class "btn btn-primary"
-         "Share")))))
-    (div
-     :class "column"
-     (div
-      :class "modal-temp modal-sm"
-      (div :class "modal-overlay")
+          :class "modal-container", :role "document"
+          (div
+            :class "modal-header"
+            (button
+              :type "button",
+              :class "btn btn-clear float-right",
+              :aria-label "Close")
+            (div :class "modal-title" "Modal title"))
+          (div
+            :class "modal-body"
+            (div
+              :class "content"
+              ; content goes here
+              ))
+          (div
+            :class "modal-footer"
+            (button
+              :type "submit", :class "btn btn-link"
+              "Close")
+            (button
+              :type "submit", :class "btn btn-primary"
+              "Share"))))
+      ;;}}
+      )
+    (s/header  (h5 "modal sizes"))
+    (s/columns
       (div
-       :class "modal-container", :role "document"
-       (div
-        :class "modal-header"
-        (button
-         :type "button",
-         :class "btn btn-clear float-right",
-         :aria-label "Close")
-        (div :class "modal-title" "Modal title"))
-       (div
-        :class "modal-body"
+        :column true
         (div
-         :class "content"
-         (form
-          :enctype "application/x-www-form-urlencoded",
-          :method "get",
-          :lpformnum "1"
-          (s/form-group
-           (s/form-label "Name")
-           (s/input
-            :type "text"
-            :placeholder "Name"))
-          (s/form-group
-           (s/form-label "Gender")
-           (label
-            :class "form-radio"
-            (input :type "radio", :name "gender")
-            (i :class "form-icon")
-            "Male")
-           (label
-            :class "form-radio"
-            (input :checked "", :type "radio", :name "gender")
-            (i :class "form-icon")
-            "Female")))))
-       (div
-        :class "modal-footer"
-        (button
-         :type "submit", :class "btn btn-link"
-         "Close")
-        (button
-         :type "submit", :class "btn btn-primary"
-         "Submit"))))))
-   (section
-    :class "notes"
-    (p
-     "Add the class "
-     (code "modal-sm")
-     " for a smaller modal dialog. "))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (div
-     :class "modal modal-sm"
-     (div
-      :class "modal-overlay"
+          :class "modal-temp modal-sm"
+          (div :class "modal-overlay")
+          (div
+            :class "modal-container", :role "document"
+            (div
+              :class "modal-header"
+              (button
+                :type "button",
+                :class "btn btn-clear float-right",
+                :aria-label "Close")
+              (div :class "modal-title" "Modal title"))
+            (div
+              :class "modal-body"
+              (div
+                :class "content"
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit."))
+            (div
+              :class "modal-footer"
+              (button
+                :type "submit", :class "btn btn-link"
+                "Close")
+              (button
+                :type "submit", :class "btn btn-primary"
+                "Share")))))
       (div
-       :class "modal-container"
-       ; modal structure here
-       )))
-    ;;}}
-    )))
+        :column true
+        (div
+          :class "modal-temp modal-sm"
+          (div :class "modal-overlay")
+          (div
+            :class "modal-container", :role "document"
+            (div
+              :class "modal-header"
+              (button
+                :type "button",
+                :class "btn btn-clear float-right",
+                :aria-label "Close")
+              (div :class "modal-title" "Modal title"))
+            (div
+              :class "modal-body"
+              (div
+                :class "content"
+                (form
+                  :enctype "application/x-www-form-urlencoded",
+                  :method "get",
+                  :lpformnum "1"
+                  (s/form-group
+                    (s/form-label "Name")
+                    (s/input
+                      :type "text"
+                      :placeholder "Name"))
+                  (s/form-group
+                    (s/form-label "Gender")
+                    (label
+                      :class "form-radio"
+                      (input :type "radio", :name "gender")
+                      (i :class "form-icon")
+                      "Male")
+                    (label
+                      :class "form-radio"
+                      (input :checked "", :type "radio", :name "gender")
+                      (i :class "form-icon")
+                      "Female")))))
+            (div
+              :class "modal-footer"
+              (button
+                :type "submit", :class "btn btn-link"
+                "Close")
+              (button
+                :type "submit", :class "btn btn-primary"
+                "Submit"))))))
+    (section
+      :class "notes"
+      (p
+       "Add the class "
+       (code "modal-sm")
+       " for a smaller modal dialog. "))
+    (hl/highlight
+      :class "clojure"
+      ;;{{
+      (div
+        :class "modal modal-sm"
+        (div
+          :class "modal-overlay"
+          (div
+            :class "modal-container"
+            ; modal structure here
+            )))
+      ;;}}
+      )))
 
 (def cards-section
   (section
-   :id "cards"
-   :class "container grid-960"
-   (s/header (h4 "cards"))
-   (section
-    :class "notes"
-    (p (strong "Cards") " are flexible content containers."))
-   (s/columns
-    (div
-     :column 4
-     (div
-      :class "card"
+    :id "cards"
+    :class "container grid-960"
+    (s/header (h4 "cards"))
+    (section
+      :class "notes"
+      (p (strong "Cards") " are flexible content containers."))
+    (s/columns
       (div
-       :class "card-image"
-       (img
-        :class "img-responsive",
-        :src "images/osx-el-capitan.jpg"))
+        :column 4
+        (div
+          :class "card"
+          (div
+            :class "card-image"
+            (img
+              :class "img-responsive",
+              :src "images/osx-el-capitan.jpg"))
+          (div
+            :class "card-header"
+            (h4 :class "card-title" "Microsoft")
+            (h6 :class "card-meta" "Software and hardware"))
+          (div
+            :class "card-body"
+            "Empower every person and every organization on the planet to achieve more.")
+          (div
+            :class "card-footer"
+            (a
+             :shape "rect",
+             :class "btn btn-primary",
+             :href "#"
+             "Do"))))
       (div
-       :class "card-header"
-       (h4 :class "card-title" "Microsoft")
-       (h6 :class "card-meta" "Software and hardware"))
+        :column 4
+        (div
+          :class "card"
+          (div
+            :class "card-header"
+            (h4 :class "card-title" "Apple")
+            (h6 :class "card-meta" "Hardware and software"))
+          (div
+            :class "card-image"
+            (img
+              :class "img-responsive",
+              :src "images/osx-yosemite.jpg"))
+          (div
+            :class "card-body"
+            "To make a contribution to the world by making tools for the mind that advance humankind.")
+          (div
+            :class "card-footer"
+            (s/button-group
+              :options #{:block}
+              (button
+                :type "submit", :class "btn btn-primary"
+                "Buy")
+              (button :type "submit", :class "btn" "Buy")
+              (button :type "submit", :class "btn" "Buy")))))
       (div
-       :class "card-body"
-       "Empower every person and every organization on the planet to achieve more.")
+        :column 4
+        (div
+          :class "card"
+          (div
+            :class "card-header"
+            (h4 :class "card-title" "Google")
+            (h6 :class "card-meta" "Software and hardware"))
+          (div
+            :class "card-body"
+            "Organize the world’s information and make it universally accessible and useful.")
+          (div
+            :class "card-image"
+            (img
+              :class "img-responsive",
+              :src "images/osx-yosemite-2.jpg")))))
+    (section
+      :class "notes"
+      (p
+       "Add a container element with the class "
+       (code "card")
+       ". And add child elements with the class name "
+       (code "card-image")
+       ", "
+       (code "card-header")
+       ", "
+       (code "card-content")
+       " and/or "
+       (code "card-footer")
+       ". The "
+       (code "card-image")
+       " can be placed in any position. "))
+    (hl/highlight
+      :class "clojure"
+      ;;{{
       (div
-       :class "card-footer"
-       (a
-        :shape "rect",
-        :class "btn btn-primary",
-        :href "#"
-        "Do"))))
-    (div
-     :column 4
-     (div
-      :class "card"
-      (div
-       :class "card-header"
-       (h4 :class "card-title" "Apple")
-       (h6 :class "card-meta" "Hardware and software"))
-      (div
-       :class "card-image"
-       (img
-        :class "img-responsive",
-        :src "images/osx-yosemite.jpg"))
-      (div
-       :class "card-body"
-       "To make a contribution to the world by making tools for the mind that advance humankind.")
-      (div
-       :class "card-footer"
-       (s/button-group
-        :options #{:block}
-        (button
-         :type "submit", :class "btn btn-primary"
-         "Buy")
-        (button :type "submit", :class "btn" "Buy")
-        (button :type "submit", :class "btn" "Buy")))))
-    (div
-     :column 4
-     (div
-      :class "card"
-      (div
-       :class "card-header"
-       (h4 :class "card-title" "Google")
-       (h6 :class "card-meta" "Software and hardware"))
-      (div
-       :class "card-body"
-       "Organize the world’s information and make it universally accessible and useful.")
-      (div
-       :class "card-image"
-       (img
-        :class "img-responsive",
-        :src "images/osx-yosemite-2.jpg")))))
-   (section
-    :class "notes"
-    (p
-     "Add a container element with the class "
-     (code "card")
-     ". And add child elements with the class name "
-     (code "card-image")
-     ", "
-     (code "card-header")
-     ", "
-     (code "card-content")
-     " and/or "
-     (code "card-footer")
-     ". The "
-     (code "card-image")
-     " can be placed in any position. "))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    (div
-     :class "card"
-     (div
-      :class "card-image"
-      (img
-       :class "img-responsive",
-       :src "images/osx-el-capitan.jpg"))
-     (div
-      :class "card-header"
-      (h4 :class "card-title" "Microsoft")
-      (h6 :class "card-meta" "Software and hardware"))
-     (div
-      :class "card-body"
-      "Empower every person and every organization on the planet to achieve more.")
-     (div
-      :class "card-footer"
-      (a
-       :shape "rect",
-       :class "btn btn-primary",
-       :href "#"
-       "Do")))
-    ;;}}
-    )))
+        :class "card"
+        (div
+          :class "card-image"
+          (img
+            :class "img-responsive",
+            :src "images/osx-el-capitan.jpg"))
+        (div
+          :class "card-header"
+          (h4 :class "card-title" "Microsoft")
+          (h6 :class "card-meta" "Software and hardware"))
+        (div
+          :class "card-body"
+          "Empower every person and every organization on the planet to achieve more.")
+        (div
+          :class "card-footer"
+          (a
+           :shape "rect",
+           :class "btn btn-primary",
+           :href "#"
+           "Do")))
+      ;;}}
+      )))
 
 (def utilities-header
   (generic-header
-  "utilities"
-  (section
-   :class "notes text-center"
-   (s/button-group
-    (s/button-primary
-     :href "#position"
-     "position")
-    (s/button-primary
-     :href "#display"
-     "display")
-    (s/button-primary
-     :href "#text"
-     "text")
-    (s/button-primary
-     :href "#shapes"
-     "shapes")
-    (s/button-primary
-     :href "#loading"
-     "loading")))))
+    "utilities"
+    (section
+      :class "notes text-center"
+      (s/button-group
+        (s/button-primary
+          :href "#position"
+          "position")
+        (s/button-primary
+          :href "#display"
+          "display")
+        (s/button-primary
+          :href "#text"
+          "text")
+        (s/button-primary
+          :href "#shapes"
+          "shapes")
+        (s/button-primary
+          :href "#loading"
+          "loading")))))
 
 (def position-section
   (section
-   :id "position"
-   :class "container grid-960"
-   (section
-    :class "notes"
-    (p
-     (strong "Position utilities")
-     " are used for useful layout and position things, including clearfix, float, position and margin/padding utilities."))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    ; clear float
-    (div :class "clearfix")
-    ; float: left and right
-    (div :class "float-left")
-    (div :class "float-right")
-    ; position: relative, absolute and fixed
-    (div :class "rel")
-    (div :class "abs")
-    (div :class "fixed")
-    ; centered block
-    (div :class "centered")
-    ; margin: 10px and 5px in 4 directions. mt-10 = margin-top: 10px;
-    (div :class "mt-10")
-    (div :class "mt-5")
-    ; padding: 10px and 5px in 4 directions. pt-10 = padding-top: 10px;
-    (div :class "pt-10")
-    (div :class "pt-5")
-    ;;}}
-    )))
+    :id "position"
+    :class "container grid-960"
+    (section
+      :class "notes"
+      (p
+       (strong "Position utilities")
+       " are used for useful layout and position things, including clearfix, float, position and margin/padding utilities."))
+    (hl/highlight
+      :class "clojure"
+      ;;{{
+      ; clear float
+      (div :class "clearfix")
+      ; float: left and right
+      (div :class "float-left")
+      (div :class "float-right")
+      ; position: relative, absolute and fixed
+      (div :class "rel")
+      (div :class "abs")
+      (div :class "fixed")
+      ; centered block
+      (div :class "centered")
+      ; margin: 10px and 5px in 4 directions. mt-10 = margin-top: 10px;
+      (div :class "mt-10")
+      (div :class "mt-5")
+      ; padding: 10px and 5px in 4 directions. pt-10 = padding-top: 10px;
+      (div :class "pt-10")
+      (div :class "pt-5")
+      ;;}}
+      )))
 
 (def display-section
   (section
-   :id "display"
-   :class "container grid-960"
-   (section
-    :class "notes"
-    (p
-     (strong "Display utilities")
-     " are used for display and hidden things."))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    ; display: block;
-    (div :class "block")
-    ; display: inline;
-    (div :class "inline")
-    ; display: inline-block;
-    (div :class "inline-block")
-    ; display: flex;
-    (div :class "flex")
-    ; display: inline-flex;
-    (div :class "inline-flex")
-    ; display: none;
-    (div :class "hide")
-    ; visibility: visible;
-    (div :class "visible")
-    ; visibility: hidden;
-    (div :class "invisible")
-    ; hide text contents
-    (div :class "text-hide")
-    ;;}}
-    )))
+    :id "display"
+    :class "container grid-960"
+    (section
+      :class "notes"
+      (p
+       (strong "Display utilities")
+       " are used for display and hidden things."))
+    (hl/highlight
+      :class "clojure"
+      ;;{{
+      ; display: block;
+      (div :class "block")
+      ; display: inline;
+      (div :class "inline")
+      ; display: inline-block;
+      (div :class "inline-block")
+      ; display: flex;
+      (div :class "flex")
+      ; display: inline-flex;
+      (div :class "inline-flex")
+      ; display: none;
+      (div :class "hide")
+      ; visibility: visible;
+      (div :class "visible")
+      ; visibility: hidden;
+      (div :class "invisible")
+      ; hide text contents
+      (div :class "text-hide")
+      ;;}}
+      )))
 
 (def text-section
   (section
-   :id "text"
-   :class "container grid-960"
-   (section
-    :class "notes"
-    (p
-     (strong "Text utilities")
-     " are used for text alignment, styles and overflow things."))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    ; left-aligned text
-    (div :class "text-left")
-    ; center-aligned text
-    (div :class "text-center")
-    ; right-aligned text
-    (div :class "text-right")
-    ; justified text
-    (div :class "text-justify")
+    :id "text"
+    :class "container grid-960"
+    (section
+      :class "notes"
+      (p
+       (strong "Text utilities")
+       " are used for text alignment, styles and overflow things."))
+    (hl/highlight
+      :class "clojure"
+      ;;{{
+      ; left-aligned text
+      (div :class "text-left")
+      ; center-aligned text
+      (div :class "text-center")
+      ; right-aligned text
+      (div :class "text-right")
+      ; justified text
+      (div :class "text-justify")
 
-    ; Lowercased text
-    (div :class "text-lowercase")
-    ; Uppercased text
-    (div :class "text-uppercase")
-    ; Capitalized text
-    (div :class "text-capitalize")
+      ; Lowercased text
+      (div :class "text-lowercase")
+      ; Uppercased text
+      (div :class "text-uppercase")
+      ; Capitalized text
+      (div :class "text-capitalize")
 
-    ; Normal weight text
-    (div :class "text-normal")
-    ; Bold text
-    (div :class "text-bold")
-    ; Italicized text
-    (div :class "text-italic")
+      ; Normal weight text
+      (div :class "text-normal")
+      ; Bold text
+      (div :class "text-bold")
+      ; Italicized text
+      (div :class "text-italic")
 
-    ; Overflow behavior: display an ellipsis to represent clipped text
-    (div :class "text-ellipsis")
-    ; Overflow behavior: truncate the text
-    (div :class "text-clip")
-    ; Text may be broken at arbitrary points
-    (div :class "text-break")
-    ;;}}
-    )))
+      ; Overflow behavior: display an ellipsis to represent clipped text
+      (div :class "text-ellipsis")
+      ; Overflow behavior: truncate the text
+      (div :class "text-clip")
+      ; Text may be broken at arbitrary points
+      (div :class "text-break")
+      ;;}}
+      )))
 
 (def shapes-section
   (section
-   :id "shapes"
-   :class "container grid-960"
-   (section
-    :class "notes"
-    (p
-     (strong "Shape utilities")
-     " are used for change element shapes."))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    ; rounded element
-    (div class="rounded")
-    ; circle element
-    (div class="circle")
-    ;;}}
-    )))
+    :id "shapes"
+    :class "container grid-960"
+    (section
+      :class "notes"
+      (p
+       (strong "Shape utilities")
+       " are used for change element shapes."))
+    (hl/highlight
+      :class "clojure"
+      ;;{{
+      ; rounded element
+      (div class="rounded")
+      ; circle element
+      (div class="circle")
+      ;;}}
+      )))
 
 (def divider-section
   (section
-   :id "divider"
-   :class "container grid-960"
-   (section
-    :class "notes"
-    (p
-     "A "
-     (strong "Divider")
-     " is used for separating elements."))
-   (s/columns
-    (div :class "column" (div :class "divider")))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    ; divider element
-    (div :class "divider")
-    ;;}}
-    )))
+    :id "divider"
+    :class "container grid-960"
+    (section
+      :class "notes"
+      (p
+       "A "
+       (strong "Divider")
+       " is used for separating elements."))
+    (s/columns
+      (div :column true (div :class "divider")))
+    (hl/highlight
+      :class "clojure"
+      ;;{{
+      ; divider element
+      (div :class "divider")
+      ;;}}
+      )))
 
 (def loading-section
   (section
-   :id "loading"
-   :class "container grid-960"
-   (section
-    :class "notes"
-    (p
-     (strong "Loading indicator")
-     " is used for loading or updating. Also, you can add the class "
-     (code "loading")
-     " to buttons for loading status."))
-   (s/columns
-    (div :class "column" (div :class "loading")))
-   (hl/highlight
-    :class "clojure"
-    ;;{{
-    ; loading element
-    (div :class "loading")
-    ;;}}
-    )))
+    :id "loading"
+    :class "container grid-960"
+    (section
+      :class "notes"
+      (p
+       (strong "Loading indicator")
+       " is used for loading or updating. Also, you can add the class "
+       (code "loading")
+       " to buttons for loading status."))
+    (s/columns
+      (div :column true (div :class "loading")))
+    (hl/highlight
+      :class "clojure"
+      ;;{{
+      ; loading element
+      (div :class "loading")
+      ;;}}
+      )))
 
 (def page-footer
   (footer
-   :class "bg-grey"
-   (section
-    :id "copyright"
-    :class "grid-footer container grid-960"
-    (p
-     (a
-      :shape "rect",
-      :href "https://github.com/mynomoto/hoplon-spectre.css",
-      :target "_blank"
-      "GitHub Repo")
-     " | "
-     (a
-      :shape "rect",
-      :href "#"
-      "Back to top")
-     " | version: 0.1.24-0")
-    (p
-     "Designed and built with love by "
-     (a
-      :shape "rect"
-      :href "https://github.com/mynomoto"
-      :target "_blank"
-      "mynomoto")
-     ". Licensed under the "
-     (a
-      :shape "rect"
-      :href "https://github.com/mynomoto/hoplon-spectre.css/LICENSE"
-      :target "_blank"
-      "EPL license")
-     "."))))
+    :class "bg-grey"
+    (section
+      :id "copyright"
+      :class "grid-footer container grid-960"
+      (p
+       (a
+        :shape "rect",
+        :href "https://github.com/mynomoto/hoplon-spectre.css",
+        :target "_blank"
+        "GitHub Repo")
+       " | "
+       (a
+        :shape "rect",
+        :href "#"
+        "Back to top")
+       " | version: 0.1.24-0")
+      (p
+       "Designed and built with love by "
+       (a
+        :shape "rect"
+        :href "https://github.com/mynomoto"
+        :target "_blank"
+        "mynomoto")
+       ". Licensed under the "
+       (a
+        :shape "rect"
+        :href "https://github.com/mynomoto/hoplon-spectre.css/LICENSE"
+        :target "_blank"
+        "EPL license")
+       "."))))
 
 (html
- html-head
- (body
-  page-header
-  (section
-   :class "section"
-   getting-started
-   compiling-custom-version
-   elements-header
-   typography-section
-   tables-section
-   buttons-section
-   form-section
-   media-section
-   layout-header
-   grid-section
-   responsive-section
-   navbar-section
-   empty-section
-   components-header
-   avatar-section
-   chips-section
-   autocomplete-section
-   tooltips-section
-   labels-section
-   badges-section
-   toasts-section
-   menus-section
-   navigation-menu
-   modals-section
-   cards-section
-   utilities-header
-   position-section
-   display-section
-   text-section
-   shapes-section
-   divider-section
-   loading-section)
-  page-footer))
+  html-head
+  (body
+    page-header
+    (section
+      :class "section"
+      getting-started
+      compiling-custom-version
+      elements-header
+      typography-section
+      tables-section
+      buttons-section
+      form-section
+      media-section
+      layout-header
+      grid-section
+      responsive-section
+      navbar-section
+      empty-section
+      components-header
+      avatar-section
+      chips-section
+      autocomplete-section
+      tooltips-section
+      labels-section
+      badges-section
+      toasts-section
+      menus-section
+      navigation-menu
+      modals-section
+      cards-section
+      utilities-header
+      position-section
+      display-section
+      text-section
+      shapes-section
+      divider-section
+      loading-section)
+    page-footer))

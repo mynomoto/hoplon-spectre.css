@@ -1,6 +1,6 @@
 (ns hoplon.spectre-css
   (:require [hoplon.core :as h]
-            [javelin.core :as j]))
+    [javelin.core :as j]))
 
 (h/defelem header
   [attrs children]
@@ -10,13 +10,12 @@
 
 (defn button-class
   [options]
-  (let [options-set (set options)]
-    {"loading" (:loading options-set)
-     "btn-lg" (:lg options-set)
-     "btn-sm" (:sm options-set)
-     "btn-block" (:block options-set)
-     "input-group-btn" (:input-group options-set)
-     "btn" true}))
+  {"loading" (:loading options)
+   "btn-lg" (:lg options)
+   "btn-sm" (:sm options)
+   "btn-block" (:block options)
+   "input-group-btn" (:input-group options)
+   "btn" true})
 
 (h/defelem button
   [{:keys [options] :as attrs} children]
@@ -54,17 +53,16 @@
    {:class "btn-clear"}
    children))
 
-(defn button-group-options
+(defn button-group-class
   [options]
-  (let [options-set (set options)]
-    {"btn-group" true
-     "btn-group-block" (:block options-set)}))
+  {"btn-group" true
+   "btn-group-block" (:block options)})
 
 (h/defelem button-group
   [{:keys [options] :as attrs} children]
   (let [class (if (j/cell? options)
-                (j/cell= (button-group-options options))
-                (button-group-options options))]
+                (j/cell= (button-group-class options))
+                (button-group-class options))]
     ((h/div {:class class})
      (dissoc attrs options)
      children)))
@@ -99,37 +97,35 @@
    attrs
    children))
 
-(defn table-options
+(defn table-class
   [options]
-  (let [options-set (set options)]
-    {"table-striped" (:striped options-set)
-     "table-hover" (:hover options-set)
-     "table" true}))
+  {"table-striped" (:striped options)
+   "table-hover" (:hover options)
+   "table" true})
 
 (h/defelem table
   [{:keys [options] :as attrs} children]
   (let [class (if (j/cell? options)
-                (j/cell= (table-options options))
-                (table-options options))]
+                (j/cell= (table-class options))
+                (table-class options))]
     ((h/table :class class)
      (dissoc attrs :options)
      children)))
 
-(defn input-options
+(defn input-class
   [options]
-  (let [options-set (set options)]
-    {"form-input" true
-     "input-lg" (:lg options-set)
-     "input-sm" (:sm options-set)
-     "input-inline" (:inline options-set)
-     "is-danger" (:error options-set)
-     "is-success" (:success options-set)}))
+  {"form-input" true
+   "input-lg" (:lg options)
+   "input-sm" (:sm options)
+   "input-inline" (:inline options)
+   "is-danger" (:error options)
+   "is-success" (:success options)})
 
 (h/defelem input
   [{:keys [options] :as attrs} children]
   (let [class (if (j/cell? options)
-                (j/cell= (input-options options))
-                (input-options options))]
+                (j/cell= (input-class options))
+                (input-class options))]
     ((h/input :class class)
      (dissoc attrs :options)
      children)))
@@ -137,8 +133,8 @@
 (h/defelem textarea
   [{:keys [options] :as attrs} children]
   (let [class (if (j/cell? options)
-                (j/cell= (input-options options))
-                (input-options options))]
+                (j/cell= (input-class options))
+                (input-class options))]
     ((h/input :class class)
      (dissoc attrs :options)
      children)))
@@ -149,34 +145,32 @@
    :class "input-group"
    children))
 
-(defn input-group-text-options
+(defn input-group-text-class
   [options]
-  (let [options-set (set options)]
-    {"input-group-addon" true
-     "addon-lg" (:lg options-set)
-     "addon-sm" (:sm options-set)}))
+  {"input-group-addon" true
+   "addon-lg" (:lg options)
+   "addon-sm" (:sm options)})
 
 (h/defelem input-group-text
   [{:keys [options] :as attrs} children]
   (let [class (if (j/cell? options)
-                (j/cell= (input-group-text-options options))
-                (input-group-text-options options))]
+                (j/cell= (input-group-text-class options))
+                (input-group-text-class options))]
     ((h/span :class class)
      (dissoc attrs :options)
      children)))
 
-(defn form-group-options
+(defn form-group-class
   [options]
-  (let [options-set (set options)]
-    {"form-group" true
-     "has-danger" (:error options-set)
-     "has-success" (:success options-set)}))
+  {"form-group" true
+   "has-danger" (:error options)
+   "has-success" (:success options)})
 
 (h/defelem form-group
   [{:keys [options] :as attrs} children]
   (let [class (if (j/cell? options)
-                (j/cell= (form-group-options options))
-                (form-group-options options))]
+                (j/cell= (form-group-class options))
+                (form-group-class options))]
     ((h/div :class class)
      (dissoc attrs :options)
      children)))
@@ -187,18 +181,17 @@
    (dissoc attrs :options)
    children))
 
-(defn select-options
+(defn select-class
   [options]
-  (let [options-set (set options)]
-    {"form-select" true
-     "select-lg" (:lg options-set)
-     "select-sm" (:sm options-set)}))
+  {"form-select" true
+   "select-lg" (:lg options)
+   "select-sm" (:sm options)})
 
 (h/defelem select
   [{:keys [options] :as attrs} children]
   (let [class (if (j/cell? options)
-                (j/cell= (select-options options))
-                (select-options options))]
+                (j/cell= (select-class options))
+                (select-class options))]
     ((h/select :class class)
      (dissoc attrs :options)
      children)))
@@ -206,51 +199,49 @@
 (h/defelem input-radio
   [{:keys [options] :as attrs} label-content]
   (h/label
-   :class "form-radio"
-   ((h/input
-     :type "radio")
-    (dissoc attrs :options))
-   (h/i :class "form-icon")
-   label-content))
+    :class "form-radio"
+    ((h/input
+       :type "radio")
+     (dissoc attrs :options))
+    (h/i :class "form-icon")
+    label-content))
 
 (h/defelem input-switch
   [{:keys [options] :as attrs} label-content]
   (h/label
-   :class "form-switch"
-   ((h/input :type "checkbox")
-    (dissoc attrs :options))
-   (h/i :class "form-icon")
-   label-content))
+    :class "form-switch"
+    ((h/input :type "checkbox")
+     (dissoc attrs :options))
+    (h/i :class "form-icon")
+    label-content))
 
 (h/defelem input-checkbox
   [{:keys [options] :as attrs} label-content]
   (h/label
-   :class "form-checkbox"
-   ((h/input :type "checkbox")
-    (dissoc attrs :options))
-   (h/i :class "form-icon")
-   label-content))
+    :class "form-checkbox"
+    ((h/input :type "checkbox")
+     (dissoc attrs :options))
+    (h/i :class "form-icon")
+    label-content))
 
-(defn img-options
+(defn img-class
   [options]
-  (let [options-set (set options)]
-    {"img-responsive" true
-     "rounded" (:rounded options-set)}))
+  {"img-responsive" true
+   "rounded" (:rounded options)})
 
 (h/defelem img
   [{:keys [options] :as attrs} children]
   (let [class (if (j/cell? options)
-                (j/cell= (img-options options))
-                (img-options options))]
+                (j/cell= (img-class options))
+                (img-class options))]
     ((h/img :class class)
      (dissoc attrs :options)
      children)))
 
 (defn columns-class
   [options]
-  (let [options-set (set options)]
-    {"columns" true
-     "col-gapless" (:gapless options-set)}))
+  {"columns" true
+   "col-gapless" (:gapless options)})
 
 (h/defelem columns
   [{:keys [options] :as attrs} children]
@@ -286,14 +277,18 @@
   [elem key val]
   (h/do! elem :class (column-class val "md")))
 
+(defmethod h/do! :badge
+  [elem key val]
+  (h/do! (elem :class "badge") :data-badge val))
+
 (defn hide-class
   [val]
-  (let [options-set (set val)]
-    {"hide-xs" (:xs options-set)
-     "hide-sm" (:sm options-set)
-     "hide-md" (:md options-set)
-     "hide-lg" (:lg options-set)
-     "hide-xl" (:xl options-set)}))
+  (let [val (set val)]
+    {"hide-xs" (:xs val)
+     "hide-sm" (:sm val)
+     "hide-md" (:md val)
+     "hide-lg" (:lg val)
+     "hide-xl" (:xl val)}))
 
 (defmethod h/do! :hide
   [elem key val]
@@ -319,12 +314,11 @@
 
 (defn avatar-class
   [options]
-  (let [options-set (set options)]
-    {"avatar-xs" (:xs options-set)
-     "avatar-sm" (:sm options-set)
-     "avatar-lg" (:lg options-set)
-     "avatar-xl" (:xl options-set)
-     "avatar" true}))
+  {"avatar-xs" (:xs options)
+   "avatar-sm" (:sm options)
+   "avatar-lg" (:lg options)
+   "avatar-xl" (:xl options)
+   "avatar" true})
 
 (h/defelem avatar
   [{:keys [options] :as attrs} children]
@@ -352,9 +346,8 @@
 
 (defn chip-class
   [options]
-  (let [options-set (set options)]
-    {"selected" (:selected options-set)
-     "chip-sm" true}))
+  {"selected" (:selected options)
+   "chip-sm" true})
 
 (h/defelem chip
   [{:keys [options] :as attrs} children]
@@ -393,21 +386,21 @@
    (avatar-chip-input title avatar-image nil))
   ([title avatar-image options]
    (chip
-    (cond-> {}
-      options (assoc :options options))
-    (avatar-img :src avatar-image)
-    (chip-text title)
-    (button-clear))))
+     (cond-> {}
+       options (assoc :options options))
+     (avatar-img :src avatar-image)
+     (chip-text title)
+     (button-clear))))
 
 (defn chip-input
   ([title]
    (chip-input title nil))
   ([title options]
    (chip
-    (cond-> {}
-      options (assoc :options options))
-    (chip-text title)
-    (button-clear))))
+     (cond-> {}
+       options (assoc :options options))
+     (chip-text title)
+     (button-clear))))
 
 (h/defelem autocomplete-list
   [{:keys [options] :as attrs} children]
@@ -424,8 +417,8 @@
 (defn chip-icon
   [avatar-image]
   (h/div
-   :class "chip-icon"
-   (avatar-img :src avatar-image)))
+    :class "chip-icon"
+    (avatar-img :src avatar-image)))
 
 (defn chip-content
   [title]
@@ -434,14 +427,14 @@
 (defn chip-big-avatar
   [title avatar-image]
   (h/div
-   :class "chip"
-   (chip-icon avatar-image)
-   (chip-content title)))
+    :class "chip"
+    (chip-icon avatar-image)
+    (chip-content title)))
 
 (defn autocomplete-item-avatar-chip
   [title avatar-image]
   (autocomplete-item
-   ((chip-big-avatar title avatar-image) :class "hand")))
+    ((chip-big-avatar title avatar-image) :class "hand")))
 
 (defn tooltip-class
   [position]
@@ -455,8 +448,8 @@
    (add-tooltip elem text nil))
   ([elem text position]
    (elem
-    :data-tooltip text
-    :class (tooltip-class position))))
+     :data-tooltip text
+     :class (tooltip-class position))))
 
 (h/defelem label
   [attrs children]
@@ -469,12 +462,6 @@
   ((label {:class "label-primary"})
    attrs
    children))
-
-(defn add-badge
-  [elem text]
-  (elem
-   :data-badge text
-   :class "badge"))
 
 (h/defelem toast
   [attrs children]
@@ -514,23 +501,91 @@
 
 (defn menu-link-class
   [options]
-  (let [options-set (set options)]
-    {"active" (:active options-set)}))
+  {"active" (:active options)})
 
 (h/defelem menu-link
   [{:keys [options] :as attrs} children]
   (let [class (if (j/cell? options)
                 (j/cell= (menu-link-class options))
                 (menu-link-class options))]
-  (menu-item
-   ((h/a :class class)
-    (dissoc attrs :options)
-    children))))
+    (menu-item
+      ((h/a :class class)
+       (dissoc attrs :options)
+       children))))
 
 (defn menu-header
   [content]
   (h/li
-   :class "menu-header"
-   (h/span
-    :class "menu-header-text"
-    content)))
+    :class "menu-header"
+    (h/span
+      :class "menu-header-text"
+      content)))
+
+(h/defelem breadcrumb
+  [attrs children]
+  ((h/ul {:class "breadcrumb"})
+   attrs
+   children))
+
+(h/defelem breadcrumb-item
+  [attrs children]
+  (h/li
+    :class "breadcrumb-item"
+    (h/a
+      attrs
+      children)))
+
+(defn tab-class
+  [options]
+  {"tab-block" (:block options)
+   "tab" true})
+
+(h/defelem tab
+  [{:keys [options] :as attrs} children]
+  (let [class (if (j/cell? options)
+                (j/cell= (tab-class options))
+                (tab-class options))]
+    ((h/ul {:class class})
+     (dissoc attrs :options)
+     children)))
+
+(defn tab-item-class
+  [options]
+  {"active" (:active options)
+   "tab-item" true})
+
+(h/defelem tab-item
+  [{:keys [options] :as attrs} children]
+  (let [class (if (j/cell? options)
+                (j/cell= (tab-item-class options))
+                (tab-item-class options))]
+    (h/li :class class
+      (h/a
+        (dissoc attrs :options)
+        children))))
+
+(h/defelem pagination
+  [attrs children]
+  ((h/ul {:class "pagination"})
+   attrs
+   children))
+
+(defn page-item-class
+  [options]
+  {"active" (:active options)
+   "page-item" true})
+
+(h/defelem page-item
+  [{:keys [options] :as attrs} children]
+  (let [class (if (j/cell? options)
+                (j/cell= (page-item-class options))
+                (page-item-class options))
+        content (if (:href attrs)
+                  (h/a
+                    (dissoc attrs :options)
+                    children)
+                  (h/span
+                    (dissoc attrs :options)
+                    children))]
+    (h/li :class class
+      content)))
