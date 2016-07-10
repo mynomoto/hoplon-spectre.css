@@ -590,3 +590,46 @@
                     children))]
     (h/li :class class
       content)))
+
+(defn modal-class
+  [options]
+  {"active" (:active options)
+   "modal-sm" (:sm options)
+   "modal" true})
+
+(h/defelem modal
+  [{:keys [options] :as attrs} children]
+  (let [class (if (j/cell? options)
+                (j/cell= (modal-class options))
+                (modal-class options))]
+    (h/div :class class
+      (h/div :class "modal-overlay")
+      ((h/div
+        :class "modal-container"
+        :role "document")
+        (dissoc attrs :options)
+        children))))
+
+(h/defelem modal-header
+  [attrs children]
+  ((h/div :class "modal-header")
+   attrs
+   children))
+
+(h/defelem modal-title
+  [attrs children]
+  ((h/div :class "modal-title")
+   attrs
+   children))
+
+(h/defelem modal-body
+  [attrs children]
+  ((h/div :class "modal-body")
+   attrs
+   children))
+
+(h/defelem modal-footer
+  [attrs children]
+  ((h/div :class "modal-footer")
+   attrs
+   children))

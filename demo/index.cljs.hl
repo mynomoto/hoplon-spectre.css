@@ -597,11 +597,9 @@
               :placeholder "Email"))
           (s/form-group
             (s/form-label "Gender")
-            (s/input-radio
-              :name "gender"
+            (s/input-radio :name "gender"
               "Male")
-            (s/input-radio
-              :name "gender"
+            (s/input-radio :name "gender"
               "Female"))
           (s/form-group
             (s/select
@@ -641,11 +639,9 @@
             (s/form-label :column-sm 3
               (label "Gender"))
             (div :column-sm 9
-              (s/input-radio
-                :name "gender"
+              (s/input-radio :name "gender"
                 "Male")
-              (s/input-radio
-                :name "gender"
+              (s/input-radio :name "gender"
                 "Female")))
           (s/form-group
             (div :column-sm 3)
@@ -689,11 +685,9 @@
       ;; form radio control
       (s/form-group
         (s/form-label "Gender")
-        (s/input-radio
-          :name "gender"
+        (s/input-radio :name "gender"
           "Male")
-        (s/input-radio
-          :name "gender"
+        (s/input-radio :name "gender"
           "Female"))
 
       ;; form select control
@@ -2001,6 +1995,10 @@
       ;;}}
       )))
 
+(defc modal-options-cell #{})
+(defc modal-sm-1-options-cell #{:sm})
+(defc modal-sm-2-options-cell #{:sm})
+
 (def modals-section
   (section
     :id "modals"
@@ -2010,39 +2008,37 @@
       (p (strong "Modals") " are flexible dialog prompts."))
     (s/columns
       (div :column true
-        (div :class "modal-active"
-          (div :class "modal-overlay")
-          (div
-            :class "modal-container"
-            :role "document"
-            (div :class "modal-header"
-              (s/button-clear :class "float-right")
-              (div :class "modal-title"
-                "Modal title"))
-            (div :class "modal-body"
-              (div :class "content"
-                (p
-                 "This is the content inside the modal.")
-                (h4 "Lorem ipsum")
-                (p
-                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus leo, dictum in vehicula sit amet, feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.")
-                (p
-                 "Climb leg rub face on everything give attitude nap all day for under the bed. Chase mice attack feet but rub face on everything hopped up on goofballs.")
-                (h4 "Cupcake ipsum")
-                (p
-                 "Jelly-o sesame snaps halvah croissant oat cake cookie. Cheesecake bear claw topping. Chupa chups apple pie carrot cake chocolate cake caramels.")
-                (p
-                 "De braaaiiiins apocalypsi gorger omero prefrontal cortex undead survivor fornix dictum mauris. Hi brains mindless mortuis limbic cortex soulless creaturas optic nerve.")
-                (h4 "Candy ipsum")
-                (p
-                 "Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar.")
-                (p
-                 "Caerphilly swiss fromage frais. Brie cheese and wine fromage frais chalk and cheese danish fontina smelly cheese who moved my cheese cow.")))
-            (div :class "modal-footer"
-              (s/button-link "Close")
-              (s/button-primary "Share"))))))
-    (section
-      :class "notes"
+        (s/modal :options modal-options-cell
+          (s/modal-header
+            (s/button-clear
+              :class "float-right"
+              :click #(swap! modal-options-cell disj :active))
+            (s/modal-title "Modal title"))
+          (s/modal-body
+            (p
+             "This is the content inside the modal.")
+            (h4 "Lorem ipsum")
+            (p
+             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus leo, dictum in vehicula sit amet, feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.")
+            (p
+             "Climb leg rub face on everything give attitude nap all day for under the bed. Chase mice attack feet but rub face on everything hopped up on goofballs.")
+            (h4 "Cupcake ipsum")
+            (p
+             "Jelly-o sesame snaps halvah croissant oat cake cookie. Cheesecake bear claw topping. Chupa chups apple pie carrot cake chocolate cake caramels.")
+            (p
+             "De braaaiiiins apocalypsi gorger omero prefrontal cortex undead survivor fornix dictum mauris. Hi brains mindless mortuis limbic cortex soulless creaturas optic nerve.")
+            (h4 "Candy ipsum")
+            (p
+             "Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar.")
+            (p
+             "Caerphilly swiss fromage frais. Brie cheese and wine fromage frais chalk and cheese danish fontina smelly cheese who moved my cheese cow."))
+          (s/modal-footer
+            (s/button-link :click #(swap! modal-options-cell disj :active)
+              "Close")
+            (s/button-primary "Share")))
+        (s/button-primary :click #(swap! modal-options-cell conj :active)
+          "Show the modal")))
+    (section :class "notes"
       (p
        "Add a container element with the class "
        (code "modal")
@@ -2065,119 +2061,88 @@
        " container."))
     (hl/highlight :class "clojure"
       ;;{{
-      (div
-        :class "modal-active"
-        (div :class "modal-overlay")
-        (div
-          :class "modal-container"
-          :role "document"
-          (div
-            :class "modal-header"
-            (s/button-clear :class "float-right")
-            (div :class "modal-title"
-              "Modal title"))
-          (div :class "modal-body"
-            (div :class "content"
-              ; content goes here
-              ))
-          (div :class "modal-footer"
-            (s/button-link "Close")
-            (s/button-primary "Share"))))
+      ; modal-options-cell has the options for the modal. When the option :active is set
+      ; the modal is show.
+      (defc modal-options-cell #{})
+
+      (s/modal :options modal-options-cell
+        (s/modal-header
+          (s/button-clear
+            :class "float-right"
+            :click #(swap! modal-options-cell disj :active) ; on click removes the :active option
+            )
+          (s/modal-title "Modal title"))
+        (s/modal-body
+          ; content goes here
+          )
+        (s/modal-footer
+          (s/button-link :click #(swap! modal-options-cell disj :active) ; on click removes the :active option
+            "Close")
+          (s/button-primary "Share")))
+
+      (s/button-primary :click #(swap! modal-options-cell conj :active) ; on click sets the :active option
+        "Show the modal")
       ;;}}
       )
     (s/header  (h5 "modal sizes"))
     (s/columns
-      (div
-        :column true
-        (div
-          :class "modal-temp modal-sm"
-          (div :class "modal-overlay")
-          (div
-            :class "modal-container", :role "document"
-            (div
-              :class "modal-header"
-              (button
-                :type "button",
-                :class "btn btn-clear float-right",
-                :aria-label "Close")
-              (div :class "modal-title" "Modal title"))
-            (div
-              :class "modal-body"
-              (div
-                :class "content"
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit."))
-            (div
-              :class "modal-footer"
-              (button
-                :type "submit", :class "btn btn-link"
-                "Close")
-              (button
-                :type "submit", :class "btn btn-primary"
-                "Share")))))
-      (div
-        :column true
-        (div
-          :class "modal-temp modal-sm"
-          (div :class "modal-overlay")
-          (div
-            :class "modal-container", :role "document"
-            (div
-              :class "modal-header"
-              (button
-                :type "button",
-                :class "btn btn-clear float-right",
-                :aria-label "Close")
-              (div :class "modal-title" "Modal title"))
-            (div
-              :class "modal-body"
-              (div
-                :class "content"
-                (form
-                  :enctype "application/x-www-form-urlencoded",
-                  :method "get",
-                  :lpformnum "1"
-                  (s/form-group
-                    (s/form-label "Name")
-                    (s/input
-                      :type "text"
-                      :placeholder "Name"))
-                  (s/form-group
-                    (s/form-label "Gender")
-                    (label
-                      :class "form-radio"
-                      (input :type "radio", :name "gender")
-                      (i :class "form-icon")
-                      "Male")
-                    (label
-                      :class "form-radio"
-                      (input :checked "", :type "radio", :name "gender")
-                      (i :class "form-icon")
-                      "Female")))))
-            (div
-              :class "modal-footer"
-              (button
-                :type "submit", :class "btn btn-link"
-                "Close")
-              (button
-                :type "submit", :class "btn btn-primary"
-                "Submit"))))))
-    (section
-      :class "notes"
+      (div :column true
+        (s/modal :options modal-sm-1-options-cell
+          (s/modal-header
+            (s/button-clear
+              :class "float-right"
+              :click #(swap! modal-sm-1-options-cell disj :active))
+            (s/modal-title "Modal 1 title"))
+          (s/modal-body
+            (div :class "content"
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit."))
+          (s/modal-footer
+            (s/button-link :click #(swap! modal-sm-1-options-cell disj :active)
+              "Close")
+            (s/button-primary "Share")))
+        (s/button-primary :click #(swap! modal-sm-1-options-cell conj :active)
+          "Show the modal 1"))
+      (div :column true
+        (s/modal :options modal-sm-2-options-cell
+          (s/modal-header
+            (s/button-clear
+              :class "float-right"
+              :click #(swap! modal-sm-2-options-cell disj :active))
+            (s/modal-title "Modal 2 title"))
+          (s/modal-body
+            (form
+              (s/form-group
+                (s/form-label "Name")
+                (s/input
+                  :type "text"
+                  :placeholder "Name"))
+              (s/form-group
+                (s/form-label "Gender")
+                (s/input-radio :name "gender"
+                  "Male")
+                (s/input-radio :name "gender"
+                  "Female"))))
+          (s/modal-footer
+            (s/button-link :click #(swap! modal-sm-2-options-cell disj :active)
+              "Close")
+            (s/button-primary "Share")))
+        (s/button-primary :click #(swap! modal-sm-2-options-cell conj :active)
+          "Show the modal 2")))
+    (section :class "notes"
       (p
-       "Add the class "
-       (code "modal-sm")
+       "Add the attribute "
+       (code ":options #{:sm}")
        " for a smaller modal dialog. "))
-    (hl/highlight
-      :class "clojure"
+    (hl/highlight :class "clojure"
       ;;{{
-      (div
-        :class "modal modal-sm"
-        (div
-          :class "modal-overlay"
-          (div
-            :class "modal-container"
-            ; modal structure here
-            )))
+      (defc modal-sm-options-cell #{:sm})
+
+      (s/modal :options modal-sm-options-cell
+        ; modal structure here
+        )
+
+      (s/button-primary :click #(swap! modal-sm-options-cell conj :active)
+        "Show the modal small")
       ;;}}
       )))
 
@@ -2186,76 +2151,57 @@
     :id "cards"
     :class "container grid-960"
     (s/header (h4 "cards"))
-    (section
-      :class "notes"
+    (section :class "notes"
       (p (strong "Cards") " are flexible content containers."))
     (s/columns
-      (div
-        :column 4
-        (div
-          :class "card"
-          (div
-            :class "card-image"
+      (div :column 4
+        (div :class "card"
+          (div :class "card-image"
             (img
-              :class "img-responsive",
+              :class "img-responsive"
               :src "images/osx-el-capitan.jpg"))
-          (div
-            :class "card-header"
-            (h4 :class "card-title" "Microsoft")
-            (h6 :class "card-meta" "Software and hardware"))
-          (div
-            :class "card-body"
+          (div :class "card-header"
+            (h4 :class "card-title"
+              "Microsoft")
+            (h6 :class "card-meta"
+              "Software and hardware"))
+          (div :class "card-body"
             "Empower every person and every organization on the planet to achieve more.")
-          (div
-            :class "card-footer"
-            (a
-             :shape "rect",
-             :class "btn btn-primary",
-             :href "#"
+          (div :class "card-footer"
+            (s/button-primary :href "#"
              "Do"))))
-      (div
-        :column 4
-        (div
-          :class "card"
-          (div
-            :class "card-header"
-            (h4 :class "card-title" "Apple")
-            (h6 :class "card-meta" "Hardware and software"))
-          (div
-            :class "card-image"
+      (div :column 4
+        (div :class "card"
+          (div :class "card-header"
+            (h4 :class "card-title"
+              "Apple")
+            (h6 :class "card-meta"
+              "Hardware and software"))
+          (div :class "card-image"
             (img
-              :class "img-responsive",
+              :class "img-responsive"
               :src "images/osx-yosemite.jpg"))
-          (div
-            :class "card-body"
+          (div :class "card-body"
             "To make a contribution to the world by making tools for the mind that advance humankind.")
-          (div
-            :class "card-footer"
-            (s/button-group
-              :options #{:block}
-              (button
-                :type "submit", :class "btn btn-primary"
-                "Buy")
-              (button :type "submit", :class "btn" "Buy")
-              (button :type "submit", :class "btn" "Buy")))))
-      (div
-        :column 4
-        (div
-          :class "card"
-          (div
-            :class "card-header"
-            (h4 :class "card-title" "Google")
-            (h6 :class "card-meta" "Software and hardware"))
-          (div
-            :class "card-body"
+          (div :class "card-footer"
+            (s/button-group :options #{:block}
+              (s/button-primary "Buy")
+              (s/button "Buy")
+              (s/button "Buy")))))
+      (div :column 4
+        (div :class "card"
+          (div :class "card-header"
+            (h4 :class "card-title"
+              "Google")
+            (h6 :class "card-meta"
+              "Software and hardware"))
+          (div :class "card-body"
             "Organize the world’s information and make it universally accessible and useful.")
-          (div
-            :class "card-image"
+          (div :class "card-image"
             (img
-              :class "img-responsive",
+              :class "img-responsive"
               :src "images/osx-yosemite-2.jpg")))))
-    (section
-      :class "notes"
+    (section :class "notes"
       (p
        "Add a container element with the class "
        (code "card")
@@ -2270,8 +2216,7 @@
        ". The "
        (code "card-image")
        " can be placed in any position. "))
-    (hl/highlight
-      :class "clojure"
+    (hl/highlight :class "clojure"
       ;;{{
       (div
         :class "card"
