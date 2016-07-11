@@ -2,6 +2,12 @@
 
 A [Hoplon][hoplon] library designed to make [Spectre.css][spectre] simple to use.
 
+[](dependency)
+```clojure
+[mynomoto/hoplon-spectre.css "0.1.0"]
+```
+[](/dependency)
+
 ## Dependencies
 
 - java 1.7+
