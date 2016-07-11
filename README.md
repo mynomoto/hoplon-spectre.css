@@ -4,7 +4,7 @@ A [Hoplon][hoplon] library designed to make [Spectre.css][spectre] simple to use
 
 [](dependency)
 ```clojure
-[mynomoto/hoplon-spectre.css "0.1.0"]
+[mynomoto/hoplon-spectre.css "0.1.0"] ;; latest release
 ```
 [](/dependency)
 
