@@ -17,12 +17,26 @@
   '[adzerk.boot-cljs :refer [cljs]]
   '[adzerk.boot-reload :refer [reload]]
   '[adzerk.bootlaces :refer [bootlaces! push-release push-snapshot build-jar]]
+  '[boot.git :refer [last-commit]]
   '[boot.heredoc :refer [heredoc]]
   '[hoplon.boot-hoplon :refer [hoplon prerender]]
   '[tailrecursion.boot-jetty :refer [serve]])
 
 (def +version+ "0.1.0")
 (bootlaces! +version+)
+
+(task-options!
+  push {:repo           "deploy"
+        :ensure-branch  "master"
+        :ensure-clean   true
+        :ensure-tag     (last-commit)
+        :ensure-version +version+}
+  pom  {:project        'mynomoto/hoplon-spectre.css
+        :version        +version+
+        :description    "Hoplon bindings for spectre.css"
+        :url            "https://github.com/mynomoto/hoplon-spectre.css"
+        :scm            {:url "https://github.com/mynomoto/hoplon-spectre.css"}
+        :license        {"Eclipse Public License" "http://www.eclipse.org/legal/epl-v10.html"}})
 
 (deftask demo
   []
