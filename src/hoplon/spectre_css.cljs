@@ -633,3 +633,38 @@
   ((h/div :class "modal-footer")
    attrs
    children))
+
+(h/defelem card
+  [attrs children]
+  ((h/div :class "card")
+   attrs
+   children))
+
+(h/defelem card-image
+  [attrs children]
+  (h/div :class "card-image"
+    (img attrs children)))
+
+(h/defelem card-header
+  [attrs children]
+  ((h/div :class "card-header")
+   attrs
+   children))
+
+(h/defelem card-body
+  [attrs children]
+  ((h/div :class "card-body")
+   attrs
+   children))
+
+(h/defelem card-footer
+  [attrs children]
+  ((h/div :class "card-footer")
+   attrs
+   children))
+
+(defn divider []
+ (h/div :class  "divider"))
+
+(defn loading []
+ (h/div :class  "loading"))

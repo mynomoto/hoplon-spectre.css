@@ -2155,126 +2155,104 @@
       (p (strong "Cards") " are flexible content containers."))
     (s/columns
       (div :column 4
-        (div :class "card"
-          (div :class "card-image"
-            (img
-              :class "img-responsive"
-              :src "images/osx-el-capitan.jpg"))
-          (div :class "card-header"
+        (s/card
+          (s/card-image
+            :src "images/osx-el-capitan.jpg")
+          (s/card-header
             (h4 :class "card-title"
               "Microsoft")
             (h6 :class "card-meta"
               "Software and hardware"))
-          (div :class "card-body"
+          (s/card-body
             "Empower every person and every organization on the planet to achieve more.")
-          (div :class "card-footer"
+          (s/card-footer
             (s/button-primary :href "#"
              "Do"))))
       (div :column 4
-        (div :class "card"
-          (div :class "card-header"
+        (s/card
+          (s/card-header
             (h4 :class "card-title"
               "Apple")
             (h6 :class "card-meta"
               "Hardware and software"))
-          (div :class "card-image"
-            (img
-              :class "img-responsive"
-              :src "images/osx-yosemite.jpg"))
-          (div :class "card-body"
+          (s/card-image
+            :src "images/osx-yosemite.jpg")
+          (s/card-body
             "To make a contribution to the world by making tools for the mind that advance humankind.")
-          (div :class "card-footer"
+          (s/card-footer
             (s/button-group :options #{:block}
               (s/button-primary "Buy")
               (s/button "Buy")
               (s/button "Buy")))))
       (div :column 4
-        (div :class "card"
-          (div :class "card-header"
+        (s/card
+          (s/card-header
             (h4 :class "card-title"
               "Google")
             (h6 :class "card-meta"
               "Software and hardware"))
-          (div :class "card-body"
+          (s/card-body
             "Organize the world’s information and make it universally accessible and useful.")
-          (div :class "card-image"
-            (img
-              :class "img-responsive"
-              :src "images/osx-yosemite-2.jpg")))))
+          (s/card-image
+            :src "images/osx-yosemite-2.jpg"))))
     (section :class "notes"
       (p
-       "Add a container element with the class "
-       (code "card")
-       ". And add child elements with the class name "
-       (code "card-image")
+       "Add a container element "
+       (code "(s/card)")
+       ". And add child elements "
+       (code "(s/card-image)")
        ", "
-       (code "card-header")
+       (code "(s/card-header)")
        ", "
-       (code "card-content")
+       (code "(s/card-body)")
        " and/or "
-       (code "card-footer")
+       (code "(s/card-footer)")
        ". The "
-       (code "card-image")
+       (code "(s/card-image)")
        " can be placed in any position. "))
     (hl/highlight :class "clojure"
       ;;{{
-      (div
-        :class "card"
-        (div
-          :class "card-image"
-          (img
-            :class "img-responsive",
-            :src "images/osx-el-capitan.jpg"))
-        (div
-          :class "card-header"
-          (h4 :class "card-title" "Microsoft")
-          (h6 :class "card-meta" "Software and hardware"))
-        (div
-          :class "card-body"
+      (s/card
+        (s/card-image
+          :src "images/osx-el-capitan.jpg")
+        (s/card-header
+          (h4 :class "card-title"
+            "Microsoft")
+          (h6 :class "card-meta"
+            "Software and hardware"))
+        (s/card-body
           "Empower every person and every organization on the planet to achieve more.")
-        (div
-          :class "card-footer"
-          (a
-           :shape "rect",
-           :class "btn btn-primary",
-           :href "#"
-           "Do")))
+        (s/card-footer
+          (s/button-primary :href "#"
+            "Do")))
       ;;}}
       )))
 
 (def utilities-header
   (generic-header
     "utilities"
-    (section
-      :class "notes text-center"
+    (section :class "notes text-center"
       (s/button-group
-        (s/button-primary
-          :href "#position"
+        (s/button-primary :href "#position"
           "position")
-        (s/button-primary
-          :href "#display"
+        (s/button-primary :href "#display"
           "display")
-        (s/button-primary
-          :href "#text"
+        (s/button-primary :href "#text"
           "text")
-        (s/button-primary
-          :href "#shapes"
+        (s/button-primary :href "#shapes"
           "shapes")
-        (s/button-primary
-          :href "#loading"
+        (s/button-primary :href "#loading"
           "loading")))))
 
 (def position-section
   (section
     :id "position"
     :class "container grid-960"
-    (section
-      :class "notes"
+    (section :class "notes"
       (p
        (strong "Position utilities")
        " are used for useful layout and position things, including clearfix, float, position and margin/padding utilities."))
-    (hl/highlight
-      :class "clojure"
+    (hl/highlight :class "clojure"
       ;;{{
       ; clear float
       (div :class "clearfix")
@@ -2300,13 +2278,11 @@
   (section
     :id "display"
     :class "container grid-960"
-    (section
-      :class "notes"
+    (section :class "notes"
       (p
        (strong "Display utilities")
        " are used for display and hidden things."))
-    (hl/highlight
-      :class "clojure"
+    (hl/highlight :class "clojure"
       ;;{{
       ; display: block;
       (div :class "block")
@@ -2333,13 +2309,11 @@
   (section
     :id "text"
     :class "container grid-960"
-    (section
-      :class "notes"
+    (section :class "notes"
       (p
        (strong "Text utilities")
        " are used for text alignment, styles and overflow things."))
-    (hl/highlight
-      :class "clojure"
+    (hl/highlight :class "clojure"
       ;;{{
       ; left-aligned text
       (div :class "text-left")
@@ -2377,13 +2351,11 @@
   (section
     :id "shapes"
     :class "container grid-960"
-    (section
-      :class "notes"
+    (section :class "notes"
       (p
        (strong "Shape utilities")
        " are used for change element shapes."))
-    (hl/highlight
-      :class "clojure"
+    (hl/highlight :class "clojure"
       ;;{{
       ; rounded element
       (div class="rounded")
@@ -2396,19 +2368,18 @@
   (section
     :id "divider"
     :class "container grid-960"
-    (section
-      :class "notes"
+    (section :class "notes"
       (p
        "A "
        (strong "Divider")
        " is used for separating elements."))
     (s/columns
       (div :column true (div :class "divider")))
-    (hl/highlight
-      :class "clojure"
+    (hl/highlight :class "clojure"
       ;;{{
       ; divider element
       (div :class "divider")
+      (s/divider)
       ;;}}
       )))
 
@@ -2430,37 +2401,32 @@
       ;;{{
       ; loading element
       (div :class "loading")
+      (s/loading)
       ;;}}
       )))
 
 (def page-footer
-  (footer
-    :class "bg-grey"
+  (footer :class "bg-grey"
     (section
       :id "copyright"
       :class "grid-footer container grid-960"
       (p
        (a
-        :shape "rect",
-        :href "https://github.com/mynomoto/hoplon-spectre.css",
+        :href "https://github.com/mynomoto/hoplon-spectre.css"
         :target "_blank"
         "GitHub Repo")
        " | "
-       (a
-        :shape "rect",
-        :href "#"
+       (a :href "#"
         "Back to top")
        " | version: 0.1.24-0")
       (p
        "Designed and built with love by "
        (a
-        :shape "rect"
         :href "https://github.com/mynomoto"
         :target "_blank"
         "mynomoto")
        ". Licensed under the "
        (a
-        :shape "rect"
         :href "https://github.com/mynomoto/hoplon-spectre.css/LICENSE"
         :target "_blank"
         "EPL license")
