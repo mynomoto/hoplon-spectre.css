@@ -18,7 +18,7 @@
   '[adzerk.boot-reload :refer [reload]]
   '[adzerk.bootlaces :refer [bootlaces! push-release push-snapshot build-jar]]
   '[boot.heredoc :refer [heredoc]]
-  '[hoplon.boot-hoplon :refer [hoplon]]
+  '[hoplon.boot-hoplon :refer [hoplon prerender]]
   '[tailrecursion.boot-jetty :refer [serve]])
 
 (def +version+ "0.1.0")
@@ -27,7 +27,8 @@
 (deftask demo
   []
   (with-pre-wrap fileset
-    (merge-env! :resource-paths #{"demo"}
+    (merge-env!
+      :resource-paths #{"demo"}
       :dependencies '[[hoplon/highlight "8.4.0-0"]])
     fileset))
 
@@ -52,6 +53,7 @@
     (heredoc)
     (hoplon)
     (cljs :optimizations :advanced)
+    (prerender)
     (target :dir #{"target"})))
 
 (deftask release
