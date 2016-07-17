@@ -6,7 +6,7 @@
 
                   [hoplon/hoplon "6.0.0-alpha16" :scope "provided"]
 
-                  [hoplon/boot-hoplon "0.2.2" :scope "test"]
+                  [hoplon/boot-hoplon "0.1.13" :scope "test"]
                   [adzerk/boot-reload "0.4.11" :scope "test"]
                   [tailrecursion/boot-jetty "0.1.3" :scope "test"]
                   [tailrecursion/boot-heredoc "0.1.1" :scope "test"]
@@ -55,7 +55,7 @@
     (speak)
     (heredoc)
     (hoplon)
-    (reload)
+    (reload :on-jsload 'hoplon.dev/reload)
     (cljs)
     (serve :port 8000)))
 
