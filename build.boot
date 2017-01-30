@@ -1,13 +1,12 @@
 (set-env!
-  :dependencies '[[org.clojure/clojure "1.9.0-alpha8" :scope "provided"]
+  :dependencies '[[org.clojure/clojure "1.9.0-alpha14" :scope "provided"]
 
-                  [org.clojure/clojurescript "1.9.93" :scope "provided"]
-                  [adzerk/boot-cljs "1.7.228-1" :scope "provided"]
+                  [org.clojure/clojurescript "1.9.456" :scope "provided"]
+                  [adzerk/boot-cljs "1.7.228-2" :scope "provided"]
 
-                  [hoplon/hoplon "6.0.0-alpha16" :scope "provided"]
+                  [hoplon/hoplon "6.0.0-alpha17" :scope "provided"]
 
-                  [hoplon/boot-hoplon "0.1.13" :scope "test"]
-                  [adzerk/boot-reload "0.4.11" :scope "test"]
+                  [adzerk/boot-reload "0.5.0" :scope "test"]
                   [tailrecursion/boot-jetty "0.1.3" :scope "test"]
                   [tailrecursion/boot-heredoc "0.1.1" :scope "test"]
                   [adzerk/bootlaces "0.1.13" :scope "test"]]

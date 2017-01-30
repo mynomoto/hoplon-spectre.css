@@ -9,10 +9,10 @@
 (def html-head
   (head
     (html-meta :charset "UTF-8")
-    (link :href "spectre.css" #_"https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.1.24/spectre.min.css" :rel "stylesheet" :type "text/css")
-    (link :href "style.css" :rel "stylesheet" :type "text/css")
+    (link :href "spectre.min.css" :rel "stylesheet" :type "text/css")
     (link :href "solarized_light.css" :rel "stylesheet" :type "text/css")
     (link :href "font.css" :rel "stylesheet" :type "text/css")
+    (link :href "style.css" :rel "stylesheet" :type "text/css")
     (title "Hoplon Spectre Demo")))
 
 (def page-header
@@ -43,15 +43,15 @@
             (s/label-primary "soon"))))
       (section :class "notes text-center"
         (s/button-group
-          (s/button-primary
+          (s/a-button-primary
             :href "https://github.com/mynomoto/hoplon-spectre.css",
             :target "_blank"
             "Hoplon Spectre GitHub Repo")
-          (s/button-primary
+          (s/a-button-primary
             :href "https://github.com/picturepan2/spectre",
             :target "_blank"
             "Spectre GitHub Repo")
-          (s/button-primary
+          (s/a-button-primary
             :href "#getting-started"
             "Documentation"))))))
 
@@ -65,7 +65,7 @@
      "Spectre CSS file")
     " (about 27KB):")
    (p
-    (s/button-primary
+    (s/a-button-primary
       :href "https://github.com/picturepan2/spectre/tree/master/dist"
       :target "_blank"
       "Download Spectre.css"))])
@@ -95,7 +95,7 @@
     "Include it in your Hoplon file "
     (code "(head)"))
    (hl/highlight :class "clojure"
-     "(link :href \"https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.1.24/spectre.min.css\" :rel \"stylesheet\" :type \"text/css\")")])
+     "(link :href \"https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.1.32/spectre.min.css\" :rel \"stylesheet\" :type \"text/css\")")])
 
 (def getting-started
   (section
@@ -175,15 +175,17 @@
     "elements"
     (section :class "notes text-center"
       (s/button-group
-        (s/button-primary :href "#typography"
+        (s/a-button-primary :href "#typography"
           "typography")
-        (s/button-primary :href "#tables"
+        (s/a-button-primary :href "#tables"
           "tables")
-        (s/button-primary :href "#buttons"
+        (s/a-button-primary :href "#buttons"
           "buttons")
-        (s/button-primary :href "#forms"
+        (s/a-button-primary :href "#forms"
           "forms")
-        (s/button-primary :href "#media"
+        (s/a-button-primary :href "#labels"
+          "labels")
+        (s/a-button-primary :href "#media"
           "media")))))
 
 (def typography-section
@@ -194,7 +196,7 @@
     (section :class "notes"
       (p
        (strong "Typography")
-       " sets default styles for headings, paragraphs, blockquote, lists and code elements. "))
+       " sets default styles for headings, paragraphs, semantic text, blockquote, lists and code elements."))
     (s/header (h5 "headings"))
     (h1 "H1 Title " (s/label "5rem"))
     (h2 "H2 Title " (s/label "4rem"))
@@ -214,39 +216,178 @@
       )
     (s/header (h5 "paragraphs"))
     (p
-     "Lorem ipsum dolor sit amet, "
-     (s/highlight "consectetur")
-     " adipiscing elit. Praesent risus leo, "
+     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus leo, "
      (a :href "#typography"
-      "dictum in vehicula sit amet")
+       "dictum in vehicula sit amet")
      ", feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.")
-    (p :class "lead"
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
+    (p
+     "Climb leg rub face on everything give attitude nap all day for under the bed. Chase mice attack feet but rub face on everything hopped up on goofballs.")
     (hl/highlight :class "clojure"
       ;;{{
       (p
-       "Lorem ipsum dolor sit amet, "
-       (s/highlight "consectetur")
-       " adipiscing elit. Praesent risus leo, "
+       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus leo, "
        (a :href "#typography"
          "dictum in vehicula sit amet")
        ", feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.")
-      (p :class "lead"
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
+      (p
+       "Climb leg rub face on everything give attitude nap all day for under the bed. Chase mice attack feet but rub face on everything hopped up on goofballs.")
       ;;}}
       )
+    (s/header (h5 "semantic text elements"))
+    (s/columns
+      (div
+        :column 3
+        :column-xs 12
+        (abbr
+          :title "Internationalization"
+          "I18N")
+        (code :class "ml-10"
+          "(abbr)"))
+      (div
+        :column 3
+        :column-xs 12
+        (strong
+          "Bold")
+        (code :class "ml-10"
+          "(strong)")
+        (code :class "ml-10"
+          "(b)"))
+      (div
+        :column 3
+        :column-xs 12
+        (cite
+          "Citation")
+        (code :class "ml-10"
+          "(cite)"))
+      (div
+        :column 3
+        :column-xs 12
+        (code
+          "Hello World!")
+        (code :class "ml-10"
+          "(code)"))
+      (div
+        :column 3
+        :column-xs 12
+        (del
+          "Deleted")
+        (code :class "ml-10"
+          "(del)"))
+      (div
+        :column 3
+        :column-xs 12
+        (em
+          "Emphasis")
+        (code :class "ml-10"
+          "(em)"))
+      (div
+        :column 3
+        :column-xs 12
+        (i
+         "Italic")
+        (code :class "ml-10"
+          "(i)"))
+      (div
+        :column 3
+        :column-xs 12
+        (ins
+          "Inserted")
+        (code :class "ml-10"
+          "(ins)"))
+      (div
+        :column 3
+        :column-xs 12
+        (kbd
+          "Ctrl + S")
+        (code :class "ml-10"
+          "(kbd)"))
+      (div
+        :column 3
+        :column-xs 12
+        (mark
+          "Highlighted")
+        (code :class "ml-10"
+          "(mark)"))
+      (div
+        :column 3
+        :column-xs 12
+        (ruby
+          "漢" (rt "kan")
+          "字" (rt "ji"))
+        (code :class "ml-10"
+          "(ruby)"))
+      (div
+        :column 3
+        :column-xs 12
+        (s
+         "Strikethrough")
+        (code :class "ml-10"
+          "(s)"))
+      (div
+        :column 3
+        :column-xs 12
+        (samp
+          "Sample")
+        (code :class "ml-10"
+          "(samp)"))
+      (div
+        :column 3
+        :column-xs 12
+        "Text "
+        (sub
+          "Subscripted")
+        (code :class "ml-10"
+          "(sub)"))
+      (div
+        :column 3
+        :column-xs 12
+        "Text "
+        (sub
+          "Superscripted")
+        (code :class "ml-10"
+          "(sup)"))
+      (div
+        :column 3
+        :column-xs 12
+        (html-time
+          "20:00")
+        (code :class "ml-10"
+          "(time)"))
+      (div
+        :column 3
+        :column-xs 12
+        (u
+         "Underline")
+        (code :class "ml-10"
+          "(u)"))
+      (div
+        :column 3
+        :column-xs 12
+        (html-var "x") " = " (html-var "y") " + 2"
+        (code :class "ml-10"
+          "(var)")))
+
     (s/header (h5 "optimized for asian fonts"))
-    (p :class "lead"
-      "好, こんにちは, 안녕하세요")
+    (p :class "text-large text-center"
+      (span :lang "zh-Hans" "好")
+      ", "
+      (span :lang "ja" "こんにちは")
+      ", "
+      (span :lang "ko" "안녕하세요"))
     (h6 "Chinese (Simplified)")
-    (p
-     "革命不是请客吃饭，不是做文章，不是绘画绣花，不能那样雅致，那样从容不迫，“文质彬彬”，那样“温良恭俭让”。革命就是暴动，是一个阶级推翻一个阶级的暴烈的行动。")
+    (p :lang "zh-Hans"
+      "革命不是请客吃饭，不是做文章，不是绘画绣花，不能那样雅致，那样从容不迫，“文质彬彬”，那样“温良恭俭让”。革命就是暴动，是一个阶级推翻一个阶级的暴烈的行动。")
+    (h6 "Chinese (Traditional)")
+    (p :lang "zh-Hant"
+      "山不在高，有仙則名；水不在深，有龍則靈。斯是陋室，惟吾德馨。苔痕上階綠，草色入簾青；談笑有鴻儒，往來無白丁。可以調素琴，閱金經。無絲竹之亂耳，無案牘之勞形。南陽諸葛廬，西蜀子雲亭。孔子云：「何陋之有？」")
     (h6 "Japanese")
-    (p
-     "祇園精舎の鐘の声、諸行無常の響きあり。沙羅双樹の花の色、盛者必衰の理をあらはす。おごれる人も久しからず。ただ春の夜の夢のごとし。たけき者も遂にはほろびぬ、ひとへ‌​に風の前の塵に同じ。")
+    (p :lang "ja"
+      (u "祇園")
+      (u "精舎")
+      "の鐘の声、諸行無常の響きあり。沙羅双樹の花の色、盛者必衰の理をあらはす。おごれる人も久しからず。ただ春の夜の夢のごとし。たけき者も遂にはほろびぬ、ひとへ‌​に風の前の塵に同じ。")
     (h6 "Korean")
-    (p
-     "나라말이 중국과 달라, 한문・한자와 서로 통하지 아니하므로, 어리석은 백성들이 말하고자 하는 바가 있어도, 끝내 제 뜻을 펴지 못하는 사람이 많다. 내가 이를 불쌍히 여겨, 새로 스물 여덟 글자를 만드니, 사람마다 하여금 쉽게 익혀, 날마다 씀에 편하게 하고자 할 따름이다.")
+    (p :lang "ko"
+      "나라말이 중국과 달라, 한문・한자와 서로 통하지 아니하므로, 어리석은 백성들이 말하고자 하는 바가 있어도, 끝내 제 뜻을 펴지 못하는 사람이 많다. 내가 이를 불쌍히 여겨, 새로 스물 여덟 글자를 만드니, 사람마다 하여금 쉽게 익혀, 날마다 씀에 편하게 하고자 할 따름이다.")
     (s/header (h5 "blockquote"))
     (blockquote
       (p
@@ -371,7 +512,7 @@
       (p
        "Use the class "
        (code "selected")
-       " to make <tr> element highlighted. "))
+       " to make (tr) element highlighted. "))
     (hl/highlight :class "clojure"
       ;;{{
       (s/table :options #{:striped :hover}
@@ -419,15 +560,21 @@
        (strong "Buttons")
        " include simple button styles for actions in different types and sizes. "))
     (s/columns
-      (div :column true
+      (div
+        :column true
+        :column-xs 12
         (s/button "default button")
         (s/button :options #{:loading}
           "default button"))
-      (div :column true
+      (div
+        :column true
+        :column-xs 12
         (s/button-primary "primary button")
         (s/button-primary :options #{:loading}
           "primary button"))
-      (div :column true
+      (div
+        :column true
+        :column-xs 12
         (s/button-link "link button")
         (s/button-link :options #{:loading}
           "link button")))
@@ -458,6 +605,28 @@
         "link button")
       ;;}}
       )
+    (section :class "notes"
+      (p
+        "Add the option " (code ":options #{:disabled}") " for a disabled button.")
+     (s/columns
+       (div
+         :column true
+         :column-xs 12
+         (s/button
+           :options #{:disabled}
+           "default button"))
+       (div
+         :column true
+         :column-xs 12
+         (s/button-primary
+           :options #{:disabled}
+           "primary button"))
+       (div
+         :column true
+         :column-xs 12
+         (s/button-link
+           :options #{:disabled}
+           "link button"))))
     (s/header (h5 "button sizes"))
     (s/columns
       (div :column true
@@ -521,24 +690,40 @@
       )
     (s/header (h5 "button groups"))
     (s/columns
-      (div :column true
+      (div
+        :column true
+        :column-xs 12
         (s/button-group
           (s/button "first button")
           (s/button "second button")
           (s/button "third button")))
-      (div :column true
+      (div
+        :column true
+        :column-xs 12
         (s/button-group :options #{:block}
           (s/button-primary "first button")
           (s/button-primary "second button")
           (s/button-primary "third button"))))
     (s/columns
-      (div :column true
+      (div
+        :column true
+        :column-xs 12
         (s/button-group
-          (s/button :options #{:sm}
+          (s/button :options #{:sm :active}
             "first button")
           (s/button :options #{:sm}
             "second button")
           (s/button :options #{:sm}
+            "third button")))
+      (div
+        :column true
+        :column-xs 12
+        (s/button-group :options #{:block}
+          (s/button-primary :options #{:sm :active}
+            "first button")
+          (s/button-primary :options #{:sm}
+            "second button")
+          (s/button-primary :options #{:sm}
             "third button"))))
     (section
       :class "notes"
@@ -581,26 +766,25 @@
        (strong "Forms")
        " provide the most common control styles used in forms, including label, input, textarea, select, checkbox, radio and switch."))
     (s/columns
-      (div :column 6
+      (div
+        :column 6
+        :column-xs 12
         (form
+          :action "#forms"
           (s/form-group
-            (s/form-label "Name")
-            (s/input
-              :options #{:error}
-              :type "text"
-              :placeholder "Name"))
+            (s/form-label :for "input-example-1" "Name")
+            (s/input :type "text" :id "input-example-1" :placeholder "Name"))
           (s/form-group
-            (s/form-label "Email")
-            (s/input
-              :options #{:success}
-              :type "email"
-              :placeholder "Email"))
+            (s/form-label :for "input-example-2" "Email")
+            (s/input :type "email" :id "input-example-2" :placeholder "Email"))
           (s/form-group
             (s/form-label "Gender")
-            (s/input-radio :name "gender"
-              "Male")
-            (s/input-radio :name "gender"
-              "Female"))
+            (s/form-label :class "form-radio"
+              (s/input :type "radio" :name "gender")
+              (i :class "form-icon") "Male")
+            (s/form-label :class "form-radio"
+              (s/input :type "radio" :name "gender")
+              (i :class "form-icon") "Female"))
           (s/form-group
             (s/select
               (option "Choose an option")
@@ -610,108 +794,47 @@
           (s/form-group
             (s/input-switch "Send me emails with news and tips"))
           (s/form-group
-            (s/form-label "Message")
-            (s/textarea
-              :rows "3"
-              :placeholder "Textarea"))
+            (s/form-label :for "input-example-3" "Message")
+            (s/textarea :id "input-example-3" :placeholder "Textarea" :rows "3"))
           (s/form-group
             (s/input-checkbox "Remember me"))
           (s/form-group
-            (s/button-primary "Submit")
-            (s/button-link "Cancel"))))
-      (div :column 6
-        (form :class "form-horizontal"
-          (s/form-group
-            (s/form-label :column-sm 3
-              "Name")
-            (s/input
-              :type "text"
-              :column-sm 9
-              :placeholder "Name"))
-          (s/form-group
-            (s/form-label :column-sm 3
-              "Email")
-            (s/input
-              :type "email"
-              :column-sm 9
-              :placeholder "Email"))
-          (s/form-group
-            (s/form-label :column-sm 3
-              (label "Gender"))
-            (div :column-sm 9
-              (s/input-radio :name "gender"
-                "Male")
-              (s/input-radio :name "gender"
-                "Female")))
-          (s/form-group
-            (div :column-sm 3)
-            (div :column-sm 9
-              (s/select
-                (option "Choose an option")
-                (option "Slack")
-                (option "Skype")
-                (option "Hipchat"))))
-          (s/form-group
-            (div :column-sm 3)
-            (div :column-sm 9
-              (s/input-switch "Send me emails with news and tips")))
-          (s/form-group
-            (s/form-label :column-sm 3
-              "Message")
-            (s/textarea
-              :rows "3"
-              :column-sm 9
-              :placeholder "Textarea"))
-          (s/form-group (div :column-sm 3)
-            (div :column-sm 9
-              (s/input-checkbox "Remember me")))
-          (s/form-group
-            (div :column-sm 3)
-            (div :column-sm 9
-              (s/button-primary
-                "Submit")
-              (s/button-link
-                "Cancel"))))))
+            (s/button-primary :type "submit" "Submit")
+            (s/button-link :type "reset" "Cancel")))))
     (hl/highlight :class "clojure"
       ;;{{
       (form
-        ;; form input control
+        :action "#forms"
+        ; form input control
         (s/form-group
-          (s/form-label "Name")
-          (s/input
-            :type "text"
-            :placeholder "Name")))
-
-      ;; form radio control
-      (s/form-group
-        (s/form-label "Gender")
-        (s/input-radio :name "gender"
-          "Male")
-        (s/input-radio :name "gender"
-          "Female"))
-
-      ;; form select control
-      (s/form-group
-        (s/select
-          (option "Choose an option")
-          (option "Slack")
-          (option "Skype")
-          (option "Hipchat")))
-
-      ;; form switch control
-      (s/form-group
-        (s/input-switch "Send me emails with news and tips"))
-
-      ;; form textarea control
-      (s/form-group
-        (s/form-label "Message")
-        (s/textarea
-          :rows "3"
-          :placeholder "Textarea"))
-
-      ;; form checkbox control
-      (s/form-group
-        (s/input-checkbox "Remember me"))
+          (s/form-label :for "input-example-1" "Name")
+          (s/input :type "text" :id "input-example-1" :placeholder "Name"))
+        ; form radio control
+        (s/form-group
+          (s/form-label "Gender")
+          (s/input-radio
+            :name "gender"
+            "Male")
+          (s/input-radio
+            :name "gender"
+            "Female"))
+        ; form select control
+        (s/form-group
+          (s/select
+            (option "Choose an option")
+            (option "Slack")
+            (option "Skype")
+            (option "Hipchat")))
+        ; form switch control
+        (s/form-group
+          (s/input-switch "Send me emails with news and tips"))
+        ; form textarea control
+        (s/form-group
+          (s/form-label :for "input-example-3" "Message")
+          (s/textarea :id "input-example-3" :placeholder "Textarea" :rows "3"))
+        ; form checkbox control
+        (s/form-group
+          (s/input-checkbox "Remember me")))
       ;;}}
       )
     (section :class "notes"
@@ -722,24 +845,128 @@
        (code "(form)")
        " function. And add the class "
        (code "col-[xs|sm|md|lg|xl]-[1-12]")
-       " to the child elements for form row layout. Please note "
-       (code "form-horizontal")
-       " only works in viewports that are at least 840px wide."))
+       " to the child elements for form row layout."))
+    (s/columns
+      (div
+        :column 6
+        :column-xs 12
+        (form
+          :class "form-horizontal"
+          :action "#forms"
+          (s/form-group
+            (div :col 3
+              (s/form-label :for "input-example-1" "Name"))
+            (div :col 9
+              (s/input :type "text" :id "input-example-1" :placeholder "Name")))
+          (s/form-group
+            (div :col 3
+              (s/form-label :for "input-example-2" "Email"))
+            (div :col 9
+              (s/input :type "email" :id "input-example-2" :placeholder "Email")))
+          (s/form-group
+            (div :col 3
+              (s/form-label "Gender"))
+            (div :col 9
+              (s/input-radio
+                :name "gender"
+                "Male")
+              (s/input-radio
+                :name "gender"
+                :checked true
+                "Female")))
+          (s/form-group
+            (div :col 3)
+            (div :col 9
+              (s/select
+                :multiple true
+                (option "Choose an option")
+                (option "Slack")
+                (option "Skype")
+                (option "Hipchat"))))
+          (s/form-group
+            (div :col 3)
+            (div :col 9
+              (s/input-switch "Send me emails with news and tips")))
+          (s/form-group
+            (div :col 3
+              (s/form-label :for "input-example-3" "Message"))
+            (div :col 9
+              (s/textarea :id "input-example-3" :placeholder "Textarea" :rows "3")))
+          (s/form-group
+            (div :col 3)
+            (div :col 9
+              (s/input-checkbox "Remember me")))
+          (s/form-group
+            (div :col 3)
+            (div :col 9
+              (s/button-primary :type "submit" "Submit")
+              (s/button-link :type "reset" "Cancel"))))))
     (hl/highlight :class "clojure"
       ;;{{
       (form
         :class "form-horizontal"
         (s/form-group
-          (div :column-sm 3
+          (div :col 3
             (s/form-label "Name"))
           (s/input
-            :column-sm 9
+            :col 9
             :type "text"
             :placeholder "Name"))
         ;; Form structure
         )
       ;;}}
       )
+    (s/columns
+      (div
+        :column 6
+        :column-xs 12
+        (form
+          :class "form-horizontal"
+          (s/form-group
+            (div :col 3
+              (s/form-label :for "input-example-8" "Email"))
+            (div :col 9
+              (s/input :type "email" :id "input-example-8" :placeholder "Email" :value "spectre@example.com")))
+          (s/form-group
+            (div :col 3
+              (s/form-label :for "input-example-9" "URL"))
+            (div :col 9
+              (s/input :type "url" :id "input-example-9" :placeholder "URL" :value "https://github.com/picturepan2/spectre")))
+          (s/form-group
+            (div :col 3
+              (s/form-label :for "input-example-10" "Search"))
+            (div :col 9
+              (s/input :type "search" :id "input-example-10" :placeholder "Search" :value "")))
+          (s/form-group
+            (div :col 3
+              (s/form-label :for "input-example-11" "Tel"))
+            (div :col 9
+              (s/input :type "tel" :id "input-example-11" :placeholder "Tel" :value "1-(888)-888-8888")))
+          (s/form-group
+            (div :col 3
+              (s/form-label :for "input-example-12" "Password"))
+            (div :col 9
+              (s/input :type "password" :id "input-example-12" :placeholder "Password" :value "123456789")))
+          (s/form-group
+            (div :col 3
+              (s/form-label :for "input-example-13" "Number"))
+            (div :col 9
+              (s/input :type "number" :id "input-example-13" :placeholder "Number" :value "66")))
+          (s/form-group
+            (div :col 3
+              (s/form-label :for "input-example-14" "Date"))
+            (div :col 9
+              (s/input :type "date" :id "input-example-14" :placeholder "Date" :value "2016-12-31")))
+          (s/form-group
+            (div :col 3
+              (s/form-label :for "input-example-15" "Color"))
+            (div :col 9
+              (s/input :type "color" :id "input-example-15" :placeholder "Color" :value "#5764c6")))
+          (s/form-group
+            (div :col 3
+              (s/form-label :for "input-example-16" "File"))
+            (div :col 9
+              (s/input :type "file" :id "input-example-16" :placeholder "File" :value ""))))))
     (section :class "notes"
       (p
        "To use form validation styles, add "
@@ -748,7 +975,47 @@
        (code ":options #{:error}")
        " to the inputs or their  "
        (code "(s/form-group)")
-       "."))
+       ". You can use the element "
+       (code "(s/input-hint)")
+       " to provide form validation success and error messages."))
+    (s/columns
+      (div
+        :column 6
+        :column-xs 12
+      (s/form-group
+        :options #{:error}
+        (s/form-label "Name")
+        (s/input
+          :type "text"
+          :placeholder "Name")
+        (s/input-hint "The name is invalid"))
+      (s/form-group
+        (s/form-label "Email")
+        (s/input
+          :options #{:success}
+          :type "text"
+          :placeholder "Email")
+        (s/input-hint "The email is available"))))
+    (s/columns
+      (div
+        :column 6
+        :column-xs 12
+      (s/form-group
+        (s/select
+          :options #{:error}
+          (option "Choose an option")
+          (option "Slack")
+          (option "Skype")
+          (option "Hipchat"))
+        (s/input-hint "The option is invalid"))
+      (s/form-group
+        (s/select
+          :options #{:success}
+          (option "Choose an option")
+          (option "Slack")
+          (option "Skype")
+          (option "Hipchat"))
+        (s/input-hint "The option is valid"))))
     (hl/highlight :class "clojure"
       ;;{{
       (form
@@ -757,7 +1024,8 @@
           (s/form-label "Name")
           (s/input
             :type "text"
-            :placeholder "Name"))
+            :placeholder "Name")
+          (s/input-hint "The name is valid"))
 
         ;; on input
         (s/form-group
@@ -765,7 +1033,8 @@
           (s/input
             :options #{:success}
             :type "text"
-            :placeholder "Email")))
+            :placeholder "Email")
+          (s/input-hint "The email is available")))
       ;;}}
       )
     (section :class "notes"
@@ -776,22 +1045,24 @@
        (code ":options #{:lg}")
        " to the elements."))
     (s/columns
-      (div :column true
+      (div :column 4
         (s/input
           :options #{:sm}
           :type "text"
           :placeholder "Name"))
-      (div :column true
-        (s/input
-          :options #{:lg}
-          :type "text"
-          :placeholder "Name"))
-      (div :column true
+      (div :column 4
         (s/select :options #{:sm}
           (option "Choose an option")
           (option "Slack")
           (option "Skype")
-          (option "Hipchat"))
+          (option "Hipchat"))))
+    (s/columns
+      (div :column 4
+        (s/input
+          :options #{:lg}
+          :type "text"
+          :placeholder "Name"))
+      (div :column 4
         (s/select :options #{:lg}
           (option "Choose an option")
           (option "Slack")
@@ -799,44 +1070,92 @@
           (option "Hipchat"))))
     (s/header (h5 "input groups"))
     (s/columns
-      (div :column true
+      (div :column-xs 12
         (s/input-group
-          (s/input-group-text "slack.com/")
-          (s/input
-            :type "text"
-            :placeholder "site name")))
-      (div :column true
-        (s/input-group
-          (s/input
-            :type "text"
-            :placeholder "username")
-          (s/input-group-text "@slack.com")))
-      (div :column true
-        (s/input-group
-          (s/input-group-text "slack.com/")
-          (s/input
-            :type "text"
-            :placeholder "site name")
-          (s/button-primary :options #{:input-group}
-            "Submit"))))
-    (s/columns
-      (div :column true
-        (s/input-group
-          (s/input-group-text :options #{:sm}
+          (s/input-group-text
+            :options #{:sm}
             "slack.com/")
           (s/input
             :options #{:sm}
             :type "text"
             :placeholder "site name")))
-      (div :column true
+      (div :column-xs 12
+        (s/input-group
+          (s/input
+            :options #{:sm}
+            :type "text"
+            :placeholder "username")
+          (s/input-group-text
+            :options #{:sm}
+            "@slack.com")))
+      (div :column-xs 12
+        (s/input-group
+          (s/input-group-text
+            :options #{:sm}
+            "slack.com/")
+          (s/input
+            :options #{:sm}
+            :type "text"
+            :placeholder "site name")
+          (s/button-primary
+            :options #{:input-group :sm}
+            "Submit"))))
+    (s/columns
+      (div :column-xs 12
+        (s/input-group
+          (s/input-group-text
+            "slack.com/")
+          (s/input
+            :type "text"
+            :placeholder "site name")))
+      (div :column-xs 12
+        (s/input-group
+          (s/input
+            :type "text"
+            :placeholder "username")
+          (s/input-group-text
+            "@slack.com")))
+      (div :column-xs 12
+        (s/input-group
+          (s/input-group-text
+            "slack.com/")
+          (s/input
+            :type "text"
+            :placeholder "site name")
+          (s/button-primary
+            :options #{:input-group}
+            "Submit"))))
+    (s/columns
+      (div :column-xs 12
+        (s/input-group
+          (s/input-group-text
+            :options #{:lg}
+            "slack.com/")
+          (s/input
+            :options #{:lg}
+            :type "text"
+            :placeholder "site name")))
+      (div :column-xs 12
         (s/input-group
           (s/input
             :options #{:lg}
             :type "text"
             :placeholder "username")
-          (s/input-group-text :options #{:lg}
+          (s/input-group-text
+            :options #{:lg}
             "@slack.com")))
-      (div :column true))
+      (div :column-xs 12
+        (s/input-group
+          (s/input-group-text
+            :options #{:lg}
+            "slack.com/")
+          (s/input
+            :options #{:lg}
+            :type "text"
+            :placeholder "site name")
+          (s/button-primary
+            :options #{:input-group :lg}
+            "Submit"))))
     (section :class "notes"
       (p
        "If you want to attach text and button along with an input, use the element "
@@ -879,6 +1198,39 @@
       ;;}}
       )))
 
+(def labels-section
+  (section
+    :id "labels"
+    :class "container grid-960"
+    (s/header (h4 "labels"))
+    (section :class "notes"
+      (p
+       (strong "Labels")
+       " are formatted text tags for highlighted, informative information."))
+    (s/columns
+      (div :column true
+        (s/label "default label")
+        (s/label-primary "primary label")
+        (s/label-success "success label")
+        (s/label-danger "danger label")))
+    (section :class "notes"
+      (p
+       "Use the element "
+       (code "(s/label)")
+       ". You can use the elements "
+       (code "(s/label-primary)") ", "
+       (code "(s/label-success)") " and "
+       (code "(s/label-danger)")
+       " for a colored label."))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (s/label "default label")
+      (s/label-primary "primary label")
+      (s/label-success "success label")
+      (s/label-danger "danger label")
+      ;;}}
+      )))
+
 (def media-section
   (section
     :id "media"
@@ -887,47 +1239,80 @@
     (section :class "notes"
       (p
        (strong "Media")
-       " include responsive image and video class."))
+       " include responsive image, figures and video classes.")
+      (p
+        "Use the element "
+        (code "(s/img)") "."
+        " The images will scale with the parent sizes."))
     (s/columns
-      (div :column 6
+      (div
+        :column 6
+        :column-xs 12
         (s/img
           :options #{:rounded}
           :src "images/osx-el-capitan.jpg")))
     (section :class "notes"
       (p
-       "Use the element "
-       (code "(s/img)")
-       ". The images will scale with the parent sizes."))
+       "You can use the element "
+       (code "(s/figure)")
+       " for an image with a caption. The images created with the "
+        (code "(s/img)") " element will be reponsive. Use the "
+        (code "(s/figcaption)") " for caption. Also you can use "
+        (code ":options #{:left}") ", "
+        (code ":options #{:center}") " and "
+        (code ":options #{:right}") "for caption aligment."))
     (s/columns
-      (div :column 6
-        (div :class "video-responsive"
-          (iframe
-            :frameborder "0",
-            :scrolling "auto",
-            :src "/vBfBa-gCMQk.html",
-            :width "560",
-            :height "315",
-            :allowfullscreen ""))))
+      (div
+        :column 6
+        :column-xs 12
+        (s/figure
+          (s/img
+            :options #{:rounded}
+            :src "images/osx-yosemite-2.jpg")
+          (s/figcaption
+            :options #{:center}
+            "macOS Yosemite wallpaper"))))
     (section :class "notes"
       (p
        "For responsive video, add a container with the class "
        (code "video-responsive")
-       ". Insert any YouTube, Youku or other iframe/embed video inside the container. The ratio is 16:9 by default. You may add the class "
+       ". Insert any YouTube, Youku or other iframe/embed video inside the container. The ratio is 16:9 by default. You may add "
        (code "video-responsive-4-3")
-       " for 4:3 ratio video container."))
+       " for 4:3 ratio video container or"
+       (code "video-responsive-1-1")
+       " for 1:1 ratio."))
+    (s/columns
+      (div
+        :column 6
+        :column-xs 12
+        (div :class "video-responsive"
+          (iframe
+            :frameborder "0",
+            :src "https://www.youtube.com/embed/BzMLA8YIgG0",
+            :width "560",
+            :height "315",
+            :allowfullscreen ""))))
     (hl/highlight :class "clojure"
       ;;{{
       (s/img
         :options #{:rounded}
         :src "images/osx-el-capitan.jpg")
 
+      (s/figure
+        (s/img
+          :options #{:rounded}
+          :src "images/osx-yosemite-2.jpg")
+        (s/figcaption
+          :options #{:center}
+          "macOS Yosemite wallpaper"))
+
       (div :class "video-responsive"
         (iframe
-          :src "https://www.youtube.com/embed/vBfBa-gCMQk"
-          :width "560"
-          :height "315"
-          :frameborder "0"
-          :allowfullscreen true))
+          :frameborder "0",
+          :src "https://www.youtube.com/embed/BzMLA8YIgG0",
+          :width "560",
+          :height "315",
+          :allowfullscreen ""))
       ;;}}
       )))
 
@@ -936,13 +1321,13 @@
     "layout"
     (section :class "notes text-center"
       (s/button-group
-        (s/button-primary :href "#grid"
+        (s/a-button-primary :href "#grid"
           "flexbox grid")
-        (s/button-primary :href "#responsive"
+        (s/a-button-primary :href "#responsive"
           "responsive")
-        (s/button-primary :href "#navbar"
+        (s/a-button-primary :href "#navbar"
           "navbar")
-        (s/button-primary :href "#empty"
+        (s/a-button-primary :href "#empty"
           "empty states")))))
 
 (def grid-section
@@ -1017,24 +1402,35 @@
       (div :column 6
         (div :class "bg-grey"
           ":column 6 (gapless)")))
+    (section :class "notes"
+      (p
+       "By default, Spectre grid has multi-line flexbox enabled. You can add the option "
+       (code ":options #{:online}") " to "
+       (code "(s/columns)")
+       " to make all its child columns positioned in the same single row."))
+    (s/columns :options #{:oneline}
+      (div :column 8
+        (div :class "bg-grey"
+          ":column 8"))
+      (div :column 8
+        (div :class "bg-grey"
+          ":column 8")))
     (hl/highlight :class "clojure"
       ;;{{
       (div :class "container"
         (s/columns
-          (div :column 6
-            ":column 6")
-          (div :column 3
-            ":column 3")
-          (div :column 2
-            ":column 2")
-          (div :column 1
-            ":column 1"))
+          (div :column 6 ":column 6")
+          (div :column 3 ":column 3")
+          (div :column 2 ":column 2")
+          (div :column 1 ":column 1"))
 
         (s/columns :options #{:gapless}
-          (div :column 6
-            ":column 6")
-          (div :column 6
-            ":column 6")))
+          (div :column 6 ":column 6")
+          (div :column 6 ":column 6"))
+
+        (s/columns :options #{:oneline}
+          (div :column 8 ":column 8")
+          (div :column 8 ":column 8")))
       ;;}}
       )))
 
@@ -1090,28 +1486,35 @@
         (li
           (code ":column-xs [1-12]")
           " apply to window width greater than or equal to "
-          (strong "481px")
+          (strong "480px")
           ". ")
         (li
           (code ":column-sm [1-12]")
           " apply to window width greater than or equal to "
-          (strong "601px")
+          (strong "600px")
           ". ")
         (li
           (code ":column-md [1-12]")
           " apply to window width greater than or equal to "
-          (strong "841px")
+          (strong "840px")
+          ". ")
+        (li
+          (code ":column-lg [1-12]")
+          " apply to window width greater than or equal to "
+          (strong "960px")
+          ". ")
+        (li
+          (code ":column-xl [1-12]")
+          " apply to window width greater than or equal to "
+          (strong "1280px")
           ". ")))
     (hl/highlight :class "clojure"
       ;;{{
       (div :class "container"
         (s/columns
-          (div :column-xs 6
-            ":column-xs 6")
-          (div :column-xs 3
-            ":column-xs 3")
-          (div :column-xs 3
-            ":column-xs 3")))
+          (div :column-xs 6 ":column-xs 6")
+          (div :column-xs 3 ":column-xs 3")
+          (div :column-xs 3 ":column-xs 3")))
       ;;}}
       )
     (section :class "notes"
@@ -1165,68 +1568,44 @@
        " is a layout container that appear in the header of apps and websites. "))
     (s/columns
       (div :column true
-        (s/navbar :class "bg-grey"
-          (s/navbar-section
-            (s/button-link
-              :options #{:lg}
-              :href "#navbar"
-              (i :class "icon icon-menu"))
-            (s/navbar-title-link :href "#navbar"
-              "Spectre.css"))
-          (s/navbar-section
-            (s/input
-              :options #{:inline}
-              :type "text"
-              :placeholder "search")
-            (s/button-link :href "#navbar"
-              "documents")
-            (s/button-link :href "#navbar"
-              "login")
-            (s/button-primary :href "#navbar"
-              "signup")))))
-    (s/columns
-      (div :column true
         (s/navbar
           (s/navbar-section
-            (s/button-link
-              :options #{:lg}
+            (a
+              :class "navbar-brand"
               :href "#navbar"
-              (i :class "icon icon-menu"))
-            (s/navbar-title-link :href "#navbar"
-              "Spectre.css"))
+              (i :class "icon icon-pages")
+              " Spectre.css")
+            (s/a-button-link :href "#navbar"
+              "features")
+            (s/a-button-link :href "#navbar"
+              "documents"))
           (s/navbar-section
-            (s/input
-              :options #{:inline}
-              :type "text"
-              :placeholder "search")
-            (s/avatar :class "ml-10 mr-10"
-              (img :src "images/avatar-4.png"))
-            (s/button-primary :href "#navbar"
-              "share")))))
+            (s/input-group
+              (s/input
+                :options #{:inline}
+                :type "text"
+                :placeholder "search")
+              (s/a-button-primary
+                :options #{:input-group}
+                :href "#navbar"
+                "Search"))))))
     (section :class "notes"
       (p
-       "A navbar component can include logo brand, nav links and buttons, search box or any combination of those elements. By default, there is no grey background."))
+       "A navbar component can include logo brand, nav links and buttons, search box or any combination of those elements. Each section created with the element "
+       (code "navbar-section")
+       " will be evenly distributed in the container."))
     (hl/highlight :class "clojure"
       ;;{{
       (s/navbar
         (s/navbar-section
-          (s/button-link
-            :options #{:lg}
-            :href "#navbar"
-            (i :class "icon icon-people"))
-          (s/navbar-title-link :href "#navbar"
-            "Spectre.css"))
+          (a :class "navbar-brand" :href "#navbar"
+            (i :class "icon icon-pages") " Spectre.css")
+          (s/a-button-link :href "#navbar" "features")
+          (s/a-button-link :href "#navbar" "documents"))
         (s/navbar-section
-          (s/input
-            :options #{:inline}
-            :text "text"
-            :placeholder "search")
-          (s/button-link :href "#navbar"
-            "documents")
-          (s/button-link :href "#navbar"
-            "login")
-          (s/button-primary :href "#navbar"
-            "signup")))
+          (s/input-group
+            (s/input :options #{:inline} :type "text" :placeholder "search")
+            (s/button-primary :options #{:input-group} "Search"))))
       ;;}}
       )))
 
@@ -1287,27 +1666,27 @@
     "components"
     (section :class "notes text-center"
       (s/button-group
-        (s/button-primary :href "#avatars"
+        (s/a-button-primary :href "#avatars"
           "avatars")
-        (s/button-primary :href "#chips"
+        (s/a-button-primary :href "#chips"
           "chips")
-        (s/button-primary :href "#autocomplete"
+        (s/a-button-primary :href "#autocomplete"
           "autocomplete")
-        (s/button-primary :href "#tooltips"
+        (s/a-button-primary :href "#tooltips"
           "tooltips")
-        (s/button-primary :href "#labels"
-          "labels")
-        (s/button-primary :href "#badges"
+        (s/a-button-primary :href "#badges"
           "badges")
-        (s/button-primary :href "#toasts"
+        (s/a-button-primary :href "#toasts"
           "toasts")
-        (s/button-primary :href "#menus"
+        (s/a-button-primary :href "#menus"
           "menus")
-        (s/button-primary :href "#navigation"
+        (s/a-button-primary :href "#dropdowns"
+          "dropdowns")
+        (s/a-button-primary :href "#navigation"
           "navigation")
-        (s/button-primary :href "#modals"
+        (s/a-button-primary :href "#modals"
           "modals")
-        (s/button-primary :href "#cards"
+        (s/a-button-primary :href "#cards"
           "cards")))))
 
 (def avatar-section
@@ -1318,7 +1697,9 @@
     (section :class "notes"
       (p (strong "Avatars") " are user profile pictures. "))
     (s/columns
-      (div :column 3
+      (div
+        :column 4
+        :column-xs 12
         (s/avatar :options #{:xl}
           (img :src "images/avatar-1.png"))
         (s/avatar :options #{:lg}
@@ -1329,7 +1710,9 @@
           (img :src "images/avatar-4.png"))
         (s/avatar :options #{:xs}
           (img :src "images/avatar-5.png")))
-      (div :column 3
+      (div
+        :column 4
+        :column-xs 12
         (s/avatar :options #{:xl}
           (img :src "images/avatar-1.png")
           (s/avatar-icon :src "images/avatar-2.png"))
@@ -1345,7 +1728,9 @@
         (s/avatar :options #{:xs}
           (img :src "images/avatar-5.png")
           (s/avatar-icon :src "images/avatar-1.png")))
-      (div :column 3
+      (div
+        :column 4
+        :column-xs 12
         (s/avatar
           :options #{:xl}
           :data-initial "YZ",
@@ -1353,18 +1738,18 @@
         (s/avatar
           :options #{:lg}
           :data-initial "YZ",
-          :css {:background-color "#6874cc"})
+          :css {:background-color "#5764c6"})
         (s/avatar
           :data-initial "YZ",
-          :css {:background-color "#7983d2"})
+          :css {:background-color "#5764c6"})
         (s/avatar
           :options #{:sm}
           :data-initial "YZ",
-          :css {:background-color "#8a93d7"})
+          :css {:background-color "#5764c6"})
         (s/avatar
           :options #{:xs}
           :data-initial "YZ",
-          :css {:background-color "#9ba2dd"})))
+          :css {:background-color "#5764c6"})))
     (section :class "notes"
       (p
        "Use the element "
@@ -1381,7 +1766,7 @@
        (code ":options #{:xs}")
        " (16px). By default, the avatar size is 32px.")
       (p
-       "For users who don't have profile pictures, you may use their initials for avatars. Add the class "
+       "For users who don't have profile pictures, you may use their initials for avatars. Use the element "
        (code "(s/avatar)")
        " with the attribute "
        (code ":data-initial \"XY\"")
@@ -1395,10 +1780,11 @@
         (img :src "images/avatar-1.png")
         (s/avatar-icon :src "images/avatar-5.png"))
 
-      (s/avatar
-        :options #{:xl}
-        :data-initial "YZ"
-        :css {:background-color "#5764c6"})
+      (s/avatar :options #{:xl} :data-initial "YZ" :css {:background-color "#5764c6"})
+
+      ; Shows initals when avatar image is unavailable or not fully loaded
+      (s/avatar :options #{:xl} :data-initial "YZ" :css {:background-color "#5764c6"}
+        (img :src "images/avatar-1.png"))
       ;;}}
       )))
 
@@ -1412,7 +1798,8 @@
        (strong "Chips")
        " are complex entities in small blocks. "))
     (s/columns
-      (div :column true
+      (div
+        :column-xs 12
         (s/chip
           (s/chip-text "Crime")
           (s/button-clear))
@@ -1426,13 +1813,14 @@
         (s/chip
           (s/chip-text "Mystery")
           (s/button-clear)))
-      (div :column true
+      (div
+        :column-xs 12
         (s/chip
-          (s/avatar-img :src "images/avatar-1.png")
+          (s/avatar :data-initial "TS" :css {:background-color "#5764c6"})
           (s/chip-text "Tony Stark")
           (s/button-clear))
         (s/chip
-          (s/avatar-img :src "images/avatar-2.png")
+          (s/avatar-img :src "images/avatar-1.png")
           (s/chip-text "Thor Odinson")
           (s/button-clear))
         (s/chip
@@ -1476,15 +1864,17 @@
        (strong "Autocomplete")
        " form component provides suggestions while you type. It is often used for tags and contacts input."))
     (s/columns
-      (div :column 6
+      (div
+        :column 6
+        :column-xs 12
         (s/form-group
           (s/autocomplete
             (s/autocomplete-input
-              (s/avatar-chip-input "Tony Stark" "images/avatar-1.png")
-              (s/avatar-chip-input "Thor Odinson" "images/avatar-2.png")
+              (s/chip (s/avatar :data-initial "TS" :css {:background-color "#A2A8E1"}) (s/chip-text "Tony Stark") (s/button-clear))
+              (s/avatar-chip-input "Thor Odinson" "images/avatar-1.png")
               (s/avatar-chip-input "Steve Rogers" "images/avatar-4.png")
-              (s/avatar-chip-input "Bruce Banner" "images/avatar-1.png")
-              (s/avatar-chip-input "Natasha Romanoff" "images/avatar-2.png" #{:selected})
+              (s/chip (s/chip-text "Bruce Banner") (s/button-clear))
+              (s/chip :options #{:selected} (s/chip-text "Natasha Romanoff") (s/button-clear))
               (s/input
                 :type "text"
                 :placeholder ""))))
@@ -1499,18 +1889,21 @@
               (s/input
                 :type "text"
                 :placeholder "")))))
-      (div :column 6
+      (div
+        :column 6
+        :column-xs 12
         (s/form-group
           (s/autocomplete
             (s/autocomplete-input
-              (s/avatar-chip-input "Tony Stark" "images/avatar-1.png")
-              (s/avatar-chip-input "Thor Odinson" "images/avatar-2.png")
+              (s/chip (s/chip-text "Bruce Banner") (s/button-clear))
+              (s/avatar-chip-input "Thor Odinson" "images/avatar-1.png")
               (s/input
+                :value "S"
                 :type "text"
                 :placeholder "typing here"))
-            (s/autocomplete-list
+            (s/menu
               (s/autocomplete-item-avatar-chip "Steve Rogers" "images/avatar-4.png")
-              (s/autocomplete-item-avatar-chip "Yan Zhu" "images/avatar-2.png"))))))
+              (s/autocomplete-item-avatar-placeholder-chip "Tony Stark" "#A2A8E1" "TS"))))))
     (section :class "notes"
       (p
        "Add a container element "
@@ -1519,7 +1912,8 @@
        (code "(s/autocomplete-input)")
        ", another is "
        (code "(s/autocomplete-list)")
-       ". Spectre.css does not include JavaScript code, you will need to implement your JS to interact with the autocomplete. The autocomplete HTML structure is exampled below."))
+       ". Spectre.css does not include JavaScript code, you will need to implement your JS to interact with the autocomplete.")
+      (p "The autocomplete HTML structure is exampled below."))
     (hl/highlight :class "clojure"
       ;;{{
       (s/autocomplete
@@ -1536,7 +1930,7 @@
         (s/autocomplete-list
           ; autocomplete list avatar chips
           (s/autocomplete-item-avatar-chip "Steve Rogers" "images/avatar-4.png")
-          (s/autocomplete-item-avatar-chip "Yan Zhu" "images/avatar-2.png")))
+          (s/autocomplete-item-avatar-placeholder-chip "Tony Stark" "#A2A8E1" "TS")))
       ;;}}
       )))
 
@@ -1553,21 +1947,21 @@
       (div :column true
         (s/add-tooltip
           (s/button-primary "top tooltip")
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."))
+          "Lorem ipsum"))
       (div :column true
         (s/add-tooltip
           (s/button-primary "right tooltip")
-          "Lorem ipsum dolor sit amet"
+          "Lorem ipsum"
           :right))
       (div :column true
         (s/add-tooltip
           (s/button-primary "bottom tooltip")
-          "Lorem ipsum dolor sit amet"
+          "Lorem ipsum"
           :bottom))
       (div :column true
         (s/add-tooltip
           (s/button-primary "left tooltip")
-          "Lorem ipsum dolor sit amet"
+          "Lorem ipsum"
           :left)))
     (section :class "notes"
       (p "Tooltip component is built entirely in CSS.")
@@ -1585,40 +1979,14 @@
       ;;{{
       (s/add-tooltip
         (s/button-primary "top tooltip")
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.")
+        "Lorem ipsum")
       (s/add-tooltip
         (s/button-primary "right tooltip")
-        "Lorem ipsum dolor sit amet"
+        "Lorem ipsum"
         :right)
       ;;}}
       )))
 
-(def labels-section
-  (section
-    :id "labels"
-    :class "container grid-960"
-    (s/header (h4 "labels"))
-    (section :class "notes"
-      (p
-       (strong "Labels")
-       " are formatted text tags for highlighted, informative information."))
-    (s/columns
-      (div :column true
-        (s/label "default label")
-        (s/label-primary "primary label")))
-    (section :class "notes"
-      (p
-       "Use the element "
-       (code "(s/label)")
-       ". You can use the element "
-       (code "(s/label-primary)")
-       " for a primary colored label."))
-    (hl/highlight :class "clojure"
-      ;;{{
-      (s/label "default label")
-      (s/label-primary "primary label")
-      ;;}}
-      )))
 
 (def badges-section
   (section
@@ -1640,7 +2008,7 @@
         (span :badge "999"
           "Notifications"))
       (div :column true
-        (span :badge "♀"
+        (span :badge "…"
           "Notifications")))
     (section :class "notes"
       (p
@@ -1666,24 +2034,10 @@
        (strong "Toasts")
        " are used to show alert or information to users."))
     (s/columns
-      (div :column true
+      (div
+        :column-sm 12
+        :column 6
         (s/toast
-          (s/button-clear :class "float-right")
-          (s/icon "icon-error_outline")
-          " Lorem ipsum dolor sit amet, consectetur adipiscing elit."))
-      (div :column true
-        (s/toast-primary
-          (s/button-clear :class "float-right")
-          (s/icon "icon-error_outline")
-          " Lorem ipsum dolor sit amet, consectetur adipiscing elit.")))
-    (s/columns
-      (div :column true
-        (s/toast-success
-          (s/button-clear :class "float-right")
-          (s/icon "icon-error_outline")
-          " Lorem ipsum dolor sit amet, consectetur adipiscing elit."))
-      (div :column true
-        (s/toast-error
           (s/button-clear :class "float-right")
           (s/icon "icon-error_outline")
           " Lorem ipsum dolor sit amet, consectetur adipiscing elit.")))
@@ -1693,7 +2047,24 @@
        (code "(s/toast)")
        ". You can add any text within the container, and even icons. You may also add a close button using "
        (code "(s/button-clear :class \"float-right\")")
-       " if you need. ")
+       " if you need. "))
+    (s/columns
+      (div :column-sm 12
+        (s/toast-primary
+          (s/button-clear :class "float-right")
+          (s/icon "icon-error_outline")
+          " Lorem ipsum dolor sit amet, consectetur adipiscing elit."))
+      (div :column-sm 12
+        (s/toast-success
+          (s/button-clear :class "float-right")
+          (s/icon "icon-error_outline")
+          " Lorem ipsum dolor sit amet, consectetur adipiscing elit."))
+      (div :column-sm 12
+        (s/toast-error
+          (s/button-clear :class "float-right")
+          (s/icon "icon-error_outline")
+          " Lorem ipsum dolor sit amet, consectetur adipiscing elit.")))
+    (section :class "notes"
       (p
        "And you can use the elements "
        (code "(s/toast-primary)")
@@ -1730,11 +2101,11 @@
         (s/menu
           (s/menu-item
             (s/chip-big-avatar "Steve Rogers" "images/avatar-4.png"))
+          (li :class "divider")
           (s/menu-link
             :options #{:active}
             :href "#menus"
             "My profile")
-          (li :class "divider")
           (s/menu-link :href "#menus"
             "Settings")
           (s/menu-link :href "#menus"
@@ -1752,11 +2123,11 @@
         (s/menu
           (s/menu-header "Go to")
           (s/menu-link :href "#menus"
-            (s/icon "icon-link") "Slack")
+            (s/icon "icon-link") " Slack")
           (s/menu-link :href "#menus"
-            (s/icon "icon-link") "Hipchat")
+            (s/icon "icon-link") " Hipchat")
           (s/menu-link :href "#menus"
-            (s/icon "icon-link") "Skype"))))
+            (s/icon "icon-link") " Skype"))))
     (section :class "notes"
       (p
        "Add a container element "
@@ -1770,6 +2141,48 @@
        " or "
        (code "(s/menu-header)")
        ". Spectre.css does not include JavaScript code, you will need to implement your JS to interact with the menus."))
+    (hl/highlight :class "clojure"
+      ;;{{
+      (s/menu
+        (s/menu-header "Go to")
+        (s/menu-link :href "#"
+          (s/icon "icon-link") "Slack")
+        (s/menu-link :href "#"
+          (s/icon "icon-link") "Hipchat")
+        (s/menu-link :href "#"
+          (s/icon "icon-link") "Skype")
+        (li :class "divider") ; menu divider
+        (s/menu-link :href "#"
+          (s/icon "icon-link") "Settings"))
+      ;;}}
+      )))
+
+(def dropdowns-section
+  (section
+    :id "dropdowns"
+    :class "container grid-960"
+    (s/header (h4 "dropdowns"))
+    (section :class "notes"
+      (p
+       "A "
+       (strong "dropdown")
+       " is a combination of buttons and menus."))
+    (s/columns
+      (div
+        :column-xs 6
+        (s/dropdown
+          (s/dropdown-simple-button "dropdown button " (i :class "icon-caret"))
+          (s/menu
+            (s/menu-item "oi"))
+          ))
+      (div
+        :column-xs 6
+        )
+      (div
+        :column-xs 6
+        ))
+    (section :class "notes"
+      (p))
     (hl/highlight :class "clojure"
       ;;{{
       (s/menu
@@ -2166,7 +2579,7 @@
           (s/card-body
             "Empower every person and every organization on the planet to achieve more.")
           (s/card-footer
-            (s/button-primary :href "#"
+            (s/a-button-primary :href "#"
              "Do"))))
       (div :column 4
         (s/card
@@ -2223,7 +2636,7 @@
         (s/card-body
           "Empower every person and every organization on the planet to achieve more.")
         (s/card-footer
-          (s/button-primary :href "#"
+          (s/a-button-primary :href "#"
             "Do")))
       ;;}}
       )))
@@ -2233,15 +2646,15 @@
     "utilities"
     (section :class "notes text-center"
       (s/button-group
-        (s/button-primary :href "#position"
+        (s/a-button-primary :href "#position"
           "position")
-        (s/button-primary :href "#display"
+        (s/a-button-primary :href "#display"
           "display")
-        (s/button-primary :href "#text"
+        (s/a-button-primary :href "#text"
           "text")
-        (s/button-primary :href "#shapes"
+        (s/a-button-primary :href "#shapes"
           "shapes")
-        (s/button-primary :href "#loading"
+        (s/a-button-primary :href "#loading"
           "loading")))))
 
 (def position-section
@@ -2358,9 +2771,9 @@
     (hl/highlight :class "clojure"
       ;;{{
       ; rounded element
-      (div class="rounded")
+      (div :class "rounded")
       ; circle element
-      (div class="circle")
+      (div :class "circle")
       ;;}}
       )))
 
@@ -2418,7 +2831,7 @@
        " | "
        (a :href "#"
         "Back to top")
-       " | version: 0.1.24-0")
+       " | version: 0.1.32-0")
       (p
        "Designed and built with love by "
        (a
@@ -2445,6 +2858,7 @@
       tables-section
       buttons-section
       form-section
+      labels-section
       media-section
       layout-header
       grid-section
@@ -2456,10 +2870,10 @@
       chips-section
       autocomplete-section
       tooltips-section
-      labels-section
       badges-section
       toasts-section
       menus-section
+      dropdowns-section
       navigation-menu
       modals-section
       cards-section

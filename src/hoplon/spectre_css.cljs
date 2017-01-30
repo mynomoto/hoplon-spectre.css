@@ -1,5 +1,6 @@
 (ns hoplon.spectre-css
-  (:require [hoplon.core :as h]
+  (:require
+    [hoplon.core :as h]
     [javelin.core :as j]))
 
 (h/defelem header
@@ -14,15 +15,38 @@
    "btn-lg" (:lg options)
    "btn-sm" (:sm options)
    "btn-block" (:block options)
+   "disabled" (:disabled options)
+   "active" (:active options)
    "input-group-btn" (:input-group options)
    "btn" true})
+
+(h/defelem a-button
+  [{:keys [options] :as attrs} children]
+  (let [class (if (j/cell? options)
+                (j/cell= (button-class options))
+                (button-class options))]
+    ((h/a {:class class})
+     (dissoc attrs :options)
+     children)))
+
+(h/defelem a-button-primary
+  [attrs children]
+  ((a-button attrs)
+   {:class "btn-primary"}
+   children))
+
+(h/defelem a-button-link
+  [attrs children]
+  ((a-button attrs)
+   {:class "btn-link"}
+   children))
 
 (h/defelem button
   [{:keys [options] :as attrs} children]
   (let [class (if (j/cell? options)
                 (j/cell= (button-class options))
                 (button-class options))]
-    ((h/a {:class class})
+    ((h/button {:class class})
      (dissoc attrs :options)
      children)))
 
@@ -38,18 +62,9 @@
    {:class "btn-link"}
    children))
 
-(h/defelem button*
-  [{:keys [options] :as attrs} children]
-  (let [class (if (j/cell? options)
-                (j/cell= (button-class options))
-                (button-class options))]
-    ((h/button {:class class})
-     (dissoc attrs :options)
-     children)))
-
 (h/defelem button-clear
   [attrs children]
-  ((button* attrs)
+  ((button attrs)
    {:class "btn-clear"
     :aria-label "Close"}
    children))
@@ -112,6 +127,12 @@
     ((h/table :class class)
      (dissoc attrs :options)
      children)))
+
+(h/defelem input-hint
+  [attrs children]
+  ((h/p :class "form-input-hint")
+   attrs
+   children))
 
 (defn input-class
   [options]
@@ -186,7 +207,9 @@
   [options]
   {"form-select" true
    "select-lg" (:lg options)
-   "select-sm" (:sm options)})
+   "select-sm" (:sm options)
+   "is-danger" (:error options)
+   "is-success" (:success options)})
 
 (h/defelem select
   [{:keys [options] :as attrs} children]
@@ -225,6 +248,28 @@
     (h/i :class "form-icon")
     label-content))
 
+(h/defelem figure
+  [attrs children]
+  ((h/figure :class "figure")
+     attrs
+     children))
+
+(defn figcaption-class
+  [options]
+  {"figure-caption" true
+   "text-center" (:center options)
+   "text-right" (:right options)
+   "text-left" (:left options)})
+
+(h/defelem figcaption
+  [{:keys [options] :as attrs} children]
+  (let [class (if (j/cell? options)
+                (j/cell= (figcaption-class options))
+                (figcaption-class options))]
+    ((h/figcaption :class class)
+     (dissoc attrs :options)
+     children)))
+
 (defn img-class
   [options]
   {"img-responsive" true
@@ -242,6 +287,7 @@
 (defn columns-class
   [options]
   {"columns" true
+   "col-oneline" (:oneline options)
    "col-gapless" (:gapless options)})
 
 (h/defelem columns
@@ -252,6 +298,15 @@
     ((h/div :class class)
      (dissoc attrs :options)
      children)))
+
+(defn col-class
+  ([val]
+   (when (integer? val)
+     {(str "col-"  val) true})))
+
+(defmethod h/do! :col
+  [elem key val]
+  (h/do! elem :class (col-class val)))
 
 (defn column-class
   ([val]
@@ -405,13 +460,13 @@
 
 (h/defelem autocomplete-list
   [{:keys [options] :as attrs} children]
-  ((h/ul {:class "form-autocomplete-list"})
+  ((h/ul {:class "menu"})
    (dissoc attrs :options)
    children))
 
 (h/defelem autocomplete-item
   [{:keys [options] :as attrs} children]
-  ((h/li {:class "form-autocomplete-item"})
+  ((h/li {:class "menu-item"})
    (dissoc attrs :options)
    children))
 
@@ -420,6 +475,12 @@
   (h/div
     :class "chip-icon"
     (avatar-img :src avatar-image)))
+
+(defn chip-placeholder
+  [color initials]
+  (h/div
+    :class "chip-icon"
+    (avatar :data-initial initials :css {:background-color color})))
 
 (defn chip-content
   [title]
@@ -435,7 +496,21 @@
 (defn autocomplete-item-avatar-chip
   [title avatar-image]
   (autocomplete-item
-    ((chip-big-avatar title avatar-image) :class "hand")))
+    (h/a :href "#"
+      (chip-big-avatar title avatar-image))))
+
+(defn chip-big-avatar-placeholder
+  [title color initials]
+  (h/div
+    :class "chip"
+    (chip-placeholder color initials)
+    (chip-content title)))
+
+(defn autocomplete-item-avatar-placeholder-chip
+  [title color initials]
+  (autocomplete-item
+    (h/a :href "#"
+      (chip-big-avatar-placeholder title color initials))))
 
 (defn tooltip-class
   [position]
@@ -461,6 +536,18 @@
 (h/defelem label-primary
   [attrs children]
   ((label {:class "label-primary"})
+   attrs
+   children))
+
+(h/defelem label-success
+  [attrs children]
+  ((label {:class "label-success"})
+   attrs
+   children))
+
+(h/defelem label-danger
+  [attrs children]
+  ((label {:class "label-danger"})
    attrs
    children))
 
@@ -521,6 +608,27 @@
     (h/span
       :class "menu-header-text"
       content)))
+
+(h/defelem dropdown
+  [attrs children]
+  ((h/div {:class "dropdown"})
+   attrs
+   children))
+
+(h/defelem dropdown-simple-button
+  [attrs children]
+  ((h/button
+     {:class "btn btn-link dropdown-toggle" :tabindex "0"})
+   attrs
+   children))
+
+(h/defelem dropdown-group-button
+  [text]
+  (h/div :class "btn-group"
+    (h/button :class "btn"
+      text)
+    (h/button :class "btn dropdown-toggle" :tabindex "0"
+      (h/i :class "icon-caret"))))
 
 (h/defelem breadcrumb
   [attrs children]
