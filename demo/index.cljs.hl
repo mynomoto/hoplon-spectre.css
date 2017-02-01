@@ -2171,31 +2171,67 @@
       (div
         :column-xs 6
         (s/dropdown
-          (s/dropdown-simple-button "dropdown button " (i :class "icon-caret"))
+          ((s/dropdown-group-button
+            "dropdown button")
           (s/menu
-            (s/menu-item "oi"))
-          ))
+            (s/menu-item "Slack")
+            (s/menu-item "Hipchat")
+            (s/menu-item "Skype")))))
       (div
         :column-xs 6
-        )
+        (s/dropdown
+          (s/dropdown-simple-button :options #{:primary}
+            "dropdown button " (i :class "icon-caret"))
+          (s/menu
+            (s/menu-item "Slack")
+            (s/menu-item "Hipchat")
+            (s/menu-item "Skype"))))
       (div
         :column-xs 6
-        ))
+        (s/dropdown
+          (s/dropdown-simple-button :options #{:link}
+            "dropdown button " (i :class "icon-caret"))
+          (s/menu
+            (s/menu-item "Slack")
+            (s/menu-item "Hipchat")
+            (s/menu-item "Skype")))))
     (section :class "notes"
-      (p))
+      (p "Dropdown menus component is built entirely in CSS. It is triggered by "
+        (code ":focus")
+        " event.")
+      (p "Add a container element "
+        (code "(s/dropdown)")
+        ". And add button or a group-button "
+        (code "(s/dropdown-simple-button)")
+        " or "
+        (code "(s/dropdown-group-button)")
+        " and a "
+        (code "(s/menu)")
+        " right next to it"))
+    (section :class "notes"
+      (p "Also, you can implement your JS to interact with the dropdown menus by adding the class "
+        (code "active")
+        " to the dropdown."))
     (hl/highlight :class "clojure"
       ;;{{
-      (s/menu
-        (s/menu-header "Go to")
-        (s/menu-link :href "#"
-          (s/icon "icon-link") "Slack")
-        (s/menu-link :href "#"
-          (s/icon "icon-link") "Hipchat")
-        (s/menu-link :href "#"
-          (s/icon "icon-link") "Skype")
-        (li :class "divider") ; menu divider
-        (s/menu-link :href "#"
-          (s/icon "icon-link") "Settings"))
+      (s/dropdown
+        ; basic dropdown button
+        (s/dropdown-simple-button :options #{:link}
+          "dropdown button " (i :class "icon-caret"))
+        ; menu component
+        (s/menu
+          (s/menu-item "Slack")
+          (s/menu-item "Hipchat")
+          (s/menu-item "Skype")))
+      (s/dropdown
+        ; dropdown button group
+        ((s/dropdown-group-button
+           "dropdown button")
+         ; menu component
+         (s/menu
+           (s/menu-item "Slack")
+           (s/menu-item "Hipchat")
+           (s/menu-item "Skype"))))
       ;;}}
       )))
 
@@ -2240,7 +2276,7 @@
     (s/header :id "tabs"
       (h5 "tabs"))
     (s/columns
-      (div :column true
+      (div :column-xs 12
         (s/tab
           (s/tab-item
             :options #{:active}
@@ -2252,7 +2288,7 @@
             "Radio")
           (s/tab-item :href "#tabs"
             "Connect")))
-      (div :column true
+      (div :column-xs 12
         (s/tab :options #{:block}
           (s/tab-item
             :options #{:active}
@@ -2289,7 +2325,7 @@
       ;;}}
       )
     (s/columns
-      (div :column true
+      (div :column-xs 12
         (s/tab
           (s/tab-item
             :options #{:active}
@@ -2337,7 +2373,7 @@
     (s/header :id "pagination"
       (h5 "pagination"))
     (s/columns
-      (div :column true
+      (div :column-xs 12
         (s/pagination
           (s/page-item :href "#pagination"
             "Previous")
@@ -2358,7 +2394,7 @@
           (s/page-item :href "#pagination"
             "Next")))
       (div
-        :column true
+        :column-xs 12
         (s/pagination
           (s/page-item
             :class "disabled"
@@ -2420,7 +2456,7 @@
     (section :class "notes"
       (p (strong "Modals") " are flexible dialog prompts."))
     (s/columns
-      (div :column true
+      (div :column-xs 12
         (s/modal :options modal-options-cell
           (s/modal-header
             (s/button-clear
@@ -2499,7 +2535,7 @@
       )
     (s/header  (h5 "modal sizes"))
     (s/columns
-      (div :column true
+      (div :column-xs 12
         (s/modal :options modal-sm-1-options-cell
           (s/modal-header
             (s/button-clear
@@ -2515,7 +2551,7 @@
             (s/button-primary "Share")))
         (s/button-primary :click #(swap! modal-sm-1-options-cell conj :active)
           "Show the modal 1"))
-      (div :column true
+      (div :column-xs 12
         (s/modal :options modal-sm-2-options-cell
           (s/modal-header
             (s/button-clear
@@ -2567,7 +2603,9 @@
     (section :class "notes"
       (p (strong "Cards") " are flexible content containers."))
     (s/columns
-      (div :column 4
+      (div
+        :column 4
+        :column-xs 12
         (s/card
           (s/card-image
             :src "images/osx-el-capitan.jpg")
@@ -2581,7 +2619,9 @@
           (s/card-footer
             (s/a-button-primary :href "#"
              "Do"))))
-      (div :column 4
+      (div
+        :column 4
+        :column-xs 12
         (s/card
           (s/card-header
             (h4 :class "card-title"
@@ -2597,7 +2637,9 @@
               (s/button-primary "Buy")
               (s/button "Buy")
               (s/button "Buy")))))
-      (div :column 4
+      (div
+        :column 4
+        :column-xs 12
         (s/card
           (s/card-header
             (h4 :class "card-title"
@@ -2607,7 +2649,47 @@
           (s/card-body
             "Organize the world’s information and make it universally accessible and useful.")
           (s/card-image
-            :src "images/osx-yosemite-2.jpg"))))
+            :src "images/osx-yosemite-2.jpg")
+          (s/card-footer
+            (s/a-button-primary :href "#" "Search")
+            (s/a-button-link :href "#" "Share")))))
+    (s/columns
+      (div
+        :column 4
+        :column-xs 12
+        (s/card
+          (s/card-image
+            :src "images/osx-el-capitan.jpg")
+          (s/card-footer
+            (s/a-button-primary :href "#" "Buy")
+            (s/a-button-link :href "#" "Share"))
+          (s/card-body
+            (strong "Surface Studio")
+            ". Turn your desk into a Studio. Surface Studio is designed for the creative process.")))
+      (div
+        :column 4
+        :column-xs 12
+        (s/card
+          (s/card-header
+            (h4 :class "card-title"
+              "Apple")
+            (h6 :class "card-meta"
+              "Hardware and software"))
+          (s/card-body
+            "To make a contribution to the world by making tools for the mind that advance humankind.")
+          (s/card-image
+            :src "images/osx-yosemite.jpg")))
+      (div
+        :column 4
+        :column-xs 12
+        (s/card
+          (s/card-header
+            (h4 :class "card-title"
+              "Google I/O"))
+          (s/card-body
+            "An immersive, three-day experience focused on exploring the next generation of technology, mobile and beyond.")
+          (s/card-footer
+            ))))
     (section :class "notes"
       (p
        "Add a container element "
