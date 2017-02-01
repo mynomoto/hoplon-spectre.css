@@ -17,6 +17,8 @@
    "btn-block" (:block options)
    "disabled" (:disabled options)
    "active" (:active options)
+   "btn-primary" (:primary options)
+   "btn-link" (:link options)
    "input-group-btn" (:input-group options)
    "btn" true})
 
@@ -617,18 +619,17 @@
 
 (h/defelem dropdown-simple-button
   [attrs children]
-  ((h/button
-     {:class "btn btn-link dropdown-toggle" :tabindex "0"})
-   attrs
+  ((a-button attrs)
+   {:class "dropdown-toggle" :tabindex "0"}
    children))
 
 (h/defelem dropdown-group-button
-  [text]
+  [attrs children]
   (h/div :class "btn-group"
-    (h/button :class "btn"
-      text)
-    (h/button :class "btn dropdown-toggle" :tabindex "0"
-      (h/i :class "icon-caret"))))
+    (a-button attrs children)
+    ((a-button attrs)
+     {:class "dropdown-toggle" :tabindex "0"}
+     (h/i :class "icon-caret"))))
 
 (h/defelem breadcrumb
   [attrs children]
