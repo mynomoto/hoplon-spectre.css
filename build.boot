@@ -8,35 +8,32 @@
 
                   [adzerk/boot-reload "0.5.0" :scope "test"]
                   [tailrecursion/boot-jetty "0.1.3" :scope "test"]
-                  [tailrecursion/boot-heredoc "0.1.1" :scope "test"]
-                  [adzerk/bootlaces "0.1.13" :scope "test"]]
+                  [tailrecursion/boot-heredoc "0.1.1" :scope "test"]]
   :resource-paths #{"src"})
 
 (require
   '[adzerk.boot-cljs :refer [cljs]]
   '[adzerk.boot-reload :refer [reload]]
-  '[adzerk.bootlaces :refer [bootlaces! push-release push-snapshot build-jar]]
   '[boot.git :refer [last-commit]]
   '[boot.heredoc :refer [heredoc]]
   '[hoplon.boot-hoplon :refer [hoplon prerender]]
   '[tailrecursion.boot-jetty :refer [serve]])
 
 (def +version+ "0.1.32-0")
-(bootlaces! +version+)
 
 (task-options!
-  push {:repo           "deploy"
-        :gpg-sign false
-        :ensure-branch  "master"
-        :ensure-clean   true
-        :ensure-tag     (last-commit)
-        :ensure-version +version+}
+  push {:repo "deploy-clojars"}
   pom  {:project        'mynomoto/hoplon-spectre.css
         :version        +version+
         :description    "Hoplon bindings for spectre.css"
         :url            "https://github.com/mynomoto/hoplon-spectre.css"
         :scm            {:url "https://github.com/mynomoto/hoplon-spectre.css"}
         :license        {"Eclipse Public License" "http://www.eclipse.org/legal/epl-v10.html"}})
+
+(deftask local-install
+  "Build and install the project locally."
+  []
+  (comp (pom) (jar) (install)))
 
 (deftask demo
   []
@@ -70,9 +67,12 @@
     (prerender)
     (target :dir #{"target"})))
 
-(deftask release
-  "Release hoplon-spectre."
-  []
+(deftask release []
+  (merge-env!
+    :repositories [["deploy-clojars" {:url "https://clojars.org/repo"
+                                      :username (System/getenv "CLOJARS_USER")
+                                      :password (System/getenv "CLOJARS_PASS")}]])
   (comp
-    (build-jar)
-    (push-release)))
+    (local-install)
+    (sift :include [#".*\.jar"])
+    (push)))
