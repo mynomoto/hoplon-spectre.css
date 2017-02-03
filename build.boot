@@ -26,6 +26,7 @@
 
 (task-options!
   push {:repo           "deploy"
+        :gpg-sign false
         :ensure-branch  "master"
         :ensure-clean   true
         :ensure-tag     (last-commit)
