@@ -21,7 +21,7 @@
   '[hoplon.boot-hoplon :refer [hoplon prerender]]
   '[tailrecursion.boot-jetty :refer [serve]])
 
-(def +version+ "0.1.0")
+(def +version+ "0.1.32-0")
 (bootlaces! +version+)
 
 (task-options!
