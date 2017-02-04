@@ -35,19 +35,17 @@
   []
   (comp (pom) (jar) (install)))
 
-(deftask demo
+(defn demo
   []
-  (with-pre-wrap fileset
-    (merge-env!
-      :resource-paths #{"demo"}
-      :dependencies '[[hoplon/highlight "8.4.0-0"]])
-    fileset))
+  (merge-env!
+    :resource-paths #{"demo"}
+    :dependencies '[[hoplon/highlight "8.4.0-0"]]))
 
 (deftask dev
   "Build hoplon-spectre for local development."
   []
+  (demo)
   (comp
-    (demo)
     (watch)
     (speak)
     (heredoc)
@@ -59,12 +57,13 @@
 (deftask page
   "Build the hoplon-spectre pages."
   []
+  (demo)
   (comp
-    (demo)
     (heredoc)
     (hoplon)
     (cljs :optimizations :advanced)
     (prerender)
+    (sift :include #{#"\.out" #"\.cljs"} :invert true)
     (target :dir #{"target"})))
 
 (deftask release []
