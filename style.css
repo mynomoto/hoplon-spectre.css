@@ -3,15 +3,23 @@ header > h5 {
   margin-top: 4rem;
   margin-bottom: 2rem;
 }
-pre > code {
-  white-space: pre;
-  padding-left: 4.2px;
-  display: block;
-}
 .bg-grey {
   background-color: #efefef;
-  padding: 1rem;
-  border-radius: .3rem;
+  padding: 1rem .5rem;
+  border-radius: .2rem;
+}
+.navbar-brand {
+  font-size: 2rem;
+  font-weight: bold;
+  padding-right: 2rem;
+  text-decoration: none;
+  vertical-align: middle;
+}
+.navbar-brand .icon {
+  font-size: 1.3333em;
+  line-height: .8em;
+  margin-right: .2rem;
+  vertical-align: -20%;
 }
 .grid-hero {
   margin-top: 10rem;
@@ -30,6 +38,9 @@ pre > code {
 }
 .grid-footer a {
   color: #666;
+}
+.container header {
+  padding-top: 3rem;
 }
 .notes {
   margin: 4rem 0;
